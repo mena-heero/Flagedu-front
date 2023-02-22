@@ -1,0 +1,344 @@
+<template>
+  <div class="container">
+    <div
+      class="auth-wrapper d-flex justify-content-center align-items-center py-5"
+    >
+      <div class="card-wrapper">
+        <div class="text-center mb-5">
+          <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
+          <h1 class="text-white fw-semibold">Create an Account</h1>
+        </div>
+
+        <ValidationObserver
+          v-slot="{ invalid }"
+          tag="form"
+          @submit.prevent="handleSignup"
+        >
+          <ValidationProvider
+            :rules="{ required, regex: /^[a-zA-Z0-9\.]*$/ }"
+            v-slot="{ errors }"
+            tag="div"
+            class="mb-3"
+          >
+            <div class="form-input mb-1">
+              <img
+                src="/images/user.png"
+                alt="user icon"
+                class="icon"
+                width="15"
+                height="16"
+              />
+              <input
+                type="text"
+                name="Full name"
+                :class="{
+                  'form-control': true,
+                  redborder: errors[0],
+                }"
+                class="form-control"
+                placeholder="Full name"
+                v-model="formData.full_name"
+              />
+            </div>
+            <small v-if="errors.length" class="error">
+              {{ errors[0] }}
+            </small>
+          </ValidationProvider>
+
+          <ValidationProvider
+            rules="required"
+            v-slot="{ errors }"
+            tag="div"
+            class="mb-3"
+          >
+            <div class="form-input mb-1">
+              <img
+                src="/images/email.png"
+                alt="email icon"
+                class="icon"
+                width="20"
+                height="16"
+              />
+              <input
+                type="email"
+                name="Email"
+                :class="{
+                  'form-control': true,
+                  redborder: errors[0],
+                }"
+                class="form-control"
+                placeholder="Your Email"
+                v-model="formData.email"
+              />
+            </div>
+            <small v-if="errors.length" class="error">
+              {{ errors[0] }}
+            </small>
+          </ValidationProvider>
+
+          <ValidationProvider
+            vid="password"
+            ref="password"
+            :rules="{
+              required,
+            }"
+            v-slot="{ errors }"
+            tag="div"
+            class="mb-3"
+          >
+            <div class="form-input mb-1">
+              <img
+                src="/images/password.png"
+                alt="password icon"
+                class="icon"
+                width="14"
+                height="16"
+              />
+              <input
+                type="password"
+                name="Password"
+                ref="passwordOneInput"
+                :class="{
+                  'form-control': true,
+                  redborder: errors[0],
+                }"
+                class="form-control"
+                placeholder="Password"
+                v-model="formData.password"
+              />
+              <span @click="toggleShowOne">
+                <img
+                  v-if="!showPasswordOne"
+                  src="/images/hide.png"
+                  alt="show pass icon"
+                  class="show-icon"
+                  width="15"
+                  height="12"
+                />
+                <img
+                  v-if="showPasswordOne"
+                  src="/images/show.png"
+                  alt="show pass icon"
+                  class="show-icon"
+                  width="15"
+                  height="12"
+                />
+              </span>
+            </div>
+            <small v-if="errors.length" class="error">
+              {{ errors[0] }}
+            </small>
+          </ValidationProvider>
+
+          <ValidationProvider
+            vid="password2"
+            rules="required|confirmed:password"
+            v-slot="{ errors }"
+            tag="div"
+            class="mb-4"
+          >
+            <div class="form-input mb-1">
+              <img
+                src="/images/password.png"
+                alt="password icon"
+                class="icon"
+                width="14"
+                height="16"
+              />
+              <input
+                type="password"
+                name="Confirm Password"
+                ref="passwordTwoInput"
+                :class="{
+                  'form-control': true,
+                  redborder: errors[0],
+                }"
+                class="form-control"
+                placeholder="Confirm Password"
+                v-model="formData.password2"
+              />
+              <span @click="toggleShowTwo">
+                <img
+                  v-if="!showPasswordTwo"
+                  src="/images/hide.png"
+                  alt="show pass icon"
+                  class="show-icon"
+                  width="15"
+                  height="12"
+                />
+                <img
+                  v-if="showPasswordTwo"
+                  src="/images/show.png"
+                  alt="show pass icon"
+                  class="show-icon"
+                  width="15"
+                  height="12"
+                />
+              </span>
+            </div>
+            <small v-if="errors.length" class="error">
+              {{
+                errors.length && formData.password != formData.password2
+                  ? "Passwords do not match"
+                  : errors[0]
+              }}
+            </small>
+          </ValidationProvider>
+
+          <div class="form-check d-flex">
+            <input
+              type="checkbox"
+              class="form-check-input me-2"
+              v-model="formData.is_agreed"
+            />
+            <label class="form-check-label text-white"
+              >I agree with the
+              <a
+                href="https://vemate.com/terms-of-service"
+                target="_blank"
+                class="text-active"
+                >Terms of Service</a
+              >
+              and
+              <a
+                href="https://vemate.com/privacy-policy"
+                target="_blank"
+                class="text-active"
+                >Privacy Policy</a
+              ></label
+            >
+          </div>
+
+          <div class="form-input text-center error my-2">
+            <p class="error" v-html="error_msg"></p>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary form-button"
+            :disabled="invalid"
+          >
+            {{ loading ? "Please wait..." : "Sign up" }}
+          </button>
+
+          <p class="have-account text-center text-white">
+            Already have an account?
+            <NuxtLink to="/signin" class="text-active">Sign in</NuxtLink>
+          </p>
+        </ValidationObserver>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import {
+  Component,
+  Vue,
+  Action,
+  Getter,
+  Mutation,
+} from "nuxt-property-decorator";
+import { namespaced } from "../utils/utils";
+import { NS_AUTH } from "../utils/store/namespace.names";
+import { SIGNUP } from "../utils/store/action.names";
+
+@Component({
+  name: "Signup",
+  components: {},
+  layout: "auth-layout",
+})
+export default class Signup extends Vue {
+  @Action(namespaced(NS_AUTH, SIGNUP)) signup;
+
+  formData = {
+    full_name: "",
+    email: "",
+    password: "",
+    password2: "",
+    is_agreed: "",
+  };
+  error_msg = "";
+  password_error = false;
+  loading = false;
+
+  showPasswordOne = false;
+  showPasswordTwo = false;
+
+  toggleShowOne() {
+    this.showPasswordOne = !this.showPasswordOne;
+    if (this.showPasswordOne == true) {
+      this.$refs.passwordOneInput.type = "text";
+    } else {
+      this.$refs.passwordOneInput.type = "password";
+    }
+  }
+  toggleShowTwo() {
+    this.showPasswordTwo = !this.showPasswordTwo;
+    if (this.showPasswordTwo == true) {
+      this.$refs.passwordTwoInput.type = "text";
+    } else {
+      this.$refs.passwordTwoInput.type = "password";
+    }
+  }
+
+  handleSignup() {
+    this.loading = true;
+
+    if (this.formData.is_agreed == false) {
+      var msg = `<div class='t-custom-class'><div>You need to agree with our terms and conditions!</div></div>`;
+      this.$toast.error(msg);
+      this.loading = false;
+      return false;
+    }
+    const userData = { ...this.formData };
+    delete userData["password2"];
+    this.signup(userData)
+      .then((data) => {
+        this.loading = false;
+        this.$router.push({
+          name: "validate-otp",
+          query: {
+            email: this.formData.email,
+            mode: "verification",
+          },
+        });
+      })
+      .catch((e) => {
+        this.loading = false;
+        this.error_msg = "";
+        var err_msg = "";
+        if (e.response.status === 400) {
+          for (const [key, value] of Object.entries(e.response.data)) {
+            const err = `<p>${value}</p>`;
+            err_msg = err_msg + err;
+          }
+          this.error_msg = err_msg;
+        } else {
+          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          this.$toast.error(msg);
+        }
+      });
+  }
+
+  mounted() {}
+
+  head() {
+    return {
+      title: "Signup",
+    };
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.error {
+  color: #eb794f;
+}
+.help-text {
+  color: #fff;
+}
+.form-check-input {
+  margin-top: 0.26em;
+}
+</style>
