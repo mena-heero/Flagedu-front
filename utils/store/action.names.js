@@ -14,3 +14,7 @@ export const CHANGE_PROFILE_IMAGE = "changeProfileImage";
 export const CHANGE_PROFILE = "changeProfile";
 export const VERIFY_CODE_FOR_FORGET_PASSWORD = "verifyCodeForForgetPassword";
 export const DELETE_PROFILE = "deleteProfile";
+
+export const FETCH_SETTINGS = "fetchSettings";
+
+export const FETCH_STORY = "fetchStory";

@@ -1,7 +1,8 @@
-import { NS_SETTINGS, NS_AUTH, NS_COMMON } from "~/utils/store/namespace.names";
+import { NS_AUTH, NS_COMMON } from "~/utils/store/namespace.names";
 import {
   GET_TOKEN_FROM_LOCAL_STORE,
   PROFILE,
+  FETCH_SETTINGS,
 } from "~/utils/store/action.names";
 import { namespaced } from "~/utils/utils";
 
@@ -13,5 +14,6 @@ export const actions = {
       (e) => {}
     );
     await dispatch(namespaced(NS_AUTH, PROFILE)).catch((e) => {});
+    await dispatch(namespaced(NS_COMMON, FETCH_SETTINGS)).catch((e) => {});
   },
 };

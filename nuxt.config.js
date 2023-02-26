@@ -53,6 +53,10 @@ export default {
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: "/css/bootstrap.min.css" },
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css",
+      },
     ],
     script: [{ type: "text/javascript", src: "/js/bootstrap.min.js" }],
   },
