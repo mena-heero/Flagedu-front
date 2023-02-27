@@ -295,13 +295,7 @@ ul {
 	color: $primary-color !important;
 }
 
-// active nav link
-.nuxt-link-active:not(.navbar-brand),
-.nuxt-link-exact-active:not(.navbar-brand) {
-	color: #c1cfff !important;
-	border-bottom: 2px solid #c1cfff;
-	border-radius: 2px;
-}
+
 
 .mobile-nav-link.nuxt-link-active,
 .mobile-nav-link.nuxt-link-exact-active {

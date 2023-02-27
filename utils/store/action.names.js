@@ -18,3 +18,4 @@ export const DELETE_PROFILE = "deleteProfile";
 export const FETCH_SETTINGS = "fetchSettings";
 
 export const FETCH_STORY = "fetchStory";
+export const FETCH_CURRENT_PAGE = "fetchCurrentPage";
