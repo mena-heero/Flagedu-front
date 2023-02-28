@@ -19,3 +19,6 @@ export const FETCH_SETTINGS = "fetchSettings";
 
 export const FETCH_STORY = "fetchStory";
 export const FETCH_CURRENT_PAGE = "fetchCurrentPage";
+
+export const FETCH_COMPANY = "fetchCompany";
+export const FETCH_PAGES = "fetchPages";

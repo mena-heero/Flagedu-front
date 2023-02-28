@@ -1,7 +1,7 @@
 export default {
   head: {
     title: "Home",
-    titleTemplate: "Alltargeting | %s",
+    titleTemplate: "Flagedu | %s",
     htmlAttrs: {
       lang: "en",
     },
@@ -117,6 +117,10 @@ export default {
     // },
     {
       src: "~/plugins/vue-countdown.js",
+      ssr: false,
+    },
+    {
+      src: "~/plugins/vue-debounce.js",
       ssr: false,
     },
   ],

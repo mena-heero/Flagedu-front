@@ -2,7 +2,7 @@
   <div class="company-block-container">
     <div class="company-container">
       <div class="title">
-        <a href="/">{{ data.title }}</a>
+        <nuxt-link to="/companies">{{ data.title }}</nuxt-link>
       </div>
       <div class="company-wrapper">
         <div
@@ -10,7 +10,7 @@
           :key="'company_' + idx"
           class="items"
         >
-          <single-company :data="company" />
+          <single-company :data="company" :type="2" />
         </div>
       </div>
     </div>

@@ -1,0 +1,525 @@
+<template>
+  <div class="company-index">
+    <div class="wrapper">
+      <div class="title" v-if="getCurrentPage.hero_title">
+        {{ getCurrentPage.hero_title }}
+      </div>
+      <div
+        v-if="getCurrentPage.rendered_hero_description"
+        class="hero-description"
+        v-html="getCurrentPage.rendered_hero_description"
+      ></div>
+      <div class="title" v-if="getCurrentPage.list_title">
+        {{ getCurrentPage.list_title }}
+      </div>
+      <div class="white-back">
+        <div class="filters">
+          <div class="search-input">
+            <img
+              src="/images/search-icon.png"
+              alt="search icon"
+              class="search-icon"
+            />
+            <input
+              type="text"
+              name="search"
+              class="form-control"
+              placeholder="Search"
+              v-model.trim="search"
+              v-debounce:400ms="debounceSearch"
+            />
+            <img
+              src="/images/filter-icon.png"
+              alt="filter icon"
+              class="filter-icon"
+            />
+          </div>
+        </div>
+        <div class="news-wrapper">
+          <a
+            href="#"
+            class="item"
+            v-for="(article, idx) in newss"
+            :key="'articles_' + idx"
+          >
+            <div class="image">
+              <img
+                :src="HOST + article.thumbnail.original.src"
+                :alt="article.thumbnail.original.alt"
+              />
+              <div class="category">{{ article.fetch_parent.title }}</div>
+            </div>
+            <div class="content">
+              <div class="pub-date">
+                {{
+                  $dayjs(article.meta.first_published_at).format(
+                    "DD MMMM, YYYY"
+                  )
+                }}
+                <i class="bi bi-clock clock-icon"></i>
+              </div>
+              <div class="title">
+                {{ getTitle(article.title) }}
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="pagination" v-if="paginationSteps.length > 1">
+          <a v-if="page != 1" class="item" @click.prevent="handleDecrement">
+            <i class="bi bi-caret-left-fill"></i>
+          </a>
+          <a
+            :class="{ active: page == pag, item: true }"
+            v-for="(pag, idx) in paginationSteps"
+            :key="'pag_' + idx"
+            @click.prevent="updatePage(pag)"
+          >
+            {{ pag }}
+          </a>
+          <a
+            v-if="totalPageCount != page"
+            class="item"
+            @click.prevent="handleIncreament"
+          >
+            <i class="bi bi-caret-right-fill"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import {
+  Component,
+  Vue,
+  Getter,
+  Action,
+  Mutation,
+  Watch,
+} from "nuxt-property-decorator";
+import { NS_AUTH, NS_COMMON, NS_COMPANY } from "../utils/store/namespace.names";
+import { FETCH_CURRENT_PAGE, FETCH_PAGES } from "../utils/store/action.names";
+import { namespaced, deepCopy } from "../utils/utils";
+
+function calculatePage(count, limit, page, totalPageCount, paginationSteps) {
+  const totalPage = Math.ceil(count / limit);
+  totalPageCount = totalPage;
+  if (totalPage > 1) {
+    paginationSteps = calculateNext(totalPage, page, paginationSteps);
+    paginationSteps = calculatePrev(page, paginationSteps);
+  }
+  return [totalPageCount, paginationSteps];
+}
+
+function calculateNext(totalPage, page, paginationSteps) {
+  if (totalPage > 1) {
+    var next = page;
+    for (var i = 0; i < totalPage; i++) {
+      if (i > 3) {
+        break;
+      }
+      if (page < totalPage) {
+        next = next + 1;
+        if (next > totalPage) {
+          break;
+        }
+        paginationSteps.push(next);
+      }
+    }
+  }
+  return paginationSteps;
+}
+
+function calculatePrev(page, paginationSteps) {
+  if (page > 1) {
+    var counter = 0;
+    for (var i = page - 1; i > 0; i--) {
+      if (counter > 2) {
+        break;
+      }
+      paginationSteps.unshift(i);
+      counter += 1;
+    }
+  }
+  return paginationSteps;
+}
+
+@Component({
+  name: "NewsArticleListPage",
+  components: {},
+})
+export default class NewsArticleListPage extends Vue {
+  @Action(namespaced(NS_COMMON, FETCH_PAGES)) fetchPages;
+
+  @Watch("$route", { deep: true })
+  handleRouteChange(val, oldVal) {
+    this.fetchData();
+  }
+
+  get HOST() {
+    return this.$config.HOST;
+  }
+
+  getTitle(text) {
+    if (text.length > 60) {
+      return text.slice(0, 60) + " ...";
+    } else {
+      return text;
+    }
+  }
+
+  debounceSearch() {
+    var query = deepCopy(this.$route.query);
+    if (this.search.length == 0) {
+      delete query["search"];
+      this.$router.push({ query: query });
+    }
+    if (this.search.length > 3) {
+      query["search"] = this.search;
+      this.$router.push({ query: query });
+    }
+  }
+
+  handleDecrement() {
+    if (this.page > 1) {
+      this.page = this.page - 1;
+      var query = deepCopy(this.$route.query);
+      if (!query.limit) {
+        query["limit"] = this.limit;
+      }
+      query["offset"] = (this.page - 1) * this.limit;
+
+      this.$router.push({ query: query });
+    } else {
+      this.page = 1;
+      var query = deepCopy(this.$route.query);
+      if (!query.limit) {
+        query["limit"] = this.limit;
+      }
+      query["offset"] = (this.page - 1) * this.limit;
+      this.$router.push({ query: query });
+    }
+  }
+
+  updatePage(pageNo) {
+    this.page = pageNo;
+    var query = deepCopy(this.$route.query);
+    if (!query.limit) {
+      query["limit"] = this.limit;
+    }
+    query["offset"] = (this.page - 1) * this.limit;
+    this.$router.push({ query: query });
+  }
+
+  handleIncreament() {
+    if (this.page < this.totalPageCount) {
+      this.page = this.page + 1;
+      var query = deepCopy(this.$route.query);
+      if (!query.limit) {
+        query["limit"] = this.limit;
+      }
+      query["offset"] = (this.page - 1) * this.limit;
+      this.$router.push({ query: query });
+    } else {
+      this.page = this.totalPageCount;
+      var query = deepCopy(this.$route.query);
+      if (!query.limit) {
+        query["limit"] = this.limit;
+      }
+      query["offset"] = (this.page - 1) * this.limit;
+      this.$router.push({ query: query });
+    }
+  }
+
+  async fetchData() {
+    var query = deepCopy(this.$route.query);
+
+    var slug = this.$route.params.slug;
+    var pageType = "home.NewsDetailPage";
+    if (slug == "articles") {
+      pageType = "home.ArticleDetailPage";
+    }
+
+    query["type"] = pageType;
+    query["fields"] = "title,thumbnail,fetch_parent";
+
+    await this.fetchPages(query).then((data) => {
+      this.newss = data.items;
+      this.count = data.meta.total_count;
+    });
+
+    this.totalPageCount = "";
+    this.paginationSteps = [this.page];
+    [this.totalPageCount, this.paginationSteps] = calculatePage(
+      this.count,
+      this.limit,
+      this.page,
+      this.totalPageCount,
+      this.paginationSteps
+    );
+  }
+
+  async asyncData({ route, $axios, store }) {
+    var slug = route.params.slug;
+    console.log(slug);
+    var getCurrentPage = {};
+    const currentPageData = await store
+      .dispatch(namespaced(NS_COMMON, FETCH_CURRENT_PAGE), {
+        html_path: slug,
+      })
+      .then((data) => {
+        getCurrentPage = data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+    var count = 0;
+    var page = 1;
+    var limit = route.query.limit ? route.query.limit : 20;
+    var offset = route.query.offset ? route.query.offset : 0;
+    var totalPageCount = "";
+    var search = route.query.search ? route.query.search : "";
+
+    if (offset != 0) {
+      page = Math.ceil(offset / limit) + 1;
+    }
+    var paginationSteps = [page];
+
+    var pageType = "home.NewsDetailPage";
+    if (slug == "articles") {
+      pageType = "home.ArticleDetailPage";
+    }
+
+    var params = {
+      limit: limit,
+      offset: offset,
+      type: pageType,
+      fields: "title,thumbnail,fetch_parent",
+    };
+
+    if (search) {
+      params["search"] = search;
+    }
+
+    var newss = [];
+    const getNews = await store
+      .dispatch(namespaced(NS_COMMON, FETCH_PAGES), params)
+      .then((data) => {
+        newss = data.items;
+        count = data.meta.total_count;
+      });
+
+    var [totalPageCount, paginationSteps] = calculatePage(
+      count,
+      limit,
+      page,
+      totalPageCount,
+      paginationSteps
+    );
+
+    return {
+      getCurrentPage,
+      newss,
+      count,
+      page,
+      limit,
+      paginationSteps,
+      totalPageCount,
+      search,
+    };
+  }
+  mounted() {}
+}
+</script>
+
+<style lang="scss" scoped>
+.company-index {
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  .title {
+    font-size: 36px;
+    font-weight: 700;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .hero-description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .white-back {
+    background-color: white;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    .news-wrapper {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      width: 70%;
+      margin: 0 auto;
+      .item {
+        height: 490px;
+        .image {
+          height: 372px;
+          position: relative;
+          img {
+            flex-shrink: 0;
+            -webkit-flex-shrink: 0;
+            max-width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            border-radius: 8px;
+          }
+          .category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: black;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+          }
+        }
+        .content {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          margin-top: 20px;
+          .title {
+            color: $linked-font-color;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: justify;
+            height: 54px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .pub-date {
+      color: #717171;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: right;
+    }
+    .clock-icon {
+      font-size: 14px;
+      color: #717171;
+      font-weight: 500;
+    }
+  }
+}
+.pagination {
+  height: 50px;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  a {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #f1f1f1;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}
+.active {
+  color: black !important;
+  background-color: #f1f1f1;
+}
+
+.filters {
+  width: 70%;
+  margin: 0 auto;
+  height: 60px;
+  margin-bottom: 50px;
+  .search-input {
+    position: relative;
+
+    .search-icon {
+      position: absolute;
+      top: 35%;
+      left: 45px;
+
+      width: 16px;
+      height: 16px;
+
+      @media (max-width: 767px) {
+        left: 24px;
+      }
+    }
+
+    .form-control {
+      border: none;
+      background: #000;
+      padding: 15px 68px;
+      padding-right: 100px;
+      font-size: 16px;
+      line-height: 16px;
+      color: white;
+
+      &:focus {
+        background: #000;
+        box-shadow: 0 0 0 0.25rem rgba(89, 91, 224, 0.4);
+      }
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 14px;
+      }
+    }
+
+    .filter-icon {
+      position: absolute;
+      top: 20%;
+      right: 45px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      @media (max-width: 767px) {
+        top: 21%;
+        right: 25px;
+        width: 24px;
+        height: 26px;
+      }
+    }
+  }
+}
+</style>

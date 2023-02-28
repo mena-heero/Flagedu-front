@@ -18,3 +18,7 @@ export const buildParams = (params) => {
 export const makeid = () => {
   return uuidv4();
 };
+
+export const deepCopy = (params) => {
+  return JSON.parse(JSON.stringify(params));
+};

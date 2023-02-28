@@ -7,6 +7,7 @@ import {
   FETCH_SETTINGS,
   FETCH_STORY,
   FETCH_CURRENT_PAGE,
+  FETCH_PAGES,
 } from "../utils/store/action.names";
 import { SET_SETTINGS } from "../utils/store/mutation.names";
 import {
@@ -71,8 +72,22 @@ export const actions = {
   },
   async [FETCH_CURRENT_PAGE]({ commit, dispatch }, payload) {
     return new Promise((resolve, reject) => {
+      console.log(`${PAGE_API_ROOT}/find/${buildParams(payload)}`);
       this.$axios
         .get(`${PAGE_API_ROOT}/find/${buildParams(payload)}`)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
+  async [FETCH_PAGES]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .get(`${PAGE_API_ROOT}/${buildParams(payload)}`)
         .then(({ data }) => {
           resolve(data);
         })

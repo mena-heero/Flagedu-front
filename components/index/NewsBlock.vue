@@ -2,7 +2,7 @@
   <div class="company-block-container">
     <div class="company-container">
       <div class="title">
-        <a href="/">{{ data.title }}</a>
+        <nuxt-link to="/news">{{ data.title }}</nuxt-link>
       </div>
       <div class="news-wrapper">
         <a href="#" class="highligted-news">
