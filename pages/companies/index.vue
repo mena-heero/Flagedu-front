@@ -27,6 +27,14 @@
               src="/images/filter-icon.png"
               alt="filter icon"
               class="filter-icon"
+              @click="showFilterDorpdown = true"
+            />
+            <CompanyFilter
+              v-if="showFilterDorpdown"
+              :filterData="filterData"
+              :data="getCurrentPage.all_categories"
+              @hide-filter-dropdown="hideFilterDropdown"
+              @apply="handleFilterApply"
             />
           </div>
         </div>
@@ -84,6 +92,7 @@ import {
 } from "../../utils/store/action.names";
 import { namespaced, deepCopy } from "../../utils/utils";
 import SingleCompany from "../../components/SingleCompany";
+import CompanyFilter from "../../components/CompanyFilter";
 
 function calculatePage(count, limit, page, totalPageCount, paginationSteps) {
   const totalPage = Math.ceil(count / limit);
@@ -130,14 +139,52 @@ function calculatePrev(page, paginationSteps) {
 
 @Component({
   name: "CompanyIndex",
-  components: { SingleCompany },
+  components: { SingleCompany, CompanyFilter },
 })
 export default class CompanyIndex extends Vue {
   @Action(namespaced(NS_COMPANY, FETCH_COMPANY)) fetchCompany;
 
+  showFilterDorpdown = false;
+
   @Watch("$route", { deep: true })
   handleRouteChange(val, oldVal) {
     this.fetchData();
+  }
+
+  get filterData() {
+    return {
+      sortByName: this.sortByName,
+      sortByRating: this.sortByRating,
+    };
+  }
+
+  hideFilterDropdown() {
+    this.showFilterDorpdown = false;
+  }
+
+  handleFilterApply(params) {
+    this.hideFilterDropdown();
+    this.isLoading = true;
+    this.sortByName = params.sortByName;
+    this.sortByRating = params.sortByRating;
+    this.handleFilter();
+  }
+
+  handleFilter() {
+    var q = deepCopy(this.$route.query);
+    if (this.sortByName) {
+      q["sort_by_name"] = this.sortByName;
+    } else {
+      delete q["sort_by_name"];
+    }
+    if (this.sortByRating) {
+      q["sort_by_rating"] = this.sortByRating;
+    } else {
+      delete q["sort_by_rating"];
+    }
+    this.$router.push({
+      query: q,
+    });
   }
 
   debounceSearch() {
@@ -223,6 +270,9 @@ export default class CompanyIndex extends Vue {
 
   async asyncData({ route, $axios, store }) {
     var getCurrentPage = {};
+    var sortByName = route.query.sortByName ? route.query.sortByName : "";
+    var sortByRating = route.query.sortByRating ? route.query.sortByRating : "";
+
     const currentPageData = await store
       .dispatch(namespaced(NS_COMMON, FETCH_CURRENT_PAGE), {
         html_path: "companies",
@@ -261,6 +311,14 @@ export default class CompanyIndex extends Vue {
       params["name"] = name;
     }
 
+    if (sortByName) {
+      params["sort_by_name"] = sortByName;
+    }
+
+    if (sortByRating) {
+      params["sort_by_rating"] = sortByRating;
+    }
+
     var companies = [];
     const getCompany = await store
       .dispatch(namespaced(NS_COMPANY, FETCH_COMPANY), params)
@@ -286,6 +344,8 @@ export default class CompanyIndex extends Vue {
       paginationSteps,
       totalPageCount,
       name,
+      sortByName,
+      sortByRating,
     };
   }
   mounted() {}

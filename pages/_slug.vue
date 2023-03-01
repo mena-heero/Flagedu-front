@@ -32,8 +32,19 @@
               src="/images/filter-icon.png"
               alt="filter icon"
               class="filter-icon"
+              @click="showFilterDorpdown = true"
+            />
+            <NewsArticleFilter
+              v-if="showFilterDorpdown"
+              :filterData="filterData"
+              :data="getCurrentPage.all_categories"
+              @hide-filter-dropdown="hideFilterDropdown"
+              @apply="handleFilterApply"
             />
           </div>
+        </div>
+        <div class="category-title">
+          {{ categoryTitle }}
         </div>
         <div class="news-wrapper">
           <a
@@ -63,6 +74,9 @@
               </div>
             </div>
           </a>
+          <div class="empty-news" v-if="newss.length < 1">
+            Not any {{ $route.params.slug }} found
+          </div>
         </div>
         <div class="pagination" v-if="paginationSteps.length > 1">
           <a v-if="page != 1" class="item" @click.prevent="handleDecrement">
@@ -101,6 +115,7 @@ import {
 import { NS_AUTH, NS_COMMON, NS_COMPANY } from "../utils/store/namespace.names";
 import { FETCH_CURRENT_PAGE, FETCH_PAGES } from "../utils/store/action.names";
 import { namespaced, deepCopy } from "../utils/utils";
+import NewsArticleFilter from "../components/NewsArticleFilter";
 
 function calculatePage(count, limit, page, totalPageCount, paginationSteps) {
   const totalPage = Math.ceil(count / limit);
@@ -147,10 +162,12 @@ function calculatePrev(page, paginationSteps) {
 
 @Component({
   name: "NewsArticleListPage",
-  components: {},
+  components: { NewsArticleFilter },
 })
 export default class NewsArticleListPage extends Vue {
   @Action(namespaced(NS_COMMON, FETCH_PAGES)) fetchPages;
+
+  showFilterDorpdown = false;
 
   @Watch("$route", { deep: true })
   handleRouteChange(val, oldVal) {
@@ -159,6 +176,36 @@ export default class NewsArticleListPage extends Vue {
 
   get HOST() {
     return this.$config.HOST;
+  }
+
+  get filterData() {
+    return {
+      selectedCategory: this.selectedCategory,
+    };
+  }
+
+  hideFilterDropdown() {
+    this.showFilterDorpdown = false;
+  }
+
+  handleFilterApply(params) {
+    this.hideFilterDropdown();
+    this.isLoading = true;
+    this.selectedCategory = params.selectedCategory;
+    this.categoryTitle = params.categoryTitle;
+    this.handleFilter();
+  }
+
+  handleFilter() {
+    var q = deepCopy(this.$route.query);
+    if (this.selectedCategory) {
+      q["child_of"] = this.selectedCategory;
+    } else {
+      delete q["child_of"];
+    }
+    this.$router.push({
+      query: q,
+    });
   }
 
   getTitle(text) {
@@ -262,7 +309,8 @@ export default class NewsArticleListPage extends Vue {
 
   async asyncData({ route, $axios, store }) {
     var slug = route.params.slug;
-    console.log(slug);
+    var selectedCategory = route.query.child_of ? route.query.child_of : "";
+    var categoryTitle = "";
     var getCurrentPage = {};
     const currentPageData = await store
       .dispatch(namespaced(NS_COMMON, FETCH_CURRENT_PAGE), {
@@ -303,6 +351,10 @@ export default class NewsArticleListPage extends Vue {
       params["search"] = search;
     }
 
+    if (selectedCategory) {
+      params["child_of"] = parseInt(selectedCategory);
+    }
+
     var newss = [];
     const getNews = await store
       .dispatch(namespaced(NS_COMMON, FETCH_PAGES), params)
@@ -319,6 +371,13 @@ export default class NewsArticleListPage extends Vue {
       paginationSteps
     );
 
+    if (selectedCategory) {
+      var x = getCurrentPage.all_categories.find(
+        (obj) => obj.id == selectedCategory
+      );
+      categoryTitle = x.title;
+    }
+
     return {
       getCurrentPage,
       newss,
@@ -328,6 +387,8 @@ export default class NewsArticleListPage extends Vue {
       paginationSteps,
       totalPageCount,
       search,
+      selectedCategory,
+      categoryTitle,
     };
   }
   mounted() {}
@@ -363,6 +424,13 @@ export default class NewsArticleListPage extends Vue {
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
+    .category-title {
+      font-size: 28px;
+      font-weight: 700;
+      width: 70%;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
     .news-wrapper {
       margin-top: 50px;
       display: grid;
@@ -521,5 +589,10 @@ export default class NewsArticleListPage extends Vue {
       }
     }
   }
+}
+.empty-news {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 </style>

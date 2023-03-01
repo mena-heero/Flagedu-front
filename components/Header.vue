@@ -41,21 +41,21 @@
                     v-for="(rate, ridx) in totalFullStar(
                       submenuitem.company_detail.rating
                     )"
-                    :key="'rate_' + ridx"
+                    :key="'ratef_' + ridx"
                     class="bi bi-star-fill rating-color"
                   ></i>
                   <i
                     v-for="(rate, ridx) in totalHalfStar(
                       submenuitem.company_detail.rating
                     )"
-                    :key="'rate_' + ridx"
+                    :key="'rateh_' + ridx"
                     class="bi bi-star-half rating-color"
                   ></i>
                   <i
                     v-for="(rate, ridx) in totalEmptyStar(
                       submenuitem.company_detail.rating
                     )"
-                    :key="'rate_' + ridx"
+                    :key="'ratee_' + ridx"
                     class="bi bi-star rating-color"
                   ></i>
                   <div class="rating-value">
@@ -75,7 +75,18 @@
           </div>
         </div>
         <div class="nav-item-container">
-          <nuxt-link to="/signin" class="nav-item">Signin</nuxt-link>
+          <nuxt-link v-if="!getProfile" to="/signin" class="nav-item"
+            >Signin</nuxt-link
+          >
+          <nuxt-link to="/profile" v-else class="nav-item profile-img">
+            <img
+              v-if="getProfile.profile_image_detail"
+              :src="HOST + getProfile.profile_image_detail.original.src"
+              :alt="getProfile.profile_image_detail.original.alt"
+            />
+            <img v-else src="/images/avatar.png" alt="profile" />
+            <div>{{ getProfile.full_name }}</div>
+          </nuxt-link>
         </div>
         <div class="logo">
           <nuxt-link to="/">
@@ -166,6 +177,19 @@ export default class Header extends Vue {
         font-size: 16px;
         color: $linked-font-color;
         cursor: pointer;
+      }
+      .profile-img {
+        display: flex;
+        gap: 5px;
+        img {
+          height: 25px;
+          width: 25px;
+          border-radius: 25px;
+          flex-shrink: 0;
+          -webkit-flex-shrink: 0;
+          -o-object-fit: cover;
+          object-fit: cover;
+        }
       }
       .submenu {
         visibility: hidden;
