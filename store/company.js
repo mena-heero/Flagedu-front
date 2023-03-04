@@ -1,7 +1,11 @@
-import { COMPANY_ENDPOINT } from "~/utils/store/endpoints";
-import { FETCH_COMPANY } from "../utils/store/action.names";
+import { COMPANY_ENDPOINT, RATING_ENDPOINT } from "~/utils/store/endpoints";
+import {
+  FETCH_COMPANY,
+  ADD_RATING,
+  FETCH_RATING,
+} from "../utils/store/action.names";
 import {} from "../utils/store/mutation.names";
-import {} from "../utils/store/getter.names";
+import { GET_AUTH_HEADER } from "../utils/store/getter.names";
 
 import { NS_AUTH } from "~/utils/store/namespace.names";
 import { namespaced, buildParams } from "../utils/utils";
@@ -15,6 +19,38 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios
         .get(`${COMPANY_ENDPOINT}/${buildParams(payload)}`)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
+  async [ADD_RATING]({ commit, dispatch, rootGetters }, payload) {
+    return new Promise((resolve, reject) => {
+      const authHeader = rootGetters[namespaced(NS_AUTH, GET_AUTH_HEADER)];
+
+      this.$axios
+        .post(`${RATING_ENDPOINT}/`, payload, {
+          headers: {
+            ...authHeader,
+          },
+        })
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
+  async [FETCH_RATING]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .get(`${RATING_ENDPOINT}/${buildParams(payload)}`)
         .then(({ data }) => {
           resolve(data);
         })

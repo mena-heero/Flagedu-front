@@ -7,6 +7,14 @@
             Edit Profile
             <i class="bi bi-pencil-square bicon"></i>
           </a>
+          <a
+            class="change-password"
+            @click.prevent="showPasswordChangeModal = true"
+            href="#"
+          >
+            Change Password
+            <i class="bi bi-key-fill bicon"></i>
+          </a>
           <a @click.prevent="handleSignOut" href="#" class="red-btn">
             Sign out
             <i class="bi bi-box-arrow-right bicon"></i>
@@ -35,6 +43,11 @@
       :modalOpen="showProfileUpdateModal"
       @hideModal="hideModal"
     />
+    <PasswordChangeModal
+      v-if="showPasswordChangeModal"
+      :modalOpen="showPasswordChangeModal"
+      @hideModal="hidePasswordModal"
+    />
   </div>
 </template>
 
@@ -52,12 +65,14 @@ import { FETCH_CURRENT_PAGE } from "../utils/store/action.names";
 import { namespaced } from "../utils/utils";
 import { GET_PROFILE } from "../utils/store/getter.names";
 import { SET_TOKEN_ERROR } from "../utils/store/mutation.names";
-import ProfileUpdateModal from "../components/modals/ProfileUpdate.vue";
+import ProfileUpdateModal from "../components/modals/ProfileUpdate";
+import PasswordChangeModal from "../components/modals/PasswordChangeModal";
 
 @Component({
   name: "Profile",
   components: {
     ProfileUpdateModal,
+    PasswordChangeModal,
   },
 })
 export default class Profile extends Vue {
@@ -66,9 +81,14 @@ export default class Profile extends Vue {
   @Mutation(namespaced(NS_AUTH, SET_TOKEN_ERROR)) setTokenError;
 
   showProfileUpdateModal = false;
+  showPasswordChangeModal = false;
 
   hideModal() {
     this.showProfileUpdateModal = false;
+  }
+
+  hidePasswordModal() {
+    this.showPasswordChangeModal = false;
   }
 
   get HOST() {
@@ -121,6 +141,9 @@ export default class Profile extends Vue {
       align-items: center;
       gap: 10px;
       border-radius: 8px;
+    }
+    .change-password {
+      font-size: 13px;
     }
     .red-btn {
       background-color: red;

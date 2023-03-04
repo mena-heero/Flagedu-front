@@ -47,8 +47,8 @@
           {{ categoryTitle }}
         </div>
         <div class="news-wrapper">
-          <a
-            href="#"
+          <nuxt-link
+            :to="modifyHtmlPath(article.meta.html_url)"
             class="item"
             v-for="(article, idx) in newss"
             :key="'articles_' + idx"
@@ -73,7 +73,7 @@
                 {{ getTitle(article.title) }}
               </div>
             </div>
-          </a>
+          </nuxt-link>
           <div class="empty-news" v-if="newss.length < 1">
             Not any {{ $route.params.slug }} found
           </div>
@@ -114,7 +114,7 @@ import {
 } from "nuxt-property-decorator";
 import { NS_AUTH, NS_COMMON, NS_COMPANY } from "../utils/store/namespace.names";
 import { FETCH_CURRENT_PAGE, FETCH_PAGES } from "../utils/store/action.names";
-import { namespaced, deepCopy } from "../utils/utils";
+import { namespaced, deepCopy, modifyHtmlPath } from "../utils/utils";
 import NewsArticleFilter from "../components/NewsArticleFilter";
 
 function calculatePage(count, limit, page, totalPageCount, paginationSteps) {
@@ -168,6 +168,7 @@ export default class NewsArticleListPage extends Vue {
   @Action(namespaced(NS_COMMON, FETCH_PAGES)) fetchPages;
 
   showFilterDorpdown = false;
+  modifyHtmlPath = modifyHtmlPath;
 
   @Watch("$route", { deep: true })
   handleRouteChange(val, oldVal) {

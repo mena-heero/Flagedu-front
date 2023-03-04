@@ -5,8 +5,8 @@
         <nuxt-link to="/articles">{{ data.title }}</nuxt-link>
       </div>
       <div class="news-wrapper">
-        <a
-          href="#"
+        <nuxt-link
+          :to="article.html_url"
           class="item"
           v-for="(article, idx) in data.articles"
           :key="'articles_' + idx"
@@ -26,7 +26,7 @@
               {{ article.title }}
             </div>
           </div>
-        </a>
+        </nuxt-link>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <Nuxt />
   </div>
 </template>
@@ -13,4 +13,8 @@ import { Component, Vue } from "nuxt-property-decorator";
 export default class AuthLayout extends Vue {}
 </script>
 
-<style></style>
+<style>
+.body {
+  background-color: #1f3241;
+}
+</style>

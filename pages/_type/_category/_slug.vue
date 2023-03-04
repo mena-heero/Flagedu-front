@@ -17,6 +17,7 @@
         </div>
       </div>
     </div>
+    <RatingReview :dataId="getCurrentPage.id" />
   </div>
 </template>
 
@@ -36,6 +37,7 @@ import DescriptionBlock from "../../../components/blocks/DescriptionBlock";
 import ImageBlock from "../../../components/blocks/ImageBlock";
 import BannerBlock from "../../../components/blocks/BannerBlock";
 import ButtonBlock from "../../../components/blocks/ButtonBlock";
+import RatingReview from "../../../components/RatingReview.vue";
 
 @Component({
   name: "DetailPage",
@@ -44,6 +46,7 @@ import ButtonBlock from "../../../components/blocks/ButtonBlock";
     image_block: ImageBlock,
     banner: BannerBlock,
     button_block: ButtonBlock,
+    RatingReview,
   },
 })
 export default class DetailPage extends Vue {

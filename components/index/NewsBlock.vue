@@ -5,7 +5,7 @@
         <nuxt-link to="/news">{{ data.title }}</nuxt-link>
       </div>
       <div class="news-wrapper">
-        <a href="#" class="highligted-news">
+        <nuxt-link :to="data.news[0].html_url" class="highligted-news">
           <div class="image">
             <img
               :src="HOST + data.news[0].thumbnail.src"
@@ -21,9 +21,9 @@
               {{ data.news[0].title }}
             </div>
           </div>
-        </a>
+        </nuxt-link>
         <div class="other-news">
-          <a href="#" class="item">
+          <nuxt-link :to="data.news[1].html_url" class="item">
             <div class="image">
               <img
                 :src="HOST + data.news[1].thumbnail.src"
@@ -39,8 +39,8 @@
                 {{ data.news[1].title }}
               </div>
             </div>
-          </a>
-          <a href="#" class="item">
+          </nuxt-link>
+          <nuxt-link :to="data.news[2].html_url" class="item">
             <div class="image">
               <img
                 :src="HOST + data.news[2].thumbnail.src"
@@ -56,8 +56,8 @@
                 {{ data.news[2].title }}
               </div>
             </div>
-          </a>
-          <a href="#" class="item">
+          </nuxt-link>
+          <nuxt-link :to="data.news[3].html_url" class="item">
             <div class="image">
               <img
                 :src="HOST + data.news[3].thumbnail.src"
@@ -73,8 +73,8 @@
                 {{ data.news[3].title }}
               </div>
             </div>
-          </a>
-          <a href="#" class="item">
+          </nuxt-link>
+          <nuxt-link :to="data.news[4].html_url" class="item">
             <div class="image">
               <img
                 :src="HOST + data.news[4].thumbnail.src"
@@ -90,7 +90,7 @@
                 {{ data.news[4].title }}
               </div>
             </div>
-          </a>
+          </nuxt-link>
         </div>
       </div>
     </div>

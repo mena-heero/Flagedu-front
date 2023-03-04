@@ -136,7 +136,7 @@ import {
 } from "nuxt-property-decorator";
 import { namespaced } from "../utils/utils";
 import { NS_AUTH } from "../utils/store/namespace.names";
-import { SIGNIN } from "../utils/store/action.names";
+import { SIGNIN, SEND_VERIFICATION_CODE } from "../utils/store/action.names";
 
 @Component({
   name: "Signin",
@@ -145,6 +145,7 @@ import { SIGNIN } from "../utils/store/action.names";
 })
 export default class Signin extends Vue {
   @Action(namespaced(NS_AUTH, SIGNIN)) signin;
+  @Action(namespaced(NS_AUTH, SEND_VERIFICATION_CODE)) sendVerificationCode;
 
   error_msg = "";
   loading = false;
@@ -167,7 +168,7 @@ export default class Signin extends Vue {
   step = 1;
   userProfile = null;
 
-  commonSendVerificationCode(data, popup = false) {
+  commonSendVerificationCode(data) {
     this.sendVerificationCode({
       email: data.email,
       reason: "verify",

@@ -237,7 +237,7 @@ export default class ProfileUpdateModal extends Vue {
   }
 
   close() {
-    this.$emit("hideModal", "profile-update");
+    this.$emit("hideModal");
   }
 }
 </script>

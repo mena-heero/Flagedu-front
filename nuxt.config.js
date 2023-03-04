@@ -131,6 +131,10 @@ export default {
 
   modules: ["@nuxtjs/axios", "@nuxtjs/dayjs", "cookie-universal-nuxt"],
 
+  dayjs: {
+    plugins: ["relativeTime"],
+  },
+
   build: {
     transpile: ["vee-validate/dist/rules"],
     extend(config, ctx) {},

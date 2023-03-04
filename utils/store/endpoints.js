@@ -7,3 +7,4 @@ export const USERS_ENDPOINT = PUBLIC_AUTH_ENDPOINT + `/users`;
 export const SETTINGS_ENDPOINT = PUBLIC_UTILITY_ENDPOINT + `/settings`;
 export const STORY_ENDPOINT = PUBLIC_UTILITY_ENDPOINT + `/stories/`;
 export const COMPANY_ENDPOINT = PUBLIC_COMPANY_ENDPOINT + `/companies`;
+export const RATING_ENDPOINT = PUBLIC_COMPANY_ENDPOINT + `/ratings`;

@@ -22,3 +22,5 @@ export const FETCH_CURRENT_PAGE = "fetchCurrentPage";
 
 export const FETCH_COMPANY = "fetchCompany";
 export const FETCH_PAGES = "fetchPages";
+export const ADD_RATING = "addRating";
+export const FETCH_RATING = "fetchRating";

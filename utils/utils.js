@@ -22,3 +22,8 @@ export const makeid = () => {
 export const deepCopy = (params) => {
   return JSON.parse(JSON.stringify(params));
 };
+
+export const modifyHtmlPath = (urlPath) => {
+  var u = new URL(urlPath);
+  return u.pathname;
+};

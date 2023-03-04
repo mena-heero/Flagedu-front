@@ -27,9 +27,12 @@
           />
         </div>
         <h1 v-if="step == 1" class="text-white fw-semibold mt-64">Congrats!</h1>
-        <p v-if="step == 1" class="text-secondary text-center mb-5">
-          Your account has been created
-        </p>
+        <div v-if="step == 1" class="text-secondary text-center mb-5">
+          <div v-if="$route.query.mode == 'verification'">
+            Your account is verified!
+          </div>
+          <div v-else>Your account has been created!</div>
+        </div>
         <ValidationObserver v-slot="{ invalid }" v-if="step == 0" ref="form">
           <form
             method="post"
