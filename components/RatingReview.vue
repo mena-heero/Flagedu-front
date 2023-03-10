@@ -62,7 +62,7 @@
             </button>
           </form>
         </ValidationObserver>
-        <div class="">
+        <div class="" v-if="!getProfile">
           You need to <nuxt-link to="/signin">signin</nuxt-link> to add rating
           and review!
         </div>
@@ -142,6 +142,7 @@
 </template>
 
 <script>
+import { get } from "https";
 import {
   Component,
   Vue,
@@ -224,7 +225,11 @@ export default class RatingReview extends Vue {
   paginationSteps = [this.page];
 
   get pageType() {
-    return this.$route.params.type;
+    if (this.$route.params.type) {
+      return this.$route.params.type;
+    } else {
+      return "company";
+    }
   }
 
   @Watch("page")
@@ -270,6 +275,9 @@ export default class RatingReview extends Vue {
     } else if (this.pageType == "articles") {
       params["type"] = 1;
       params["articles"] = this.dataId;
+    } else if (this.pageType == "company") {
+      params["type"] = 2;
+      params["company"] = this.dataId;
     }
 
     this.fetchRating(params).then((data) => {
@@ -296,6 +304,9 @@ export default class RatingReview extends Vue {
     } else if (this.pageType == "articles") {
       this.formData["articles"] = this.dataId;
       this.formData["type"] = 1;
+    } else if (this.pageType == "company") {
+      this.formData["type"] = 2;
+      this.formData["company"] = this.dataId;
     }
 
     this.addRating(this.formData)
@@ -351,7 +362,7 @@ export default class RatingReview extends Vue {
 
 <style scoped lang="scss">
 .rating-container {
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
   padding-top: 50px;
   padding-bottom: 50px;

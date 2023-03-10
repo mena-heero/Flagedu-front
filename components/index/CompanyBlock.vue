@@ -6,7 +6,7 @@
       </div>
       <div class="company-wrapper">
         <div
-          v-for="(company, idx) in data.companies"
+          v-for="(company, idx) in data.company"
           :key="'company_' + idx"
           class="items"
         >

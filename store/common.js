@@ -86,6 +86,7 @@ export const actions = {
   },
   async [FETCH_PAGES]({ commit, dispatch }, payload) {
     return new Promise((resolve, reject) => {
+      console.log(`${PAGE_API_ROOT}/${buildParams(payload)}`);
       this.$axios
         .get(`${PAGE_API_ROOT}/${buildParams(payload)}`)
         .then(({ data }) => {

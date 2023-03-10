@@ -27,3 +27,11 @@ export const modifyHtmlPath = (urlPath) => {
   var u = new URL(urlPath);
   return u.pathname;
 };
+
+export const convertBoolean = (val) => {
+  if (val == true) {
+    return "Yes";
+  } else {
+    return "No";
+  }
+};

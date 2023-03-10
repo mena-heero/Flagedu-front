@@ -20,7 +20,7 @@
               name="search"
               class="form-control"
               placeholder="Search"
-              v-model.trim="name"
+              v-model.trim="search"
               v-debounce:400ms="debounceSearch"
             />
             <img
@@ -32,7 +32,6 @@
             <CompanyFilter
               v-if="showFilterDorpdown"
               :filterData="filterData"
-              :data="getCurrentPage.all_categories"
               @hide-filter-dropdown="hideFilterDropdown"
               @apply="handleFilterApply"
             />
@@ -46,6 +45,9 @@
           >
             <SingleCompany :data="company" :type="1" />
           </div>
+        </div>
+        <div class="empty-news" v-if="companies.length < 1">
+          Not any companies found!
         </div>
         <div class="pagination" v-if="paginationSteps.length > 1">
           <a v-if="page != 1" class="item" @click.prevent="handleDecrement">
@@ -89,6 +91,7 @@ import {
 import {
   FETCH_CURRENT_PAGE,
   FETCH_COMPANY,
+  FETCH_PAGES,
 } from "../../utils/store/action.names";
 import { namespaced, deepCopy } from "../../utils/utils";
 import SingleCompany from "../../components/SingleCompany";
@@ -143,6 +146,7 @@ function calculatePrev(page, paginationSteps) {
 })
 export default class CompanyIndex extends Vue {
   @Action(namespaced(NS_COMPANY, FETCH_COMPANY)) fetchCompany;
+  @Action(namespaced(NS_COMMON, FETCH_PAGES)) fetchPages;
 
   showFilterDorpdown = false;
 
@@ -189,12 +193,12 @@ export default class CompanyIndex extends Vue {
 
   debounceSearch() {
     var query = deepCopy(this.$route.query);
-    if (this.name.length == 0) {
-      delete query["name"];
+    if (this.search.length == 0) {
+      delete query["search"];
       this.$router.push({ query: query });
     }
-    if (this.name.length > 3) {
-      query["name"] = this.name;
+    if (this.search.length > 3) {
+      query["search"] = this.search;
       this.$router.push({ query: query });
     }
   }
@@ -252,9 +256,32 @@ export default class CompanyIndex extends Vue {
 
   async fetchData() {
     var query = deepCopy(this.$route.query);
-    await this.fetchCompany(query).then((data) => {
-      this.companies = data.results;
-      this.count = data.count;
+
+    query["type"] = "home.CompanyDetail";
+    query["fields"] =
+      "title,thumbnail_image,is_islamic,account_open_link,rating";
+
+    if (query["sort_by_name"]) {
+      if (query["sort_by_name"] == 0) {
+        query["order"] = "-title";
+      } else {
+        query["order"] = "title";
+      }
+      delete query["sort_by_name"];
+    }
+
+    if (query["sort_by_rating"]) {
+      if (query["sort_by_rating"] == 0) {
+        query["order"] = "-rating";
+      } else {
+        query["order"] = "rating";
+      }
+      delete query["sort_by_rating"];
+    }
+
+    await this.fetchPages(query).then((data) => {
+      this.companies = data.items;
+      this.count = data.meta.total_count;
     });
 
     this.totalPageCount = "";
@@ -270,8 +297,10 @@ export default class CompanyIndex extends Vue {
 
   async asyncData({ route, $axios, store }) {
     var getCurrentPage = {};
-    var sortByName = route.query.sortByName ? route.query.sortByName : "";
-    var sortByRating = route.query.sortByRating ? route.query.sortByRating : "";
+    var sortByName = route.query.sort_by_name ? route.query.sort_by_name : "";
+    var sortByRating = route.query.sort_by_rating
+      ? route.query.sort_by_rating
+      : "";
 
     const currentPageData = await store
       .dispatch(namespaced(NS_COMMON, FETCH_CURRENT_PAGE), {
@@ -289,42 +318,46 @@ export default class CompanyIndex extends Vue {
     var limit = route.query.limit ? route.query.limit : 20;
     var offset = route.query.offset ? route.query.offset : 0;
     var totalPageCount = "";
-    var name = route.query.name ? route.query.name : "";
+    var search = route.query.search ? route.query.search : "";
 
     if (offset != 0) {
       page = Math.ceil(offset / limit) + 1;
     }
     var paginationSteps = [page];
 
-    // if (limit > 2) {
-    //   limit = 2;
-    // } else if (limit < 2) {
-    //   limit = 2;
-    // }
-
     var params = {
       limit: limit,
       offset: offset,
+      type: "home.CompanyDetail",
+      fields: "title,thumbnail_image,is_islamic,account_open_link,rating",
     };
 
-    if (name) {
-      params["name"] = name;
+    if (search) {
+      params["search"] = search;
     }
 
     if (sortByName) {
-      params["sort_by_name"] = sortByName;
+      if (sortByName == "0") {
+        params["order"] = "-title";
+      } else {
+        params["order"] = "title";
+      }
     }
 
     if (sortByRating) {
-      params["sort_by_rating"] = sortByRating;
+      if (sortByRating == "0") {
+        params["order"] = "-rating";
+      } else {
+        params["order"] = "rating";
+      }
     }
 
     var companies = [];
     const getCompany = await store
-      .dispatch(namespaced(NS_COMPANY, FETCH_COMPANY), params)
+      .dispatch(namespaced(NS_COMMON, FETCH_PAGES), params)
       .then((data) => {
-        companies = data.results;
-        count = data.count;
+        companies = data.items;
+        count = data.meta.total_count;
       });
 
     var [totalPageCount, paginationSteps] = calculatePage(
@@ -343,7 +376,7 @@ export default class CompanyIndex extends Vue {
       limit,
       paginationSteps,
       totalPageCount,
-      name,
+      search,
       sortByName,
       sortByRating,
     };
@@ -479,5 +512,13 @@ export default class CompanyIndex extends Vue {
       }
     }
   }
+}
+
+.empty-news {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 70%;
+  margin: 0 auto;
 }
 </style>

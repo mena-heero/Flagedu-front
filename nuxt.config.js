@@ -79,7 +79,10 @@ export default {
     SITE_URL: process.env.VUE_APP_SITE_URL || "http://localhost:3000",
   },
 
-  css: ["~/assets/css/main.scss"],
+  css: [
+    "~/assets/css/main.scss",
+    "node_modules/lite-youtube-embed/src/lite-yt-embed.css",
+  ],
 
   styleResources: {
     scss: ["~/assets/css/_config.scss"],
@@ -123,6 +126,7 @@ export default {
       src: "~/plugins/vue-debounce.js",
       ssr: false,
     },
+    "@/plugins/youtube.client.js",
   ],
 
   components: true,

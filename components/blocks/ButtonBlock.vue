@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="button">
-      <a :href="data.link.link">{{ data.label }}</a>
+      <a target="_blank" :href="data.link.link">{{ data.label }}</a>
     </div>
   </div>
 </template>

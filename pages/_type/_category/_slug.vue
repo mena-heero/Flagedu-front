@@ -37,7 +37,9 @@ import DescriptionBlock from "../../../components/blocks/DescriptionBlock";
 import ImageBlock from "../../../components/blocks/ImageBlock";
 import BannerBlock from "../../../components/blocks/BannerBlock";
 import ButtonBlock from "../../../components/blocks/ButtonBlock";
-import RatingReview from "../../../components/RatingReview.vue";
+import RatingReview from "../../../components/RatingReview";
+import TableBlock from "../../../components/blocks/TableBlock";
+import VideoBlock from "../../../components/blocks/VideoBlock";
 
 @Component({
   name: "DetailPage",
@@ -46,6 +48,8 @@ import RatingReview from "../../../components/RatingReview.vue";
     image_block: ImageBlock,
     banner: BannerBlock,
     button_block: ButtonBlock,
+    table_block: TableBlock,
+    video_block: VideoBlock,
     RatingReview,
   },
 })
@@ -85,7 +89,7 @@ export default class DetailPage extends Vue {
   .title {
     font-size: 36px;
     font-weight: 700;
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
   }
   .white-back {
@@ -97,7 +101,7 @@ export default class DetailPage extends Vue {
       display: flex;
       flex-direction: column;
       gap: 20px;
-      width: 70%;
+      width: 60%;
       margin: 0 auto;
     }
   }
