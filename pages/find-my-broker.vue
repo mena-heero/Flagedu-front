@@ -98,11 +98,11 @@
                 />
               </div>
               <div class="form-check">
-                <label for="s1q3" class="form-check-label"
+                <label for="s2q3" class="form-check-label"
                   >Options and futures
                 </label>
                 <input
-                  v-model="answers.q2"
+                  v-model="answers.q3"
                   type="radio"
                   class="form-check-input me-2"
                   name="q2"
