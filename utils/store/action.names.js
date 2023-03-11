@@ -24,3 +24,4 @@ export const FETCH_COMPANY = "fetchCompany";
 export const FETCH_PAGES = "fetchPages";
 export const ADD_RATING = "addRating";
 export const FETCH_RATING = "fetchRating";
+export const FETCH_FIND_BROKER_COMPANY = "fetchFindBrokerCompany";

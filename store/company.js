@@ -1,8 +1,13 @@
-import { COMPANY_ENDPOINT, RATING_ENDPOINT } from "~/utils/store/endpoints";
+import {
+  COMPANY_ENDPOINT,
+  RATING_ENDPOINT,
+  FIND_BROKER_COMPANY_ENDPOINT,
+} from "~/utils/store/endpoints";
 import {
   FETCH_COMPANY,
   ADD_RATING,
   FETCH_RATING,
+  FETCH_FIND_BROKER_COMPANY,
 } from "../utils/store/action.names";
 import {} from "../utils/store/mutation.names";
 import { GET_AUTH_HEADER } from "../utils/store/getter.names";
@@ -51,6 +56,19 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios
         .get(`${RATING_ENDPOINT}/${buildParams(payload)}`)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
+  async [FETCH_FIND_BROKER_COMPANY]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .get(`${FIND_BROKER_COMPANY_ENDPOINT}/${buildParams(payload)}`)
         .then(({ data }) => {
           resolve(data);
         })

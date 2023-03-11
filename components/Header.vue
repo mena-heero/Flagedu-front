@@ -26,52 +26,69 @@
             {{ item.link_title }}
           </a>
           <div class="submenu" v-if="item.submenus && item.submenus.length > 0">
-            <nuxt-link
-              :to="submenuitem.link_url"
+            <div
               v-for="(submenuitem, idx) in item.submenus"
               :key="'submenu_' + idx"
               class="submenu-item"
             >
-              <div class="data">
-                <div class="submenu-name">
-                  {{ submenuitem.company_detail.name }}
-                </div>
-                <div class="rating">
-                  <i
-                    v-for="(rate, ridx) in totalFullStar(
-                      submenuitem.company_detail.rating
-                    )"
-                    :key="'ratef_' + ridx"
-                    class="bi bi-star-fill rating-color"
-                  ></i>
-                  <i
-                    v-for="(rate, ridx) in totalHalfStar(
-                      submenuitem.company_detail.rating
-                    )"
-                    :key="'rateh_' + ridx"
-                    class="bi bi-star-half rating-color"
-                  ></i>
-                  <i
-                    v-for="(rate, ridx) in totalEmptyStar(
-                      submenuitem.company_detail.rating
-                    )"
-                    :key="'ratee_' + ridx"
-                    class="bi bi-star rating-color"
-                  ></i>
-                  <div class="rating-value">
-                    ({{ submenuitem.company_detail.rating }})
+              <nuxt-link
+                :to="submenuitem.get_link"
+                v-if="submenuitem.is_external == false"
+                class="submenu-item-a"
+              >
+                <div class="data">
+                  <div class="submenu-name">
+                    {{ submenuitem.link_title }}
+                  </div>
+                  <div class="rating">
+                    <i
+                      v-for="(rate, ridx) in totalFullStar(
+                        submenuitem.company_detail.rating
+                      )"
+                      :key="'ratef_' + ridx"
+                      class="bi bi-star-fill rating-color"
+                    ></i>
+                    <i
+                      v-for="(rate, ridx) in totalHalfStar(
+                        submenuitem.company_detail.rating
+                      )"
+                      :key="'rateh_' + ridx"
+                      class="bi bi-star-half rating-color"
+                    ></i>
+                    <i
+                      v-for="(rate, ridx) in totalEmptyStar(
+                        submenuitem.company_detail.rating
+                      )"
+                      :key="'ratee_' + ridx"
+                      class="bi bi-star rating-color"
+                    ></i>
+                    <div class="rating-value">
+                      ({{ submenuitem.company_detail.rating }})
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="image">
-                <img
-                  :src="
-                    HOST + submenuitem.company_detail.logo_detail.original.src
-                  "
-                  :alt="submenuitem.company_detail.logo_detail.original.alt"
-                />
-              </div>
-            </nuxt-link>
+                <div class="image">
+                  <img
+                    :src="
+                      HOST + submenuitem.company_detail.logo_detail.original.src
+                    "
+                    :alt="submenuitem.company_detail.logo_detail.original.alt"
+                  />
+                </div>
+              </nuxt-link>
+              <a
+                :href="submenuitem.get_link"
+                target="_blank"
+                v-else
+                class="submenu-item-a"
+              >
+                <div class="data">
+                  <div class="submenu-name">
+                    {{ submenuitem.link_title }}
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
         <div class="nav-item-container">
@@ -170,6 +187,7 @@ export default class Header extends Vue {
           visibility: visible;
           -webkit-transition: all 0.5s, background, 2s 0.5s linear;
           transition: all 0.5s, background 2s 0.5s linear;
+          z-index: 999999;
         }
       }
       .nav-item {
@@ -193,7 +211,7 @@ export default class Header extends Vue {
       }
       .submenu {
         visibility: hidden;
-        z-index: 99999;
+        z-index: 999999;
         position: absolute;
         max-height: 500px;
         width: 270px;
@@ -206,33 +224,35 @@ export default class Header extends Vue {
         gap: 15px;
         padding: 20px;
         .submenu-item {
-          width: 100%;
-          display: flex;
-          gap: 10px;
-          justify-content: flex-end;
-          align-items: center;
-          .data {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+          .submenu-item-a {
             width: 100%;
-            .submenu-name {
-              font-weight: 700;
-              font-size: 16px;
-              line-height: 19px;
-              text-align: right;
-              color: #000;
-            }
-            .rating {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            align-items: center;
+            .data {
               display: flex;
-              align-items: flex-start;
-              justify-content: flex-end;
-              gap: 5px;
+              flex-direction: column;
+              gap: 2px;
               width: 100%;
-              .rating-value {
-                font-size: 18px;
+              .submenu-name {
                 font-weight: 700;
+                font-size: 16px;
+                line-height: 19px;
+                text-align: right;
                 color: #000;
+              }
+              .rating {
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-end;
+                gap: 5px;
+                width: 100%;
+                .rating-value {
+                  font-size: 18px;
+                  font-weight: 700;
+                  color: #000;
+                }
               }
             }
           }
