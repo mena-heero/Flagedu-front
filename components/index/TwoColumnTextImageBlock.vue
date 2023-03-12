@@ -113,6 +113,10 @@ export default class TwoColumnTextImageBlock extends Vue {
       @media (max-width: 950px) {
         font-size: 24px;
       }
+      @media (max-width: 400px) {
+        width: 100%;
+        font-size: 20px;
+      }
     }
     .description {
       text-align: right;
@@ -121,6 +125,10 @@ export default class TwoColumnTextImageBlock extends Vue {
       line-height: 32px;
       @media (max-width: 1250px) {
         font-size: 14px;
+      }
+      @media (max-width: 400px) {
+        font-size: 14px;
+        line-height: 25px;
       }
     }
     .button {
