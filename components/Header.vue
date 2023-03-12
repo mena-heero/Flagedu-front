@@ -5,7 +5,7 @@
         <div
           v-for="(item, idx) in getMainMenu"
           :key="'menu_' + idx"
-          class="nav-item-container"
+          class="nav-item-container hide"
         >
           <nuxt-link
             :to="item.link_url"
@@ -92,10 +92,21 @@
           </div>
         </div>
         <div class="nav-item-container">
-          <nuxt-link v-if="!getProfile" to="/signin" class="nav-item"
+          <nuxt-link v-if="!getProfile" to="/signin" class="nav-item hide"
             >Signin</nuxt-link
           >
-          <nuxt-link to="/profile" v-else class="nav-item profile-img">
+          <a
+            v-if="!getProfile"
+            href="#"
+            class="nav-item mobile-visible-block"
+            @click.prevent="mobileSideMenuOpen = true"
+            >Signin</a
+          >
+          <nuxt-link
+            to="/profile"
+            v-if="getProfile"
+            class="nav-item profile-img hide"
+          >
             <img
               v-if="getProfile.profile_image_detail"
               :src="HOST + getProfile.profile_image_detail.original.src"
@@ -104,6 +115,20 @@
             <img v-else src="/images/avatar.png" alt="profile" />
             <div>{{ getProfile.full_name }}</div>
           </nuxt-link>
+          <a
+            href="#"
+            @click.prevent="mobileSideMenuOpen = true"
+            v-if="getProfile"
+            class="nav-item profile-img mobile-visible-flex small-font"
+          >
+            <img
+              v-if="getProfile.profile_image_detail"
+              :src="HOST + getProfile.profile_image_detail.original.src"
+              :alt="getProfile.profile_image_detail.original.alt"
+            />
+            <img v-else src="/images/avatar.png" alt="profile" />
+            <div>{{ getProfile.full_name }}</div>
+          </a>
         </div>
         <div class="logo">
           <nuxt-link to="/">
@@ -115,11 +140,15 @@
         </div>
       </div>
     </div>
+    <MobileSideMenu
+      v-if="mobileSideMenuOpen == true"
+      @close="handleSideMenuClose"
+    />
   </div>
 </template>
 
 <script>
-import { Component, Vue, Getter, Action } from "nuxt-property-decorator";
+import { Component, Vue, Getter, Watch } from "nuxt-property-decorator";
 import { namespaced } from "~/utils/utils";
 import {} from "../utils/store/action.names";
 import {
@@ -128,10 +157,13 @@ import {
   GET_GLOBAL_SETTINGS,
 } from "../utils/store/getter.names";
 import { NS_AUTH, NS_COMMON } from "../utils/store/namespace.names";
+import MobileSideMenu from "./MobileSideMenu.vue";
 
 @Component({
   name: "Header",
-  components: {},
+  components: {
+    MobileSideMenu,
+  },
 })
 export default class Header extends Vue {
   @Getter(namespaced(NS_COMMON, GET_MAINMENU)) getMainMenu;
@@ -139,6 +171,13 @@ export default class Header extends Vue {
 
   @Getter(namespaced(NS_AUTH, GET_PROFILE))
   getProfile;
+
+  mobileSideMenuOpen = false;
+
+  @Watch("$route", { immediate: true })
+  handleRouteChange(val, oldVal) {
+    this.mobileSideMenuOpen = false;
+  }
 
   get HOST() {
     return this.$config.HOST;
@@ -163,6 +202,10 @@ export default class Header extends Vue {
     }
     return 0;
   }
+
+  handleSideMenuClose() {
+    this.mobileSideMenuOpen = false;
+  }
 }
 </script>
 
@@ -171,8 +214,13 @@ export default class Header extends Vue {
   width: 80%;
   height: auto;
   margin: 0 auto;
+  @media (max-width: 1250px) {
+    width: 90%;
+  }
+  @media (max-width: 320px) {
+    width: 100%;
+  }
   .nav {
-    height: 60px;
     width: 100%;
     display: flex;
     gap: 20px;
@@ -272,10 +320,15 @@ export default class Header extends Vue {
       }
     }
     .logo {
-      height: 100%;
+      height: 60px;
+      width: 112px;
       display: flex;
       justify-content: flex-end;
       margin-left: 50px;
+      @media (max-width: 1250px) {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
       img {
         flex-shrink: 0;
         -webkit-flex-shrink: 0;
@@ -286,5 +339,8 @@ export default class Header extends Vue {
       }
     }
   }
+}
+.small-font {
+  font-size: 14px !important;
 }
 </style>

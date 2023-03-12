@@ -60,6 +60,11 @@ export default class ArticleBlock extends Vue {
     padding-bottom: 50px;
     margin: 0 auto;
     min-height: 500px;
+    @media (max-width: 1250px) {
+      width: 95%;
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
     .title {
       display: flex;
       justify-content: flex-end;
@@ -70,6 +75,9 @@ export default class ArticleBlock extends Vue {
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
+        @media (max-width: 1250px) {
+          font-size: 30px;
+        }
       }
     }
   }
@@ -79,10 +87,34 @@ export default class ArticleBlock extends Vue {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+  @media (max-width: 1250px) {
+    margin-top: 30px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 950px) {
+    margin-top: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 700px) {
+    margin-top: 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 500px) {
+    gap: 10px;
+  }
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
   .item {
     height: 490px;
+    @media (max-width: 500px) {
+      height: auto;
+    }
     .image {
       height: 372px;
+      @media (max-width: 500px) {
+        height: 300px;
+      }
       img {
         flex-shrink: 0;
         -webkit-flex-shrink: 0;
@@ -107,6 +139,9 @@ export default class ArticleBlock extends Vue {
         overflow: hidden;
         display: flex;
         align-items: center;
+        @media (max-width: 1250px) {
+          font-size: 14px;
+        }
       }
     }
   }

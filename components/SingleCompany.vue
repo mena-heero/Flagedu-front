@@ -144,15 +144,26 @@ export default class SingleCompany extends Vue {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  @media (max-width: 500px) {
+    gap: 5px;
+  }
   .image {
     height: 200px;
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
+    @media (max-width: 500px) {
+      padding: 10px;
+    }
+    @media (max-width: 500px) {
+      margin: 0 auto;
+      width: 100%;
+      // padding-top: 30px;
+    }
     img {
       flex-shrink: 0;
       -webkit-flex-shrink: 0;
-      max-width: 100%;
+      width: 100%;
       height: 100%;
       -o-object-fit: cover;
       object-fit: cover;
@@ -196,10 +207,16 @@ export default class SingleCompany extends Vue {
       color: #01aeab;
       font-size: 16px;
       font-weight: 700;
+      @media (max-width: 500px) {
+        font-size: 14px;
+      }
     }
     .title {
       font-size: 16px;
       font-weight: 600;
+      @media (max-width: 500px) {
+        font-size: 14px;
+      }
     }
   }
   .rating {
@@ -212,6 +229,9 @@ export default class SingleCompany extends Vue {
       font-size: 18px;
       font-weight: 700;
       color: #000;
+      @media (max-width: 500px) {
+        font-size: 14px;
+      }
     }
   }
   .buttons {

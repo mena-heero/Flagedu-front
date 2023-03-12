@@ -110,6 +110,9 @@ export default class Story extends Vue {
     width: 90%;
     display: flex;
     justify-content: flex-end;
+    @media (max-width: 700px) {
+      width: 100%;
+    }
   }
 }
 .swiper {

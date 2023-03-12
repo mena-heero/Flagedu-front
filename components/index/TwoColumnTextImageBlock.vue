@@ -59,6 +59,11 @@ export default class TwoColumnTextImageBlock extends Vue {
     padding-bottom: 50px;
     margin: 0 auto;
     min-height: 500px;
+    @media (max-width: 1250px) {
+      width: 95%;
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
     .title {
       display: flex;
       justify-content: flex-end;
@@ -69,6 +74,9 @@ export default class TwoColumnTextImageBlock extends Vue {
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
+        @media (max-width: 1250px) {
+          font-size: 30px;
+        }
       }
     }
   }
@@ -78,6 +86,11 @@ export default class TwoColumnTextImageBlock extends Vue {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
   .content {
     height: 605px;
     display: flex;
@@ -85,17 +98,30 @@ export default class TwoColumnTextImageBlock extends Vue {
     gap: 20px;
     justify-content: center;
     align-items: flex-end;
+    @media (max-width: 700px) {
+      height: auto;
+    }
+
     .title {
       text-align: right;
       font-size: 36px;
       font-weight: 700;
       width: 80%;
+      @media (max-width: 1250px) {
+        font-size: 30px;
+      }
+      @media (max-width: 950px) {
+        font-size: 24px;
+      }
     }
     .description {
       text-align: right;
       font-weight: 500;
       font-size: 16px;
       line-height: 32px;
+      @media (max-width: 1250px) {
+        font-size: 14px;
+      }
     }
     .button {
       display: flex;
@@ -108,16 +134,32 @@ export default class TwoColumnTextImageBlock extends Vue {
       height: 54px;
       background: #01aeab;
       border-radius: 8px;
+      @media (max-width: 950px) {
+        height: 45px;
+        width: 180px;
+      }
       a {
         font-weight: 700;
         font-size: 18px;
         line-height: 22px;
         color: #ffffff;
+        @media (max-width: 1250px) {
+          font-size: 16px;
+        }
+        @media (max-width: 950px) {
+          font-size: 14px;
+        }
       }
     }
   }
   .image {
     height: 605px;
+    @media (max-width: 700px) {
+      margin-top: 30px;
+    }
+    @media (max-width: 700px) {
+      height: 300px;
+    }
     img {
       flex-shrink: 0;
       -webkit-flex-shrink: 0;

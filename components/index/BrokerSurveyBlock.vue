@@ -51,6 +51,9 @@ export default class BrokerSurveyBlock extends Vue {
   justify-content: center;
   align-items: center;
   position: relative;
+  @media (max-width: 500px) {
+    margin-top: 30px;
+  }
   .content {
     width: 50%;
     display: flex;
@@ -58,12 +61,28 @@ export default class BrokerSurveyBlock extends Vue {
     gap: 20px;
     justify-content: center;
     align-items: center;
+    @media (max-width: 1250px) {
+      width: 90%;
+    }
+    @media (max-width: 550px) {
+      width: 95%;
+    }
     h1 {
       color: $primary-color;
       text-align: center;
       font-size: 40px;
       font-weight: 700;
       line-height: 60px;
+      @media (max-width: 1250px) {
+        font-size: 34px;
+      }
+      @media (max-width: 500px) {
+        line-height: 40px;
+      }
+      @media (max-width: 500px) {
+        font-size: 20px;
+        line-height: 30px;
+      }
     }
     h5 {
       color: $primary-color;
@@ -72,6 +91,13 @@ export default class BrokerSurveyBlock extends Vue {
       font-weight: 500;
       width: 60%;
       line-height: 32px;
+      @media (max-width: 550px) {
+        width: 90%;
+      }
+      @media (max-width: 500px) {
+        line-height: 40px;
+        line-height: 25px;
+      }
     }
     a {
       height: 70px;
@@ -84,6 +110,11 @@ export default class BrokerSurveyBlock extends Vue {
       justify-content: center;
       align-items: center;
       border-radius: 8px;
+      @media (max-width: 1250px) {
+        height: 50px;
+        width: 120px;
+        font-size: 14px;
+      }
     }
   }
 }
@@ -91,6 +122,10 @@ export default class BrokerSurveyBlock extends Vue {
   position: absolute;
   bottom: 40px;
   right: 60px;
+  @media (max-width: 550px) {
+    bottom: 10px;
+    right: 20px;
+  }
   a {
     height: 64px;
     width: 205px;
@@ -103,6 +138,11 @@ export default class BrokerSurveyBlock extends Vue {
     align-items: center;
     gap: 10px;
     border-radius: 8px;
+    @media (max-width: 1250px) {
+      height: 50px;
+      width: 140px;
+      font-size: 14px;
+    }
   }
 }
 .speedometer {

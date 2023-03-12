@@ -45,6 +45,11 @@ export default class CompanyBlock extends Vue {
     padding-bottom: 50px;
     margin: 0 auto;
     min-height: 500px;
+    @media (max-width: 1250px) {
+      width: 95%;
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
     .title {
       display: flex;
       justify-content: flex-end;
@@ -55,6 +60,9 @@ export default class CompanyBlock extends Vue {
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
+        @media (max-width: 1250px) {
+          font-size: 30px;
+        }
       }
     }
   }
@@ -64,5 +72,30 @@ export default class CompanyBlock extends Vue {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+  @media (max-width: 1250px) {
+    margin-top: 30px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 950px) {
+    margin-top: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 700px) {
+    margin-top: 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 500px) {
+    gap: 10px;
+  }
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .items {
+    @media (max-width: 400px) {
+      // padding-left: 30px;
+      // padding-right: 30px;
+    }
+  }
 }
 </style>

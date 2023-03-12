@@ -5,7 +5,7 @@
         <nuxt-link to="/news">{{ data.title }}</nuxt-link>
       </div>
       <div class="news-wrapper">
-        <nuxt-link :to="data.news[0].html_url" class="highligted-news">
+        <nuxt-link :to="data.news[0].html_url" class="highligted-news hide">
           <div class="image">
             <img
               :src="HOST + data.news[0].thumbnail.src"
@@ -23,6 +23,23 @@
           </div>
         </nuxt-link>
         <div class="other-news">
+          <nuxt-link :to="data.news[0].html_url" class="item hide-on-desktop">
+            <div class="image">
+              <img
+                :src="HOST + data.news[0].thumbnail.src"
+                alt="data.news[0].thumbnail.alt"
+              />
+            </div>
+            <div class="content">
+              <div class="pub-date">
+                {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
+                <i class="bi bi-clock clock-icon"></i>
+              </div>
+              <div class="title">
+                {{ data.news[0].title }}
+              </div>
+            </div>
+          </nuxt-link>
           <nuxt-link :to="data.news[1].html_url" class="item">
             <div class="image">
               <img
@@ -125,6 +142,12 @@ export default class NewsBlock extends Vue {
     padding-bottom: 50px;
     margin: 0 auto;
     min-height: 500px;
+    @media (max-width: 1250px) {
+      width: 95%;
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
+
     .title {
       display: flex;
       justify-content: flex-end;
@@ -135,6 +158,9 @@ export default class NewsBlock extends Vue {
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
+        @media (max-width: 1250px) {
+          font-size: 30px;
+        }
       }
     }
   }
@@ -144,6 +170,9 @@ export default class NewsBlock extends Vue {
   display: grid;
   grid-template-columns: 1.2fr 2fr;
   gap: 40px;
+  @media (max-width: 1250px) {
+    grid-template-columns: 1fr;
+  }
   .highligted-news {
     height: 750px;
     .image {
@@ -180,6 +209,18 @@ export default class NewsBlock extends Vue {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    @media (max-width: 1250px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 950px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 550px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr;
+    }
     .item {
       height: 375px;
       .image {
@@ -208,6 +249,9 @@ export default class NewsBlock extends Vue {
           overflow: hidden;
           display: flex;
           align-items: center;
+          @media (max-width: 1250px) {
+            font-size: 14px;
+          }
         }
       }
     }

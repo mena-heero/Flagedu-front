@@ -435,6 +435,9 @@ ul {
 .rating-color{
   color: $rating-color;
   font-size: 18px;
+  @media (max-width: 550px) {
+    font-size: 15px;
+  }
 }
 
 .arrow-down{
@@ -444,4 +447,30 @@ ul {
 
 .swiper-wrapper{
   z-index: 0 !important;
+}
+
+
+.hide {
+  @media (max-width: 1250px) {
+    display: none !important;
+  }
+}
+
+.hide-on-desktop{
+  display: none !important;
+}
+
+.mobile-visible-block {
+  display: none !important;
+
+  @media (max-width: 1250px) {
+    display: block !important;
+  }
+}
+
+.mobile-visible-flex{
+  display: none !important;
+  @media (max-width: 1250px) {
+      display: flex !important;
+    }
 }
