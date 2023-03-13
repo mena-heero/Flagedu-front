@@ -274,6 +274,25 @@ export default class CompanyDetailPage extends Vue {
     font-weight: 700;
     width: 55%;
     margin: 0 auto;
+    @media (max-width: 1250px) {
+      width: 80%;
+    }
+    @media (max-width: 950px) {
+      width: 95%;
+    }
+    @media (max-width: 850px) {
+      width: 70%;
+    }
+    @media (max-width: 700px) {
+      width: 80%;
+    }
+    @media (max-width: 500px) {
+      width: 95%;
+      font-size: 28px;
+    }
+    @media (max-width: 400px) {
+      font-size: 24px;
+    }
   }
   .white-back {
     background-color: white;
@@ -286,6 +305,23 @@ export default class CompanyDetailPage extends Vue {
       gap: 20px;
       width: 55%;
       margin: 0 auto;
+      @media (max-width: 1250px) {
+        width: 80%;
+      }
+      @media (max-width: 950px) {
+        width: 95%;
+      }
+      @media (max-width: 850px) {
+        width: 70%;
+      }
+      @media (max-width: 700px) {
+        width: 80%;
+      }
+      @media (max-width: 500px) {
+        width: 95%;
+      }
+      @media (max-width: 400px) {
+      }
     }
   }
 }
@@ -295,6 +331,15 @@ export default class CompanyDetailPage extends Vue {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-bottom: 50px;
+  @media (max-width: 850px) {
+    grid-template-columns: 1fr;
+  }
+  @media (max-width: 700px) {
+  }
+  @media (max-width: 500px) {
+  }
+  @media (max-width: 400px) {
+  }
   .company-info {
     width: 100%;
     height: 560px;
@@ -308,6 +353,16 @@ export default class CompanyDetailPage extends Vue {
     padding: 20px;
     padding-left: 40px;
     padding-right: 40px;
+    @media (max-width: 500px) {
+      height: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    @media (max-width: 400px) {
+      height: auto;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
     .logo {
       height: 120px;
       img {

@@ -191,6 +191,9 @@ export default class CompanyEvaluationBlock extends Vue {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   margin-top: 20px;
+  @media (max-width: 850px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .item {
   display: flex;
@@ -199,6 +202,12 @@ export default class CompanyEvaluationBlock extends Vue {
   .title {
     font-size: 14px;
     font-weight: 600;
+    @media (max-width: 500px) {
+      font-size: 12px;
+    }
+    @media (max-width: 400px) {
+      font-size: 10px;
+    }
   }
   .progress-bar {
     progress {

@@ -460,6 +460,19 @@ ul {
   display: none !important;
 }
 
+.hide-on-380{
+  @media (max-width: 380px) {
+      display: none !important;
+    }
+}
+
+.visible-on-380 {
+  display: none !important;
+  @media (max-width: 380px) {
+    display: block !important;
+  }
+}
+
 .mobile-visible-block {
   display: none !important;
 

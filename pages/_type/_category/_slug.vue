@@ -91,6 +91,22 @@ export default class DetailPage extends Vue {
     font-weight: 700;
     width: 60%;
     margin: 0 auto;
+    @media (max-width: 1250px) {
+      width: 80%;
+      font-size: 30px;
+    }
+    @media (max-width: 950px) {
+    }
+    @media (max-width: 700px) {
+      font-size: 26px;
+    }
+    @media (max-width: 500px) {
+      font-size: 22px;
+    }
+    @media (max-width: 400px) {
+      width: 95%;
+      font-size: 20px;
+    }
   }
   .white-back {
     background-color: white;
@@ -103,6 +119,18 @@ export default class DetailPage extends Vue {
       gap: 20px;
       width: 60%;
       margin: 0 auto;
+      @media (max-width: 1250px) {
+        width: 80%;
+      }
+      @media (max-width: 950px) {
+      }
+      @media (max-width: 700px) {
+      }
+      @media (max-width: 500px) {
+      }
+      @media (max-width: 400px) {
+        width: 95%;
+      }
     }
   }
 }

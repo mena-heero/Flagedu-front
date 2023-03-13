@@ -49,7 +49,9 @@ export default class TableBlock extends Vue {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  overflow-x: scroll;
   .title {
     text-align: left !important;
     width: 100%;

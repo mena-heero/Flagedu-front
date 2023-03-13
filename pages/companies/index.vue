@@ -401,6 +401,22 @@ export default class CompanyIndex extends Vue {
     font-weight: 700;
     width: 70%;
     margin: 0 auto;
+    @media (max-width: 1250px) {
+      width: 80%;
+    }
+    @media (max-width: 950px) {
+    }
+    @media (max-width: 700px) {
+    }
+    @media (max-width: 500px) {
+    }
+    @media (max-width: 450px) {
+      font-size: 30px;
+    }
+    @media (max-width: 350px) {
+      font-size: 26px;
+      width: 95%;
+    }
   }
   .hero-description {
     font-size: 16px;
@@ -408,6 +424,20 @@ export default class CompanyIndex extends Vue {
     line-height: 25px;
     width: 70%;
     margin: 0 auto;
+    @media (max-width: 1250px) {
+      width: 80%;
+    }
+    @media (max-width: 950px) {
+    }
+    @media (max-width: 700px) {
+    }
+    @media (max-width: 500px) {
+    }
+    @media (max-width: 400px) {
+    }
+    @media (max-width: 350px) {
+      width: 95%;
+    }
   }
   .white-back {
     background-color: white;
@@ -420,6 +450,24 @@ export default class CompanyIndex extends Vue {
       gap: 20px;
       width: 70%;
       margin: 0 auto;
+      @media (max-width: 1250px) {
+        width: 80%;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      @media (max-width: 950px) {
+        margin-top: 30px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: 700px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 450px) {
+        grid-template-columns: 1fr;
+      }
+      @media (max-width: 350px) {
+        width: 95%;
+        grid-template-columns: 1fr;
+      }
     }
   }
 }
@@ -460,6 +508,18 @@ export default class CompanyIndex extends Vue {
   margin: 0 auto;
   height: 60px;
   margin-bottom: 50px;
+  @media (max-width: 1250px) {
+    width: 80%;
+  }
+  @media (max-width: 950px) {
+  }
+  @media (max-width: 700px) {
+  }
+  @media (max-width: 500px) {
+  }
+  @media (max-width: 350px) {
+    width: 95%;
+  }
   .search-input {
     position: relative;
 

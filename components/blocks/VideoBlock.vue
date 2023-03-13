@@ -45,5 +45,17 @@ export default class VideoBlock extends Vue {
 .video {
   height: 400px;
   width: 700px;
+  @media (max-width: 1250px) {
+  }
+  @media (max-width: 950px) {
+  }
+  @media (max-width: 700px) {
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 500px) {
+  }
+  @media (max-width: 400px) {
+  }
 }
 </style>

@@ -80,6 +80,20 @@ export default class CommonPage extends Vue {
     font-weight: 700;
     width: 70%;
     margin: 0 auto;
+    @media (max-width: 1250px) {
+      width: 80%;
+    }
+    @media (max-width: 950px) {
+    }
+    @media (max-width: 700px) {
+    }
+    @media (max-width: 500px) {
+      width: 90%;
+      font-size: 28px;
+    }
+    @media (max-width: 350px) {
+      width: 95%;
+    }
   }
   .white-back {
     background-color: white;
@@ -92,6 +106,19 @@ export default class CommonPage extends Vue {
       gap: 20px;
       width: 70%;
       margin: 0 auto;
+      @media (max-width: 1250px) {
+        width: 80%;
+      }
+      @media (max-width: 950px) {
+      }
+      @media (max-width: 700px) {
+      }
+      @media (max-width: 500px) {
+        width: 90%;
+      }
+      @media (max-width: 350px) {
+        width: 95%;
+      }
     }
   }
 }

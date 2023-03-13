@@ -369,6 +369,20 @@ export default class RatingReview extends Vue {
   display: flex;
   flex-direction: column;
   gap: 50px;
+  @media (max-width: 1250px) {
+    width: 70%;
+    gap: 30px;
+  }
+  @media (max-width: 950px) {
+  }
+  @media (max-width: 700px) {
+    width: 80%;
+  }
+  @media (max-width: 500px) {
+  }
+  @media (max-width: 400px) {
+    width: 95%;
+  }
 }
 .form {
   .title {
@@ -451,6 +465,9 @@ export default class RatingReview extends Vue {
   border-color: grey;
   border-radius: 8px;
   width: 80%;
+  @media (max-width: 400px) {
+    width: 95%;
+  }
 }
 
 .form-control:focus {

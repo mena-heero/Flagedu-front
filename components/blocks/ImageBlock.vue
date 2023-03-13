@@ -36,8 +36,7 @@ export default class ImageBlock extends Vue {
   img {
     flex-shrink: 0;
     -webkit-flex-shrink: 0;
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
     -o-object-fit: cover;
     object-fit: cover;
     border-radius: 8px;

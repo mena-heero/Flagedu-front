@@ -396,7 +396,12 @@
               >
                 <div class="item">
                   <div class="btn">
-                    <nuxt-link :to="item.html_url">Visit Broker</nuxt-link>
+                    <nuxt-link class="hide-on-380" :to="item.html_url"
+                      >Visit Broker</nuxt-link
+                    >
+                    <nuxt-link class="visible-on-380" :to="item.html_url"
+                      >Visit</nuxt-link
+                    >
                   </div>
                   <div class="content">
                     <div class="company-info">
@@ -619,6 +624,17 @@ export default class FindMyBroker extends Vue {
     font-weight: 700;
     width: 65%;
     margin: 0 auto;
+    @media (max-width: 1250px) {
+      width: 90%;
+    }
+    @media (max-width: 950px) {
+    }
+    @media (max-width: 800px) {
+    }
+    @media (max-width: 500px) {
+    }
+    @media (max-width: 400px) {
+    }
   }
   .white-back {
     background-color: white;
@@ -631,11 +647,27 @@ export default class FindMyBroker extends Vue {
       gap: 50px;
       width: 65%;
       margin: 0 auto;
+      @media (max-width: 1250px) {
+        width: 90%;
+      }
+      @media (max-width: 950px) {
+      }
+      @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+      }
+      @media (max-width: 450px) {
+      }
+      @media (max-width: 350px) {
+        width: 95%;
+      }
       .title {
         font-size: 32px;
         font-weight: 500;
         text-align: right;
         width: 100%;
+        @media (max-width: 1050px) {
+          font-size: 26px;
+        }
       }
     }
   }
@@ -697,6 +729,9 @@ export default class FindMyBroker extends Vue {
     padding-bottom: 15px;
     padding-left: 15px;
     padding-right: 15px;
+    @media (max-width: 1050px) {
+      padding: 5px;
+    }
     .items-wrapper {
       .divider {
         border: 1px solid #dfdfdf;
@@ -707,6 +742,9 @@ export default class FindMyBroker extends Vue {
         align-items: center;
         gap: 20px;
         padding: 20px;
+        @media (max-width: 1050px) {
+          padding: 5px;
+        }
         .btn {
           a {
             border: none;
@@ -717,6 +755,12 @@ export default class FindMyBroker extends Vue {
             line-height: 22px;
             color: #ffffff;
             padding: 15px;
+            @media (max-width: 1050px) {
+              padding: 10px;
+              font-size: 12px;
+            }
+            @media (max-width: 380px) {
+            }
           }
         }
       }
@@ -734,17 +778,29 @@ export default class FindMyBroker extends Vue {
           height: 62px;
           background: #1f3241;
           border-radius: 65px;
+          @media (max-width: 1050px) {
+            width: 30px;
+            height: 48px;
+            border-radius: 50px;
+          }
           div {
             font-weight: 700;
             font-size: 16px;
             line-height: 19px;
             text-align: center;
             color: #ffffff;
+            @media (max-width: 1050px) {
+              font-size: 12px;
+            }
           }
         }
         .image {
           width: 65px;
           height: 65px;
+          @media (max-width: 1050px) {
+            height: 50px;
+            width: 50px;
+          }
           img {
             flex-shrink: 0;
             -webkit-flex-shrink: 0;
@@ -759,10 +815,16 @@ export default class FindMyBroker extends Vue {
           display: flex;
           flex-direction: column;
           gap: 10px;
+          @media (max-width: 1050px) {
+            gap: 5px;
+          }
           .title {
             font-weight: 600;
             font-size: 16px;
             line-height: 22px;
+            @media (max-width: 1050px) {
+              font-size: 14px;
+            }
           }
           .rating {
             display: flex;
@@ -774,6 +836,9 @@ export default class FindMyBroker extends Vue {
               font-size: 18px;
               font-weight: 700;
               color: #000;
+              @media (max-width: 1050px) {
+                font-size: 14px;
+              }
             }
           }
         }
@@ -795,5 +860,16 @@ input[type="radio"] {
 .finish-block {
   font-size: 18px;
   font-weight: 600;
+}
+
+.rating-color {
+  color: $rating-color;
+  font-size: 18px;
+  @media (max-width: 550px) {
+    font-size: 15px;
+  }
+  @media (max-width: 1050px) {
+    font-size: 12px;
+  }
 }
 </style>
