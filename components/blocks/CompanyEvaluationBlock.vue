@@ -179,12 +179,15 @@ export default class CompanyEvaluationBlock extends Vue {
   margin-bottom: 30px;
 }
 .title {
+  width: 100%;
   font-size: 24px;
   font-weight: 600;
+  text-align: right;
 }
 .subtitle {
   font-size: 18px;
   font-weight: 500;
+  text-align: right;
 }
 .items {
   display: grid;

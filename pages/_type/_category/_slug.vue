@@ -91,6 +91,7 @@ export default class DetailPage extends Vue {
     font-weight: 700;
     width: 60%;
     margin: 0 auto;
+    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
       font-size: 30px;

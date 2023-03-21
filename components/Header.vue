@@ -100,8 +100,8 @@
             href="#"
             class="nav-item mobile-visible-block"
             @click.prevent="mobileSideMenuOpen = true"
-            >Signin</a
-          >
+            ><i class="bi bi-list icon-big"></i
+          ></a>
           <nuxt-link
             to="/profile"
             v-if="getProfile"
@@ -121,13 +121,7 @@
             v-if="getProfile"
             class="nav-item profile-img mobile-visible-flex small-font"
           >
-            <img
-              v-if="getProfile.profile_image_detail"
-              :src="HOST + getProfile.profile_image_detail.original.src"
-              :alt="getProfile.profile_image_detail.original.alt"
-            />
-            <img v-else src="/images/avatar.png" alt="profile" />
-            <div>{{ getProfile.full_name }}</div>
+            <i class="bi bi-list icon-big"></i>
           </a>
         </div>
         <div class="logo">
@@ -342,5 +336,10 @@ export default class Header extends Vue {
 }
 .small-font {
   font-size: 14px !important;
+}
+
+.icon-big {
+  font-size: 30px;
+  color: black;
 }
 </style>

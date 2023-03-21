@@ -412,6 +412,7 @@ export default class NewsArticleListPage extends Vue {
     font-weight: 700;
     width: 70%;
     margin: 0 auto;
+    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }
@@ -430,6 +431,7 @@ export default class NewsArticleListPage extends Vue {
     line-height: 25px;
     width: 70%;
     margin: 0 auto;
+    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }
@@ -518,7 +520,7 @@ export default class NewsArticleListPage extends Vue {
             color: $linked-font-color;
             font-size: 16px;
             font-weight: 600;
-            text-align: justify;
+            text-align: right;
             height: 54px;
             overflow: hidden;
             display: flex;

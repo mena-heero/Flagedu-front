@@ -401,6 +401,7 @@ export default class CompanyIndex extends Vue {
     font-weight: 700;
     width: 70%;
     margin: 0 auto;
+    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }
@@ -424,6 +425,7 @@ export default class CompanyIndex extends Vue {
     line-height: 25px;
     width: 70%;
     margin: 0 auto;
+    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }

@@ -39,6 +39,7 @@ export default class VideoBlock extends Vue {
   margin-bottom: 30px;
 }
 .title {
+  text-align: center;
   font-size: 24px;
   font-weight: 600;
 }

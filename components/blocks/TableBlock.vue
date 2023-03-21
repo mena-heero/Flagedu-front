@@ -53,7 +53,7 @@ export default class TableBlock extends Vue {
   overflow: hidden;
   overflow-x: scroll;
   .title {
-    text-align: left !important;
+    text-align: right !important;
     width: 100%;
     font-size: 18px;
     font-weight: 600;
