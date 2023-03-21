@@ -497,6 +497,21 @@ export default class ComparePage extends Vue {
     font-weight: 700;
     width: 70%;
     margin: 0 auto;
+    @media (max-width: 1250px) {
+      width: 90%;
+    }
+    @media (max-width: 950px) {
+    }
+    @media (max-width: 700px) {
+      width: 95%;
+    }
+    @media (max-width: 500px) {
+    }
+    @media (max-width: 450px) {
+      font-size: 22px;
+    }
+    @media (max-width: 350px) {
+    }
   }
   .white-back {
     background-color: white;
@@ -509,6 +524,19 @@ export default class ComparePage extends Vue {
       gap: 20px;
       width: 70%;
       margin: 0 auto;
+      @media (max-width: 1250px) {
+        width: 95%;
+      }
+      @media (max-width: 950px) {
+      }
+      @media (max-width: 700px) {
+      }
+      @media (max-width: 500px) {
+      }
+      @media (max-width: 450px) {
+      }
+      @media (max-width: 350px) {
+      }
     }
   }
 }
@@ -517,9 +545,19 @@ export default class ComparePage extends Vue {
   box-shadow: 0 4px 2px -1px gray;
   padding-bottom: 30px;
   padding-top: 10px;
+  @media (max-width: 700px) {
+    box-shadow: none;
+    border-bottom: 1px solid gray;
+  }
   .company-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(4, 200px);
+      overflow: hidden;
+      overflow-x: scroll;
+      padding-bottom: 15px;
+    }
     .company-item {
       display: flex;
       justify-content: center;
@@ -532,10 +570,37 @@ export default class ComparePage extends Vue {
         padding: 15px;
         cursor: pointer;
 
+        @media (max-width: 1250px) {
+        }
+        @media (max-width: 950px) {
+          padding: 8px;
+        }
+        @media (max-width: 700px) {
+          padding: 5px;
+        }
+        @media (max-width: 500px) {
+        }
+        @media (max-width: 450px) {
+        }
+        @media (max-width: 350px) {
+        }
+
         .add-company-title {
           font-size: 22px;
           font-weight: 600;
           color: grey;
+          @media (max-width: 950px) {
+            font-size: 16px;
+          }
+          @media (max-width: 700px) {
+            font-size: 14px;
+          }
+          @media (max-width: 500px) {
+          }
+          @media (max-width: 450px) {
+          }
+          @media (max-width: 350px) {
+          }
         }
       }
       .has-company {
@@ -549,6 +614,9 @@ export default class ComparePage extends Vue {
           position: absolute;
           top: -20px;
           right: -10px;
+          @media (max-width: 700px) {
+            top: -10px;
+          }
           i {
             font-size: 26px;
             cursor: pointer;
@@ -605,6 +673,12 @@ export default class ComparePage extends Vue {
   .company-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(4, 200px);
+      overflow: hidden;
+      overflow-x: scroll;
+      padding-bottom: 15px;
+    }
   }
 }
 
@@ -612,6 +686,20 @@ export default class ComparePage extends Vue {
   font-size: 40px;
   font-weight: bold;
   color: grey;
+  @media (max-width: 1250px) {
+  }
+  @media (max-width: 950px) {
+    font-size: 22px;
+  }
+  @media (max-width: 700px) {
+    font-size: 18px;
+  }
+  @media (max-width: 500px) {
+  }
+  @media (max-width: 450px) {
+  }
+  @media (max-width: 350px) {
+  }
 }
 .icon-angle-up {
   font-size: 30px;
@@ -630,6 +718,15 @@ export default class ComparePage extends Vue {
     @media (max-width: 1050px) {
       font-size: 14px;
     }
+    @media (max-width: 700px) {
+      font-size: 14px;
+    }
+  }
+}
+
+.rating-color {
+  @media (max-width: 700px) {
+    font-size: 15px;
   }
 }
 </style>

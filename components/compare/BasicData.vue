@@ -224,6 +224,9 @@ export default class BasicData extends Vue {
   }
   .recommendation {
     width: 70%;
+    @media (max-width: 700px) {
+      width: 90%;
+    }
     div {
       text-align: center;
       line-height: 1.25rem;
