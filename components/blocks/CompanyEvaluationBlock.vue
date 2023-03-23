@@ -3,64 +3,64 @@
     <div class="evaluation-block">
       <div class="title">Company Evaluation</div>
       <div class="subtitle">
-        Overall Evaluation: {{ pageData.overal_evaluation }} / 10
+        Overall Evaluation: {{ pageData.overal_evaluation }} / 5
       </div>
       <div class="items">
         <div class="item">
           <div class="title">
-            Regulation ({{ pageData.regulation_rating }} / 10)
+            Regulation ({{ pageData.regulation_rating }} / 5)
           </div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.regulation_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
           <div class="title">
-            Deposit / Withdraw ({{ pageData.deposit_withdraw_rating }} / 10)
+            Deposit / Withdraw ({{ pageData.deposit_withdraw_rating }} / 5)
           </div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.deposit_withdraw_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
           <div class="title">
-            Commission ({{ pageData.commissions_rating }} / 10)
+            Commission ({{ pageData.commissions_rating }} / 5)
           </div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.commissions_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
-          <div class="title">Assets ({{ pageData.assets_rating }} / 10)</div>
+          <div class="title">Assets ({{ pageData.assets_rating }} / 5)</div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.assets_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
           <div class="title">
-            Trading Platform ({{ pageData.trading_platform_rating }} / 10)
+            Trading Platform ({{ pageData.trading_platform_rating }} / 5)
           </div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.trading_platform_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
@@ -73,43 +73,41 @@
             <progress
               id="file"
               :value="pageData.research_development_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
           <div class="title">
-            Customer Service ({{ pageData.customer_service_rating }} / 10)
+            Customer Service ({{ pageData.customer_service_rating }} / 5)
           </div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.customer_service_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
           <div class="title">
-            Mobile App Trading ({{ pageData.mobile_app_trading_rating }} / 10)
+            Mobile App Trading ({{ pageData.mobile_app_trading_rating }} / 5)
           </div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.mobile_app_trading_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
-          <div class="title">
-            Learning ({{ pageData.learning_rating }} / 10)
-          </div>
+          <div class="title">Learning ({{ pageData.learning_rating }} / 5)</div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.learning_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
@@ -122,29 +120,29 @@
             <progress
               id="file"
               :value="pageData.experience_with_broker_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
           <div class="title">
-            Trading Tools ({{ pageData.trading_tools_rating }} / 10)
+            Trading Tools ({{ pageData.trading_tools_rating }} / 5)
           </div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.trading_tools_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
         <div class="item">
-          <div class="title">Website ({{ pageData.website_rating }} / 10)</div>
+          <div class="title">Website ({{ pageData.website_rating }} / 5)</div>
           <div class="progress-bar">
             <progress
               id="file"
               :value="pageData.website_rating"
-              max="10"
+              max="5"
             ></progress>
           </div>
         </div>
@@ -179,7 +177,7 @@ export default class CompanyEvaluationBlock extends Vue {
   margin-bottom: 30px;
 }
 .title {
-  width: 100%;
+  width: 100% !important;
   font-size: 26px;
   font-weight: 600;
   text-align: right;
