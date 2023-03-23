@@ -274,6 +274,7 @@ export default class CompanyDetailPage extends Vue {
     font-weight: 700;
     width: 55%;
     margin: 0 auto;
+    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }
