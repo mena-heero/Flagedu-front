@@ -19,6 +19,7 @@ import CompanyBlock from "../components/index/CompanyBlock";
 import NewsBlock from "../components/index/NewsBlock";
 import Story from "../components/index/Story";
 import TwoColumnTextImageBlock from "../components/index/TwoColumnTextImageBlock";
+import TradingViewComponent from "../components/tradingview/TradingViewComponent";
 import { FETCH_STORY, FETCH_CURRENT_PAGE } from "../utils/store/action.names";
 import { NS_COMMON } from "../utils/store/namespace.names";
 import { namespaced } from "../utils/utils";
@@ -27,6 +28,7 @@ import { namespaced } from "../utils/utils";
   name: "Index",
   components: {
     Story,
+    currency_rate_block: TradingViewComponent,
     broker_survey_block: BrokerSurveyBlock,
     companies: CompanyBlock,
     news: NewsBlock,
