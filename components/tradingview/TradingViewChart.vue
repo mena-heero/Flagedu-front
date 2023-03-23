@@ -42,6 +42,7 @@ export default class TradingViewChart extends Vue {
       hide_legend: true,
       allow_symbol_change: false,
       style: 3,
+      withdateranges: true,
     };
     this.forceRerender();
   }
