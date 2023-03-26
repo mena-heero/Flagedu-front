@@ -397,7 +397,7 @@
                 <div class="item">
                   <div class="btn">
                     <nuxt-link class="hide-on-380" :to="item.html_url"
-                      >Visit Broker</nuxt-link
+                      >Visit</nuxt-link
                     >
                     <nuxt-link class="visible-on-380" :to="item.html_url"
                       >Visit</nuxt-link
@@ -412,17 +412,17 @@
                         <i
                           v-for="(rate, ridx) in totalFullStar(item.rating)"
                           :key="'ratef_' + ridx"
-                          class="bi bi-star-fill rating-color"
+                          class="bi bi-star-fill rating-size"
                         ></i>
                         <i
                           v-for="(rate, ridx) in totalHalfStar(item.rating)"
                           :key="'rateh_' + ridx"
-                          class="bi bi-star-half rating-color"
+                          class="bi bi-star-half rating-size"
                         ></i>
                         <i
                           v-for="(rate, ridx) in totalEmptyStar(item.rating)"
                           :key="'ratee_' + ridx"
-                          class="bi bi-star rating-color"
+                          class="bi bi-star rating-size"
                         ></i>
                       </div>
                     </div>
@@ -624,6 +624,7 @@ export default class FindMyBroker extends Vue {
     font-weight: 700;
     width: 65%;
     margin: 0 auto;
+    text-align: right;
     @media (max-width: 1250px) {
       width: 90%;
     }
@@ -804,7 +805,7 @@ export default class FindMyBroker extends Vue {
           img {
             flex-shrink: 0;
             -webkit-flex-shrink: 0;
-            max-width: 100%;
+            width: 100%;
             height: 100%;
             -o-object-fit: cover;
             object-fit: cover;
@@ -814,7 +815,7 @@ export default class FindMyBroker extends Vue {
         .company-info {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          justify-content: space-between;
           @media (max-width: 1050px) {
             gap: 5px;
           }
@@ -822,6 +823,9 @@ export default class FindMyBroker extends Vue {
             font-weight: 600;
             font-size: 16px;
             line-height: 22px;
+            @media (max-width: 1292px) {
+              font-size: 14px;
+            }
             @media (max-width: 1050px) {
               font-size: 14px;
             }
@@ -836,8 +840,8 @@ export default class FindMyBroker extends Vue {
               font-size: 18px;
               font-weight: 700;
               color: #000;
-              @media (max-width: 1050px) {
-                font-size: 14px;
+              @media (max-width: 1700px) {
+                font-size: 12px;
               }
             }
           }
@@ -871,5 +875,10 @@ input[type="radio"] {
   @media (max-width: 1050px) {
     font-size: 12px;
   }
+}
+
+.rating-size {
+  color: $rating-color;
+  font-size: 13px;
 }
 </style>

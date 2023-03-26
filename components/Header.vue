@@ -323,6 +323,10 @@ export default class Header extends Vue {
         margin-left: 10px;
         margin-right: 10px;
       }
+      @media (max-width: 500px) {
+        height: 40px;
+        width: 80px;
+      }
       img {
         flex-shrink: 0;
         -webkit-flex-shrink: 0;

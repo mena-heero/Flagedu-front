@@ -214,6 +214,8 @@ export default class SingleCompany extends Vue {
     .title {
       font-size: 16px;
       font-weight: 600;
+      width: 100%;
+      text-align: right;
       @media (max-width: 500px) {
         font-size: 14px;
       }
