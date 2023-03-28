@@ -94,9 +94,9 @@ export default class Story extends Vue {
     width: 80%;
     margin: 0 auto;
     text-align: right;
-    font-size: 36px;
+    font-size: 26px;
     font-weight: 700;
-    padding-top: 40px;
+    padding-top: 20px;
   }
 }
 
@@ -104,10 +104,10 @@ export default class Story extends Vue {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin-top: 30px;
-  padding-bottom: 40px;
+  margin-top: 20px;
+  padding-bottom: 0px;
   .story-images {
-    width: 90%;
+    width: 70%;
     display: flex;
     justify-content: flex-end;
     @media (max-width: 700px) {
@@ -116,22 +116,25 @@ export default class Story extends Vue {
   }
 }
 .swiper {
-  height: 272px;
+  height: 120px;
   overflow: hidden;
   position: relative;
   width: 90%;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 }
 .swiper-slide {
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 272px !important;
-  width: 220px !important;
+  height: 120px !important;
+  width: 120px !important;
 }
 .slider-content {
   color: #000;
-  height: 272px !important;
-  width: 220px !important;
+  height: 120px !important;
+  width: 120px !important;
   img {
     flex-shrink: 0;
     -webkit-flex-shrink: 0;
@@ -139,17 +142,20 @@ export default class Story extends Vue {
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 100%;
   }
 }
 .swiper-button-prev {
   background: white;
-  height: 64px;
-  width: 64px;
-  border-radius: 64px;
+  height: 44px;
+  width: 44px;
+  border-radius: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
+  &::after {
+    font-size: 20px !important;
+  }
 }
 </style>

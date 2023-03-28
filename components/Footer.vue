@@ -54,6 +54,11 @@
               <i class="bi bi-youtube"></i>
             </a>
           </div>
+          <div v-if="getSocialSettings.tiktok" class="item">
+            <a :href="getSocialSettings.tiktok">
+              <i class="bi bi-tiktok"></i>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -166,6 +171,10 @@ footer {
       @media (max-width: 1250px) {
         width: 180px;
         height: 100px;
+      }
+      @media (max-width: 700px) {
+        width: 140px;
+        height: 80px;
       }
       img {
         flex-shrink: 0;

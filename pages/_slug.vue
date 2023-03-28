@@ -463,6 +463,10 @@ export default class NewsArticleListPage extends Vue {
       gap: 20px;
       width: 70%;
       margin: 0 auto;
+      @media (max-width: 1400px) {
+        grid-template-columns: repeat(4, 1fr);
+        width: 80%;
+      }
       @media (max-width: 1250px) {
         margin-top: 30px;
         width: 80%;
@@ -526,6 +530,9 @@ export default class NewsArticleListPage extends Vue {
             display: flex;
             align-items: center;
             width: 100%;
+            @media (max-width: 1400px) {
+              font-size: 13px;
+            }
             @media (max-width: 1250px) {
               font-size: 14px;
             }

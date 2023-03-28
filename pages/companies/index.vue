@@ -452,6 +452,10 @@ export default class CompanyIndex extends Vue {
       gap: 20px;
       width: 70%;
       margin: 0 auto;
+      @media (max-width: 1400px) {
+        grid-template-columns: repeat(4, 1fr);
+        width: 80%;
+      }
       @media (max-width: 1250px) {
         width: 80%;
         grid-template-columns: repeat(4, 1fr);

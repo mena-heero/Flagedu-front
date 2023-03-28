@@ -13,7 +13,7 @@
               <div class="question-title">
                 How familiar are you with trading and investing?
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s1q1" class="form-check-label"
                   >i'm first-timer with no experience</label
                 >
@@ -26,7 +26,7 @@
                   value="1"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s1q2" class="form-check-label"
                   >I've already made a few simple transactions</label
                 >
@@ -39,7 +39,7 @@
                   value="2"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s1q3" class="form-check-label"
                   >i have experience with various products and different trading
                   strategies</label
@@ -53,7 +53,7 @@
                   value="3"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s1q4" class="form-check-label"
                   >I am a professional and fully confident</label
                 >
@@ -71,7 +71,7 @@
               <div class="question-title">
                 Choose the most important assets for you!
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q1" class="form-check-label"
                   >Stocks and ETFs (e.g. Apple or Tesla shares)</label
                 >
@@ -84,7 +84,7 @@
                   value="1"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q2" class="form-check-label"
                   >Forex (e.g. EURUSD or GBPUSD)</label
                 >
@@ -97,7 +97,7 @@
                   value="2"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q3" class="form-check-label"
                   >Options and futures
                 </label>
@@ -110,7 +110,7 @@
                   value="3"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q4" class="form-check-label"
                   >Funds (e.g. BlackRock Equity Dividend Fund)</label
                 >
@@ -123,7 +123,7 @@
                   value="4"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q5" class="form-check-label"
                   >CFDs (e.g. Apple share CFD)</label
                 >
@@ -136,7 +136,7 @@
                   value="5"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q6" class="form-check-label"
                   >Cryptos (e.g. Bitcoin or Ethereum)</label
                 >
@@ -149,7 +149,7 @@
                   value="6"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q7" class="form-check-label"
                   >Commodities(oil-gold)</label
                 >
@@ -162,7 +162,7 @@
                   value="7"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s2q8" class="form-check-label">I Don't Know</label>
                 <input
                   v-model="answers.q2"
@@ -179,7 +179,7 @@
                 Brokers charge fees, not just for trading. How cost conscious
                 are you?
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s3q1" class="form-check-label"
                   >I'm fine with reasonable fees if the services are
                   exceptional</label
@@ -193,7 +193,7 @@
                   value="1"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s3q2" class="form-check-label"
                   >I want to pay as little as possible in fees, I only need
                   basic functions</label
@@ -207,7 +207,7 @@
                   value="2"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s3q3" class="form-check-label"
                   >I want a zero-commission broker, I only want to pay what's
                   absolutely necessary</label
@@ -221,7 +221,7 @@
                   value="3"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s3q4" class="form-check-label">I Don't Know</label>
                 <input
                   v-model="answers.q3"
@@ -237,7 +237,7 @@
               <div class="question-title">
                 How often do you want to deal with your investments and trades?
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s4q1" class="form-check-label">Daily</label>
                 <input
                   v-model="answers.q4"
@@ -248,7 +248,7 @@
                   value="1"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s4q2" class="form-check-label">Weekly</label>
                 <input
                   v-model="answers.q4"
@@ -259,7 +259,7 @@
                   value="2"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s4q3" class="form-check-label">Monthly</label>
                 <input
                   v-model="answers.q4"
@@ -270,7 +270,7 @@
                   value="3"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s4q4" class="form-check-label">Yearly</label>
                 <input
                   v-model="answers.q4"
@@ -286,7 +286,7 @@
               <div class="question-title">
                 How much money would you like to deposit?
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s5q1" class="form-check-label">Less than 50$</label>
                 <input
                   v-model="answers.q5"
@@ -297,7 +297,7 @@
                   value="1"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s5q2" class="form-check-label">51$ - 200$</label>
                 <input
                   v-model="answers.q5"
@@ -308,7 +308,7 @@
                   value="2"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s5q3" class="form-check-label">201$ - 500$</label>
                 <input
                   v-model="answers.q5"
@@ -319,7 +319,7 @@
                   value="3"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s5q4" class="form-check-label">501$ - 1000$</label>
                 <input
                   v-model="answers.q5"
@@ -330,7 +330,7 @@
                   value="4"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s5q5" class="form-check-label">1001$ - 2000$</label>
                 <input
                   v-model="answers.q5"
@@ -341,7 +341,7 @@
                   value="5"
                 />
               </div>
-              <div class="form-check">
+              <div class="form-check-custom">
                 <label for="s5q6" class="form-check-label"
                   >More than 2000$</label
                 >
@@ -677,6 +677,7 @@ export default class FindMyBroker extends Vue {
   display: flex;
   gap: 20px;
   flex-direction: column;
+  margin-right: 10px;
   .item {
     display: flex;
     flex-direction: column;
@@ -822,12 +823,14 @@ export default class FindMyBroker extends Vue {
           .title {
             font-weight: 600;
             font-size: 16px;
-            line-height: 22px;
             @media (max-width: 1292px) {
               font-size: 14px;
             }
             @media (max-width: 1050px) {
               font-size: 14px;
+            }
+            @media (max-width: 350px) {
+              font-size: 12px;
             }
           }
           .rating {
@@ -853,6 +856,20 @@ export default class FindMyBroker extends Vue {
 
 input[type="radio"] {
 }
+
+.form-check-custom {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 5fr 0.2fr;
+  gap: 10px;
+  .form-check-label {
+    text-align: right;
+  }
+  input {
+    margin-right: 0px !important;
+    margin-left: auto;
+  }
+}
 .form-check {
   display: flex;
   gap: 30px;
@@ -864,6 +881,7 @@ input[type="radio"] {
 .finish-block {
   font-size: 18px;
   font-weight: 600;
+  text-align: right;
 }
 
 .rating-color {
