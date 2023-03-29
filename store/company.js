@@ -68,6 +68,19 @@ export const actions = {
         });
     });
   },
+  async [FETCH_FIND_BROKER_COMPANY]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .get(`${FIND_BROKER_COMPANY_ENDPOINT}/${buildParams(payload)}`)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
   async [FETCH_COMPANY_FINDER_RATING]({ commit, dispatch }) {
     return new Promise((resolve, reject) => {
       this.$axios
