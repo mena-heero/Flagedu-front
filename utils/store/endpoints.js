@@ -10,3 +10,5 @@ export const STORY_ENDPOINT = PUBLIC_UTILITY_ENDPOINT + `/stories/`;
 export const COMPANY_ENDPOINT = PUBLIC_COMPANY_ENDPOINT + `/companies`;
 export const RATING_ENDPOINT = PUBLIC_COMPANY_ENDPOINT + `/ratings`;
 export const FIND_BROKER_COMPANY_ENDPOINT = PUBLIC_HOME_ENDPOINT + `/companies`;
+export const FETCH_COMPANY_FINDER_RATING_ENDPOINT =
+  PUBLIC_HOME_ENDPOINT + `/company-finder-rating`;

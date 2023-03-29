@@ -170,7 +170,7 @@
                   class="form-check-input me-2"
                   name="q2"
                   id="s2q8"
-                  value="8"
+                  value="0"
                 />
               </div>
             </div>
@@ -229,7 +229,7 @@
                   class="form-check-input me-2"
                   name="q3"
                   id="s3q4"
-                  value="4"
+                  value="0"
                 />
               </div>
             </div>
@@ -391,7 +391,7 @@
             <div class="companies">
               <div
                 class="items-wrapper"
-                v-for="(item, idx) in companies"
+                v-for="(item, idx) in getCompanies"
                 :key="'company_' + idx"
               >
                 <div class="item">
@@ -438,7 +438,10 @@
                     </div>
                   </div>
                 </div>
-                <div v-if="idx != companies.length - 1" class="divider"></div>
+                <div
+                  v-if="idx != getCompanies.length - 1"
+                  class="divider"
+                ></div>
               </div>
             </div>
           </div>
@@ -460,7 +463,7 @@ import {
 import { NS_COMMON, NS_COMPANY } from "../utils/store/namespace.names";
 import {
   FETCH_CURRENT_PAGE,
-  FETCH_FIND_BROKER_COMPANY,
+  FETCH_COMPANY_FINDER_RATING,
 } from "../utils/store/action.names";
 import { namespaced } from "../utils/utils";
 
@@ -469,8 +472,8 @@ import { namespaced } from "../utils/utils";
   components: {},
 })
 export default class FindMyBroker extends Vue {
-  @Action(namespaced(NS_COMPANY, FETCH_FIND_BROKER_COMPANY))
-  fetchFindBrokerCompany;
+  @Action(namespaced(NS_COMPANY, FETCH_COMPANY_FINDER_RATING))
+  fetchCompanyFinderRating;
 
   step = 1;
   finish = false;
@@ -511,6 +514,37 @@ export default class FindMyBroker extends Vue {
     }
   }
 
+  get totalPoint() {
+    var t = 0;
+    var that = this;
+    Object.keys(this.answers).forEach(function (key) {
+      if (that.answers[key]) {
+        t += parseInt(that.answers[key]);
+      }
+    });
+    return t;
+  }
+
+  get getCompanies() {
+    var company = [];
+
+    if (this.step == 1) {
+      company = this.companies.find((item) => item.rating == "0");
+      return company.companies;
+    } else {
+      if (this.totalPoint > 0 && this.totalPoint < 6) {
+        company = this.companies.find((item) => item.rating == "0-5");
+        return company.companies;
+      } else if (this.totalPoint > 6 && this.totalPoint < 10) {
+        company = this.companies.find((item) => item.rating == "6-9");
+        return company.companies;
+      } else if (this.totalPoint > 9) {
+        company = this.companies.find((item) => item.rating == "10+");
+        return company.companies;
+      }
+    }
+  }
+
   handleFinish() {
     if (this.step == 5) {
       if (!this.answers.q5) {
@@ -540,14 +574,14 @@ export default class FindMyBroker extends Vue {
     this.finish = false;
   }
 
-  handleFetchCompany() {
-    var params = {
-      sort_by_rating: 0,
-    };
-    this.fetchFindBrokerCompany(params).then((data) => {
-      this.companies = data.results;
-    });
-  }
+  // handleFetchCompany() {
+  //   var params = {
+  //     sort_by_rating: 0,
+  //   };
+  //   this.fetchFindBrokerCompany(params).then((data) => {
+  //     this.companies = data.results;
+  //   });
+  // }
 
   async asyncData({ route, $axios, store }) {
     var getCurrentPage = {};
@@ -565,11 +599,9 @@ export default class FindMyBroker extends Vue {
     var companies = null;
 
     const fetchCompanies = await store
-      .dispatch(namespaced(NS_COMPANY, FETCH_FIND_BROKER_COMPANY), {
-        sort_by_rating: 0,
-      })
+      .dispatch(namespaced(NS_COMPANY, FETCH_COMPANY_FINDER_RATING))
       .then((data) => {
-        companies = data.results;
+        companies = data;
       })
       .catch((e) => {
         console.log(e);

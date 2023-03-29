@@ -2,6 +2,7 @@ import {
   COMPANY_ENDPOINT,
   RATING_ENDPOINT,
   FIND_BROKER_COMPANY_ENDPOINT,
+  FETCH_COMPANY_FINDER_RATING_ENDPOINT,
 } from "~/utils/store/endpoints";
 import {
   FETCH_COMPANY,
@@ -9,6 +10,7 @@ import {
   FETCH_RATING,
   FETCH_FIND_BROKER_COMPANY,
   FETCH_COMPANY_DETAIL,
+  FETCH_COMPANY_FINDER_RATING,
 } from "../utils/store/action.names";
 import {} from "../utils/store/mutation.names";
 import { GET_AUTH_HEADER } from "../utils/store/getter.names";
@@ -66,10 +68,10 @@ export const actions = {
         });
     });
   },
-  async [FETCH_FIND_BROKER_COMPANY]({ commit, dispatch }, payload) {
+  async [FETCH_COMPANY_FINDER_RATING]({ commit, dispatch }) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .get(`${FIND_BROKER_COMPANY_ENDPOINT}/${buildParams(payload)}`)
+        .get(`${FETCH_COMPANY_FINDER_RATING_ENDPOINT}/`)
         .then(({ data }) => {
           resolve(data);
         })
