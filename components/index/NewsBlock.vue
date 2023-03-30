@@ -205,7 +205,6 @@ export default class NewsBlock extends Vue {
     }
   }
   .other-news {
-    min-height: 750px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -249,7 +248,7 @@ export default class NewsBlock extends Vue {
           overflow: hidden;
           display: flex;
           align-items: center;
-          @media (max-width: 1250px) {
+          @media (max-width: 1450px) {
             font-size: 14px;
           }
         }

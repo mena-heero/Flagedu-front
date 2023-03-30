@@ -72,6 +72,9 @@ export default class CompanyBlock extends Vue {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+  @media (max-width: 1450px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
   @media (max-width: 1250px) {
     margin-top: 30px;
     grid-template-columns: repeat(4, 1fr);

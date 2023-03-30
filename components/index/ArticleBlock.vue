@@ -87,6 +87,9 @@ export default class ArticleBlock extends Vue {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+  @media (max-width: 1400px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
   @media (max-width: 1250px) {
     margin-top: 30px;
     grid-template-columns: repeat(4, 1fr);
@@ -139,7 +142,7 @@ export default class ArticleBlock extends Vue {
         overflow: hidden;
         display: flex;
         align-items: center;
-        @media (max-width: 1250px) {
+        @media (max-width: 1450px) {
           font-size: 14px;
         }
       }
