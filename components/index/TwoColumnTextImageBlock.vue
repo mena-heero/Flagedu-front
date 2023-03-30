@@ -6,7 +6,7 @@
           <div class="title">
             {{ data.title }}
           </div>
-          <div class="description" v-html="data.description"></div>
+          <div class="description" v-html="data.description" dir="rtl"></div>
           <div class="button">
             <a
               v-if="data.link.link.type == 'link'"

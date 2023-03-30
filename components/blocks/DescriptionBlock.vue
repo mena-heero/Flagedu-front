@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="desc" v-html="data.desc"></div>
+    <div class="desc" dir="rtl" v-html="data.desc"></div>
   </div>
 </template>
 

@@ -5,6 +5,7 @@
       <table>
         <tr v-for="(item, idx) in data.data" :key="'table_' + idx">
           <th
+            dir="rtl"
             v-for="(itemName, iidex) in item"
             :key="'table_column_' + iidex"
             v-if="idx == 0"
@@ -12,6 +13,7 @@
             {{ itemName }}
           </th>
           <td
+            dir="rtl"
             v-for="(itemName, iidex) in item"
             :key="'table_column_' + iidex"
             v-if="idx != 0"
@@ -69,8 +71,8 @@ table {
 td,
 th {
   border: 1px solid #dddddd;
-  text-align: left;
   padding: 8px;
+  text-align: right;
 }
 
 tr:nth-child(even) {
