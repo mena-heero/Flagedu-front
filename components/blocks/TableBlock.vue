@@ -55,7 +55,6 @@ export default class TableBlock extends Vue {
   overflow: hidden;
   overflow-x: scroll;
   .title {
-    text-align: right !important;
     width: 100%;
     font-size: 18px;
     font-weight: 600;
@@ -72,7 +71,6 @@ td,
 th {
   border: 1px solid #dddddd;
   padding: 8px;
-  text-align: right;
 }
 
 tr:nth-child(even) {

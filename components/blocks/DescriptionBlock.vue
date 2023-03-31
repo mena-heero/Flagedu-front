@@ -20,7 +20,6 @@ export default class DescriptionBlock extends Vue {
 
 <style lang="scss" scoped>
 .desc {
-  text-align: right;
   font-size: 18px;
 }
 </style>

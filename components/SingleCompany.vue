@@ -15,8 +15,8 @@
         </div>
         <div class="content-body">
           <div class="reviews">
-            <div class="no-of-reviews">10</div>
             <div class="title">Number of Reviews</div>
+            <div class="no-of-reviews">10</div>
           </div>
           <div class="rating">
             <i
@@ -62,8 +62,8 @@
         </div>
         <div class="content-body">
           <div class="reviews">
-            <div class="no-of-reviews">10</div>
             <div class="title">Number of Reviews</div>
+            <div class="no-of-reviews">10</div>
           </div>
           <div class="rating">
             <i
@@ -158,7 +158,6 @@ export default class SingleCompany extends Vue {
     @media (max-width: 500px) {
       margin: 0 auto;
       width: 100%;
-      // padding-top: 30px;
     }
     img {
       flex-shrink: 0;
@@ -223,10 +222,9 @@ export default class SingleCompany extends Vue {
   }
   .rating {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
     gap: 5px;
     width: 100%;
+    justify-content: flex-start;
     .rating-value {
       font-size: 18px;
       font-weight: 700;

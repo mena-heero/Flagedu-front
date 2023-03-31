@@ -2,94 +2,13 @@
   <div>
     <div class="navbar">
       <div class="nav">
-        <div
-          v-for="(item, idx) in getMainMenu"
-          :key="'menu_' + idx"
-          class="nav-item-container hide"
-        >
-          <nuxt-link
-            :to="item.link_url"
-            v-if="!item.is_external && item.link_url != null"
-            class="nav-item"
-            >{{ item.link_title }}</nuxt-link
-          >
-          <a class="nav-item" v-else-if="item.link_url == null">
-            <i class="bi bi-caret-down-fill arrow-down"></i>
-            {{ item.link_title }}
-          </a>
-          <a
-            :href="item.link_url"
-            target="_blank"
-            class="nav-item"
-            v-else-if="item.is_external == true"
-          >
-            {{ item.link_title }}
-          </a>
-          <div class="submenu" v-if="item.submenus && item.submenus.length > 0">
-            <div
-              v-for="(submenuitem, idx) in item.submenus"
-              :key="'submenu_' + idx"
-              class="submenu-item"
-            >
-              <nuxt-link
-                :to="submenuitem.get_link"
-                v-if="submenuitem.is_external == false"
-                class="submenu-item-a"
-              >
-                <div class="data">
-                  <div class="submenu-name">
-                    {{ submenuitem.link_title }}
-                  </div>
-                  <div class="rating">
-                    <i
-                      v-for="(rate, ridx) in totalFullStar(
-                        submenuitem.company_detail.rating
-                      )"
-                      :key="'ratef_' + ridx"
-                      class="bi bi-star-fill rating-color"
-                    ></i>
-                    <i
-                      v-for="(rate, ridx) in totalHalfStar(
-                        submenuitem.company_detail.rating
-                      )"
-                      :key="'rateh_' + ridx"
-                      class="bi bi-star-half rating-color"
-                    ></i>
-                    <i
-                      v-for="(rate, ridx) in totalEmptyStar(
-                        submenuitem.company_detail.rating
-                      )"
-                      :key="'ratee_' + ridx"
-                      class="bi bi-star rating-color"
-                    ></i>
-                    <div class="rating-value">
-                      ({{ submenuitem.company_detail.rating }})
-                    </div>
-                  </div>
-                </div>
-                <div class="image">
-                  <img
-                    :src="
-                      HOST + submenuitem.company_detail.logo_detail.original.src
-                    "
-                    :alt="submenuitem.company_detail.logo_detail.original.alt"
-                  />
-                </div>
-              </nuxt-link>
-              <a
-                :href="submenuitem.get_link"
-                target="_blank"
-                v-else
-                class="submenu-item-a"
-              >
-                <div class="data">
-                  <div class="submenu-name">
-                    {{ submenuitem.link_title }}
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
+        <div class="logo">
+          <nuxt-link to="/">
+            <img
+              :src="HOST + getGlobalSettings.company_logo.original.src"
+              :alt="getGlobalSettings.company_logo.original.alt"
+            />
+          </nuxt-link>
         </div>
         <div class="nav-item-container">
           <nuxt-link v-if="!getProfile" to="/signin" class="nav-item hide"
@@ -124,13 +43,94 @@
             <i class="bi bi-list icon-big"></i>
           </a>
         </div>
-        <div class="logo">
-          <nuxt-link to="/">
-            <img
-              :src="HOST + getGlobalSettings.company_logo.original.src"
-              :alt="getGlobalSettings.company_logo.original.alt"
-            />
-          </nuxt-link>
+        <div
+          v-for="(item, idx) in getMainMenu"
+          :key="'menu_' + idx"
+          class="nav-item-container hide"
+        >
+          <nuxt-link
+            :to="item.link_url"
+            v-if="!item.is_external && item.link_url != null"
+            class="nav-item"
+            >{{ item.link_title }}</nuxt-link
+          >
+          <a class="nav-item" v-else-if="item.link_url == null">
+            <i class="bi bi-caret-down-fill arrow-down"></i>
+            {{ item.link_title }}
+          </a>
+          <a
+            :href="item.link_url"
+            target="_blank"
+            class="nav-item"
+            v-else-if="item.is_external == true"
+          >
+            {{ item.link_title }}
+          </a>
+          <div class="submenu" v-if="item.submenus && item.submenus.length > 0">
+            <div
+              v-for="(submenuitem, idx) in item.submenus"
+              :key="'submenu_' + idx"
+              class="submenu-item"
+            >
+              <nuxt-link
+                :to="submenuitem.get_link"
+                v-if="submenuitem.is_external == false"
+                class="submenu-item-a"
+              >
+                <div class="image">
+                  <img
+                    :src="
+                      HOST + submenuitem.company_detail.logo_detail.original.src
+                    "
+                    :alt="submenuitem.company_detail.logo_detail.original.alt"
+                  />
+                </div>
+                <div class="data">
+                  <div class="submenu-name">
+                    {{ submenuitem.link_title }}
+                  </div>
+                  <div class="rating">
+                    <i
+                      v-for="(rate, ridx) in totalFullStar(
+                        submenuitem.company_detail.rating
+                      )"
+                      :key="'ratef_' + ridx"
+                      class="bi bi-star-fill rating-color"
+                    ></i>
+                    <i
+                      v-for="(rate, ridx) in totalHalfStar(
+                        submenuitem.company_detail.rating
+                      )"
+                      :key="'rateh_' + ridx"
+                      class="bi bi-star-half rating-color"
+                    ></i>
+                    <i
+                      v-for="(rate, ridx) in totalEmptyStar(
+                        submenuitem.company_detail.rating
+                      )"
+                      :key="'ratee_' + ridx"
+                      class="bi bi-star rating-color"
+                    ></i>
+                    <div class="rating-value">
+                      ({{ submenuitem.company_detail.rating }})
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+              <a
+                :href="submenuitem.get_link"
+                target="_blank"
+                v-else
+                class="submenu-item-a"
+              >
+                <div class="data">
+                  <div class="submenu-name">
+                    {{ submenuitem.link_title }}
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -218,7 +218,7 @@ export default class Header extends Vue {
     width: 100%;
     display: flex;
     gap: 20px;
-    justify-content: flex-end;
+    // justify-content: flex-end;
     align-items: center;
     .nav-item-container {
       position: relative;
@@ -253,7 +253,7 @@ export default class Header extends Vue {
       }
       .submenu {
         visibility: hidden;
-        z-index: 999999;
+        z-index: 999999999999999999;
         position: absolute;
         max-height: 500px;
         width: 270px;
@@ -270,7 +270,6 @@ export default class Header extends Vue {
             width: 100%;
             display: flex;
             gap: 10px;
-            justify-content: flex-end;
             align-items: center;
             .data {
               display: flex;
@@ -281,13 +280,12 @@ export default class Header extends Vue {
                 font-weight: 700;
                 font-size: 16px;
                 line-height: 19px;
-                text-align: right;
                 color: #000;
               }
               .rating {
                 display: flex;
                 align-items: flex-start;
-                justify-content: flex-end;
+                justify-content: flex-start;
                 gap: 5px;
                 width: 100%;
                 .rating-value {

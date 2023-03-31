@@ -223,7 +223,6 @@ export default class CompanySearchModal extends Vue {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left;
     width: 380px;
 
     .image-wrapper {

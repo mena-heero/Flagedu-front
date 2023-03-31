@@ -16,19 +16,6 @@
         <div class="filters">
           <div class="search-input">
             <img
-              src="/images/search-icon.png"
-              alt="search icon"
-              class="search-icon"
-            />
-            <input
-              type="text"
-              name="search"
-              class="form-control"
-              placeholder="Search"
-              v-model.trim="search"
-              v-debounce:400ms="debounceSearch"
-            />
-            <img
               src="/images/filter-icon.png"
               alt="filter icon"
               class="filter-icon"
@@ -40,6 +27,19 @@
               :data="getCurrentPage.all_categories"
               @hide-filter-dropdown="hideFilterDropdown"
               @apply="handleFilterApply"
+            />
+            <img
+              src="/images/search-icon.png"
+              alt="search icon"
+              class="search-icon"
+            />
+            <input
+              type="text"
+              name="search"
+              class="form-control"
+              placeholder="Search"
+              v-model.trim="search"
+              v-debounce:400ms="debounceSearch"
             />
           </div>
         </div>
@@ -62,12 +62,12 @@
             </div>
             <div class="content">
               <div class="pub-date">
+                <i class="bi bi-clock clock-icon"></i>
                 {{
                   $dayjs(article.meta.first_published_at).format(
                     "DD MMMM, YYYY"
                   )
                 }}
-                <i class="bi bi-clock clock-icon"></i>
               </div>
               <div class="title">
                 {{ getTitle(article.title) }}
@@ -78,7 +78,7 @@
             Not any {{ $route.params.slug }} found
           </div>
         </div>
-        <div class="pagination" v-if="paginationSteps.length > 1">
+        <div class="pagination" dir="ltr" v-if="paginationSteps.length > 1">
           <a v-if="page != 1" class="item" @click.prevent="handleDecrement">
             <i class="bi bi-caret-left-fill"></i>
           </a>
@@ -412,7 +412,6 @@ export default class NewsArticleListPage extends Vue {
     font-weight: 700;
     width: 70%;
     margin: 0 auto;
-    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }
@@ -431,7 +430,6 @@ export default class NewsArticleListPage extends Vue {
     line-height: 25px;
     width: 70%;
     margin: 0 auto;
-    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }
@@ -524,7 +522,6 @@ export default class NewsArticleListPage extends Vue {
             color: $linked-font-color;
             font-size: 16px;
             font-weight: 600;
-            text-align: right;
             height: 54px;
             overflow: hidden;
             display: flex;
@@ -553,7 +550,6 @@ export default class NewsArticleListPage extends Vue {
       color: #717171;
       font-size: 14px;
       font-weight: 500;
-      text-align: right;
     }
     .clock-icon {
       font-size: 14px;
@@ -617,7 +613,7 @@ export default class NewsArticleListPage extends Vue {
     .search-icon {
       position: absolute;
       top: 35%;
-      left: 45px;
+      right: 45px;
 
       width: 16px;
       height: 16px;
@@ -631,7 +627,7 @@ export default class NewsArticleListPage extends Vue {
       border: none;
       background: #000;
       padding: 15px 68px;
-      padding-right: 100px;
+      padding-right: 70px;
       font-size: 16px;
       line-height: 16px;
       color: white;
@@ -650,7 +646,7 @@ export default class NewsArticleListPage extends Vue {
     .filter-icon {
       position: absolute;
       top: 20%;
-      right: 45px;
+      left: 45px;
       width: 30px;
       height: 30px;
       cursor: pointer;

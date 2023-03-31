@@ -2,6 +2,12 @@
   <div class="company-block-container">
     <div class="company-container">
       <div class="news-wrapper">
+        <div class="image">
+          <img
+            :src="HOST + data.image.original.src"
+            :alt="data.image.original.alt"
+          />
+        </div>
         <div class="content">
           <div class="title">
             {{ data.title }}
@@ -19,12 +25,6 @@
               >{{ data.link.label }}</nuxt-link
             >
           </div>
-        </div>
-        <div class="image">
-          <img
-            :src="HOST + data.image.original.src"
-            :alt="data.image.original.alt"
-          />
         </div>
       </div>
     </div>
@@ -66,11 +66,10 @@ export default class TwoColumnTextImageBlock extends Vue {
     }
     .title {
       display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
+      // justify-content: flex-end;
+      // align-items: flex-end;
       a {
         width: 100%;
-        text-align: right;
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
@@ -92,18 +91,16 @@ export default class TwoColumnTextImageBlock extends Vue {
     margin-top: 10px;
   }
   .content {
-    height: 605px;
+    min-height: 605px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     justify-content: center;
-    align-items: flex-end;
     @media (max-width: 700px) {
       height: auto;
     }
 
     .title {
-      text-align: right;
       font-size: 36px;
       font-weight: 700;
       width: 80%;

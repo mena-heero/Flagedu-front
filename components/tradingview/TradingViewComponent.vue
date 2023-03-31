@@ -5,9 +5,6 @@
         <nuxt-link to="/companies">{{ data.title }}</nuxt-link>
       </div>
       <div class="company-wrapper">
-        <div class="charts">
-          <TradingViewChart :data="activeCurrency" />
-        </div>
         <div class="currency-wrapper">
           <div class="tabs">
             <div
@@ -30,9 +27,6 @@
               @click="activeCurrency = item.stock.symbol"
             >
               <div class="info">
-                <div class="currency-name">
-                  {{ item.stock.title }}
-                </div>
                 <div class="image">
                   <img
                     v-if="item.stock.logo_detail"
@@ -41,11 +35,17 @@
                   />
                   <img v-else src="/images/avatar.png" alt="profile" />
                 </div>
+                <div class="currency-name">
+                  {{ item.stock.title }}
+                </div>
               </div>
               <div class="changed-price"></div>
               <div class="current-rate"></div>
             </div>
           </div>
+        </div>
+        <div class="charts">
+          <TradingViewChart :data="activeCurrency" />
         </div>
       </div>
     </div>
@@ -117,11 +117,8 @@ export default class TradingViewComponent extends Vue {
     }
     .title {
       display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
       a {
         width: 100%;
-        text-align: right;
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
@@ -135,12 +132,11 @@ export default class TradingViewComponent extends Vue {
 .company-wrapper {
   margin-top: 50px;
   display: grid;
-
-  grid-template-columns: 1fr 0.6fr;
+  grid-template-columns: 0.6fr 1fr;
   gap: 50px;
   @media (max-width: 1250px) {
     margin-top: 30px;
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 0.8fr 1fr;
   }
   @media (max-width: 1160px) {
     margin-top: 30px;
@@ -168,8 +164,6 @@ export default class TradingViewComponent extends Vue {
     overflow: hidden;
     .tabs {
       display: flex;
-      flex-direction: row-reverse;
-      justify-content: flex-start;
       .tab-item {
         font-size: 16px;
         font-weight: 600;
@@ -198,7 +192,6 @@ export default class TradingViewComponent extends Vue {
       .tab-data-item {
         display: flex;
         justify-content: space-between;
-        flex-direction: row-reverse;
         align-items: center;
         padding-left: 10px;
         padding-right: 10px;

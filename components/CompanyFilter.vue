@@ -23,6 +23,7 @@
               <label class="form-check-label" for="default">Default</label>
             </div>
             <div class="form-check">
+              <label class="form-check-label" for="az">A-Z</label>
               <input
                 class="form-check-input"
                 type="radio"
@@ -32,7 +33,6 @@
                 v-model="sortByName"
                 @click="handleSortSelect('name')"
               />
-              <label class="form-check-label" for="az">A-Z</label>
             </div>
 
             <div class="form-check">
@@ -145,7 +145,7 @@ export default class CompanyFilter extends Vue {
 .rarity-dropdown {
   position: absolute;
   top: 54px;
-  right: 0;
+  left: 0;
   padding: 25px 0px 0px;
   width: 270px;
   background: #1f3241;

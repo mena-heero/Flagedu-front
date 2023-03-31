@@ -12,8 +12,8 @@
                   @click="handleOpenCompanySearch(1)"
                   v-if="!companyInput.company1"
                 >
-                  <i class="bi bi-plus-lg icon-big"></i>
                   <div class="add-company-title">Add Company</div>
+                  <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
                   <div class="close-btn">
@@ -44,8 +44,8 @@
                   @click="handleOpenCompanySearch(2)"
                   v-if="!companyInput.company2"
                 >
-                  <i class="bi bi-plus-lg icon-big"></i>
                   <div class="add-company-title">Add Company</div>
+                  <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
                   <div class="close-btn">
@@ -76,8 +76,8 @@
                   @click="handleOpenCompanySearch(3)"
                   v-if="!companyInput.company3"
                 >
-                  <i class="bi bi-plus-lg icon-big"></i>
                   <div class="add-company-title">Add Company</div>
+                  <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
                   <div class="close-btn">
@@ -108,8 +108,8 @@
                   @click="handleOpenCompanySearch(4)"
                   v-if="!companyInput.company4"
                 >
-                  <i class="bi bi-plus-lg icon-big"></i>
                   <div class="add-company-title">Add Company</div>
+                  <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
                   <div class="close-btn">

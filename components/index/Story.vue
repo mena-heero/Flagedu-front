@@ -93,7 +93,6 @@ export default class Story extends Vue {
   .title {
     width: 80%;
     margin: 0 auto;
-    text-align: right;
     font-size: 26px;
     font-weight: 700;
     padding-top: 20px;
@@ -102,8 +101,6 @@ export default class Story extends Vue {
 
 .story-image-container {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
   margin-top: 20px;
   padding-bottom: 0px;
   .story-images {
@@ -119,7 +116,7 @@ export default class Story extends Vue {
   height: 120px;
   overflow: hidden;
   position: relative;
-  width: 90%;
+  width: 86%;
   @media (max-width: 700px) {
     width: 100%;
   }

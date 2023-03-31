@@ -70,7 +70,7 @@ export default class NewsArticleFilter extends Vue {
 .rarity-dropdown {
   position: absolute;
   top: 54px;
-  right: 0;
+  left: 0;
   padding: 25px 0px 40px;
   width: 270px;
   background: #1f3241;

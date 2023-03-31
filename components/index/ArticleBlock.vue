@@ -19,8 +19,8 @@
           </div>
           <div class="content">
             <div class="pub-date">
-              {{ $dayjs(article.publish_date).format("DD MMMM, YYYY") }}
               <i class="bi bi-clock clock-icon"></i>
+              {{ $dayjs(article.publish_date).format("DD MMMM, YYYY") }}
             </div>
             <div class="title">
               {{ article.title }}
@@ -67,11 +67,8 @@ export default class ArticleBlock extends Vue {
     }
     .title {
       display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
       a {
         width: 100%;
-        text-align: right;
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
@@ -137,7 +134,6 @@ export default class ArticleBlock extends Vue {
         color: $linked-font-color;
         font-size: 18px;
         font-weight: 600;
-        text-align: right;
         height: 54px;
         overflow: hidden;
         display: flex;
@@ -154,7 +150,6 @@ export default class ArticleBlock extends Vue {
   color: #717171;
   font-size: 14px;
   font-weight: 500;
-  text-align: right;
 }
 .clock-icon {
   font-size: 14px;

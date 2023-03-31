@@ -52,11 +52,8 @@ export default class CompanyBlock extends Vue {
     }
     .title {
       display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
       a {
         width: 100%;
-        text-align: right;
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
@@ -96,8 +93,6 @@ export default class CompanyBlock extends Vue {
   }
   .items {
     @media (max-width: 400px) {
-      // padding-left: 30px;
-      // padding-right: 30px;
     }
   }
 }

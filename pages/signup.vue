@@ -186,27 +186,27 @@
           </ValidationProvider>
 
           <div class="form-check d-flex">
-            <input
-              type="checkbox"
-              class="form-check-input me-2"
-              v-model="formData.is_agreed"
-            />
-            <label class="form-check-label text-white"
-              >I agree with the
+            <label class="form-check-label text-white">
+              I agree with the
               <a
-                href="https://vemate.com/terms-of-service"
+                href="/common/terms-and-conditions"
                 target="_blank"
                 class="text-active"
                 >Terms of Service</a
               >
               and
               <a
-                href="https://vemate.com/privacy-policy"
+                href="/common/privacy-policy"
                 target="_blank"
                 class="text-active"
                 >Privacy Policy</a
-              ></label
-            >
+              >
+            </label>
+            <input
+              type="checkbox"
+              class="form-check-input me-2"
+              v-model="formData.is_agreed"
+            />
           </div>
 
           <div class="form-input text-center error my-2">

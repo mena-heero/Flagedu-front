@@ -92,8 +92,6 @@
             </ValidationProvider>
 
             <div class="d-flex justify-content-between align-items-center">
-              <div class="form-check d-flex align-items-center"></div>
-
               <div>
                 <NuxtLink class="form-forget-password" to="/forgot-password"
                   >Forgot password?</NuxtLink
@@ -239,7 +237,6 @@ export default class Signin extends Vue {
   font-size: 14px;
   font-weight: 400;
   color: #eb794f;
-  float: right;
 
   @media (max-width: 350px) {
     font-size: 12px;

@@ -5,24 +5,6 @@
       <div class="white-back">
         <div class="company-wrapper">
           <div class="company-summary">
-            <div class="company-info">
-              <div class="logo">
-                <img
-                  v-if="getCurrentPage.logo"
-                  :src="HOST + getCurrentPage.logo.original.src"
-                  :alt="getCurrentPage.logo.original.alt"
-                />
-              </div>
-              <div
-                class="short-desc"
-                v-html="getCurrentPage.short_description"
-              ></div>
-              <div class="account-open-btn">
-                <a target="_blank" :href="getCurrentPage.account_open_link"
-                  >Register now</a
-                >
-              </div>
-            </div>
             <div class="basic-info">
               <div class="item">
                 <div class="left">
@@ -128,7 +110,7 @@
                   <div class="item-value">
                     {{
                       getCurrentPage.origin_branch
-                        ? getCurrentPage.origin_branch.official_name
+                        ? getCurrentPage.origin_branch.name
                         : ""
                     }}
                   </div>
@@ -145,6 +127,24 @@
                     {{ getCurrentPage.trading_platforms }}
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="company-info">
+              <div class="logo">
+                <img
+                  v-if="getCurrentPage.logo"
+                  :src="HOST + getCurrentPage.logo.original.src"
+                  :alt="getCurrentPage.logo.original.alt"
+                />
+              </div>
+              <div
+                class="short-desc"
+                v-html="getCurrentPage.short_description"
+              ></div>
+              <div class="account-open-btn">
+                <a target="_blank" :href="getCurrentPage.account_open_link"
+                  >Register now</a
+                >
               </div>
             </div>
           </div>
@@ -274,7 +274,6 @@ export default class CompanyDetailPage extends Vue {
     font-weight: 700;
     width: 55%;
     margin: 0 auto;
-    text-align: right;
     @media (max-width: 1250px) {
       width: 80%;
     }

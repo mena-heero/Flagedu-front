@@ -88,8 +88,6 @@ ul {
 	color: #eb794f;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	text-align: left;
 }
 
 // form input and input group
@@ -199,17 +197,17 @@ ul {
 			.icon {
 				position: absolute;
 				top: calc(30%);
-				left: 1rem;
+				right: 1rem;
 			}
 
 			.form-control {
-				padding-left: 2.8rem;
+				padding-right: 2.8rem;
 			}
 
 			.show-icon {
 				position: absolute;
 				top: calc(35%);
-				right: 1rem;
+				left: 1rem;
 				cursor: pointer;
 			}
 		}

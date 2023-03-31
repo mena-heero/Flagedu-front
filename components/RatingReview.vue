@@ -108,7 +108,7 @@
                 ></i>
                 <div class="rating-value">({{ comment.rating }})</div>
               </div>
-              <div class="timesince">
+              <div class="timesince" dir="ltr">
                 <i class="bi bi-clock-fill"></i>
                 {{ $dayjs(comment.creation_time).fromNow() }}
               </div>
@@ -116,7 +116,7 @@
             <div class="user-comment" v-html="comment.comment"></div>
           </div>
         </div>
-        <div class="pagination" v-if="paginationSteps.length > 1">
+        <div class="pagination" dir="ltr" v-if="paginationSteps.length > 1">
           <a v-if="page != 1" class="item" @click.prevent="handleDecrement">
             <i class="bi bi-caret-left-fill"></i>
           </a>
@@ -440,7 +440,7 @@ export default class RatingReview extends Vue {
         .rating {
           display: flex;
           align-items: flex-start;
-          justify-content: flex-end;
+          justify-content: flex-start;
           gap: 5px;
           .rating-value {
             font-size: 14px;
@@ -451,6 +451,7 @@ export default class RatingReview extends Vue {
         .timesince {
           font-size: 14px;
           color: grey;
+          width: 120px;
         }
       }
       .user-comment {

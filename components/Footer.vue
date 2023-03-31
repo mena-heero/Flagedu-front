@@ -1,31 +1,6 @@
 <template>
   <div>
     <footer>
-      <div
-        class="item"
-        v-for="(item, idx) in getFootermenu"
-        :key="'footer_' + idx"
-      >
-        <div class="title">
-          {{ item.title }}
-        </div>
-        <div class="submenu">
-          <div
-            class="submenu-item"
-            v-for="(submenu, sidx) in item.submenus"
-            :key="'submenu_' + sidx"
-          >
-            <a v-if="submenu.is_external == true" :href="submenu.link_url">{{
-              submenu.link_title
-            }}</a>
-            <nuxt-link
-              v-if="submenu.is_external == false"
-              :to="submenu.link_url"
-              >{{ submenu.link_title }}</nuxt-link
-            >
-          </div>
-        </div>
-      </div>
       <div class="company-item">
         <div class="image">
           <img
@@ -58,6 +33,31 @@
             <a :href="getSocialSettings.tiktok">
               <i class="bi bi-tiktok"></i>
             </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item"
+        v-for="(item, idx) in getFootermenu"
+        :key="'footer_' + idx"
+      >
+        <div class="title">
+          {{ item.title }}
+        </div>
+        <div class="submenu">
+          <div
+            class="submenu-item"
+            v-for="(submenu, sidx) in item.submenus"
+            :key="'submenu_' + sidx"
+          >
+            <a v-if="submenu.is_external == true" :href="submenu.link_url">{{
+              submenu.link_title
+            }}</a>
+            <nuxt-link
+              v-if="submenu.is_external == false"
+              :to="submenu.link_url"
+              >{{ submenu.link_title }}</nuxt-link
+            >
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@ export default class Footer extends Vue {
 footer {
   background-color: #1f3241;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 20px;
   padding: 50px;
   align-items: center;
@@ -126,7 +126,6 @@ footer {
       font-size: 18px;
       line-height: 22px;
       color: #ffffff;
-      text-align: right;
       @media (max-width: 1250px) {
         font-size: 16px;
       }
@@ -140,9 +139,7 @@ footer {
       gap: 20px;
       .submenu-item {
         display: flex;
-        justify-content: flex-end;
         a {
-          text-align: right;
           color: #a5adb3;
           font-weight: 600;
           font-size: 16px;

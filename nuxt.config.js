@@ -3,7 +3,8 @@ export default {
     title: "Home",
     titleTemplate: "Flagedu | %s",
     htmlAttrs: {
-      lang: "en",
+      lang: "ar",
+      dir: "rtl",
     },
     meta: [
       { charset: "utf-8" },

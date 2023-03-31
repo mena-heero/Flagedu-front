@@ -5,23 +5,6 @@
         <nuxt-link to="/news">{{ data.title }}</nuxt-link>
       </div>
       <div class="news-wrapper">
-        <nuxt-link :to="data.news[0].html_url" class="highligted-news hide">
-          <div class="image">
-            <img
-              :src="HOST + data.news[0].thumbnail.src"
-              alt="data.news[0].thumbnail.alt"
-            />
-          </div>
-          <div class="content">
-            <div class="pub-date">
-              {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
-              <i class="bi bi-clock clock-icon"></i>
-            </div>
-            <div class="title">
-              {{ data.news[0].title }}
-            </div>
-          </div>
-        </nuxt-link>
         <div class="other-news">
           <nuxt-link :to="data.news[0].html_url" class="item hide-on-desktop">
             <div class="image">
@@ -32,8 +15,8 @@
             </div>
             <div class="content">
               <div class="pub-date">
-                {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
                 <i class="bi bi-clock clock-icon"></i>
+                {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
               </div>
               <div class="title">
                 {{ data.news[0].title }}
@@ -49,8 +32,8 @@
             </div>
             <div class="content">
               <div class="pub-date">
-                {{ $dayjs(data.news[1].publish_date).format("DD MMMM, YYYY") }}
                 <i class="bi bi-clock clock-icon"></i>
+                {{ $dayjs(data.news[1].publish_date).format("DD MMMM, YYYY") }}
               </div>
               <div class="title">
                 {{ data.news[1].title }}
@@ -66,8 +49,8 @@
             </div>
             <div class="content">
               <div class="pub-date">
-                {{ $dayjs(data.news[2].publish_date).format("DD MMMM, YYYY") }}
                 <i class="bi bi-clock clock-icon"></i>
+                {{ $dayjs(data.news[2].publish_date).format("DD MMMM, YYYY") }}
               </div>
               <div class="title">
                 {{ data.news[2].title }}
@@ -83,8 +66,8 @@
             </div>
             <div class="content">
               <div class="pub-date">
-                {{ $dayjs(data.news[3].publish_date).format("DD MMMM, YYYY") }}
                 <i class="bi bi-clock clock-icon"></i>
+                {{ $dayjs(data.news[3].publish_date).format("DD MMMM, YYYY") }}
               </div>
               <div class="title">
                 {{ data.news[3].title }}
@@ -100,8 +83,8 @@
             </div>
             <div class="content">
               <div class="pub-date">
-                {{ $dayjs(data.news[4].publish_date).format("DD MMMM, YYYY") }}
                 <i class="bi bi-clock clock-icon"></i>
+                {{ $dayjs(data.news[4].publish_date).format("DD MMMM, YYYY") }}
               </div>
               <div class="title">
                 {{ data.news[4].title }}
@@ -109,6 +92,23 @@
             </div>
           </nuxt-link>
         </div>
+        <nuxt-link :to="data.news[0].html_url" class="highligted-news hide">
+          <div class="image">
+            <img
+              :src="HOST + data.news[0].thumbnail.src"
+              alt="data.news[0].thumbnail.alt"
+            />
+          </div>
+          <div class="content">
+            <div class="pub-date">
+              <i class="bi bi-clock clock-icon"></i>
+              {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
+            </div>
+            <div class="title">
+              {{ data.news[0].title }}
+            </div>
+          </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -150,11 +150,8 @@ export default class NewsBlock extends Vue {
 
     .title {
       display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
       a {
         width: 100%;
-        text-align: right;
         font-size: 36px;
         font-weight: 700;
         color: $linked-font-color;
@@ -168,7 +165,7 @@ export default class NewsBlock extends Vue {
 .news-wrapper {
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 1.2fr 2fr;
+  grid-template-columns: 2fr 1.2fr;
   gap: 40px;
   @media (max-width: 1250px) {
     grid-template-columns: 1fr;
@@ -196,7 +193,6 @@ export default class NewsBlock extends Vue {
         color: $linked-font-color;
         font-size: 24px;
         font-weight: 600;
-        text-align: right;
         height: 60px;
         overflow: hidden;
         display: flex;
@@ -243,7 +239,6 @@ export default class NewsBlock extends Vue {
           color: $linked-font-color;
           font-size: 18px;
           font-weight: 600;
-          text-align: right;
           height: 54px;
           overflow: hidden;
           display: flex;
@@ -261,7 +256,6 @@ export default class NewsBlock extends Vue {
   color: #717171;
   font-size: 14px;
   font-weight: 500;
-  text-align: right;
 }
 .clock-icon {
   font-size: 14px;
