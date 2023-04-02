@@ -110,32 +110,27 @@ import {
   Action,
   Mutation,
 } from "nuxt-property-decorator";
-import { namespaced } from "../utils/utils";
-import { NS_USER } from "../utils/store/namespace.names";
+import { namespaced } from "../../utils/utils";
+import { NS_USER } from "../../utils/store/namespace.names";
 import {
   SEND_VERIFICATION_CODE,
-  VERIFICATION_CONFIRM,
-} from "../utils/store/action.names";
-import { GET_SIGNUP_DATA_FROM_LOCAL_STORAGE } from "../utils/store/action.names";
-import { GET_SIGNUP_DATA } from "../utils/store/getter.names";
+  SOCIAL_AUTH_VERIFY_CONFIRM,
+} from "../../utils/store/action.names";
 
 @Component({
   name: "OTPVerification",
   layout: "auth-layout",
 })
 export default class OTPVerification extends Vue {
-  @Getter(namespaced(NS_USER, GET_SIGNUP_DATA)) getSignUpData;
-
   @Action(namespaced(NS_USER, SEND_VERIFICATION_CODE)) sendVerificationCode;
-  @Action(namespaced(NS_USER, VERIFICATION_CONFIRM)) verificationConfirm;
-  @Action(namespaced(NS_USER, GET_SIGNUP_DATA_FROM_LOCAL_STORAGE))
-  getSignUpDataFromLocalStorage;
+  @Action(namespaced(NS_USER, SOCIAL_AUTH_VERIFY_CONFIRM))
+  socialAuthVerifyConfirm;
 
   error_msg = "";
   loading = false;
   email = "";
-  mode = "";
-  from = "";
+  auth_type = "";
+  social_id = "";
   step = 0;
   countDown = 60;
   disableResend = true;
@@ -192,18 +187,13 @@ export default class OTPVerification extends Vue {
   handleVerificationConfirm() {
     this.loading = true;
     this.formData["email"] = this.email;
-    if (this.getSignUpData != null) {
-      this.formData["user"] = this.getSignUpData;
-    }
-    if (this.from == "email_change") {
-      delete this.formData["user"];
-    }
-    this.verificationConfirm(this.formData)
+    this.formData["social_id"] = this.social_id;
+    this.socialAuthVerifyConfirm(this.formData)
       .then((data) => {
         this.loading = false;
         var msg = `<div class='t-custom-class'><div>Successfully verified your account!</div></div>`;
         this.$toast.success(msg);
-        this.step = 1;
+        this.$router.push("/");
       })
       .catch((e) => {
         this.loading = false;
@@ -225,13 +215,12 @@ export default class OTPVerification extends Vue {
   }
 
   mounted() {
-    this.getSignUpDataFromLocalStorage();
     if (this.$route.query) {
       this.email = this.$route.query.email;
-      this.mode = this.$route.query.mode;
-      this.from = this.$route.query.from;
+      this.auth_type = this.$route.query.auth_type;
+      this.social_id = this.$route.query.social_id;
     }
-    if (this.email === undefined || this.mode === undefined) {
+    if (this.email === undefined || this.social_id === undefined) {
       this.$router.push({ name: "signin" });
     }
   }

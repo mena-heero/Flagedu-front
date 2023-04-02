@@ -112,6 +112,18 @@
               {{ loading ? "Please wait..." : "Sign in" }}
             </button>
 
+            <div class="social-auth">
+              <div class="div-or">Or</div>
+              <div class="social-icons">
+                <div class="google-icon" @click.prevent="loginWithGoogle">
+                  <i class="bi bi-google"></i>
+                </div>
+                <div class="fb-icon" @click.prevent="loginWithFacebook">
+                  <i class="bi bi-facebook"></i>
+                </div>
+              </div>
+            </div>
+
             <p class="have-account text-center text-white">
               Don`t have an account?
               <NuxtLink to="/signup" class="text-active">Sign up</NuxtLink>
@@ -133,7 +145,7 @@ import {
   namespace,
 } from "nuxt-property-decorator";
 import { namespaced } from "../utils/utils";
-import { NS_AUTH } from "../utils/store/namespace.names";
+import { NS_USER } from "../utils/store/namespace.names";
 import { SIGNIN, SEND_VERIFICATION_CODE } from "../utils/store/action.names";
 
 @Component({
@@ -142,8 +154,8 @@ import { SIGNIN, SEND_VERIFICATION_CODE } from "../utils/store/action.names";
   layout: "auth-layout",
 })
 export default class Signin extends Vue {
-  @Action(namespaced(NS_AUTH, SIGNIN)) signin;
-  @Action(namespaced(NS_AUTH, SEND_VERIFICATION_CODE)) sendVerificationCode;
+  @Action(namespaced(NS_USER, SIGNIN)) signin;
+  @Action(namespaced(NS_USER, SEND_VERIFICATION_CODE)) sendVerificationCode;
 
   error_msg = "";
   loading = false;
@@ -153,6 +165,14 @@ export default class Signin extends Vue {
     password: "",
   };
   showPasswordOne = false;
+
+  loginWithGoogle() {
+    window.location = `https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?protocol=oauth2&response_type=code&access_type=offline&client_id=559204491251-9rdnbjf2n27ks6u5klvef778icg1j4rm.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsocialauth%2Fgoogle&scope=openid%20profile%20email%20email%20profile&code_challenge_method&prompt=select_account&service=lso&o2v=1&flowName=GeneralOAuthFlow`;
+  }
+
+  loginWithFacebook() {
+    window.location = `https://www.facebook.com/v16.0/dialog/oauth?client_id=1419617315245410&redirect_uri=http://localhost:3000/socialauth/facebook`;
+  }
 
   toggleShowOne() {
     this.showPasswordOne = !this.showPasswordOne;
@@ -240,6 +260,32 @@ export default class Signin extends Vue {
 
   @media (max-width: 350px) {
     font-size: 12px;
+  }
+}
+
+.social-auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  .div-or {
+    padding-top: 20px;
+    color: white;
+  }
+  .social-icons {
+    display: flex;
+    gap: 20px;
+    .google-icon {
+      font-size: 30px;
+      color: #4285f4;
+      cursor: pointer;
+    }
+    .fb-icon {
+      font-size: 30px;
+      color: #3b5998;
+      cursor: pointer;
+    }
   }
 }
 </style>

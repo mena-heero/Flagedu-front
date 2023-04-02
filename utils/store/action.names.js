@@ -1,4 +1,6 @@
 export const SIGNIN = "signIn";
+export const GOOGLE_SIGNUP = "googleSignup";
+export const FACEBOOK_SIGNUP = "facebookSignup";
 export const SIGNUP = "signUp";
 export const GET_TOKEN_FROM_LOCAL_STORE = "getTokenFromLocalStore";
 export const SIGNOUT = "signOut";
@@ -28,3 +30,7 @@ export const FETCH_FIND_BROKER_COMPANY = "fetchFindBrokerCompany";
 export const FETCH_COMPANY_DETAIL = "fetchCompanyDetail";
 
 export const FETCH_COMPANY_FINDER_RATING = "fetchCompanyFinderRating";
+export const FETCH_COUNTRY = "fetchCountry";
+
+export const COMPLETE_SOCIAL_SIGNUP = "completeSocialSignup";
+export const SOCIAL_AUTH_VERIFY_CONFIRM = "socialAuthVerifyConfirm";

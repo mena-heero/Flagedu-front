@@ -2,12 +2,14 @@ import {
   SETTINGS_ENDPOINT,
   STORY_ENDPOINT,
   PAGE_API_ROOT,
+  FETCH_COUNTRY_ENDPOINT,
 } from "~/utils/store/endpoints";
 import {
   FETCH_SETTINGS,
   FETCH_STORY,
   FETCH_CURRENT_PAGE,
   FETCH_PAGES,
+  FETCH_COUNTRY,
 } from "../utils/store/action.names";
 import { SET_SETTINGS } from "../utils/store/mutation.names";
 import {
@@ -17,7 +19,7 @@ import {
   GET_FOOTERMENU,
 } from "../utils/store/getter.names";
 
-import { NS_AUTH } from "~/utils/store/namespace.names";
+import { NS_USER } from "~/utils/store/namespace.names";
 import { namespaced, buildParams } from "../utils/utils";
 
 export const state = () => ({
@@ -72,7 +74,6 @@ export const actions = {
   },
   async [FETCH_CURRENT_PAGE]({ commit, dispatch }, payload) {
     return new Promise((resolve, reject) => {
-      console.log(`${PAGE_API_ROOT}/find/${buildParams(payload)}`);
       this.$axios
         .get(`${PAGE_API_ROOT}/find/${buildParams(payload)}`)
         .then(({ data }) => {
@@ -86,9 +87,21 @@ export const actions = {
   },
   async [FETCH_PAGES]({ commit, dispatch }, payload) {
     return new Promise((resolve, reject) => {
-      console.log(`${PAGE_API_ROOT}/${buildParams(payload)}`);
       this.$axios
         .get(`${PAGE_API_ROOT}/${buildParams(payload)}`)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
+  async [FETCH_COUNTRY]({ commit, dispatch }) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .get(FETCH_COUNTRY_ENDPOINT)
         .then(({ data }) => {
           resolve(data);
         })

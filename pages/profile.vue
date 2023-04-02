@@ -27,6 +27,11 @@
               :src="HOST + getProfile.profile_image_detail.original.src"
               :alt="getProfile.profile_image_detail.original.alt"
             />
+            <img
+              v-else-if="getProfile.social_image_url"
+              :src="getProfile.social_image_url"
+              :alt="getProfile.full_name"
+            />
             <img v-else src="/images/avatar.png" alt="profile" />
           </div>
           <div class="full-name">
@@ -60,7 +65,7 @@ import {
   Mutation,
   Watch,
 } from "nuxt-property-decorator";
-import { NS_COMMON, NS_AUTH } from "../utils/store/namespace.names";
+import { NS_COMMON, NS_USER } from "../utils/store/namespace.names";
 import { FETCH_CURRENT_PAGE } from "../utils/store/action.names";
 import { namespaced } from "../utils/utils";
 import { GET_PROFILE } from "../utils/store/getter.names";
@@ -76,9 +81,9 @@ import PasswordChangeModal from "../components/modals/PasswordChangeModal";
   },
 })
 export default class Profile extends Vue {
-  @Getter(namespaced(NS_AUTH, GET_PROFILE)) getProfile;
+  @Getter(namespaced(NS_USER, GET_PROFILE)) getProfile;
 
-  @Mutation(namespaced(NS_AUTH, SET_TOKEN_ERROR)) setTokenError;
+  @Mutation(namespaced(NS_USER, SET_TOKEN_ERROR)) setTokenError;
 
   showProfileUpdateModal = false;
   showPasswordChangeModal = false;

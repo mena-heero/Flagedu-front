@@ -25,7 +25,7 @@
     "vue": "^2.7.10",
     "vue-clickaway": "^2.2.2",
     "vue-debounce": "^4.0.0",
-    "vue-loading-overlay": "^6.0.3",
+    "vue-loading-overlay": "^3.0",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10",
     "vue-toast-notification": "^0.6.3",

@@ -131,7 +131,7 @@ import {
   GET_MAINMENU,
   GET_GLOBAL_SETTINGS,
 } from "../utils/store/getter.names";
-import { NS_AUTH, NS_COMMON } from "../utils/store/namespace.names";
+import { NS_USER, NS_COMMON } from "../utils/store/namespace.names";
 
 @Component({
   name: "MobileSideMenu",
@@ -141,7 +141,7 @@ export default class MobileSideMenu extends Vue {
   @Getter(namespaced(NS_COMMON, GET_MAINMENU)) getMainMenu;
   @Getter(namespaced(NS_COMMON, GET_GLOBAL_SETTINGS)) getGlobalSettings;
 
-  @Getter(namespaced(NS_AUTH, GET_PROFILE))
+  @Getter(namespaced(NS_USER, GET_PROFILE))
   getProfile;
 
   get HOST() {

@@ -75,7 +75,7 @@ import {
   GET_GLOBAL_SETTINGS,
   GET_SOCIAL_SETTINGS,
 } from "../utils/store/getter.names";
-import { NS_AUTH, NS_COMMON } from "../utils/store/namespace.names";
+import { NS_USER, NS_COMMON } from "../utils/store/namespace.names";
 
 @Component({
   name: "Footer",

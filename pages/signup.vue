@@ -77,6 +77,62 @@
           </ValidationProvider>
 
           <ValidationProvider
+            rules="required"
+            v-slot="{ errors }"
+            tag="div"
+            class="mb-3"
+          >
+            <select
+              v-model="formData.country"
+              class="form-select country-select"
+              name="Country"
+            >
+              <option value="">Select country</option>
+              <option
+                v-for="(item, idx) in countries"
+                :key="'country_' + idx"
+                :value="item.id"
+              >
+                {{ item.name }}
+              </option>
+            </select>
+            <small v-if="errors.length" class="error">
+              {{ errors[0] }}
+            </small>
+          </ValidationProvider>
+
+          <ValidationProvider
+            rules="required"
+            v-slot="{ errors }"
+            tag="div"
+            class="mb-3"
+          >
+            <div class="form-input mb-1">
+              <img
+                src="/images/user.png"
+                alt="email icon"
+                class="icon"
+                width="16"
+                height="16"
+              />
+              <input
+                type="text"
+                name="Phone"
+                :class="{
+                  'form-control': true,
+                  redborder: errors[0],
+                }"
+                class="form-control"
+                placeholder="Phone number"
+                v-model="formData.phone"
+              />
+            </div>
+            <small v-if="errors.length" class="error">
+              {{ errors[0] }}
+            </small>
+          </ValidationProvider>
+
+          <ValidationProvider
             vid="password"
             ref="password"
             :rules="{
@@ -221,6 +277,18 @@
             {{ loading ? "Please wait..." : "Sign up" }}
           </button>
 
+          <div class="social-auth">
+            <div class="div-or">Or</div>
+            <div class="social-icons">
+              <div class="google-icon" @click.prevent="loginWithGoogle">
+                <i class="bi bi-google"></i>
+              </div>
+              <div class="fb-icon" @click.prevent="loginWithFacebook">
+                <i class="bi bi-facebook"></i>
+              </div>
+            </div>
+          </div>
+
           <p class="have-account text-center text-white">
             Already have an account?
             <NuxtLink to="/signin" class="text-active">Sign in</NuxtLink>
@@ -240,8 +308,8 @@ import {
   Mutation,
 } from "nuxt-property-decorator";
 import { namespaced } from "../utils/utils";
-import { NS_AUTH } from "../utils/store/namespace.names";
-import { SIGNUP } from "../utils/store/action.names";
+import { NS_USER, NS_COMMON } from "../utils/store/namespace.names";
+import { SIGNUP, FETCH_COUNTRY } from "../utils/store/action.names";
 
 @Component({
   name: "Signup",
@@ -249,11 +317,14 @@ import { SIGNUP } from "../utils/store/action.names";
   layout: "auth-layout",
 })
 export default class Signup extends Vue {
-  @Action(namespaced(NS_AUTH, SIGNUP)) signup;
+  @Action(namespaced(NS_COMMON, FETCH_COUNTRY)) fetchCountry;
+  @Action(namespaced(NS_USER, SIGNUP)) signup;
 
   formData = {
     full_name: "",
     email: "",
+    country: "",
+    phone: "",
     password: "",
     password2: "",
     is_agreed: "",
@@ -264,6 +335,14 @@ export default class Signup extends Vue {
 
   showPasswordOne = false;
   showPasswordTwo = false;
+
+  loginWithGoogle() {
+    window.location = `https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?protocol=oauth2&response_type=code&access_type=offline&client_id=559204491251-9rdnbjf2n27ks6u5klvef778icg1j4rm.apps.googleusercontent.com&redirect_uri=https://flagedu.com/socialauth/google&scope=openid%20profile%20email%20email%20profile&code_challenge_method&prompt=select_account&service=lso&o2v=1&flowName=GeneralOAuthFlow`;
+  }
+
+  loginWithFacebook() {
+    window.location = `https://www.facebook.com/v16.0/dialog/oauth?client_id=1419617315245410&redirect_uri=https://flagedu.com/socialauth/facebook`;
+  }
 
   toggleShowOne() {
     this.showPasswordOne = !this.showPasswordOne;
@@ -321,6 +400,22 @@ export default class Signup extends Vue {
       });
   }
 
+  async asyncData({ route, $axios, store }) {
+    var countries = [];
+    const countryData = await store
+      .dispatch(namespaced(NS_COMMON, FETCH_COUNTRY))
+      .then((data) => {
+        countries = data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+    return {
+      countries,
+    };
+  }
+
   mounted() {}
 
   head() {
@@ -340,5 +435,36 @@ export default class Signup extends Vue {
 }
 .form-check-input {
   margin-top: 0.26em;
+}
+.country-select {
+  background-color: transparent !important;
+  border-radius: 50px;
+  color: grey;
+}
+
+.social-auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  .div-or {
+    padding-top: 20px;
+    color: white;
+  }
+  .social-icons {
+    display: flex;
+    gap: 20px;
+    .google-icon {
+      font-size: 30px;
+      color: #4285f4;
+      cursor: pointer;
+    }
+    .fb-icon {
+      font-size: 30px;
+      color: #3b5998;
+      cursor: pointer;
+    }
+  }
 }
 </style>

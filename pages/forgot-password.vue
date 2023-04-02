@@ -78,7 +78,7 @@ import {
   Action,
   Mutation,
 } from "nuxt-property-decorator";
-import { NS_AUTH } from "../utils/store/namespace.names";
+import { NS_USER } from "../utils/store/namespace.names";
 import { SEND_VERIFICATION_CODE } from "../utils/store/action.names";
 import { namespaced } from "../utils/utils";
 @Component({
@@ -86,7 +86,7 @@ import { namespaced } from "../utils/utils";
   layout: "auth-layout",
 })
 export default class ForgetPassword extends Vue {
-  @Action(namespaced(NS_AUTH, SEND_VERIFICATION_CODE)) sendVerificationCode;
+  @Action(namespaced(NS_USER, SEND_VERIFICATION_CODE)) sendVerificationCode;
 
   error_msg = "";
   loading = false;

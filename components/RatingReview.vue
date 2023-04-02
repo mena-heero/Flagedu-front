@@ -154,7 +154,7 @@ import {
 import { namespaced } from "~/utils/utils";
 import { ADD_RATING, FETCH_RATING } from "../utils/store/action.names";
 import { GET_PROFILE } from "../utils/store/getter.names";
-import { NS_AUTH, NS_COMPANY } from "../utils/store/namespace.names";
+import { NS_USER, NS_COMPANY } from "../utils/store/namespace.names";
 
 function calculatePage(count, limit, page, totalPageCount, paginationSteps) {
   const totalPage = Math.ceil(count / limit);
@@ -206,7 +206,7 @@ function calculatePrev(page, paginationSteps) {
 export default class RatingReview extends Vue {
   @Prop() dataId;
 
-  @Getter(namespaced(NS_AUTH, GET_PROFILE)) getProfile;
+  @Getter(namespaced(NS_USER, GET_PROFILE)) getProfile;
 
   @Action(namespaced(NS_COMPANY, ADD_RATING)) addRating;
   @Action(namespaced(NS_COMPANY, FETCH_RATING)) fetchRating;

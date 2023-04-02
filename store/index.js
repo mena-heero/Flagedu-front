@@ -1,4 +1,4 @@
-import { NS_AUTH, NS_COMMON } from "~/utils/store/namespace.names";
+import { NS_USER, NS_COMMON } from "~/utils/store/namespace.names";
 import {
   GET_TOKEN_FROM_LOCAL_STORE,
   PROFILE,
@@ -10,10 +10,10 @@ export const state = () => ({});
 
 export const actions = {
   async nuxtServerInit({ dispatch }) {
-    await dispatch(namespaced(NS_AUTH, GET_TOKEN_FROM_LOCAL_STORE)).catch(
+    await dispatch(namespaced(NS_USER, GET_TOKEN_FROM_LOCAL_STORE)).catch(
       (e) => {}
     );
-    await dispatch(namespaced(NS_AUTH, PROFILE)).catch((e) => {});
+    await dispatch(namespaced(NS_USER, PROFILE)).catch((e) => {});
     await dispatch(namespaced(NS_COMMON, FETCH_SETTINGS)).catch((e) => {});
   },
 };

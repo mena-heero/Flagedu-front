@@ -31,6 +31,11 @@
               :src="HOST + getProfile.profile_image_detail.original.src"
               :alt="getProfile.profile_image_detail.original.alt"
             />
+            <img
+              v-else-if="getProfile.social_image_url"
+              :src="getProfile.social_image_url"
+              :alt="getProfile.full_name"
+            />
             <img v-else src="/images/avatar.png" alt="profile" />
             <div>{{ getProfile.full_name }}</div>
           </nuxt-link>
@@ -150,7 +155,7 @@ import {
   GET_MAINMENU,
   GET_GLOBAL_SETTINGS,
 } from "../utils/store/getter.names";
-import { NS_AUTH, NS_COMMON } from "../utils/store/namespace.names";
+import { NS_USER, NS_COMMON } from "../utils/store/namespace.names";
 import MobileSideMenu from "./MobileSideMenu.vue";
 
 @Component({
@@ -163,7 +168,7 @@ export default class Header extends Vue {
   @Getter(namespaced(NS_COMMON, GET_MAINMENU)) getMainMenu;
   @Getter(namespaced(NS_COMMON, GET_GLOBAL_SETTINGS)) getGlobalSettings;
 
-  @Getter(namespaced(NS_AUTH, GET_PROFILE))
+  @Getter(namespaced(NS_USER, GET_PROFILE))
   getProfile;
 
   mobileSideMenuOpen = false;

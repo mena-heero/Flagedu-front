@@ -239,7 +239,7 @@ import {
   Action,
   Mutation,
 } from "nuxt-property-decorator";
-import { NS_AUTH } from "../utils/store/namespace.names";
+import { NS_USER } from "../utils/store/namespace.names";
 import {
   SEND_VERIFICATION_CODE,
   FORGET_PASSWORD,
@@ -252,9 +252,9 @@ import { namespaced } from "../utils/utils";
   layout: "custom",
 })
 export default class ResetPassword extends Vue {
-  @Action(namespaced(NS_AUTH, SEND_VERIFICATION_CODE)) sendVerificationCode;
-  @Action(namespaced(NS_AUTH, FORGET_PASSWORD)) forgetPassword;
-  @Action(namespaced(NS_AUTH, VERIFY_CODE_FOR_FORGET_PASSWORD))
+  @Action(namespaced(NS_USER, SEND_VERIFICATION_CODE)) sendVerificationCode;
+  @Action(namespaced(NS_USER, FORGET_PASSWORD)) forgetPassword;
+  @Action(namespaced(NS_USER, VERIFY_CODE_FOR_FORGET_PASSWORD))
   verifyCodeForForgetPassword;
 
   error_msg = "";

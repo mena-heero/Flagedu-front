@@ -195,7 +195,7 @@
 <script>
 import { Component, Vue, Prop, Action } from "nuxt-property-decorator";
 import { CHANGE_PASSWORD } from "../../utils/store/action.names";
-import { NS_AUTH } from "../../utils/store/namespace.names";
+import { NS_USER } from "../../utils/store/namespace.names";
 import { namespaced } from "../../utils/utils";
 
 @Component({
@@ -204,7 +204,7 @@ import { namespaced } from "../../utils/utils";
 })
 export default class PasswordChangeModal extends Vue {
   @Prop() modalOpen;
-  @Action(namespaced(NS_AUTH, CHANGE_PASSWORD)) changePassword;
+  @Action(namespaced(NS_USER, CHANGE_PASSWORD)) changePassword;
 
   passwordChangeForm = {
     old_password: "",

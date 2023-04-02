@@ -15,7 +15,7 @@ import {
 import {} from "../utils/store/mutation.names";
 import { GET_AUTH_HEADER } from "../utils/store/getter.names";
 
-import { NS_AUTH } from "~/utils/store/namespace.names";
+import { NS_USER } from "~/utils/store/namespace.names";
 import { namespaced, buildParams } from "../utils/utils";
 
 export const state = () => ({});
@@ -38,7 +38,7 @@ export const actions = {
   },
   async [ADD_RATING]({ commit, dispatch, rootGetters }, payload) {
     return new Promise((resolve, reject) => {
-      const authHeader = rootGetters[namespaced(NS_AUTH, GET_AUTH_HEADER)];
+      const authHeader = rootGetters[namespaced(NS_USER, GET_AUTH_HEADER)];
 
       this.$axios
         .post(`${RATING_ENDPOINT}/`, payload, {

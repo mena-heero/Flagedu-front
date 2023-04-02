@@ -84,7 +84,7 @@ import {
   Watch,
 } from "nuxt-property-decorator";
 import {
-  NS_AUTH,
+  NS_USER,
   NS_COMMON,
   NS_COMPANY,
 } from "../../utils/store/namespace.names";

@@ -2,6 +2,8 @@ import { USERS_ENDPOINT } from "~/utils/store/endpoints";
 import {
   SIGNIN,
   SIGNUP,
+  GOOGLE_SIGNUP,
+  FACEBOOK_SIGNUP,
   PROFILE,
   GET_SIGNUP_DATA_FROM_LOCAL_STORAGE,
   SEND_VERIFICATION_CODE,
@@ -13,6 +15,8 @@ import {
   CHANGE_PASSWORD,
   CHANGE_PROFILE,
   CHANGE_PROFILE_IMAGE,
+  COMPLETE_SOCIAL_SIGNUP,
+  SOCIAL_AUTH_VERIFY_CONFIRM,
 } from "../utils/store/action.names";
 import {
   SET_TOKEN_ERROR,
@@ -27,7 +31,7 @@ import {
   GET_TOKEN,
 } from "../utils/store/getter.names";
 
-import { NS_AUTH } from "~/utils/store/namespace.names";
+import { NS_USER } from "~/utils/store/namespace.names";
 import { namespaced, buildParams } from "../utils/utils";
 
 export const state = () => ({
@@ -104,6 +108,73 @@ export const actions = {
         .catch((e) => {
           commit(SET_TOKEN_ERROR);
           console.log(e);
+          reject(e);
+        });
+    });
+  },
+
+  async [GOOGLE_SIGNUP]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .post(`${USERS_ENDPOINT}/google_signup/`, payload)
+        .then(({ data }) => {
+          if (data.phone && data.country) {
+            commit(SET_TOKEN, data.token);
+            commit(SET_PROFILE, data);
+          }
+          resolve(data);
+        })
+        .catch((e) => {
+          reject(e);
+        });
+    });
+  },
+
+  async [FACEBOOK_SIGNUP]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .post(`${USERS_ENDPOINT}/facebook_signup/`, payload)
+        .then(({ data }) => {
+          console.log(data);
+          if (data.signin_status == true) {
+            commit(SET_TOKEN, data.user.token);
+            commit(SET_PROFILE, data.user);
+          }
+          resolve(data);
+        })
+        .catch((e) => {
+          reject(e);
+        });
+    });
+  },
+
+  async [COMPLETE_SOCIAL_SIGNUP]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .post(`${USERS_ENDPOINT}/complete_social_signup/`, payload)
+        .then(({ data }) => {
+          if (data.auth_type == 1) {
+            commit(SET_TOKEN, data.token);
+            commit(SET_PROFILE, data);
+          }
+          resolve(data);
+        })
+        .catch((e) => {
+          reject(e);
+        });
+    });
+  },
+
+  async [SOCIAL_AUTH_VERIFY_CONFIRM]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .post(`${USERS_ENDPOINT}/social_auth_verify_confirm/`, payload)
+        .then(({ data }) => {
+          commit(SET_TOKEN, data.token);
+          commit(SET_PROFILE, data);
+          resolve(data);
+        })
+        .catch((e) => {
           reject(e);
         });
     });

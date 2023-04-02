@@ -115,10 +115,10 @@ export default {
       src: "~/plugins/vue-otp-input.js",
       ssr: false,
     },
-    // {
-    // 	src: "~/plugins/vue-loading-overlay.js",
-    // 	ssr: false,
-    // },
+    {
+      src: "~/plugins/vue-loading-overlay.js",
+      ssr: false,
+    },
     {
       src: "~/plugins/vue-countdown.js",
       ssr: false,

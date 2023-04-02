@@ -112,7 +112,7 @@ import {
   Mutation,
   Watch,
 } from "nuxt-property-decorator";
-import { NS_AUTH, NS_COMMON, NS_COMPANY } from "../utils/store/namespace.names";
+import { NS_USER, NS_COMMON, NS_COMPANY } from "../utils/store/namespace.names";
 import { FETCH_CURRENT_PAGE, FETCH_PAGES } from "../utils/store/action.names";
 import { namespaced, deepCopy, modifyHtmlPath } from "../utils/utils";
 import NewsArticleFilter from "../components/NewsArticleFilter";

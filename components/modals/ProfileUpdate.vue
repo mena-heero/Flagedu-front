@@ -32,6 +32,12 @@
                 class="profile-pic img-fluid"
               />
               <img
+                v-else-if="getProfile.social_image_url"
+                :src="getProfile.social_image_url"
+                :alt="getProfile.full_name"
+                class="profile-pic img-fluid"
+              />
+              <img
                 v-else
                 src="/images/avatar.png"
                 class="profile-pic img-fluid"
@@ -132,7 +138,7 @@ import {
   Action,
   Mutation,
 } from "nuxt-property-decorator";
-import { NS_AUTH } from "../../utils/store/namespace.names";
+import { NS_USER } from "../../utils/store/namespace.names";
 import { namespaced } from "../../utils/utils";
 import { GET_PROFILE } from "../../utils/store/getter.names";
 import {
@@ -147,10 +153,10 @@ import { SET_TOKEN_ERROR } from "../../utils/store/mutation.names";
 })
 export default class ProfileUpdateModal extends Vue {
   @Prop() modalOpen;
-  @Getter(namespaced(NS_AUTH, GET_PROFILE)) getProfile;
-  @Action(namespaced(NS_AUTH, CHANGE_PROFILE)) changeProfile;
-  @Action(namespaced(NS_AUTH, CHANGE_PROFILE_IMAGE)) changeProfileImage;
-  @Mutation(namespaced(NS_AUTH, SET_TOKEN_ERROR)) setTokenError;
+  @Getter(namespaced(NS_USER, GET_PROFILE)) getProfile;
+  @Action(namespaced(NS_USER, CHANGE_PROFILE)) changeProfile;
+  @Action(namespaced(NS_USER, CHANGE_PROFILE_IMAGE)) changeProfileImage;
+  @Mutation(namespaced(NS_USER, SET_TOKEN_ERROR)) setTokenError;
 
   file = null;
   fileUrl = "/images/profile-image.png";
@@ -299,7 +305,6 @@ export default class ProfileUpdateModal extends Vue {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left;
     width: 380px;
 
     .image-wrapper {
