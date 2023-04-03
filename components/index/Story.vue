@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="story-container">
-      <div class="title">Today's Story</div>
+      <div class="title">قصة اليوم</div>
       <div class="story-image-container">
         <div class="story-images">
           <div class="swiper">

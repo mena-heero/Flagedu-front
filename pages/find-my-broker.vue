@@ -5,7 +5,7 @@
       <div class="white-back">
         <div class="company-wrapper">
           <div class="result-block">
-            <div class="title">Your Broker List</div>
+            <div class="title">قائمة الوسطاء الخاصة بك</div>
             <div class="companies">
               <div
                 class="items-wrapper"
@@ -15,7 +15,7 @@
                 <div class="item">
                   <div class="content">
                     <div class="rank">
-                      <div>Top</div>
+                      <div>قمة</div>
                       <div>{{ idx + 1 }}</div>
                     </div>
                     <div class="image">
@@ -49,10 +49,10 @@
                   </div>
                   <div class="btn">
                     <nuxt-link class="hide-on-380" :to="item.html_url"
-                      >Visit</nuxt-link
+                      >يزور</nuxt-link
                     >
                     <nuxt-link class="visible-on-380" :to="item.html_url"
-                      >Visit</nuxt-link
+                      >يزور</nuxt-link
                     >
                   </div>
                 </div>
@@ -65,9 +65,9 @@
           </div>
           <div class="question-block">
             <div class="title" v-if="finish == false">
-              Question Number {{ step }}
+              رقم السؤال {{ step }}
             </div>
-            <div class="title" v-if="finish == true">Congratulation</div>
+            <div class="title" v-if="finish == true">تهنئة</div>
             <div class="item" v-if="step == 1">
               <div class="question-title">
                 How familiar are you with trading and investing?
@@ -415,33 +415,33 @@
               </div>
             </div>
             <div class="finish-block" v-if="finish == true">
-              Thank you for answering the question. The broker list is suggested
-              based on your answer!
+              شكرا لك على إجابتك على السؤال. تم اقتراح قائمة الوسطاء بناءً على
+              إجابتك!
             </div>
             <div class="btns">
               <button v-if="step != 5" @click="handleNext" class="next-btn">
-                Next
+                التالي
               </button>
               <button
                 v-if="step == 5 && finish == false"
                 @click="handleFinish"
                 class="next-btn"
               >
-                Finish
+                ينهي
               </button>
               <button
                 @click="handleBack"
                 v-if="step != 1 && finish == false"
                 class="back-btn"
               >
-                Back
+                خلف
               </button>
               <button
                 v-if="finish == true"
                 @click="handleTryAgain"
                 class="next-btn"
               >
-                Try again
+                حاول ثانية
               </button>
             </div>
           </div>
@@ -489,22 +489,22 @@ export default class FindMyBroker extends Vue {
   handleNext() {
     if (this.step == 1) {
       if (!this.answers.q1) {
-        this.$toast.error("Please answer the question!");
+        this.$toast.error("الرجاء الإجابة على السؤال!");
         return false;
       }
     } else if (this.step == 2) {
       if (!this.answers.q2) {
-        this.$toast.error("Please answer the question!");
+        this.$toast.error("الرجاء الإجابة على السؤال!");
         return false;
       }
     } else if (this.step == 3) {
       if (!this.answers.q3) {
-        this.$toast.error("Please answer the question!");
+        this.$toast.error("الرجاء الإجابة على السؤال!");
         return false;
       }
     } else if (this.step == 4) {
       if (!this.answers.q4) {
-        this.$toast.error("Please answer the question!");
+        this.$toast.error("الرجاء الإجابة على السؤال!");
         return false;
       }
     }
@@ -548,7 +548,7 @@ export default class FindMyBroker extends Vue {
   handleFinish() {
     if (this.step == 5) {
       if (!this.answers.q5) {
-        this.$toast.error("Please answer the question!");
+        this.$toast.error("الرجاء الإجابة على السؤال!");
         return false;
       }
     }

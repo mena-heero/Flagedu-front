@@ -15,7 +15,7 @@
         </div>
         <div class="content-body">
           <div class="reviews">
-            <div class="title">Number of Reviews</div>
+            <div class="title">عدد المراجعات</div>
             <div class="no-of-reviews">10</div>
           </div>
           <div class="rating">
@@ -37,11 +37,9 @@
             <div class="rating-value">({{ data.rating }})</div>
           </div>
           <div class="buttons">
-            <a target="_blank" :href="data.account_open_link"
-              >Open an account</a
-            >
+            <a target="_blank" :href="data.account_open_link">افتح حساب</a>
             <nuxt-link :to="modifyHtmlPath(data.meta.html_url)"
-              >Company profile</nuxt-link
+              >ملف الشركة</nuxt-link
             >
           </div>
         </div>
@@ -62,7 +60,7 @@
         </div>
         <div class="content-body">
           <div class="reviews">
-            <div class="title">Number of Reviews</div>
+            <div class="title">عدد المراجعات</div>
             <div class="no-of-reviews">10</div>
           </div>
           <div class="rating">
@@ -84,10 +82,8 @@
             <div class="rating-value">({{ data.rating }})</div>
           </div>
           <div class="buttons">
-            <a target="_blank" :href="data.account_open_link"
-              >Open an account</a
-            >
-            <nuxt-link :to="data.html_url">Company profile</nuxt-link>
+            <a target="_blank" :href="data.account_open_link">افتح حساب</a>
+            <nuxt-link :to="data.html_url">ملف الشركة</nuxt-link>
           </div>
         </div>
       </div>

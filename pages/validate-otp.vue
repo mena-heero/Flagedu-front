@@ -6,7 +6,7 @@
       <div class="card-wrapper">
         <div v-if="step == 0" class="text-center mb-3">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">Verification</h1>
+          <h1 class="text-white fw-semibold">تَحَقّق</h1>
         </div>
         <div v-if="step == 1" class="image-box">
           <img src="/images/image-123.png" alt="logo" class="vemate-robot" />
@@ -29,9 +29,9 @@
         <h1 v-if="step == 1" class="text-white fw-semibold mt-64">Congrats!</h1>
         <div v-if="step == 1" class="text-secondary text-center mb-5">
           <div v-if="$route.query.mode == 'verification'">
-            Your account is verified!
+            تم التحقق من حسابك!
           </div>
-          <div v-else>Your account has been created!</div>
+          <div v-else>لقد تم إنشاء حسابك!</div>
         </div>
         <ValidationObserver v-slot="{ invalid }" v-if="step == 0" ref="form">
           <form
@@ -41,7 +41,7 @@
             @submit.prevent="handleVerificationConfirm"
           >
             <p class="text-secondary text-center px-0 px-md-4">
-              Enter your 6 digits code that you received on your email.
+              أدخل رمزك المكون من 6 أرقام الذي تلقيته على بريدك الإلكتروني.
             </p>
 
             <div
@@ -67,25 +67,25 @@
             </div>
 
             <p class="text-secondary text-center resend-code">
-              If you didn’t receive a code!<a
+              إذا لم تتلق رمزًا!<a
                 href="#"
                 class="text-active"
                 @click.prevent="handleCodeResend"
                 :class="disableResend ? 'disable-link' : ''"
               >
-                Resend</a
+                إعادة إرسال</a
               >
             </p>
 
             <button class="btn btn-primary form-button mt-1">
-              {{ loading ? "Please wait..." : "Continue" }}
+              {{ loading ? "انتظر من فضلك..." : "يكمل" }}
             </button>
           </form>
         </ValidationObserver>
 
         <p v-if="step == 0" class="have-account text-center text-white">
-          Back to sign in?
-          <NuxtLink to="/signin" class="text-active">Sign in</NuxtLink>
+          العودة لتسجيل الدخول؟
+          <NuxtLink to="/signin" class="text-active">تسجيل الدخول</NuxtLink>
         </p>
         <div v-if="step == 1" class="start-btn">
           <NuxtLink to="/signin">
@@ -94,7 +94,7 @@
               alt="start-btn bg"
               class="img-fluid"
             />
-            <span>Start</span>
+            <span>يبدأ</span>
           </NuxtLink>
         </div>
       </div>
@@ -170,7 +170,7 @@ export default class OTPVerification extends Vue {
         this.countDown = 60;
         this.countDownTimer();
         this.disableResend = true;
-        var msg = `<div class='t-custom-class'><div>Verification code send successfully!</div></div>`;
+        var msg = `<div class='t-custom-class'><div>تم إرسال رمز التحقق بنجاح!</div></div>`;
         this.$toast.success(msg);
       })
       .catch((e) => {
@@ -183,7 +183,7 @@ export default class OTPVerification extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
           this.$toast.error(msg);
         }
       });
@@ -201,7 +201,7 @@ export default class OTPVerification extends Vue {
     this.verificationConfirm(this.formData)
       .then((data) => {
         this.loading = false;
-        var msg = `<div class='t-custom-class'><div>Successfully verified your account!</div></div>`;
+        var msg = `<div class='t-custom-class'><div>تم التحقق من حسابك بنجاح!</div></div>`;
         this.$toast.success(msg);
         this.step = 1;
       })
@@ -218,7 +218,7 @@ export default class OTPVerification extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
           this.$toast.error(msg);
         }
       });

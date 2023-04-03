@@ -17,7 +17,7 @@
           <div class="menu-items">
             <div class="nav-item-container">
               <nuxt-link v-if="!getProfile" to="/signin" class="nav-item"
-                >Signin</nuxt-link
+                >تسجيل الدخول</nuxt-link
               >
             </div>
             <div

@@ -12,7 +12,7 @@
         </div>
         <div class="nav-item-container">
           <nuxt-link v-if="!getProfile" to="/signin" class="nav-item hide"
-            >Signin</nuxt-link
+            >تسجيل الدخول</nuxt-link
           >
           <a
             v-if="!getProfile"

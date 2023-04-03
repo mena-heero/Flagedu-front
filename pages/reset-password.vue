@@ -20,10 +20,10 @@
           />
 
           <h1 v-if="step == 0 && stage == 1" class="text-white fw-semibold">
-            Verfication
+            التحقق
           </h1>
           <h1 v-if="step == 0 && stage == 2" class="text-white fw-semibold">
-            Forgot Password
+            هل نسيت كلمة السر
           </h1>
           <h1 v-if="step == 1" class="text-white fw-semibold">Successful</h1>
         </div>
@@ -39,11 +39,11 @@
               v-if="stage == 1"
               class="text-secondary text-center px-0 px-md-4"
             >
-              Enter your 6 digits code that you received on your email.
+              أدخل رمزك المكون من 6 أرقام الذي تلقيته على بريدك الإلكتروني.
             </p>
             <p v-else-if="stage == 2" class="text-secondary text-center">
-              Set the new password for your account so you can login and access
-              all featuress.
+              قم بتعيين كلمة المرور الجديدة لحسابك حتى تتمكن من تسجيل الدخول
+              والوصول إلى جميع الميزات.
             </p>
 
             <div
@@ -88,7 +88,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="New Password"
+                  placeholder="كلمة المرور الجديدة"
                   v-model="formData.password"
                 />
                 <span @click="toggleShowOne">
@@ -140,7 +140,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="Confirm Password"
+                  placeholder="تأكيد كلمة المرور"
                   v-model="formData.password2"
                 />
                 <span @click="toggleShowTwo">
@@ -165,7 +165,7 @@
               <small v-if="errors.length" class="error">
                 {{
                   errors.length && formData.password != formData.password2
-                    ? "Passwords do not match"
+                    ? "كلمة المرور غير مطابقة"
                     : errors[0]
                 }}
               </small>
@@ -189,13 +189,13 @@
                 v-if="stage == 1"
                 class="text-secondary text-center resend-code"
               >
-                If you didn’t receive a code!<a
+                إذا لم تتلق رمزًا!<a
                   href="#"
                   class="text-active"
                   @click.prevent="handleCodeResend"
                   :class="disableResend ? 'disable-link' : ''"
                 >
-                  Resend</a
+                  إعادة إرسال</a
                 >
               </p>
             </div>
@@ -206,7 +206,7 @@
               class="btn btn-primary form-button mt-1"
               type="button"
             >
-              {{ loading ? "Please wait..." : "Continue" }}
+              {{ loading ? "انتظر من فضلك..." : "يكمل" }}
             </button>
 
             <button
@@ -215,16 +215,16 @@
               class="btn btn-primary form-button mt-4"
               :disabled="invalid"
             >
-              {{ loading ? "Please wait..." : "Update Password" }}
+              {{ loading ? "انتظر من فضلك..." : "تطوير كلمة السر" }}
             </button>
           </form>
         </ValidationObserver>
         <p class="text-secondary text-center px-0 px-md-4" v-if="step == 1">
-          Your password has been reset successfully
+          تم إعادة تعيين كلمة المرور الخاصة بك بنجاح
         </p>
         <p class="have-account text-center text-white">
-          Back to sign in?
-          <NuxtLink to="/signin" class="text-active">Sign in</NuxtLink>
+          العودة لتسجيل الدخول؟
+          <NuxtLink to="/signin" class="text-active">تسجيل الدخول</NuxtLink>
         </p>
       </div>
     </div>
@@ -303,7 +303,7 @@ export default class ResetPassword extends Vue {
 
     if (this.formData.code.length < 1) {
       this.loading = false;
-      var msg = `<div class='t-custom-class'><div>Enter otp code!</div></div>`;
+      var msg = `<div class='t-custom-class'><div>أدخل رمز otp!</div></div>`;
       this.$toast.error(msg);
       return false;
     } else {
@@ -322,11 +322,11 @@ export default class ResetPassword extends Vue {
         this.loading = false;
         let verifyStatus = data.verify_status;
         if (verifyStatus == true) {
-          var msg = `<div class='t-custom-class'><div>OTP has been matched successfully!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>تم مطابقة OTP بنجاح!</div></div>`;
           this.$toast.success(msg);
           this.stage = 2;
         } else {
-          var msg = `<div class='t-custom-class'><div>Invalid OTP!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>OTP غير صحيح!</div></div>`;
           this.$toast.error(msg);
           this.verify_error_msg = data.verify_error_msg;
         }
@@ -342,7 +342,7 @@ export default class ResetPassword extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
           this.$toast.error(msg);
         }
       });
@@ -354,7 +354,7 @@ export default class ResetPassword extends Vue {
     this.forgetPassword(this.formData)
       .then((data) => {
         this.loading = false;
-        var msg = `<div class='t-custom-class'><div>Successfully changed your password!</div></div>`;
+        var msg = `<div class='t-custom-class'><div>تم تغيير كلمة المرور الخاصة بك بنجاح!</div></div>`;
         this.$toast.success(msg);
         this.step = 1;
       })
@@ -369,7 +369,7 @@ export default class ResetPassword extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
           this.$toast.error(msg);
         }
       });
@@ -384,7 +384,7 @@ export default class ResetPassword extends Vue {
         this.countDown = 60;
         this.countDownTimer();
         this.disableResend = true;
-        var msg = `<div class='t-custom-class'><div>Verification code send successfully!</div></div>`;
+        var msg = `<div class='t-custom-class'><div>تم إرسال رمز التحقق بنجاح!</div></div>`;
         this.$toast.success(msg);
       })
       .catch((e) => {

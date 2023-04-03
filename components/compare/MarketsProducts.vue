@@ -2,7 +2,7 @@
   <div class="company-content">
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company1">
-        <div class="title">Market and Products</div>
+        <div class="title">السوق والمنتجات</div>
         <div class="bool-data">
           {{ companyDetail.company1.markets_products }}
         </div>
@@ -10,7 +10,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company2">
-        <div class="title">Market and Products</div>
+        <div class="title">السوق والمنتجات</div>
         <div class="bool-data">
           {{ companyDetail.company2.markets_products }}
         </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company3">
-        <div class="title">Market and Products</div>
+        <div class="title">السوق والمنتجات</div>
         <div class="bool-data">
           {{ companyDetail.company3.markets_products }}
         </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company4">
-        <div class="title">Market and Products</div>
+        <div class="title">السوق والمنتجات</div>
         <div class="bool-data">
           {{ companyDetail.company4.markets_products }}
         </div>

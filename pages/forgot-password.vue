@@ -6,12 +6,12 @@
       <div class="card-wrapper">
         <div class="text-center mb-3">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">Forgot Password</h1>
+          <h1 class="text-white fw-semibold">هل نسيت كلمة السر</h1>
         </div>
 
         <p class="text-secondary text-center">
-          Enter your email for the verification proccess,we will send 6 digits
-          code to your email.
+          أدخل بريدك الإلكتروني لعملية التحقق ، وسنرسل رمزًا مكونًا من 6 أرقام
+          إلى بريدك الإلكتروني.
         </p>
 
         <ValidationObserver v-slot="{ invalid }">
@@ -38,7 +38,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="Your Email"
+                  placeholder="بريدك الالكتروني"
                   v-model="formData.email"
                 />
               </div>
@@ -57,13 +57,13 @@
               class="btn btn-primary form-button mt-4"
               :disabled="invalid"
             >
-              {{ loading ? "Please wait..." : "Continue" }}
+              {{ loading ? "انتظر من فضلك..." : "يكمل" }}
             </button>
           </form>
         </ValidationObserver>
         <p class="have-account text-center text-white">
-          Back to sign in?
-          <NuxtLink to="/signin" class="text-active">Sign in</NuxtLink>
+          العودة لتسجيل الدخول؟
+          <NuxtLink to="/signin" class="text-active">تسجيل الدخول</NuxtLink>
         </p>
       </div>
     </div>

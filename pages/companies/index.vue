@@ -31,7 +31,7 @@
               type="text"
               name="search"
               class="form-control"
-              placeholder="Search"
+              placeholder="يبحث"
               v-model.trim="search"
               v-debounce:400ms="debounceSearch"
             />

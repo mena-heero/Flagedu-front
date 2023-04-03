@@ -2,7 +2,7 @@
   <div class="company-content">
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company1">
-        <div class="title">Overall Score</div>
+        <div class="title">المجموع النهائي</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(
@@ -34,7 +34,7 @@
         <div v-html="companyDetail.company1.recommendation_text"></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company1">
-        <div class="title">Country of origin</div>
+        <div class="title">بلد المنشأ</div>
         <div class="country-name">
           {{ companyDetail.company1.origin_branch.name }}
         </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company2">
-        <div class="title">Overall Score</div>
+        <div class="title">المجموع النهائي</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(
@@ -74,7 +74,7 @@
         <div v-html="companyDetail.company2.recommendation_text"></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company2">
-        <div class="title">Country of origin</div>
+        <div class="title">بلد المنشأ</div>
         <div class="country-name">
           {{ companyDetail.company2.origin_branch.name }}
         </div>
@@ -82,7 +82,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company3">
-        <div class="title">Overall Score</div>
+        <div class="title">المجموع النهائي</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(
@@ -114,7 +114,7 @@
         <div v-html="companyDetail.company3.recommendation_text"></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company3">
-        <div class="title">Country of origin</div>
+        <div class="title">بلد المنشأ</div>
         <div class="country-name">
           {{ companyDetail.company3.origin_branch.name }}
         </div>
@@ -122,7 +122,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company4">
-        <div class="title">Overall Score</div>
+        <div class="title">المجموع النهائي</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(
@@ -154,7 +154,7 @@
         <div v-html="companyDetail.company4.recommendation_text"></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company4">
-        <div class="title">Country of origin</div>
+        <div class="title">بلد المنشأ</div>
         <div class="country-name">
           {{ companyDetail.company4.origin_branch.name }}
         </div>

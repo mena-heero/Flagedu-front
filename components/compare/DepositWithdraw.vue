@@ -2,7 +2,7 @@
   <div class="company-content">
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company1">
-        <div class="title">Fees Score</div>
+        <div class="title">نقاط الإيداع والسحب</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(
@@ -33,7 +33,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company2">
-        <div class="title">Fees Score</div>
+        <div class="title">نقاط الإيداع والسحب</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(
@@ -64,7 +64,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company3">
-        <div class="title">Fees Score</div>
+        <div class="title">نقاط الإيداع والسحب</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(
@@ -95,7 +95,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company4">
-        <div class="title">Fees Score</div>
+        <div class="title">نقاط الإيداع والسحب</div>
         <div class="rating">
           <i
             v-for="(rate, ridx) in totalFullStar(

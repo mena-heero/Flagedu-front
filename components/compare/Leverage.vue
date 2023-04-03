@@ -2,7 +2,7 @@
   <div class="company-content">
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company1">
-        <div class="title">Leverage</div>
+        <div class="title">تَأثِير</div>
         <div class="bool-data">
           {{ companyDetail.company1.leverage }}
         </div>
@@ -10,7 +10,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company2">
-        <div class="title">Leverage</div>
+        <div class="title">تَأثِير</div>
         <div class="bool-data">
           {{ companyDetail.company2.leverage }}
         </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company3">
-        <div class="title">Leverage</div>
+        <div class="title">تَأثِير</div>
         <div class="bool-data">
           {{ companyDetail.company3.leverage }}
         </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company4">
-        <div class="title">Leverage</div>
+        <div class="title">تَأثِير</div>
         <div class="bool-data">
           {{ companyDetail.company4.leverage }}
         </div>
@@ -43,10 +43,10 @@ import {} from "../../utils/store/getter.names";
 import {} from "../../utils/store/namespace.names";
 
 @Component({
-  name: "Leverage",
+  name: "تَأثِير",
   components: {},
 })
-export default class Leverage extends Vue {
+export default class تَأثِير extends Vue {
   @Prop() companyDetail;
 
   get HOST() {

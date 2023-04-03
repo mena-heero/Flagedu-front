@@ -6,7 +6,7 @@
       <div class="card-wrapper">
         <div class="text-center mb-5">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">Sign In</h1>
+          <h1 class="text-white fw-semibold">تسجيل الدخول</h1>
         </div>
         <ValidationObserver v-slot="{ invalid }" ref="form">
           <form method="post" name="signinForm" @submit.prevent="handleLogin">
@@ -32,7 +32,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="Email"
+                  placeholder="بريد إلكتروني"
                   v-model="formData.username"
                 />
               </div>
@@ -64,7 +64,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="Password"
+                  placeholder="كلمة المرور"
                   v-model="formData.password"
                 />
                 <span @click="toggleShowOne">
@@ -94,7 +94,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div>
                 <NuxtLink class="form-forget-password" to="/forgot-password"
-                  >Forgot password?</NuxtLink
+                  >نسيت كلمة السر؟</NuxtLink
                 >
               </div>
             </div>
@@ -109,11 +109,11 @@
               class="btn btn-primary form-button"
               :disabled="invalid"
             >
-              {{ loading ? "Please wait..." : "Sign in" }}
+              {{ loading ? "انتظر من فضلك..." : "تسجيل الدخول" }}
             </button>
 
             <div class="social-auth">
-              <div class="div-or">Or</div>
+              <div class="div-or">أو</div>
               <div class="social-icons">
                 <div class="google-icon" @click.prevent="loginWithGoogle">
                   <i class="bi bi-google"></i>
@@ -125,8 +125,8 @@
             </div>
 
             <p class="have-account text-center text-white">
-              Don`t have an account?
-              <NuxtLink to="/signup" class="text-active">Sign up</NuxtLink>
+              ليس لديك حساب؟
+              <NuxtLink to="/signup" class="text-active">اشتراك</NuxtLink>
             </p>
           </form>
         </ValidationObserver>
@@ -192,7 +192,7 @@ export default class Signin extends Vue {
       reason: "verify",
     }).then((data) => {
       if (popup == true) {
-        var msg = `<div class='t-custom-class'><div>Successfully resend verification code to your email!</div></div>`;
+        var msg = `<div class='t-custom-class'><div>نجح إعادة إرسال رمز التحقق إلى بريدك الإلكتروني!</div></div>`;
         this.$toast.success(msg);
       }
     });
@@ -229,7 +229,7 @@ export default class Signin extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
           this.$toast.error(msg);
         }
       });

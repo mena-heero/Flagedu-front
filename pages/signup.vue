@@ -6,7 +6,7 @@
       <div class="card-wrapper">
         <div class="text-center mb-5">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">Create an Account</h1>
+          <h1 class="text-white fw-semibold">إنشاء حساب</h1>
         </div>
 
         <ValidationObserver
@@ -36,7 +36,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="Full name"
+                placeholder="الاسم الكامل"
                 v-model="formData.full_name"
               />
             </div>
@@ -67,7 +67,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="Your Email"
+                placeholder="بريدك الالكتروني"
                 v-model="formData.email"
               />
             </div>
@@ -87,7 +87,7 @@
               class="form-select country-select"
               name="Country"
             >
-              <option value="">Select country</option>
+              <option value="">حدد الدولة</option>
               <option
                 v-for="(item, idx) in countries"
                 :key="'country_' + idx"
@@ -123,7 +123,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="Phone number"
+                placeholder="رقم التليفون"
                 v-model="formData.phone"
               />
             </div>
@@ -159,7 +159,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="Password"
+                placeholder="كلمة المرور"
                 v-model="formData.password"
               />
               <span @click="toggleShowOne">
@@ -210,7 +210,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="Confirm Password"
+                placeholder="تأكيد كلمة المرور"
                 v-model="formData.password2"
               />
               <span @click="toggleShowTwo">
@@ -243,19 +243,19 @@
 
           <div class="form-check d-flex">
             <label class="form-check-label text-white">
-              I agree with the
+              أتفق مع
               <a
                 href="/common/terms-and-conditions"
                 target="_blank"
                 class="text-active"
-                >Terms of Service</a
+                >شروط الخدمة</a
               >
-              and
+              و
               <a
                 href="/common/privacy-policy"
                 target="_blank"
                 class="text-active"
-                >Privacy Policy</a
+                >سياسة الخصوصية</a
               >
             </label>
             <input
@@ -274,7 +274,7 @@
             class="btn btn-primary form-button"
             :disabled="invalid"
           >
-            {{ loading ? "Please wait..." : "Sign up" }}
+            {{ loading ? "انتظر من فضلك..." : "اشتراك" }}
           </button>
 
           <div class="social-auth">
@@ -290,8 +290,8 @@
           </div>
 
           <p class="have-account text-center text-white">
-            Already have an account?
-            <NuxtLink to="/signin" class="text-active">Sign in</NuxtLink>
+            هل لديك حساب؟
+            <NuxtLink to="/signin" class="text-active">تسجيل الدخول</NuxtLink>
           </p>
         </ValidationObserver>
       </div>
@@ -365,7 +365,7 @@ export default class Signup extends Vue {
     this.loading = true;
 
     if (this.formData.is_agreed == false) {
-      var msg = `<div class='t-custom-class'><div>You need to agree with our terms and conditions!</div></div>`;
+      var msg = `<div class='t-custom-class'><div>أنت بحاجة إلى الموافقة على الشروط والأحكام الخاصة بنا!</div></div>`;
       this.$toast.error(msg);
       this.loading = false;
       return false;
@@ -394,7 +394,7 @@ export default class Signup extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
           this.$toast.error(msg);
         }
       });

@@ -135,24 +135,24 @@ export default class TwoColumnTextImageBlock extends Vue {
       align-items: center;
       padding: 16px 32px;
       gap: 10px;
-      width: 206px;
+      width: 220px;
       height: 54px;
       background: #01aeab;
       border-radius: 8px;
       @media (max-width: 950px) {
         height: 45px;
-        width: 180px;
+        width: 200px;
       }
       a {
         font-weight: 700;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 22px;
         color: #ffffff;
         @media (max-width: 1250px) {
-          font-size: 16px;
+          font-size: 14px;
         }
         @media (max-width: 950px) {
-          font-size: 14px;
+          font-size: 13px;
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <div class="title">Online Broker Comparison</div>
+      <div class="title">مقارنة الوسطاء عبر الإنترنت</div>
       <div class="white-back">
         <div class="company-wrapper">
           <div class="select-company-wrapper">
@@ -12,7 +12,7 @@
                   @click="handleOpenCompanySearch(1)"
                   v-if="!companyInput.company1"
                 >
-                  <div class="add-company-title">Add Company</div>
+                  <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
@@ -34,7 +34,7 @@
                     class="visit-broker-btn"
                     :to="companyInput.company1.html_url"
                   >
-                    Visit Broker
+                    قم بزيارة وسيط
                   </nuxt-link>
                 </div>
               </div>
@@ -44,7 +44,7 @@
                   @click="handleOpenCompanySearch(2)"
                   v-if="!companyInput.company2"
                 >
-                  <div class="add-company-title">Add Company</div>
+                  <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
@@ -66,7 +66,7 @@
                     class="visit-broker-btn"
                     :to="companyInput.company2.html_url"
                   >
-                    Visit Broker
+                    قم بزيارة وسيط
                   </nuxt-link>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                   @click="handleOpenCompanySearch(3)"
                   v-if="!companyInput.company3"
                 >
-                  <div class="add-company-title">Add Company</div>
+                  <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
@@ -98,7 +98,7 @@
                     class="visit-broker-btn"
                     :to="companyInput.company3.html_url"
                   >
-                    Visit Broker
+                    قم بزيارة وسيط
                   </nuxt-link>
                 </div>
               </div>
@@ -108,7 +108,7 @@
                   @click="handleOpenCompanySearch(4)"
                   v-if="!companyInput.company4"
                 >
-                  <div class="add-company-title">Add Company</div>
+                  <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-else>
@@ -130,7 +130,7 @@
                     class="visit-broker-btn"
                     :to="companyInput.company4.html_url"
                   >
-                    Visit Broker
+                    قم بزيارة وسيط
                   </nuxt-link>
                 </div>
               </div>
@@ -139,7 +139,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Basic data of broker</div>
+              <div>البيانات الأساسية للوسيط</div>
             </div>
             <div class="company-content-wrapper">
               <BasicData :companyDetail="companyDetail" />
@@ -148,7 +148,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Islamic Account</div>
+              <div>حساب اسلامي</div>
             </div>
             <div class="company-content-wrapper">
               <IslamicAccount :companyDetail="companyDetail" />
@@ -157,7 +157,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Fees</div>
+              <div>مصاريف</div>
             </div>
             <div class="company-content-wrapper">
               <FeesBlock :companyDetail="companyDetail" />
@@ -166,7 +166,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Deposit and Withdrawal</div>
+              <div>الإيداع والسحب</div>
             </div>
             <div class="company-content-wrapper">
               <DepositWithdraw :companyDetail="companyDetail" />
@@ -175,7 +175,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Trading Platforms</div>
+              <div>منصات التداول</div>
             </div>
             <div class="company-content-wrapper">
               <TradingPlatform :companyDetail="companyDetail" />
@@ -184,7 +184,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Market and Products</div>
+              <div>السوق والمنتجات</div>
             </div>
             <div class="company-content-wrapper">
               <MarketsProducts :companyDetail="companyDetail" />
@@ -193,7 +193,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Security</div>
+              <div>حماية</div>
             </div>
             <div class="company-content-wrapper">
               <SecurityBlock :companyDetail="companyDetail" />
@@ -202,7 +202,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Customer Service</div>
+              <div>خدمة الزبائن</div>
             </div>
             <div class="company-content-wrapper">
               <CustomerServiceBlock :companyDetail="companyDetail" />
@@ -211,7 +211,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Research & Development</div>
+              <div>البحث و التنمية</div>
             </div>
             <div class="company-content-wrapper">
               <ResearchDevelopmentBlock :companyDetail="companyDetail" />
@@ -220,7 +220,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Demo Account</div>
+              <div>حساب تجريبي</div>
             </div>
             <div class="company-content-wrapper">
               <DemoAccount :companyDetail="companyDetail" />
@@ -229,7 +229,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>Leverage</div>
+              <div>تَأثِير</div>
             </div>
             <div class="company-content-wrapper">
               <Leverage :companyDetail="companyDetail" />

@@ -128,7 +128,8 @@ export default class BrokerSurveyBlock extends Vue {
   }
   a {
     height: 64px;
-    width: 205px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: $primary-btn-color;
     color: $primary-color;
     font-size: 18px;
@@ -140,7 +141,6 @@ export default class BrokerSurveyBlock extends Vue {
     border-radius: 8px;
     @media (max-width: 1250px) {
       height: 50px;
-      width: 140px;
       font-size: 14px;
     }
   }

@@ -2,33 +2,33 @@
   <div class="company-content">
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company1">
-        <div class="title">Demo Account</div>
+        <div class="title">حساب تجريبي</div>
         <div class="bool-data">
-          {{ companyDetail.company1.demo_account == true ? "Yes" : "No" }}
+          {{ companyDetail.company1.demo_account == true ? "نعم" : "لا" }}
         </div>
       </div>
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company2">
-        <div class="title">Demo Account</div>
+        <div class="title">حساب تجريبي</div>
         <div class="bool-data">
-          {{ companyDetail.company2.demo_account == true ? "Yes" : "No" }}
+          {{ companyDetail.company2.demo_account == true ? "نعم" : "لا" }}
         </div>
       </div>
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company3">
-        <div class="title">Demo Account</div>
+        <div class="title">حساب تجريبي</div>
         <div class="bool-data">
-          {{ companyDetail.company3.demo_account == true ? "Yes" : "No" }}
+          {{ companyDetail.company3.demo_account == true ? "نعم" : "لا" }}
         </div>
       </div>
     </div>
     <div class="company-content-item">
       <div class="overall-score" v-if="companyDetail.company4">
-        <div class="title">Demo Account</div>
+        <div class="title">حساب تجريبي</div>
         <div class="bool-data">
-          {{ companyDetail.company4.demo_account == true ? "Yes" : "No" }}
+          {{ companyDetail.company4.demo_account == true ? "نعم" : "لا" }}
         </div>
       </div>
     </div>
