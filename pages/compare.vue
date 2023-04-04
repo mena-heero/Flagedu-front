@@ -229,7 +229,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>تَأثِير</div>
+              <div>الرافعه الماليه</div>
             </div>
             <div class="company-content-wrapper">
               <Leverage :companyDetail="companyDetail" />

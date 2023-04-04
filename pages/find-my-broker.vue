@@ -5,7 +5,7 @@
       <div class="white-back">
         <div class="company-wrapper">
           <div class="result-block">
-            <div class="title">قائمة الوسطاء الخاصة بك</div>
+            <div class="title">قائمة الوسطاء المرشحة لك</div>
             <div class="companies">
               <div
                 class="items-wrapper"
@@ -49,10 +49,10 @@
                   </div>
                   <div class="btn">
                     <nuxt-link class="hide-on-380" :to="item.html_url"
-                      >يزور</nuxt-link
+                      >فتح حساب</nuxt-link
                     >
                     <nuxt-link class="visible-on-380" :to="item.html_url"
-                      >يزور</nuxt-link
+                      >فتح حساب</nuxt-link
                     >
                   </div>
                 </div>
@@ -864,7 +864,7 @@ export default class FindMyBroker extends Vue {
           .rating {
             display: flex;
             align-items: flex-start;
-            justify-content: flex-end;
+            justify-content: flex-start;
             gap: 5px;
             width: 100%;
             .rating-value {

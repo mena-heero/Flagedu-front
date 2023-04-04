@@ -2,7 +2,7 @@
   <div>
     <div class="rating-container">
       <div class="form">
-        <div class="title">What's your opinion?</div>
+        <div class="title">ما هو رأيك؟</div>
         <ValidationObserver v-slot="{ invalid }" ref="form" v-if="getProfile">
           <form
             method="post"
@@ -24,7 +24,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="Rating 0-5"
+                  placeholder="التصنيف 0-5"
                   step="1"
                   min="0"
                   max="5"
@@ -47,7 +47,7 @@
                     'form-control': true,
                     redborder: errors[0],
                   }"
-                  placeholder="Comment"
+                  placeholder="تعليق"
                   rows="3"
                   v-model="formData.comment"
                   name="Comment"
@@ -57,14 +57,12 @@
                 {{ errors[0] }}
               </small>
             </ValidationProvider>
-            <button :disabled="invalid" class="submit-button">
-              Add Comment
-            </button>
+            <button :disabled="invalid" class="submit-button">أضف تعليق</button>
           </form>
         </ValidationObserver>
         <div class="" v-if="!getProfile">
-          You need to <nuxt-link to="/signin">signin</nuxt-link> to add rating
-          and review!
+          أنت بحاجه إلى <nuxt-link to="/signin">تسجيل الدخول</nuxt-link> لإضافة
+          التقييم والمراجعة!
         </div>
       </div>
       <div class="comments">
@@ -116,7 +114,7 @@
             <div class="user-comment" v-html="comment.comment"></div>
           </div>
         </div>
-        <div class="pagination" dir="ltr" v-if="paginationSteps.length > 1">
+        <div dir="ltr" class="pagination" v-if="paginationSteps.length > 1">
           <a v-if="page != 1" class="item" @click.prevent="handleDecrement">
             <i class="bi bi-caret-left-fill"></i>
           </a>
@@ -430,18 +428,19 @@ export default class RatingReview extends Vue {
       display: flex;
       flex-direction: column;
       gap: 0px;
+      width: 100%;
       .name {
         font-size: 16px;
         font-weight: 500;
       }
       .info {
         display: flex;
-        gap: 20px;
+        justify-content: flex-start;
         .rating {
           display: flex;
-          align-items: flex-start;
           justify-content: flex-start;
           gap: 5px;
+          width: 200px;
           .rating-value {
             font-size: 14px;
             font-weight: 700;
@@ -451,7 +450,9 @@ export default class RatingReview extends Vue {
         .timesince {
           font-size: 14px;
           color: grey;
-          width: 120px;
+          display: flex;
+          justify-content: flex-end;
+          gap: 5px;
         }
       }
       .user-comment {

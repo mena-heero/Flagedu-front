@@ -9,7 +9,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-trophy"></i>
-                  <div class="title">Rating</div>
+                  <div class="title">تقييم</div>
                 </div>
                 <div class="right">
                   <div class="rating">
@@ -44,7 +44,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-hammer"></i>
-                  <div class="title">Regulatory Bodies</div>
+                  <div class="title">الهيئات التنظيمية</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -56,7 +56,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-moon-stars"></i>
-                  <div class="title">Islamic Account</div>
+                  <div class="title">حساب اسلامي</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -68,7 +68,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-currency-dollar"></i>
-                  <div class="title">Minimum Deposit</div>
+                  <div class="title">الحد الأدنى للإيداع</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -80,7 +80,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-headset"></i>
-                  <div class="title">Customer Service</div>
+                  <div class="title">خدمة الزبائن</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -92,7 +92,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-airplane-engines"></i>
-                  <div class="title">Demo Account</div>
+                  <div class="title">حساب تجريبي</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -104,7 +104,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-building"></i>
-                  <div class="title">Main Branch</div>
+                  <div class="title">الفرع الرئيسي</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -120,7 +120,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-activity"></i>
-                  <div class="title">Trading Platforms</div>
+                  <div class="title">منصات التداول</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -143,7 +143,7 @@
               ></div>
               <div class="account-open-btn">
                 <a target="_blank" :href="getCurrentPage.account_open_link"
-                  >Register now</a
+                  >فتح حساب</a
                 >
               </div>
             </div>
