@@ -370,7 +370,7 @@ export default class ComparePage extends Vue {
     }
   }
 
-  async asyncData({ route, $axios, store }) {
+  async asyncData({ route, $axios, store, error }) {
     var getCurrentPage = {};
     const currentPageData = await store
       .dispatch(namespaced(NS_COMMON, FETCH_CURRENT_PAGE), {
@@ -380,7 +380,12 @@ export default class ComparePage extends Vue {
         getCurrentPage = data;
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
+        if (e.response.status === 404) {
+          error({ statusCode: 404 });
+        } else {
+          error({ statusCode: 500 });
+        }
       });
 
     var companyInput = {
@@ -443,7 +448,13 @@ export default class ComparePage extends Vue {
               };
             }
           })
-          .catch((e) => {});
+          .catch((e) => {
+            if (e.response.status === 404) {
+              error({ statusCode: 404 });
+            } else {
+              error({ statusCode: 500 });
+            }
+          });
       }
     }
 

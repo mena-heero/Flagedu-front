@@ -295,7 +295,7 @@ export default class CompanyIndex extends Vue {
     );
   }
 
-  async asyncData({ route, $axios, store }) {
+  async asyncData({ route, $axios, store, error }) {
     var getCurrentPage = {};
     var sortByName = route.query.sort_by_name ? route.query.sort_by_name : "";
     var sortByRating = route.query.sort_by_rating
@@ -310,7 +310,12 @@ export default class CompanyIndex extends Vue {
         getCurrentPage = data;
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
+        if (e.response.status === 404) {
+          error({ statusCode: 404 });
+        } else {
+          error({ statusCode: 500 });
+        }
       });
 
     var count = 0;
@@ -358,6 +363,13 @@ export default class CompanyIndex extends Vue {
       .then((data) => {
         companies = data.items;
         count = data.meta.total_count;
+      })
+      .catch((e) => {
+        if (e.response.status === 404) {
+          error({ statusCode: 404 });
+        } else {
+          error({ statusCode: 500 });
+        }
       });
 
     var [totalPageCount, paginationSteps] = calculatePage(

@@ -37,7 +37,7 @@ import { namespaced } from "../utils/utils";
   },
 })
 export default class Index extends Vue {
-  async asyncData({ route, $axios, store }) {
+  async asyncData({ route, $axios, store, error }) {
     var stories = [];
     const soryData = await store
       .dispatch(namespaced(NS_COMMON, FETCH_STORY))
@@ -55,7 +55,12 @@ export default class Index extends Vue {
         getCurrentPage = data;
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
+        if (e.response.status === 404) {
+          error({ statusCode: 404 });
+        } else {
+          error({ statusCode: 500 });
+        }
       });
     return {
       stories,

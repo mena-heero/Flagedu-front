@@ -308,7 +308,7 @@ export default class NewsArticleListPage extends Vue {
     );
   }
 
-  async asyncData({ route, $axios, store }) {
+  async asyncData({ route, $axios, store, error }) {
     var slug = route.params.slug;
     var selectedCategory = route.query.child_of ? route.query.child_of : "";
     var categoryTitle = "";
@@ -321,7 +321,12 @@ export default class NewsArticleListPage extends Vue {
         getCurrentPage = data;
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
+        if (e.response.status === 404) {
+          error({ statusCode: 404 });
+        } else {
+          error({ statusCode: 500 });
+        }
       });
 
     var count = 0;
@@ -362,6 +367,13 @@ export default class NewsArticleListPage extends Vue {
       .then((data) => {
         newss = data.items;
         count = data.meta.total_count;
+      })
+      .catch((e) => {
+        if (e.response.status === 404) {
+          error({ statusCode: 404 });
+        } else {
+          error({ statusCode: 500 });
+        }
       });
 
     var [totalPageCount, paginationSteps] = calculatePage(
