@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="title">{{ getCurrentPage.title }}</div>
       <div class="sharing">
-        <div class="share-text">Share on:</div>
+        <div class="share-text">يشارك:</div>
         <div class="item">
           <ShareNetwork
             network="facebook"
@@ -12,6 +12,61 @@
             :description="getSearchDescription"
           >
             <i class="bi bi-facebook share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="twitter"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-twitter share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="telegram"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-telegram share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="Messenger"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-messenger share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork network="email" :url="fullPath" :title="getPageTitle">
+            <i class="bi bi-envelope-fill share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="whatsapp"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-whatsapp share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="linkedIn"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-linkedin share-icon"></i>
           </ShareNetwork>
         </div>
       </div>
@@ -179,6 +234,11 @@ export default class DetailPage extends Vue {
           property: "og:url",
           content: this.fullPath,
         },
+        {
+          hid: "fb:app_id",
+          property: "fb:app_id",
+          content: this.$config.FB_APP_ID,
+        },
       ],
     };
   }
@@ -269,7 +329,8 @@ export default class DetailPage extends Vue {
 
   .share-text {
     color: black;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
   }
   .item {
   }
@@ -277,5 +338,6 @@ export default class DetailPage extends Vue {
 
 .share-icon {
   font-size: 25px;
+  color: black;
 }
 </style>

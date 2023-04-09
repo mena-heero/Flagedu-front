@@ -2,6 +2,74 @@
   <div class="company-index">
     <div class="wrapper">
       <div class="title">{{ getCurrentPage.title }} Review {{ getYear }}</div>
+      <div class="sharing">
+        <div class="share-text">يشارك:</div>
+        <div class="item">
+          <ShareNetwork
+            network="facebook"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-facebook share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="twitter"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-twitter share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="telegram"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-telegram share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="Messenger"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-messenger share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork network="email" :url="fullPath" :title="getPageTitle">
+            <i class="bi bi-envelope-fill share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="whatsapp"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-whatsapp share-icon"></i>
+          </ShareNetwork>
+        </div>
+        <div class="item">
+          <ShareNetwork
+            network="linkedIn"
+            :url="fullPath"
+            :title="getPageTitle"
+            :description="getSearchDescription"
+          >
+            <i class="bi bi-linkedin share-icon"></i>
+          </ShareNetwork>
+        </div>
+      </div>
       <div class="white-back">
         <div class="company-wrapper">
           <div class="company-summary">
@@ -259,6 +327,99 @@ export default class CompanyDetailPage extends Vue {
     }
     return 0;
   }
+
+  get getPageTitle() {
+    if (this.getCurrentPage.meta.seo_title) {
+      return this.getCurrentPage.meta.seo_title;
+    } else {
+      return this.getCurrentPage.title;
+    }
+  }
+
+  get getSearchDescription() {
+    if (this.getCurrentPage.meta.search_description) {
+      return this.getCurrentPage.meta.search_description;
+    } else {
+      return "";
+    }
+  }
+
+  get getKeywords() {
+    if (this.getCurrentPage.og_keywords) {
+      return this.getCurrentPage.og_keywords;
+    } else {
+      return "";
+    }
+  }
+
+  get getOGImage() {
+    if (this.getCurrentPage.og_img_original) {
+      if (this.getCurrentPage.og_img_original.original) {
+        return this.getCurrentPage.og_img_original.original.src;
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
+
+  get prepareOGImageUrl() {
+    if (this.getOGImage) {
+      return this.HOST + this.getOGImage;
+    }
+  }
+
+  get fullPath() {
+    if (this.getCurrentPage.meta.html_url) {
+      return this.getCurrentPage.meta.html_url;
+    } else {
+      return null;
+    }
+  }
+
+  head() {
+    return {
+      title: this.getPageTitle,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.getSearchDescription,
+        },
+        {
+          hid: "Keywords",
+          name: "Keywords",
+          content: this.getKeywords,
+        },
+        {
+          hid: "og:title",
+          name: "og:title",
+          content: this.getPageTitle,
+        },
+        {
+          hid: "og:description",
+          name: "og:description",
+          content: this.getSearchDescription,
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.prepareOGImageUrl,
+        },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: this.fullPath,
+        },
+        {
+          hid: "fb:app_id",
+          property: "fb:app_id",
+          content: this.$config.FB_APP_ID,
+        },
+      ],
+    };
+  }
 }
 </script>
 
@@ -446,5 +607,44 @@ export default class CompanyDetailPage extends Vue {
       }
     }
   }
+}
+.sharing {
+  width: 55%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  @media (max-width: 1250px) {
+    width: 80%;
+  }
+  @media (max-width: 950px) {
+    width: 95%;
+  }
+  @media (max-width: 850px) {
+    width: 70%;
+  }
+  @media (max-width: 700px) {
+    width: 80%;
+  }
+  @media (max-width: 500px) {
+    width: 95%;
+    font-size: 28px;
+  }
+  @media (max-width: 400px) {
+    font-size: 24px;
+  }
+
+  .share-text {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .item {
+  }
+}
+
+.share-icon {
+  font-size: 25px;
+  color: black;
 }
 </style>

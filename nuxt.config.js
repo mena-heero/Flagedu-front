@@ -146,6 +146,7 @@ export default {
       process.env.VUE_APP_DEVHOST ||
       "http://localhost:3000",
     SITE_URL: process.env.VUE_APP_SITE_URL || "http://localhost:3000",
+    FB_APP_ID: process.env.VUE_APP_FB_APP_ID || "",
   },
 
   css: [
@@ -207,7 +208,14 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/dayjs",
     "cookie-universal-nuxt",
-    "vue-social-sharing/nuxt",
+    [
+      "vue-social-sharing/nuxt",
+      {
+        networks: {
+          telegram: "https://telegram.me/share/url?url=@url&title=@title",
+        },
+      },
+    ],
   ],
 
   dayjs: {
