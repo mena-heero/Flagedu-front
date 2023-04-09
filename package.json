@@ -28,6 +28,7 @@
     "vue-fb-customer-chat": "^0.2.2",
     "vue-loading-overlay": "^3.0",
     "vue-server-renderer": "^2.7.10",
+    "vue-social-sharing": "^3.0.9",
     "vue-template-compiler": "^2.7.10",
     "vue-toast-notification": "^0.6.3",
     "vue-trading-view": "^1.0.1"

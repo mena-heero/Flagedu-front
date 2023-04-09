@@ -19,7 +19,7 @@ export default {
       {
         hid: "og:type",
         property: "og:type",
-        content: "",
+        content: "website",
       },
       {
         hid: "og:title",
@@ -39,16 +39,11 @@ export default {
       {
         hid: "og:site_name",
         property: "og:site_name",
-        content: "",
+        content: "flagedu.com",
       },
       {
         hid: "Keywords",
         property: "Keywords",
-        content: "",
-      },
-      {
-        hid: "Description",
-        property: "Description",
         content: "",
       },
     ],
@@ -208,7 +203,12 @@ export default {
 
   buildModules: ["@nuxtjs/style-resources"],
 
-  modules: ["@nuxtjs/axios", "@nuxtjs/dayjs", "cookie-universal-nuxt"],
+  modules: [
+    "@nuxtjs/axios",
+    "@nuxtjs/dayjs",
+    "cookie-universal-nuxt",
+    "vue-social-sharing/nuxt",
+  ],
 
   dayjs: {
     plugins: ["relativeTime"],
