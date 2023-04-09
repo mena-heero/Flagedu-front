@@ -34,3 +34,5 @@ export const FETCH_COUNTRY = "fetchCountry";
 
 export const COMPLETE_SOCIAL_SIGNUP = "completeSocialSignup";
 export const SOCIAL_AUTH_VERIFY_CONFIRM = "socialAuthVerifyConfirm";
+
+export const CONTACT_US = "contactUs";

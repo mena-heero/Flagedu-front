@@ -14,3 +14,4 @@ export const FETCH_COMPANY_FINDER_RATING_ENDPOINT =
   PUBLIC_HOME_ENDPOINT + `/company-finder-rating`;
 
 export const FETCH_COUNTRY_ENDPOINT = PUBLIC_UTILITY_ENDPOINT + `/all-country/`;
+export const CONTACT_US_ENDPOINT = PUBLIC_UTILITY_ENDPOINT + `/contact-us/`;

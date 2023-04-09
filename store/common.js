@@ -3,6 +3,7 @@ import {
   STORY_ENDPOINT,
   PAGE_API_ROOT,
   FETCH_COUNTRY_ENDPOINT,
+  CONTACT_US_ENDPOINT,
 } from "~/utils/store/endpoints";
 import {
   FETCH_SETTINGS,
@@ -10,6 +11,7 @@ import {
   FETCH_CURRENT_PAGE,
   FETCH_PAGES,
   FETCH_COUNTRY,
+  CONTACT_US,
 } from "../utils/store/action.names";
 import { SET_SETTINGS } from "../utils/store/mutation.names";
 import {
@@ -102,6 +104,19 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios
         .get(FETCH_COUNTRY_ENDPOINT)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
+  async [CONTACT_US]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .post(CONTACT_US_ENDPOINT, payload)
         .then(({ data }) => {
           resolve(data);
         })

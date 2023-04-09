@@ -43,10 +43,10 @@ import {} from "../../utils/store/getter.names";
 import {} from "../../utils/store/namespace.names";
 
 @Component({
-  name: "تَأثِير",
+  name: "Leverage",
   components: {},
 })
-export default class تَأثِير extends Vue {
+export default class Leverage extends Vue {
   @Prop() companyDetail;
 
   get HOST() {

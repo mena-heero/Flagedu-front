@@ -83,13 +83,12 @@ export const actions = {
   async [GET_TOKEN_FROM_LOCAL_STORE]({ commit, dispatch }) {
     return new Promise((resolve, reject) => {
       const localToken = this.$cookies.get("ALLTARGETING_TOKEN");
-      console.log(localToken);
       if (localToken != null) {
         commit(SET_TOKEN, localToken);
         resolve(localToken);
       } else {
         console.log("TOKEN FROM LOCAL STORE ERROR");
-        reject("Local Token Error");
+        reject();
       }
     });
   },
