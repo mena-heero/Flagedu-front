@@ -394,12 +394,12 @@ export default class CompanyDetailPage extends Vue {
         },
         {
           hid: "og:title",
-          name: "og:title",
+          property: "og:title",
           content: this.getPageTitle,
         },
         {
           hid: "og:description",
-          name: "og:description",
+          property: "og:description",
           content: this.getSearchDescription,
         },
         {
