@@ -138,6 +138,9 @@
           </div>
         </div>
       </div>
+      <div class="search-container">
+        <div class="middle-aligned"><SearchBar /></div>
+      </div>
     </div>
     <MobileSideMenu
       v-if="mobileSideMenuOpen == true"
@@ -156,12 +159,14 @@ import {
   GET_GLOBAL_SETTINGS,
 } from "../utils/store/getter.names";
 import { NS_USER, NS_COMMON } from "../utils/store/namespace.names";
-import MobileSideMenu from "./MobileSideMenu.vue";
+import MobileSideMenu from "./MobileSideMenu";
+import SearchBar from "./SearchBar";
 
 @Component({
   name: "Header",
   components: {
     MobileSideMenu,
+    SearchBar,
   },
 })
 export default class Header extends Vue {
@@ -337,6 +342,38 @@ export default class Header extends Vue {
         height: 100%;
         -o-object-fit: cover;
         object-fit: cover;
+      }
+    }
+  }
+  .search-container {
+    width: 100%;
+    .middle-aligned {
+      width: 45%;
+      margin: 0 auto;
+      @media (max-width: 1250px) {
+        margin: 0px;
+        margin-top: 10px;
+        width: 60%;
+      }
+      @media (max-width: 1000px) {
+        margin: 0px;
+        margin-top: 10px;
+        width: 70%;
+      }
+      @media (max-width: 800px) {
+        margin: 0px;
+        margin-top: 10px;
+        width: 80%;
+      }
+      @media (max-width: 600px) {
+        margin: 0px;
+        margin-top: 10px;
+        width: 90%;
+      }
+      @media (max-width: 450px) {
+        margin: 0px;
+        margin-top: 10px;
+        width: 100%;
       }
     }
   }

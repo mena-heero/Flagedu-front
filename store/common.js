@@ -12,6 +12,7 @@ import {
   FETCH_PAGES,
   FETCH_COUNTRY,
   CONTACT_US,
+  SEARCH,
 } from "../utils/store/action.names";
 import { SET_SETTINGS } from "../utils/store/mutation.names";
 import {
@@ -117,6 +118,19 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios
         .post(CONTACT_US_ENDPOINT, payload)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((e) => {
+          console.log(e);
+          reject(e);
+        });
+    });
+  },
+  async [SEARCH]({ commit, dispatch }, payload) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .get(`${PAGE_API_ROOT}/${buildParams(payload)}`)
         .then(({ data }) => {
           resolve(data);
         })
