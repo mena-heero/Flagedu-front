@@ -3,7 +3,7 @@
     <div class="rating-container">
       <div class="form">
         <div class="title">ما هو رأيك؟</div>
-        <ValidationObserver v-slot="{ invalid }" ref="form" v-if="getProfile">
+        <ValidationObserver v-slot="{ invalid }" ref="form">
           <form
             method="post"
             name="ratingForm"
@@ -60,10 +60,10 @@
             <button :disabled="invalid" class="submit-button">أضف تعليق</button>
           </form>
         </ValidationObserver>
-        <div class="" v-if="!getProfile">
+        <!-- <div class="" v-if="!getProfile">
           أنت بحاجه إلى <nuxt-link to="/signin">تسجيل الدخول</nuxt-link> لإضافة
           التقييم والمراجعة!
-        </div>
+        </div> -->
       </div>
       <div class="comments">
         <div
@@ -73,7 +73,7 @@
         >
           <div class="image">
             <img
-              v-if="comment.user.profile_image_detail"
+              v-if="comment.user && comment.user.profile_image_detail"
               :src="HOST + comment.user.profile_image_detail.original.src"
               :alt="comment.user.profile_image_detail.original.alt"
             />
@@ -81,11 +81,12 @@
           </div>
           <div class="content">
             <div class="name">
-              {{
+              <span v-if="comment.user">{{
                 comment.user.full_name
                   ? comment.user.full_name
                   : comment.user.email
-              }}
+              }}</span>
+              <span v-else>Anonymous</span>
             </div>
             <div class="info">
               <div class="rating">
