@@ -44,41 +44,77 @@
               </ValidationProvider>
 
               <div class="results">
+                <div class="item-wrapper">
+                  <div
+                    class="item"
+                    v-for="(item, idx) in datas"
+                    :key="'com_' + idx"
+                    @click="handleCompanyClick(item)"
+                  >
+                    <div class="image">
+                      <img
+                        v-if="item.logo_detail"
+                        :src="HOST + item.logo_detail.original.src"
+                        :alt="item.logo_detail.original.alt"
+                      />
+                      <img
+                        v-else
+                        :src="HOST + item.thumbnail_image.original.src"
+                        :alt="item.thumbnail_image.original.alt"
+                      />
+                    </div>
+                    <div class="content">
+                      <div class="title">
+                        {{ item.title }}
+                      </div>
+                      <div class="rating">
+                        <i
+                          v-for="(rate, ridx) in totalFullStar(item.rating)"
+                          :key="'ratef_' + ridx"
+                          class="bi bi-star-fill rating-color"
+                        ></i>
+                        <i
+                          v-for="(rate, ridx) in totalHalfStar(item.rating)"
+                          :key="'rateh_' + ridx"
+                          class="bi bi-star-half rating-color"
+                        ></i>
+                        <i
+                          v-for="(rate, ridx) in totalEmptyStar(item.rating)"
+                          :key="'ratee_' + ridx"
+                          class="bi bi-star rating-color"
+                        ></i>
+                        <div class="rating-value">({{ item.rating }})</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div
-                  class="item"
-                  v-for="(item, idx) in datas"
-                  :key="'com_' + idx"
-                  @click="handleCompanyClick(item)"
+                  class="pagination"
+                  dir="ltr"
+                  v-if="paginationSteps.length > 1"
                 >
-                  <div class="image">
-                    <img
-                      :src="HOST + item.logo_detail.original.src"
-                      :alt="item.logo_detail.original.alt"
-                    />
-                  </div>
-                  <div class="content">
-                    <div class="title">
-                      {{ item.title }}
-                    </div>
-                    <div class="rating">
-                      <i
-                        v-for="(rate, ridx) in totalFullStar(item.rating)"
-                        :key="'ratef_' + ridx"
-                        class="bi bi-star-fill rating-color"
-                      ></i>
-                      <i
-                        v-for="(rate, ridx) in totalHalfStar(item.rating)"
-                        :key="'rateh_' + ridx"
-                        class="bi bi-star-half rating-color"
-                      ></i>
-                      <i
-                        v-for="(rate, ridx) in totalEmptyStar(item.rating)"
-                        :key="'ratee_' + ridx"
-                        class="bi bi-star rating-color"
-                      ></i>
-                      <div class="rating-value">({{ item.rating }})</div>
-                    </div>
-                  </div>
+                  <a
+                    v-if="page != 1"
+                    class="item"
+                    @click.prevent="handleDecrement"
+                  >
+                    <i class="bi bi-caret-left-fill"></i>
+                  </a>
+                  <a
+                    :class="{ active: page == pag, item: true }"
+                    v-for="(pag, idx) in paginationSteps"
+                    :key="'pag_' + idx"
+                    @click.prevent="updatePage(pag)"
+                  >
+                    {{ pag }}
+                  </a>
+                  <a
+                    v-if="totalPageCount != page"
+                    class="item"
+                    @click.prevent="handleIncreament"
+                  >
+                    <i class="bi bi-caret-right-fill"></i>
+                  </a>
                 </div>
               </div>
             </ValidationObserver>
@@ -97,10 +133,57 @@ import {
   Getter,
   Action,
   Mutation,
+  Watch,
 } from "nuxt-property-decorator";
-import { NS_COMPANY } from "../../utils/store/namespace.names";
+import { NS_COMPANY, NS_COMMON } from "../../utils/store/namespace.names";
 import { namespaced } from "../../utils/utils";
-import { FETCH_FIND_BROKER_COMPANY } from "../../utils/store/action.names";
+import {
+  FETCH_FIND_BROKER_COMPANY,
+  FETCH_PAGES,
+} from "../../utils/store/action.names";
+
+function calculatePage(count, limit, page, totalPageCount, paginationSteps) {
+  const totalPage = Math.ceil(count / limit);
+  totalPageCount = totalPage;
+  if (totalPage > 1) {
+    paginationSteps = calculateNext(totalPage, page, paginationSteps);
+    paginationSteps = calculatePrev(page, paginationSteps);
+  }
+  return [totalPageCount, paginationSteps];
+}
+
+function calculateNext(totalPage, page, paginationSteps) {
+  if (totalPage > 1) {
+    var next = page;
+    for (var i = 0; i < totalPage; i++) {
+      if (i > 0) {
+        break;
+      }
+      if (page < totalPage) {
+        next = next + 1;
+        if (next > totalPage) {
+          break;
+        }
+        paginationSteps.push(next);
+      }
+    }
+  }
+  return paginationSteps;
+}
+
+function calculatePrev(page, paginationSteps) {
+  if (page > 1) {
+    var counter = 0;
+    for (var i = page - 1; i > 0; i--) {
+      if (counter > 0) {
+        break;
+      }
+      paginationSteps.unshift(i);
+      counter += 1;
+    }
+  }
+  return paginationSteps;
+}
 
 @Component({
   name: "CompanySearchModal",
@@ -112,16 +195,42 @@ export default class CompanySearchModal extends Vue {
 
   @Action(namespaced(NS_COMPANY, FETCH_FIND_BROKER_COMPANY))
   fetchFindBrokerCompany;
+  @Action(namespaced(NS_COMMON, FETCH_PAGES)) fetchPages;
 
   searchText = "";
   datas = [];
 
+  limit = 20;
+  offset = 0;
+  count = 0;
+  totalPageCount = "";
+  page = 1;
+  paginationSteps = [this.page];
+
   error_msg = [];
   loading = false;
+
+  @Watch("page")
+  handlePageChange(val, oldVal) {
+    if (val != oldVal) {
+      this.handleFetchCompany();
+    }
+  }
+
+  resetParams() {
+    this.limit = 20;
+    this.offset = 0;
+    this.count = 0;
+    this.totalPageCount = "";
+    this.page = 1;
+    this.paginationSteps = [this.page];
+  }
 
   debounceSearch() {
     if (this.searchText.length == 0) {
       this.datas = [];
+      this.resetParams();
+      this.handleFetchCompany();
     }
     if (this.searchText.length > 3) {
       this.fetchFindBrokerCompany({ title: this.searchText }).then((data) => {
@@ -130,11 +239,37 @@ export default class CompanySearchModal extends Vue {
     }
   }
 
+  async handleFetchCompany() {
+    this.datas = [];
+    var params = {
+      limit: this.limit,
+      offset: this.offset,
+      type: "home.CompanyDetail",
+      fields: "title,thumbnail_image,is_islamic,account_open_link,rating",
+    };
+
+    await this.fetchPages(params).then((data) => {
+      this.datas = data.items;
+      this.count = data.meta.total_count;
+    });
+    this.totalPageCount = "";
+    this.paginationSteps = [this.page];
+    [this.totalPageCount, this.paginationSteps] = calculatePage(
+      this.count,
+      this.limit,
+      this.page,
+      this.totalPageCount,
+      this.paginationSteps
+    );
+  }
+
   get HOST() {
     return this.$config.HOST;
   }
 
-  mounted() {}
+  mounted() {
+    this.handleFetchCompany();
+  }
 
   handleCompanyClick(item) {
     this.$emit("hideModal", { item, position: this.position });
@@ -162,6 +297,31 @@ export default class CompanySearchModal extends Vue {
       return x;
     }
     return 0;
+  }
+
+  handleDecrement() {
+    if (this.page > 1) {
+      this.page = this.page - 1;
+      this.offset = (this.page - 1) * this.limit;
+    } else {
+      this.page = 1;
+      this.offset = (this.page - 1) * this.limit;
+    }
+  }
+
+  updatePage(pageNo) {
+    this.page = pageNo;
+    this.offset = (this.page - 1) * this.limit;
+  }
+
+  handleIncreament() {
+    if (this.page < this.totalPageCount) {
+      this.page = this.page + 1;
+      this.offset = (this.page - 1) * this.limit;
+    } else {
+      this.page = this.totalPageCount;
+      this.offset = (this.page - 1) * this.limit;
+    }
   }
 }
 </script>
@@ -346,53 +506,88 @@ export default class CompanySearchModal extends Vue {
 // modal overlay show animation
 
 .results {
-  max-height: 250px;
-  width: 100%;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  overflow: hidden;
-  overflow-y: scroll;
-  .item {
+  justify-content: space-between;
+  .item-wrapper {
     display: flex;
-    gap: 10px;
-    cursor: pointer;
-    .image {
-      height: 60px;
-      width: 60px;
-      img {
-        flex-shrink: 0;
-        -webkit-flex-shrink: 0;
-        width: 100%;
-        height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover;
-        border-radius: 8px;
+    gap: 15px;
+    flex-direction: column;
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    .item {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+      .image {
+        height: 60px;
+        width: 60px;
+        img {
+          flex-shrink: 0;
+          -webkit-flex-shrink: 0;
+          width: 100%;
+          height: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+          border-radius: 8px;
+        }
       }
-    }
-    .content {
-      .title {
-        font-size: 16px;
-        font-weight: 600;
-        color: white;
-      }
-      .rating {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-end;
-        gap: 5px;
-        width: 100%;
-        .rating-value {
-          font-size: 18px;
-          font-weight: 700;
-          color: #fff;
-          @media (max-width: 500px) {
-            font-size: 14px;
+      .content {
+        .title {
+          font-size: 16px;
+          font-weight: 600;
+          color: white;
+        }
+        .rating {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-end;
+          gap: 5px;
+          width: 100%;
+          .rating-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            @media (max-width: 500px) {
+              font-size: 14px;
+            }
           }
         }
       }
     }
   }
+}
+.pagination {
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  a {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #f1f1f1;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: #f1f1f1;
+      color: black;
+    }
+  }
+}
+.active {
+  color: black !important;
+  background-color: #f1f1f1;
 }
 </style>

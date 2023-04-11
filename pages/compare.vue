@@ -405,56 +405,58 @@ export default class ComparePage extends Vue {
     if (companies) {
       var companyList = companies.split("-");
       for (var i = 0; i < companyList.length; i++) {
-        await store
-          .dispatch(namespaced(NS_COMPANY, FETCH_COMPANY_DETAIL), {
-            id: companyList[i],
-          })
-          .then((data) => {
-            if (i == 0) {
-              companyDetail.company1 = data;
-              companyInput.company1 = {
-                html_url: data.html_url,
-                id: data.id,
-                logo_detail: data.logo_detail,
-                rating: data.rating,
-                title: data.title,
-              };
-            } else if (i == 1) {
-              companyDetail.company2 = data;
-              companyInput.company2 = {
-                html_url: data.html_url,
-                id: data.id,
-                logo_detail: data.logo_detail,
-                rating: data.rating,
-                title: data.title,
-              };
-            } else if (i == 2) {
-              companyDetail.company3 = data;
-              companyInput.company3 = {
-                html_url: data.html_url,
-                id: data.id,
-                logo_detail: data.logo_detail,
-                rating: data.rating,
-                title: data.title,
-              };
-            } else if (i == 3) {
-              companyDetail.company4 = data;
-              companyInput.company4 = {
-                html_url: data.html_url,
-                id: data.id,
-                logo_detail: data.logo_detail,
-                rating: data.rating,
-                title: data.title,
-              };
-            }
-          })
-          .catch((e) => {
-            if (e.response.status === 404) {
-              error({ statusCode: 404 });
-            } else {
-              error({ statusCode: 500 });
-            }
-          });
+        if (companyList[i]) {
+          await store
+            .dispatch(namespaced(NS_COMPANY, FETCH_COMPANY_DETAIL), {
+              id: companyList[i],
+            })
+            .then((data) => {
+              if (i == 0) {
+                companyDetail.company1 = data;
+                companyInput.company1 = {
+                  html_url: data.html_url,
+                  id: data.id,
+                  logo_detail: data.logo_detail,
+                  rating: data.rating,
+                  title: data.title,
+                };
+              } else if (i == 1) {
+                companyDetail.company2 = data;
+                companyInput.company2 = {
+                  html_url: data.html_url,
+                  id: data.id,
+                  logo_detail: data.logo_detail,
+                  rating: data.rating,
+                  title: data.title,
+                };
+              } else if (i == 2) {
+                companyDetail.company3 = data;
+                companyInput.company3 = {
+                  html_url: data.html_url,
+                  id: data.id,
+                  logo_detail: data.logo_detail,
+                  rating: data.rating,
+                  title: data.title,
+                };
+              } else if (i == 3) {
+                companyDetail.company4 = data;
+                companyInput.company4 = {
+                  html_url: data.html_url,
+                  id: data.id,
+                  logo_detail: data.logo_detail,
+                  rating: data.rating,
+                  title: data.title,
+                };
+              }
+            })
+            .catch((e) => {
+              if (e.response.status === 404) {
+                error({ statusCode: 404 });
+              } else {
+                error({ statusCode: 500 });
+              }
+            });
+        }
       }
     }
 
