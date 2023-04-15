@@ -83,6 +83,19 @@
             ></component>
           </div>
         </div>
+        <div class="save-button" v-if="$route.params.type == 'articles'">
+          <button @click="handleAddSavedTopic" v-if="isExists == false">
+            <span v-if="loading == false"
+              ><i class="bi bi-heart-fill"></i>
+              Save this article
+            </span>
+            <span v-else>Loading...</span>
+          </button>
+          <button @click="handleRemoveSavedTopic" v-if="isExists == true">
+            <span v-if="loading == false">Remove from save </span>
+            <span v-else>Loading...</span>
+          </button>
+        </div>
       </div>
     </div>
     <RatingReview :dataId="getCurrentPage.id" />
@@ -98,8 +111,14 @@ import {
   Mutation,
   Watch,
 } from "nuxt-property-decorator";
-import { NS_COMMON } from "../../../utils/store/namespace.names";
-import { FETCH_CURRENT_PAGE } from "../../../utils/store/action.names";
+
+import { NS_COMMON, NS_COMPANY } from "../../../utils/store/namespace.names";
+import {
+  FETCH_CURRENT_PAGE,
+  ADD_SAVED_TOPIC,
+  CHECK_SAVED_TOPIC_EXISTS,
+  DELETE_SAVED_TOPIC,
+} from "../../../utils/store/action.names";
 import { namespaced } from "../../../utils/utils";
 import DescriptionBlock from "../../../components/blocks/DescriptionBlock";
 import ImageBlock from "../../../components/blocks/ImageBlock";
@@ -122,8 +141,54 @@ import VideoBlock from "../../../components/blocks/VideoBlock";
   },
 })
 export default class DetailPage extends Vue {
+  @Action(namespaced(NS_COMPANY, ADD_SAVED_TOPIC)) addSavedTopic;
+  @Action(namespaced(NS_COMPANY, CHECK_SAVED_TOPIC_EXISTS))
+  checkSavedTopicExists;
+  @Action(namespaced(NS_COMPANY, DELETE_SAVED_TOPIC)) deleteSavedTopic;
+
+  formData = {
+    type: 1,
+    articles: "",
+  };
+  loading = false;
+
+  handleAddSavedTopic() {
+    this.loading = true;
+    this.formData["articles"] = this.getCurrentPage.id;
+    this.addSavedTopic(this.formData)
+      .then((data) => {
+        this.isExists = true;
+        this.savedTopicId = data.id;
+        this.loading = false;
+        this.$toast.success("Successfully saved this article!");
+      })
+      .catch((e) => {
+        this.loading = false;
+        this.$toast.error("Something went wrong!");
+      });
+  }
+
+  handleRemoveSavedTopic() {
+    this.loading = true;
+    this.deleteSavedTopic({ id: this.savedTopicId })
+      .then((data) => {
+        this.isExists = false;
+        this.savedTopicId = null;
+        this.loading = false;
+        this.$toast.success("Successfully delete from saved article!");
+      })
+      .catch((e) => {
+        this.loading = false;
+        this.$toast.error("Something went wrong!");
+      });
+  }
+
   async asyncData({ route, $axios, store, error }) {
+    var topicType = route.params.type;
     var getCurrentPage = {};
+    var isExists = false;
+    var savedTopicId = null;
+
     const currentPageData = await store
       .dispatch(namespaced(NS_COMMON, FETCH_CURRENT_PAGE), {
         html_path: route.path,
@@ -132,7 +197,6 @@ export default class DetailPage extends Vue {
         getCurrentPage = data;
       })
       .catch((e) => {
-        // console.log(e);
         if (e.response.status === 404) {
           error({ statusCode: 404 });
         } else {
@@ -140,8 +204,25 @@ export default class DetailPage extends Vue {
         }
       });
 
+    const checkExist = await store
+      .dispatch(namespaced(NS_COMPANY, CHECK_SAVED_TOPIC_EXISTS), {
+        type: 1,
+        obj_id: getCurrentPage.id,
+      })
+      .then((data) => {
+        if (data.exists == true) {
+          isExists = true;
+          savedTopicId = data.id;
+        }
+      })
+      .catch((e) => {
+        isExists = false;
+      });
+
     return {
       getCurrentPage,
+      isExists,
+      savedTopicId,
     };
   }
   mounted() {}
@@ -339,5 +420,37 @@ export default class DetailPage extends Vue {
 .share-icon {
   font-size: 25px;
   color: black;
+}
+
+.save-button {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  @media (max-width: 1250px) {
+    width: 80%;
+  }
+  @media (max-width: 950px) {
+  }
+  @media (max-width: 700px) {
+  }
+  @media (max-width: 500px) {
+  }
+  @media (max-width: 400px) {
+    width: 95%;
+  }
+  button {
+    background: $button-bg;
+    border: 0;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 16px;
+    color: $primary-color !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 </style>

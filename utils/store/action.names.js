@@ -37,3 +37,8 @@ export const SOCIAL_AUTH_VERIFY_CONFIRM = "socialAuthVerifyConfirm";
 
 export const CONTACT_US = "contactUs";
 export const SEARCH = "search";
+
+export const ADD_SAVED_TOPIC = "addSavedTopic";
+export const DELETE_SAVED_TOPIC = "deleteSavedTopic";
+export const FETCH_SAVED_TOPIC = "fetchSavedTopic";
+export const CHECK_SAVED_TOPIC_EXISTS = "checkSavedTopicExists";
