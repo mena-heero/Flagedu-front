@@ -83,7 +83,10 @@
             ></component>
           </div>
         </div>
-        <div class="save-button" v-if="$route.params.type == 'articles'">
+        <div
+          class="save-button"
+          v-if="getProfile && $route.params.type == 'articles'"
+        >
           <button @click="handleAddSavedTopic" v-if="isExists == false">
             <span v-if="loading == false"
               ><i class="bi bi-heart-fill"></i>
@@ -112,7 +115,11 @@ import {
   Watch,
 } from "nuxt-property-decorator";
 
-import { NS_COMMON, NS_COMPANY } from "../../../utils/store/namespace.names";
+import {
+  NS_COMMON,
+  NS_COMPANY,
+  NS_USER,
+} from "../../../utils/store/namespace.names";
 import {
   FETCH_CURRENT_PAGE,
   ADD_SAVED_TOPIC,
@@ -127,6 +134,7 @@ import ButtonBlock from "../../../components/blocks/ButtonBlock";
 import RatingReview from "../../../components/RatingReview";
 import TableBlock from "../../../components/blocks/TableBlock";
 import VideoBlock from "../../../components/blocks/VideoBlock";
+import { GET_PROFILE } from "../../../utils/store/getter.names";
 
 @Component({
   name: "DetailPage",
@@ -141,6 +149,8 @@ import VideoBlock from "../../../components/blocks/VideoBlock";
   },
 })
 export default class DetailPage extends Vue {
+  @Getter(namespaced(NS_USER, GET_PROFILE)) getProfile;
+
   @Action(namespaced(NS_COMPANY, ADD_SAVED_TOPIC)) addSavedTopic;
   @Action(namespaced(NS_COMPANY, CHECK_SAVED_TOPIC_EXISTS))
   checkSavedTopicExists;
