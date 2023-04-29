@@ -216,6 +216,13 @@ export default {
         },
       },
     ],
+    [
+      "@netsells/nuxt-hotjar",
+      {
+        id: 3471225,
+        sv: 6,
+      },
+    ],
   ],
 
   dayjs: {
