@@ -1,6 +1,6 @@
 <template>
   <div class="company-block-container">
-    <div class="company-container">
+    <!-- <div class="company-container">
       <div class="title">
         <nuxt-link to="/companies">{{ data.title }}</nuxt-link>
       </div>
@@ -48,7 +48,7 @@
           <TradingViewChart :data="activeCurrency" />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

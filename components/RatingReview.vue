@@ -310,7 +310,7 @@ export default class RatingReview extends Vue {
 
     this.addRating(this.formData)
       .then((data) => {
-        var msg = `<div class='t-custom-class'><div>You rating and comment is added successfully!</div></div>`;
+        var msg = `<div class='t-custom-class'><div>Your comment is successfully submitted! It will be reviewed soon!</div></div>`;
         this.$toast.success(msg);
         this.formData["rating"] = "";
         this.formData["comment"] = "";
