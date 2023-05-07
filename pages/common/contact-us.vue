@@ -25,7 +25,10 @@
                   v-html="getGlobalSettings.address"
                 ></div>
                 <br />
-                <p class="text">هاتف: {{ getGlobalSettings.contact_number }}</p>
+                <p class="text">
+                  هاتف:
+                  <span dir="ltr">{{ getGlobalSettings.contact_number }}</span>
+                </p>
                 <p class="text">
                   بريد إلكتروني: {{ getGlobalSettings.contact_email }}
                 </p>
@@ -92,7 +95,7 @@
                       type="submit"
                       class="sign-up-btn"
                     >
-                      {{ loading ? "انتظر من فضلك..." : "يُقدِّم" }}
+                      {{ loading ? "انتظر من فضلك..." : "ارسال" }}
                     </button>
                   </div>
                 </form>
