@@ -1,17 +1,17 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <div class="title" v-if="getCurrentPage.hero_title">
+      <h1 class="title" v-if="getCurrentPage.hero_title">
         {{ getCurrentPage.hero_title }}
-      </div>
+      </h1>
       <div
         v-if="getCurrentPage.rendered_hero_description"
         class="hero-description"
         v-html="getCurrentPage.rendered_hero_description"
       ></div>
-      <div class="title" v-if="getCurrentPage.list_title">
+      <h1 class="title" v-if="getCurrentPage.list_title">
         {{ getCurrentPage.list_title }}
-      </div>
+      </h1>
       <div class="white-back">
         <div class="filters">
           <div class="search-input">

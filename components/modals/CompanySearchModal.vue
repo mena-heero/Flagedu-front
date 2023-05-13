@@ -368,11 +368,6 @@ export default class CompanySearchModal extends Vue {
     right: 30px;
     background: none;
     border: none;
-    display: none;
-
-    @media (max-width: 430px) {
-      display: block;
-    }
   }
 
   .profile-card {

@@ -1,7 +1,7 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <div class="title">{{ getCurrentPage.title }}</div>
+      <h1 class="title">{{ getCurrentPage.title }}</h1>
       <div class="sharing">
         <div class="share-text">يشارك:</div>
         <div class="item">

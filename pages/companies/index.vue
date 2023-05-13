@@ -1,7 +1,7 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <div class="title">{{ getCurrentPage.hero_title }}</div>
+      <h1 class="title">{{ getCurrentPage.hero_title }}</h1>
       <div
         class="hero-description"
         v-html="getCurrentPage.rendered_hero_description"

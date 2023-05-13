@@ -1,7 +1,7 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <div class="title">{{ getCurrentPage.title }} Review {{ getYear }}</div>
+      <h1 class="title">{{ getCurrentPage.title }} Review {{ getYear }}</h1>
       <div class="sharing">
         <div class="share-text">يشارك:</div>
         <div class="item">

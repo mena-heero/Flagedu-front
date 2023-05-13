@@ -15,7 +15,22 @@
             <img :src="HOST + currentStory.image_detail.original.src" />
             <div class="content">
               <div class="title">
-                {{ currentStory.title }}
+                <a
+                  v-if="currentStory.is_external == true"
+                  :href="currentStory.link"
+                  target="_blank"
+                  >{{ currentStory.title }}</a
+                >
+                <nuxt-link
+                  v-else-if="
+                    currentStory.is_external == false && currentStory.link
+                  "
+                  :to="currentStory.link"
+                  >{{ currentStory.title }}</nuxt-link
+                >
+                <div v-else>
+                  {{ currentStory.title }}
+                </div>
               </div>
             </div>
             <div
@@ -207,6 +222,11 @@ export default class StoryModal extends Vue {
     .content {
       color: white;
       margin-top: 10px;
+      .title {
+        a {
+          color: white;
+        }
+      }
     }
     .next-btn {
       position: absolute;

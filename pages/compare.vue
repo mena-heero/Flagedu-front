@@ -1,7 +1,7 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <div class="title">مقارنة الوسطاء عبر الإنترنت</div>
+      <h1 class="title">مقارنة الوسطاء عبر الإنترنت</h1>
       <div class="white-back">
         <div class="company-wrapper">
           <div class="select-company-wrapper">
