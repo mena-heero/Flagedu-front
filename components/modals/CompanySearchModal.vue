@@ -239,7 +239,7 @@ export default class CompanySearchModal extends Vue {
     }
   }
 
-  async handleFetchCompany() {
+  handleFetchCompany() {
     this.datas = [];
     var params = {
       limit: this.limit,
@@ -248,7 +248,7 @@ export default class CompanySearchModal extends Vue {
       fields: "title,thumbnail_image,is_islamic,account_open_link,rating",
     };
 
-    await this.fetchPages(params).then((data) => {
+    this.fetchPages(params).then((data) => {
       this.datas = data.items;
       this.count = data.meta.total_count;
     });

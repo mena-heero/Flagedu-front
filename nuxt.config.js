@@ -147,6 +147,9 @@ export default {
       "http://localhost:3000",
     SITE_URL: process.env.VUE_APP_SITE_URL || "http://localhost:3000",
     FB_APP_ID: process.env.VUE_APP_FB_APP_ID || "",
+    gtm: {
+      id: process.env.VUE_APP_GOOGLE_TAG_MANAGER_ID,
+    },
   },
 
   css: [
@@ -205,6 +208,7 @@ export default {
   buildModules: ["@nuxtjs/style-resources"],
 
   modules: [
+    "@nuxtjs/gtm",
     "@nuxtjs/axios",
     "@nuxtjs/dayjs",
     "cookie-universal-nuxt",
@@ -224,6 +228,30 @@ export default {
       },
     ],
   ],
+
+  gtm: {
+    id: "GTM-TRFZQJT",
+    enabled: true,
+    debug: false,
+
+    layer: "dataLayer",
+    variables: {},
+
+    pageTracking: false,
+    pageViewEventName: "nuxtRoute",
+
+    autoInit: true,
+    respectDoNotTrack: true,
+
+    scriptId: "gtm-script",
+    scriptDefer: false,
+    scriptURL: "https://www.googletagmanager.com/gtm.js",
+    crossOrigin: false,
+
+    noscript: true,
+    noscriptId: "gtm-noscript",
+    noscriptURL: "https://www.googletagmanager.com/ns.html",
+  },
 
   dayjs: {
     plugins: ["relativeTime"],

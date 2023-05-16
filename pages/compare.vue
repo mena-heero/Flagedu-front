@@ -15,24 +15,24 @@
                   <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
-                <div class="has-company" v-else>
+                <div class="has-company" v-if="companyDetail.company1">
                   <div class="close-btn">
                     <i class="bi bi-x" @click="handleRemove(1)"></i>
                   </div>
                   <div class="image">
                     <img
                       :src="
-                        HOST + companyInput.company1.logo_detail.original.src
+                        HOST + companyDetail.company1.logo_detail.original.src
                       "
-                      :alt="companyInput.company1.logo_detail.original.alt"
+                      :alt="companyDetail.company1.logo_detail.original.alt"
                     />
                   </div>
                   <div class="company-name">
-                    {{ companyInput.company1.title }}
+                    {{ companyDetail.company1.title }}
                   </div>
                   <nuxt-link
                     class="visit-broker-btn"
-                    :to="companyInput.company1.html_url"
+                    :to="companyDetail.company1.html_url"
                   >
                     قم بزيارة وسيط
                   </nuxt-link>
@@ -47,24 +47,24 @@
                   <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
-                <div class="has-company" v-else>
+                <div class="has-company" v-if="companyDetail.company2">
                   <div class="close-btn">
                     <i class="bi bi-x" @click="handleRemove(2)"></i>
                   </div>
                   <div class="image">
                     <img
                       :src="
-                        HOST + companyInput.company2.logo_detail.original.src
+                        HOST + companyDetail.company2.logo_detail.original.src
                       "
-                      :alt="companyInput.company2.logo_detail.original.alt"
+                      :alt="companyDetail.company2.logo_detail.original.alt"
                     />
                   </div>
                   <div class="company-name">
-                    {{ companyInput.company2.title }}
+                    {{ companyDetail.company2.title }}
                   </div>
                   <nuxt-link
                     class="visit-broker-btn"
-                    :to="companyInput.company2.html_url"
+                    :to="companyDetail.company2.html_url"
                   >
                     قم بزيارة وسيط
                   </nuxt-link>
@@ -79,24 +79,24 @@
                   <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
-                <div class="has-company" v-else>
+                <div class="has-company" v-if="companyDetail.company3">
                   <div class="close-btn">
                     <i class="bi bi-x" @click="handleRemove(3)"></i>
                   </div>
                   <div class="image">
                     <img
                       :src="
-                        HOST + companyInput.company3.logo_detail.original.src
+                        HOST + companyDetail.company3.logo_detail.original.src
                       "
-                      :alt="companyInput.company3.logo_detail.original.alt"
+                      :alt="companyDetail.company3.logo_detail.original.alt"
                     />
                   </div>
                   <div class="company-name">
-                    {{ companyInput.company3.title }}
+                    {{ companyDetail.company3.title }}
                   </div>
                   <nuxt-link
                     class="visit-broker-btn"
-                    :to="companyInput.company3.html_url"
+                    :to="companyDetail.company3.html_url"
                   >
                     قم بزيارة وسيط
                   </nuxt-link>
@@ -111,24 +111,24 @@
                   <div class="add-company-title">أضف شركة</div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
-                <div class="has-company" v-else>
+                <div class="has-company" v-if="companyDetail.company4">
                   <div class="close-btn">
                     <i class="bi bi-x" @click="handleRemove(4)"></i>
                   </div>
                   <div class="image">
                     <img
                       :src="
-                        HOST + companyInput.company4.logo_detail.original.src
+                        HOST + companyDetail.company4.logo_detail.original.src
                       "
-                      :alt="companyInput.company4.logo_detail.original.alt"
+                      :alt="companyDetail.company4.logo_detail.original.alt"
                     />
                   </div>
                   <div class="company-name">
-                    {{ companyInput.company4.title }}
+                    {{ companyDetail.company4.title }}
                   </div>
                   <nuxt-link
                     class="visit-broker-btn"
-                    :to="companyInput.company4.html_url"
+                    :to="companyDetail.company4.html_url"
                   >
                     قم بزيارة وسيط
                   </nuxt-link>
