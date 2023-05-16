@@ -232,12 +232,12 @@ export default {
   gtm: {
     id: "GTM-TRFZQJT",
     enabled: true,
-    debug: false,
+    debug: true,
 
     layer: "dataLayer",
     variables: {},
 
-    pageTracking: false,
+    pageTracking: true,
     pageViewEventName: "nuxtRoute",
 
     autoInit: true,
