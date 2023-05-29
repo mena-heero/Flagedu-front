@@ -127,7 +127,15 @@ export default {
         href: "/favicon/manifest.json",
       },
     ],
-    script: [{ type: "text/javascript", src: "/js/bootstrap.min.js" }],
+    script: [
+      {
+        type: "text/javascript",
+        src: "https://www.googletagmanager.com/gtag/js?id=G-4GZLLSJHQF",
+        async: true,
+      },
+      { type: "text/javascript", src: "js/ga.js" },
+      { type: "text/javascript", src: "/js/bootstrap.min.js" },
+    ],
   },
 
   env: {
@@ -208,7 +216,7 @@ export default {
   buildModules: ["@nuxtjs/style-resources"],
 
   modules: [
-    "@nuxtjs/gtm",
+    // "@nuxtjs/gtm",
     "@nuxtjs/axios",
     "@nuxtjs/dayjs",
     "cookie-universal-nuxt",
@@ -229,29 +237,29 @@ export default {
     ],
   ],
 
-  gtm: {
-    id: "GTM-TRFZQJT",
-    enabled: true,
-    debug: true,
+  // gtm: {
+  //   id: "GTM-TRFZQJT",
+  //   enabled: true,
+  //   debug: true,
 
-    layer: "dataLayer",
-    variables: {},
+  //   layer: "dataLayer",
+  //   variables: {},
 
-    pageTracking: true,
-    pageViewEventName: "nuxtRoute",
+  //   pageTracking: true,
+  //   pageViewEventName: "nuxtRoute",
 
-    autoInit: true,
-    respectDoNotTrack: true,
+  //   autoInit: true,
+  //   respectDoNotTrack: true,
 
-    scriptId: "gtm-script",
-    scriptDefer: false,
-    scriptURL: "https://www.googletagmanager.com/gtm.js",
-    crossOrigin: false,
+  //   scriptId: "gtm-script",
+  //   scriptDefer: false,
+  //   scriptURL: "https://www.googletagmanager.com/gtm.js",
+  //   crossOrigin: false,
 
-    noscript: true,
-    noscriptId: "gtm-noscript",
-    noscriptURL: "https://www.googletagmanager.com/ns.html",
-  },
+  //   noscript: true,
+  //   noscriptId: "gtm-noscript",
+  //   noscriptURL: "https://www.googletagmanager.com/ns.html",
+  // },
 
   dayjs: {
     plugins: ["relativeTime"],
