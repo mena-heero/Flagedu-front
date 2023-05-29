@@ -238,7 +238,7 @@ export default {
   ],
 
   gtm: {
-    id: "GTM-TRFZQJT",
+    id: "GTM-TWR54SB",
     enabled: true,
     debug: true,
 
