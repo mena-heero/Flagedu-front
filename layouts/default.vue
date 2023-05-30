@@ -1,8 +1,10 @@
 <template>
   <div>
     <Header />
-    <div class="main-container">
-      <Nuxt />
+    <div class="p-container">
+      <div class="main-container">
+        <Nuxt />
+      </div>
     </div>
     <Footer />
   </div>
@@ -19,6 +21,7 @@ export default class Default extends Vue {}
 
 <style scoped lang="scss">
 .main-container {
+  padding-top: 130px;
   min-height: 500px;
   width: 100%;
   height: 100%;

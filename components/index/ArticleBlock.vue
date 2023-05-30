@@ -116,12 +116,12 @@ export default class ArticleBlock extends Vue {
         height: 300px;
       }
       img {
-        flex-shrink: 0;
-        -webkit-flex-shrink: 0;
+        // flex-shrink: 0;
+        // -webkit-flex-shrink: 0;
         max-width: 100%;
         height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover;
+        // -o-object-fit: cover;
+        // object-fit: cover;
         border-radius: 8px;
       }
     }

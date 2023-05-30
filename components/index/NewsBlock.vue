@@ -175,12 +175,12 @@ export default class NewsBlock extends Vue {
     .image {
       height: 600px;
       img {
-        flex-shrink: 0;
-        -webkit-flex-shrink: 0;
+        // flex-shrink: 0;
+        // -webkit-flex-shrink: 0;
         max-width: 100%;
         height: 100%;
-        -o-object-fit: cover;
-        object-fit: cover;
+        // -o-object-fit: cover;
+        // object-fit: cover;
         border-radius: 8px;
       }
     }
@@ -221,12 +221,12 @@ export default class NewsBlock extends Vue {
       .image {
         height: 250px;
         img {
-          flex-shrink: 0;
-          -webkit-flex-shrink: 0;
+          // flex-shrink: 0;
+          // -webkit-flex-shrink: 0;
           width: 100%;
           height: 100%;
-          -o-object-fit: cover;
-          object-fit: cover;
+          // -o-object-fit: cover;
+          // object-fit: cover;
           border-radius: 8px;
         }
       }
