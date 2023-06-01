@@ -242,6 +242,7 @@ export default {
   ],
 
   i18n: {
+    strategy: "no_prefix",
     locales: [
       {
         code: "en",

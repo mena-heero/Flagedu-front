@@ -41,7 +41,8 @@ export default class AuthLayout extends Vue {
   }
 
   changeLanguage(lang) {
-    this.$i18n.locale = lang;
+    // this.$i18n.locale = lang;
+    this.$i18n.setLocale(lang);
     this.openLanguageDropdown = false;
   }
 }
