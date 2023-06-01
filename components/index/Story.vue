@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="story-container">
-      <div class="title">قصة اليوم</div>
+      <!-- <div class="title">قصة اليوم</div> -->
+      <div class="title">{{ $t("story_title") }}</div>
+
       <div class="story-image-container" dir="ltr">
         <vue-horizontal snap="center">
           <section v-for="(item, idx) in stories" :key="'item_' + idx">

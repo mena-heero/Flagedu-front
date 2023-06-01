@@ -1,5 +1,28 @@
 <template>
   <div>
+    <div class="site-settings">
+      <div class="setting-wrapper">
+        <div class="language">
+          <div @click="languageDropdownToggle" class="current-language">
+            {{ $i18n.locale.toUpperCase() }}
+          </div>
+          <div
+            class="lang-dropdown-container"
+            v-if="openLanguageDropdown == true"
+          >
+            <div
+              class="items"
+              v-for="lang in $i18n.locales"
+              :key="lang.code"
+              @click="changeLanguage(lang.code)"
+            >
+              {{ lang.code.toUpperCase() }}
+            </div>
+          </div>
+        </div>
+        <!-- <div class="theme"></div> -->
+      </div>
+    </div>
     <Header />
     <div class="p-container">
       <div class="main-container">
@@ -16,7 +39,18 @@ import { Component, Vue } from "nuxt-property-decorator";
 @Component({
   name: "Default",
 })
-export default class Default extends Vue {}
+export default class Default extends Vue {
+  openLanguageDropdown = false;
+
+  languageDropdownToggle() {
+    this.openLanguageDropdown = !this.openLanguageDropdown;
+  }
+
+  changeLanguage(lang) {
+    this.$i18n.locale = lang;
+    this.openLanguageDropdown = false;
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -26,5 +60,55 @@ export default class Default extends Vue {}
   width: 100%;
   height: 100%;
   background-color: $bg-secondary;
+}
+
+.site-settings {
+  position: fixed;
+  top: 45%;
+  right: 20px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 999999999;
+  .setting-wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+  }
+}
+.language {
+  width: 40px;
+  height: 30px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(90deg, #dc5ced 0%, #25e1fb 100%);
+  .current-language {
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .lang-dropdown-container {
+    position: absolute;
+    top: 30px;
+    padding: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .items {
+      font-weight: 600;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+  }
+}
+.theme {
+  width: 40px;
+  height: 30px;
+  border: 1px solid red;
 }
 </style>

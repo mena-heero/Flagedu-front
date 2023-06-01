@@ -1,3 +1,6 @@
+import ar from "./locales/ar.json";
+import en from "./locales/en.json";
+
 export default {
   loading: "components/loading.vue",
   head: {
@@ -235,7 +238,30 @@ export default {
         sv: 6,
       },
     ],
+    "@nuxtjs/i18n",
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: "en",
+        name: "English",
+      },
+      {
+        code: "ar",
+        name: "Arabic",
+      },
+    ],
+    defaultLocale: "ar",
+    vueI18n: {
+      fallbackLocale: "ar",
+      messages: { ar, en },
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+    },
+  },
 
   gtm: {
     id: "GTM-TWR54SB",

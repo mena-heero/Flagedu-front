@@ -6,7 +6,8 @@
       <div class="card-wrapper">
         <div class="text-center mb-5">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">تسجيل الدخول</h1>
+          <!-- <h1 class="text-white fw-semibold">تسجيل الدخول</h1> -->
+          <h1 class="text-white fw-semibold">{{ $t("signin_title") }}</h1>
         </div>
         <ValidationObserver v-slot="{ invalid }" ref="form">
           <form method="post" name="signinForm" @submit.prevent="handleLogin">
