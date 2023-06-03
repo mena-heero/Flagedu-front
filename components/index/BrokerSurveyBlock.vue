@@ -1,15 +1,15 @@
 <template>
   <div class="broker-survey-container" :style="bgImage">
     <div class="content">
-      <h1>{{ data.title }}</h1>
-      <h5>{{ data.subtitle }}</h5>
+      <h1>{{ renderLocaleField(data, "title", $i18n.locale) }}</h1>
+      <h5>{{ renderLocaleField(data, "subtitle", $i18n.locale) }}</h5>
       <nuxt-link :to="data.learn_more_button_link">
-        {{ data.learn_more_button_text }}
+        {{ renderLocaleField(data, "learn_more_button_text", $i18n.locale) }}
       </nuxt-link>
     </div>
     <div class="survey-btn">
       <nuxt-link :to="data.survey_button_link">
-        {{ data.survey_button_text }}
+        {{ renderLocaleField(data, "survey_button_text", $i18n.locale) }}
         <i class="bi bi-speedometer2 speedometer"></i>
       </nuxt-link>
     </div>
@@ -18,6 +18,7 @@
 
 <script>
 import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
+import { renderLocaleField } from "../../utils/utils";
 
 @Component({
   name: "BrokerSurveyBlock",
@@ -25,6 +26,7 @@ import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
 })
 export default class BrokerSurveyBlock extends Vue {
   @Prop() data;
+  renderLocaleField = renderLocaleField;
 
   get HOST() {
     return this.$config.HOST;

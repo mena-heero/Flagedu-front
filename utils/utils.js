@@ -35,3 +35,17 @@ export const convertBoolean = (val) => {
     return "No";
   }
 };
+
+export const renderLocaleField = (data, fieldName, currentLang) => {
+  var d = null;
+  if (currentLang == "en") {
+    d = data[fieldName + "_en"];
+  } else {
+    d = data[fieldName];
+  }
+  if (!d) {
+    return data[fieldName];
+  } else {
+    return d;
+  }
+};
