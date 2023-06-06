@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="video-block">
-      <div class="title">{{ data.title }}</div>
+      <div class="title">
+        {{ renderLocaleField(data, "title", $i18n.locale) }}
+      </div>
       <div class="video">
         <lite-youtube :videoid="data.youtube_video_id"></lite-youtube>
       </div>
@@ -11,6 +13,7 @@
 
 <script>
 import { Component, Vue, Prop } from "nuxt-property-decorator";
+import { renderLocaleField } from "../../utils/utils";
 
 @Component({
   name: "VideoBlock",
@@ -18,6 +21,7 @@ import { Component, Vue, Prop } from "nuxt-property-decorator";
 })
 export default class VideoBlock extends Vue {
   @Prop() data;
+  renderLocaleField = renderLocaleField;
 
   get HOST() {
     return this.$config.HOST;

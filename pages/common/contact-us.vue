@@ -1,7 +1,9 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <h1 class="title">{{ getCurrentPage.title }}</h1>
+      <h1 class="title">
+        {{ renderLocaleField(getCurrentPage, "title", $i18n.locale) }}
+      </h1>
       <div class="white-back">
         <div class="company-wrapper">
           <div class="contact-container">
@@ -16,9 +18,23 @@
               }"
             >
               <div class="content">
-                <h1>{{ getCurrentPage.hero_title }}</h1>
+                <h1>
+                  {{
+                    renderLocaleField(
+                      getCurrentPage,
+                      "hero_title",
+                      $i18n.locale
+                    )
+                  }}
+                </h1>
                 <p class="title">
-                  {{ getCurrentPage.hero_subtitle }}
+                  {{
+                    renderLocaleField(
+                      getCurrentPage,
+                      "hero_subtitle",
+                      $i18n.locale
+                    )
+                  }}
                 </p>
                 <div
                   class="text-address"
@@ -123,7 +139,7 @@ import {
 import { NS_COMMON } from "../../utils/store/namespace.names";
 import { CONTACT_US, FETCH_CURRENT_PAGE } from "../../utils/store/action.names";
 import { GET_GLOBAL_SETTINGS } from "../../utils/store/getter.names";
-import { namespaced } from "../../utils/utils";
+import { namespaced, renderLocaleField } from "../../utils/utils";
 
 @Component({
   name: "ContactUs",
@@ -143,6 +159,7 @@ export default class ContactUs extends Vue {
   formSubmit = false;
   error_msg = "";
   loading = false;
+  renderLocaleField = renderLocaleField;
 
   handleFormSubmit() {
     this.loading = true;

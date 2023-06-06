@@ -42,7 +42,7 @@
         :key="'footer_' + idx"
       >
         <div class="title">
-          {{ item.title }}
+          {{ renderLocaleField(item, "title", $i18n.locale) }}
         </div>
         <div class="submenu">
           <div
@@ -51,12 +51,14 @@
             :key="'submenu_' + sidx"
           >
             <a v-if="submenu.is_external == true" :href="submenu.link_url">{{
-              submenu.link_title
+              renderLocaleField(submenu, "link_title", $i18n.locale)
             }}</a>
             <nuxt-link
               v-if="submenu.is_external == false"
               :to="submenu.link_url"
-              >{{ submenu.link_title }}</nuxt-link
+              >{{
+                renderLocaleField(submenu, "link_title", $i18n.locale)
+              }}</nuxt-link
             >
           </div>
         </div>
@@ -76,6 +78,7 @@ import {
   GET_SOCIAL_SETTINGS,
 } from "../utils/store/getter.names";
 import { NS_USER, NS_COMMON } from "../utils/store/namespace.names";
+import { renderLocaleField } from "../utils/utils";
 
 @Component({
   name: "Footer",
@@ -85,6 +88,8 @@ export default class Footer extends Vue {
   @Getter(namespaced(NS_COMMON, GET_FOOTERMENU)) getFootermenu;
   @Getter(namespaced(NS_COMMON, GET_GLOBAL_SETTINGS)) getGlobalSettings;
   @Getter(namespaced(NS_COMMON, GET_SOCIAL_SETTINGS)) getSocialSettings;
+
+  renderLocaleField = renderLocaleField;
 
   get HOST() {
     return this.$config.HOST;

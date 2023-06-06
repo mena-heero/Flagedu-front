@@ -2,15 +2,21 @@
   <div class="company-index">
     <div class="wrapper">
       <h1 class="title" v-if="getCurrentPage.hero_title">
-        {{ getCurrentPage.hero_title }}
+        {{ renderLocaleField(getCurrentPage, "hero_title", $i18n.locale) }}
       </h1>
       <div
         v-if="getCurrentPage.rendered_hero_description"
         class="hero-description"
-        v-html="getCurrentPage.rendered_hero_description"
+        v-html="
+          renderLocaleField(
+            getCurrentPage,
+            'rendered_hero_description',
+            $i18n.locale
+          )
+        "
       ></div>
       <h1 class="title" v-if="getCurrentPage.list_title">
-        {{ getCurrentPage.list_title }}
+        {{ renderLocaleField(getCurrentPage, "list_title", $i18n.locale) }}
       </h1>
       <div class="white-back">
         <div class="filters">
@@ -70,7 +76,9 @@
                 }}
               </div>
               <div class="title">
-                {{ getTitle(article.title) }}
+                {{
+                  getTitle(renderLocaleField(article, "title", $i18n.locale))
+                }}
               </div>
             </div>
           </nuxt-link>
@@ -114,7 +122,12 @@ import {
 } from "nuxt-property-decorator";
 import { NS_USER, NS_COMMON, NS_COMPANY } from "../utils/store/namespace.names";
 import { FETCH_CURRENT_PAGE, FETCH_PAGES } from "../utils/store/action.names";
-import { namespaced, deepCopy, modifyHtmlPath } from "../utils/utils";
+import {
+  namespaced,
+  deepCopy,
+  modifyHtmlPath,
+  renderLocaleField,
+} from "../utils/utils";
 import NewsArticleFilter from "../components/NewsArticleFilter";
 
 function calculatePage(count, limit, page, totalPageCount, paginationSteps) {
@@ -169,6 +182,7 @@ export default class NewsArticleListPage extends Vue {
 
   showFilterDorpdown = false;
   modifyHtmlPath = modifyHtmlPath;
+  renderLocaleField = renderLocaleField;
 
   @Watch("$route", { deep: true })
   handleRouteChange(val, oldVal) {
@@ -290,7 +304,7 @@ export default class NewsArticleListPage extends Vue {
     }
 
     query["type"] = pageType;
-    query["fields"] = "title,thumbnail,fetch_parent";
+    query["fields"] = "title,title_en,thumbnail,fetch_parent";
 
     await this.fetchPages(query).then((data) => {
       this.newss = data.items;
@@ -350,7 +364,7 @@ export default class NewsArticleListPage extends Vue {
       limit: limit,
       offset: offset,
       type: pageType,
-      fields: "title,thumbnail,fetch_parent",
+      fields: "title,title_en,thumbnail,fetch_parent",
     };
 
     if (search) {

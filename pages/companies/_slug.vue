@@ -1,7 +1,10 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <h1 class="title">{{ getCurrentPage.title }} Review {{ getYear }}</h1>
+      <h1 class="title">
+        {{ renderLocaleField(getCurrentPage, "title", $i18n.locale) }} Review
+        {{ getYear }}
+      </h1>
       <div class="sharing">
         <div class="share-text">يشارك:</div>
         <div class="item">
@@ -207,7 +210,13 @@
               </div>
               <div
                 class="short-desc"
-                v-html="getCurrentPage.short_description"
+                v-html="
+                  renderLocaleField(
+                    getCurrentPage,
+                    'short_description',
+                    $i18n.locale
+                  )
+                "
               ></div>
               <div class="account-open-btn">
                 <a target="_blank" :href="getCurrentPage.account_open_link"
@@ -250,7 +259,11 @@ import {
 } from "nuxt-property-decorator";
 import { NS_COMMON } from "../../utils/store/namespace.names";
 import { FETCH_CURRENT_PAGE } from "../../utils/store/action.names";
-import { namespaced, convertBoolean } from "../../utils/utils";
+import {
+  namespaced,
+  convertBoolean,
+  renderLocaleField,
+} from "../../utils/utils";
 import DescriptionBlock from "../../components/blocks/DescriptionBlock";
 import ImageBlock from "../../components/blocks/ImageBlock";
 import BannerBlock from "../../components/blocks/BannerBlock";
@@ -275,6 +288,7 @@ import VideoBlock from "../../components/blocks/VideoBlock";
 })
 export default class CompanyDetailPage extends Vue {
   convertBoolean = convertBoolean;
+  renderLocaleField = renderLocaleField;
 
   async asyncData({ route, $axios, store, error }) {
     var getCurrentPage = {};

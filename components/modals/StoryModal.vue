@@ -8,6 +8,9 @@
     >
       <div class="modal-body">
         <div class="udpate-wrapper">
+          <div class="close-btn" @click="close">
+            <i class="bi bi-x-circle-fill close-icon"></i>
+          </div>
           <div class="profile-card">
             <div id="myProgress" dir="ltr">
               <div id="myBar"></div>
@@ -19,17 +22,21 @@
                   v-if="currentStory.is_external == true"
                   :href="currentStory.link"
                   target="_blank"
-                  >{{ currentStory.title }}</a
+                  >{{
+                    renderLocaleField(currentStory, "title", $i18n.locale)
+                  }}</a
                 >
                 <nuxt-link
                   v-else-if="
                     currentStory.is_external == false && currentStory.link
                   "
                   :to="currentStory.link"
-                  >{{ currentStory.title }}</nuxt-link
+                  >{{
+                    renderLocaleField(currentStory, "title", $i18n.locale)
+                  }}</nuxt-link
                 >
                 <div v-else>
-                  {{ currentStory.title }}
+                  {{ renderLocaleField(currentStory, "title", $i18n.locale) }}
                 </div>
               </div>
             </div>
@@ -60,7 +67,7 @@ import {
   Mutation,
 } from "nuxt-property-decorator";
 import { NS_USER } from "../../utils/store/namespace.names";
-import { namespaced } from "../../utils/utils";
+import { namespaced, renderLocaleField } from "../../utils/utils";
 
 @Component({
   name: "StoryModal",
@@ -74,6 +81,8 @@ export default class StoryModal extends Vue {
   storyPointer = 0;
   loading = false;
   intervalId = null;
+
+  renderLocaleField = renderLocaleField;
 
   move() {
     clearInterval(this.intervalId);
@@ -152,6 +161,7 @@ export default class StoryModal extends Vue {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  z-index: 9999999999;
 }
 
 .modal-container {
@@ -178,19 +188,25 @@ export default class StoryModal extends Vue {
 
   .close-btn {
     position: absolute;
-    top: 30px;
-    right: 30px;
-    background: none;
-    border: none;
-    display: none;
-
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
     @media (max-width: 430px) {
       display: block;
+    }
+    .close-icon {
+      font-size: 30px;
+      color: white;
     }
   }
 
   .profile-card {
-    // border: 1px solid white;
     border-radius: 20px;
     padding: 25px 44px 35px;
     display: flex;

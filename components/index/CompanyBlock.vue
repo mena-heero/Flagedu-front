@@ -2,7 +2,9 @@
   <div class="company-block-container">
     <div class="company-container">
       <div class="title">
-        <nuxt-link to="/companies">{{ data.title }}</nuxt-link>
+        <nuxt-link to="/companies">{{
+          renderLocaleField(data, "title", $i18n.locale)
+        }}</nuxt-link>
       </div>
       <div class="company-wrapper">
         <div
@@ -19,6 +21,7 @@
 
 <script>
 import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
+import { renderLocaleField } from "../../utils/utils";
 import SingleCompany from "../SingleCompany";
 
 @Component({
@@ -27,6 +30,8 @@ import SingleCompany from "../SingleCompany";
 })
 export default class CompanyBlock extends Vue {
   @Prop() data;
+
+  renderLocaleField = renderLocaleField;
 
   get HOST() {
     return this.$config.HOST;

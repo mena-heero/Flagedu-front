@@ -1,7 +1,9 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <h1 class="title">{{ getCurrentPage.title }}</h1>
+      <h1 class="title">
+        {{ renderLocaleField(getCurrentPage, "title", $i18n.locale) }}
+      </h1>
       <div class="sharing">
         <div class="share-text">يشارك:</div>
         <div class="item">
@@ -126,7 +128,7 @@ import {
   CHECK_SAVED_TOPIC_EXISTS,
   DELETE_SAVED_TOPIC,
 } from "../../../utils/store/action.names";
-import { namespaced } from "../../../utils/utils";
+import { namespaced, renderLocaleField } from "../../../utils/utils";
 import DescriptionBlock from "../../../components/blocks/DescriptionBlock";
 import ImageBlock from "../../../components/blocks/ImageBlock";
 import BannerBlock from "../../../components/blocks/BannerBlock";
@@ -161,6 +163,7 @@ export default class DetailPage extends Vue {
     articles: "",
   };
   loading = false;
+  renderLocaleField = renderLocaleField;
 
   handleAddSavedTopic() {
     this.loading = true;

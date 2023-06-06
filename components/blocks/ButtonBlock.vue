@@ -1,13 +1,16 @@
 <template>
   <div>
     <div class="button">
-      <a target="_blank" :href="data.link.link">{{ data.label }}</a>
+      <a target="_blank" :href="data.link.link">{{
+        renderLocaleField(data, "label", $i18n.locale)
+      }}</a>
     </div>
   </div>
 </template>
 
 <script>
 import { Component, Vue, Prop } from "nuxt-property-decorator";
+import { renderLocaleField } from "../../utils/utils";
 
 @Component({
   name: "ButtonBlock",
@@ -15,6 +18,8 @@ import { Component, Vue, Prop } from "nuxt-property-decorator";
 })
 export default class ButtonBlock extends Vue {
   @Prop() data;
+
+  renderLocaleField = renderLocaleField;
 
   get HOST() {
     return this.$config.HOST;

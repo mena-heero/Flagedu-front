@@ -31,7 +31,15 @@
         </div>
       </div>
       <div class="recommendation" v-if="companyDetail.company1">
-        <div v-html="companyDetail.company1.recommendation_text"></div>
+        <div
+          v-html="
+            renderLocaleField(
+              companyDetail.company1,
+              'recommendation_text',
+              $i18n.locale
+            )
+          "
+        ></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company1">
         <div class="title">بلد المنشأ</div>
@@ -71,7 +79,15 @@
         </div>
       </div>
       <div class="recommendation" v-if="companyDetail.company2">
-        <div v-html="companyDetail.company2.recommendation_text"></div>
+        <div
+          v-html="
+            renderLocaleField(
+              companyDetail.company2,
+              'recommendation_text',
+              $i18n.locale
+            )
+          "
+        ></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company2">
         <div class="title">بلد المنشأ</div>
@@ -111,7 +127,15 @@
         </div>
       </div>
       <div class="recommendation" v-if="companyDetail.company3">
-        <div v-html="companyDetail.company3.recommendation_text"></div>
+        <div
+          v-html="
+            renderLocaleField(
+              companyDetail.company3,
+              'recommendation_text',
+              $i18n.locale
+            )
+          "
+        ></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company3">
         <div class="title">بلد المنشأ</div>
@@ -151,7 +175,15 @@
         </div>
       </div>
       <div class="recommendation" v-if="companyDetail.company4">
-        <div v-html="companyDetail.company4.recommendation_text"></div>
+        <div
+          v-html="
+            renderLocaleField(
+              companyDetail.company4,
+              'recommendation_text',
+              $i18n.locale
+            )
+          "
+        ></div>
       </div>
       <div class="origin-country" v-if="companyDetail.company4">
         <div class="title">بلد المنشأ</div>
@@ -169,6 +201,7 @@ import { namespaced } from "~/utils/utils";
 import {} from "../../utils/store/action.names";
 import {} from "../../utils/store/getter.names";
 import {} from "../../utils/store/namespace.names";
+import { renderLocaleField } from "../../utils/utils";
 
 @Component({
   name: "BasicData",
@@ -176,6 +209,7 @@ import {} from "../../utils/store/namespace.names";
 })
 export default class BasicData extends Vue {
   @Prop() companyDetail;
+  renderLocaleField = renderLocaleField;
 
   get HOST() {
     return this.$config.HOST;

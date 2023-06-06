@@ -1,11 +1,16 @@
 <template>
   <div>
-    <div class="desc" dir="rtl" v-html="data.desc"></div>
+    <div
+      class="desc"
+      :dir="$i18n.locale == 'ar' ? 'rtl' : 'ltr'"
+      v-html="renderLocaleField(data, 'desc', $i18n.locale)"
+    ></div>
   </div>
 </template>
 
 <script>
 import { Component, Vue, Prop } from "nuxt-property-decorator";
+import { renderLocaleField } from "../../utils/utils";
 
 @Component({
   name: "DescriptionBlock",
@@ -13,6 +18,7 @@ import { Component, Vue, Prop } from "nuxt-property-decorator";
 })
 export default class DescriptionBlock extends Vue {
   @Prop() data;
+  renderLocaleField = renderLocaleField;
 
   mounted() {}
 }

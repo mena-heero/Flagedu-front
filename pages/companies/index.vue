@@ -1,12 +1,22 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <h1 class="title">{{ getCurrentPage.hero_title }}</h1>
+      <h1 class="title">
+        {{ renderLocaleField(getCurrentPage, "hero_title", $i18n.locale) }}
+      </h1>
       <div
         class="hero-description"
-        v-html="getCurrentPage.rendered_hero_description"
+        v-html="
+          renderLocaleField(
+            getCurrentPage,
+            'rendered_hero_description',
+            $i18n.locale
+          )
+        "
       ></div>
-      <div class="title">{{ getCurrentPage.list_title }}</div>
+      <div class="title">
+        {{ renderLocaleField(getCurrentPage, "list_title", $i18n.locale) }}
+      </div>
       <div class="white-back">
         <div class="filters">
           <div class="search-input">
@@ -93,7 +103,7 @@ import {
   FETCH_COMPANY,
   FETCH_PAGES,
 } from "../../utils/store/action.names";
-import { namespaced, deepCopy } from "../../utils/utils";
+import { namespaced, deepCopy, renderLocaleField } from "../../utils/utils";
 import SingleCompany from "../../components/SingleCompany";
 import CompanyFilter from "../../components/CompanyFilter";
 
@@ -149,6 +159,7 @@ export default class CompanyIndex extends Vue {
   @Action(namespaced(NS_COMMON, FETCH_PAGES)) fetchPages;
 
   showFilterDorpdown = false;
+  renderLocaleField = renderLocaleField;
 
   @Watch("$route", { deep: true })
   handleRouteChange(val, oldVal) {

@@ -1,7 +1,9 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <h1 class="title">{{ getCurrentPage.title }}</h1>
+      <h1 class="title">
+        {{ renderLocaleField(getCurrentPage, "title", $i18n.locale) }}
+      </h1>
       <div class="white-back">
         <div class="company-wrapper">
           <div class="result-block">
@@ -26,7 +28,7 @@
                     </div>
                     <div class="company-info">
                       <div class="title">
-                        {{ item.title }}
+                        {{ renderLocaleField(item, "title", $i18n.locale) }}
                       </div>
                       <div class="rating">
                         <i
@@ -326,7 +328,7 @@ import {
   FETCH_CURRENT_PAGE,
   FETCH_COMPANY_FINDER_RATING,
 } from "../utils/store/action.names";
-import { namespaced } from "../utils/utils";
+import { namespaced, renderLocaleField } from "../utils/utils";
 
 @Component({
   name: "FindMyBroker",
@@ -338,6 +340,7 @@ export default class FindMyBroker extends Vue {
 
   step = 1;
   finish = false;
+  renderLocaleField = renderLocaleField;
 
   answers = {
     q1: "",
