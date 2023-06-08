@@ -9,8 +9,16 @@
           <nuxt-link :to="data.news[0].html_url" class="item hide-on-desktop">
             <div class="image">
               <img
-                :src="HOST + data.news[0].thumbnail.src"
-                alt="data.news[0].thumbnail.alt"
+                :src="
+                  HOST +
+                  renderLocaleImage(
+                    data.news[0],
+                    'thumbnail',
+                    $i18n.locale,
+                    true
+                  )
+                "
+                :alt="data.news[0].thumbnail.alt"
               />
             </div>
             <div class="content">
@@ -18,16 +26,22 @@
                 <i class="bi bi-clock clock-icon"></i>
                 {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
               </div>
-              <div class="title">
-                {{ data.news[0].title }}
-              </div>
+              <div class="title">{{ data.news[0].title }}</div>
             </div>
           </nuxt-link>
           <nuxt-link :to="data.news[1].html_url" class="item">
             <div class="image">
               <img
-                :src="HOST + data.news[1].thumbnail.src"
-                alt="data.news[1].thumbnail.alt"
+                :src="
+                  HOST +
+                  renderLocaleImage(
+                    data.news[1],
+                    'thumbnail',
+                    $i18n.locale,
+                    true
+                  )
+                "
+                :alt="data.news[1].thumbnail.alt"
               />
             </div>
             <div class="content">
@@ -43,8 +57,16 @@
           <nuxt-link :to="data.news[2].html_url" class="item">
             <div class="image">
               <img
-                :src="HOST + data.news[2].thumbnail.src"
-                alt="data.news[2].thumbnail.alt"
+                :src="
+                  HOST +
+                  renderLocaleImage(
+                    data.news[2],
+                    'thumbnail',
+                    $i18n.locale,
+                    true
+                  )
+                "
+                :alt="data.news[2].thumbnail.alt"
               />
             </div>
             <div class="content">
@@ -60,8 +82,16 @@
           <nuxt-link :to="data.news[3].html_url" class="item">
             <div class="image">
               <img
-                :src="HOST + data.news[3].thumbnail.src"
-                alt="data.news[3].thumbnail.alt"
+                :src="
+                  HOST +
+                  renderLocaleImage(
+                    data.news[3],
+                    'thumbnail',
+                    $i18n.locale,
+                    true
+                  )
+                "
+                :alt="data.news[3].thumbnail.alt"
               />
             </div>
             <div class="content">
@@ -77,8 +107,16 @@
           <nuxt-link :to="data.news[4].html_url" class="item">
             <div class="image">
               <img
-                :src="HOST + data.news[4].thumbnail.src"
-                alt="data.news[4].thumbnail.alt"
+                :src="
+                  HOST +
+                  renderLocaleImage(
+                    data.news[4],
+                    'thumbnail',
+                    $i18n.locale,
+                    true
+                  )
+                "
+                :alt="data.news[4].thumbnail.alt"
               />
             </div>
             <div class="content">
@@ -95,8 +133,11 @@
         <nuxt-link :to="data.news[0].html_url" class="highligted-news hide">
           <div class="image">
             <img
-              :src="HOST + data.news[0].thumbnail.src"
-              alt="data.news[0].thumbnail.alt"
+              :src="
+                HOST +
+                renderLocaleImage(data.news[0], 'thumbnail', $i18n.locale, true)
+              "
+              :alt="data.news[0].thumbnail.alt"
             />
           </div>
           <div class="content">
@@ -104,9 +145,7 @@
               <i class="bi bi-clock clock-icon"></i>
               {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
             </div>
-            <div class="title">
-              {{ data.news[0].title }}
-            </div>
+            <div class="title">{{ data.news[0].title }}</div>
           </div>
         </nuxt-link>
       </div>
@@ -116,6 +155,7 @@
 
 <script>
 import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
+import { renderLocaleImage } from "../../utils/utils";
 import SingleCompany from "../SingleCompany";
 
 @Component({
@@ -124,6 +164,8 @@ import SingleCompany from "../SingleCompany";
 })
 export default class NewsBlock extends Vue {
   @Prop() data;
+
+  renderLocaleImage = renderLocaleImage;
 
   get HOST() {
     return this.$config.HOST;

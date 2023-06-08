@@ -270,7 +270,7 @@ export default class CompanyIndex extends Vue {
 
     query["type"] = "home.CompanyDetail";
     query["fields"] =
-      "title,thumbnail_image,is_islamic,account_open_link,rating";
+      "title,thumbnail_image,thumbnail_image_en,is_islamic,account_open_link,rating";
 
     if (query["sort_by_name"]) {
       if (query["sort_by_name"] == 0) {
@@ -345,7 +345,8 @@ export default class CompanyIndex extends Vue {
       limit: limit,
       offset: offset,
       type: "home.CompanyDetail",
-      fields: "title,thumbnail_image,is_islamic,account_open_link,rating",
+      fields:
+        "title,thumbnail_image,thumbnail_image_en,is_islamic,account_open_link,rating",
     };
 
     if (search) {

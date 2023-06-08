@@ -3,7 +3,7 @@
     <div class="single-company" v-if="type == 1">
       <div class="image">
         <img
-          :src="HOST + data.thumbnail_image.original.src"
+          :src="HOST + renderLocaleImage(data, 'thumbnail_image', $i18n.locale)"
           :alt="data.thumbnail_image.original.alt"
         />
       </div>
@@ -48,7 +48,10 @@
     <div class="single-company" v-if="type == 2">
       <div class="image">
         <img
-          :src="HOST + data.thumbnail_image.src"
+          :src="
+            HOST +
+            renderLocaleImage(data, 'thumbnail_image', $i18n.locale, true)
+          "
           :alt="data.thumbnail_image.alt"
         />
       </div>
@@ -93,7 +96,7 @@
 
 <script>
 import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
-import { modifyHtmlPath } from "../utils/utils";
+import { modifyHtmlPath, renderLocaleImage } from "../utils/utils";
 
 @Component({
   name: "SingleCompany",
@@ -102,6 +105,8 @@ import { modifyHtmlPath } from "../utils/utils";
 export default class SingleCompany extends Vue {
   @Prop() data;
   @Prop() type;
+
+  renderLocaleImage = renderLocaleImage;
 
   modifyHtmlPath = modifyHtmlPath;
 

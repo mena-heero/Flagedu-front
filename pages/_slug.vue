@@ -61,7 +61,9 @@
           >
             <div class="image">
               <img
-                :src="HOST + article.thumbnail.original.src"
+                :src="
+                  HOST + renderLocaleImage(article, 'thumbnail', $i18n.locale)
+                "
                 :alt="article.thumbnail.original.alt"
               />
               <div class="category">{{ article.fetch_parent.title }}</div>
@@ -127,6 +129,7 @@ import {
   deepCopy,
   modifyHtmlPath,
   renderLocaleField,
+  renderLocaleImage,
 } from "../utils/utils";
 import NewsArticleFilter from "../components/NewsArticleFilter";
 
@@ -183,6 +186,7 @@ export default class NewsArticleListPage extends Vue {
   showFilterDorpdown = false;
   modifyHtmlPath = modifyHtmlPath;
   renderLocaleField = renderLocaleField;
+  renderLocaleImage = renderLocaleImage;
 
   @Watch("$route", { deep: true })
   handleRouteChange(val, oldVal) {
@@ -304,7 +308,7 @@ export default class NewsArticleListPage extends Vue {
     }
 
     query["type"] = pageType;
-    query["fields"] = "title,title_en,thumbnail,fetch_parent";
+    query["fields"] = "title,title_en,thumbnail,thumbnail_en,fetch_parent";
 
     await this.fetchPages(query).then((data) => {
       this.newss = data.items;
@@ -364,7 +368,7 @@ export default class NewsArticleListPage extends Vue {
       limit: limit,
       offset: offset,
       type: pageType,
-      fields: "title,title_en,thumbnail,fetch_parent",
+      fields: "title,title_en,thumbnail,thumbnail_en,fetch_parent",
     };
 
     if (search) {

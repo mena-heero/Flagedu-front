@@ -13,7 +13,11 @@
                 backgroundImage:
                   'url(' +
                   HOST +
-                  getCurrentPage.background_image.original.src +
+                  renderLocaleImage(
+                    getCurrentPage,
+                    'background_image',
+                    $i18n.locale
+                  ) +
                   ')',
               }"
             >
@@ -139,7 +143,11 @@ import {
 import { NS_COMMON } from "../../utils/store/namespace.names";
 import { CONTACT_US, FETCH_CURRENT_PAGE } from "../../utils/store/action.names";
 import { GET_GLOBAL_SETTINGS } from "../../utils/store/getter.names";
-import { namespaced, renderLocaleField } from "../../utils/utils";
+import {
+  namespaced,
+  renderLocaleField,
+  renderLocaleImage,
+} from "../../utils/utils";
 
 @Component({
   name: "ContactUs",
@@ -149,6 +157,8 @@ export default class ContactUs extends Vue {
   @Getter(namespaced(NS_COMMON, GET_GLOBAL_SETTINGS)) getGlobalSettings;
 
   @Action(namespaced(NS_COMMON, CONTACT_US)) contactUs;
+
+  renderLocaleImage = renderLocaleImage;
 
   formData = {
     full_name: "",

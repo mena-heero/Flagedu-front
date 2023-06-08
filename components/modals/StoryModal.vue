@@ -15,7 +15,12 @@
             <div id="myProgress" dir="ltr">
               <div id="myBar"></div>
             </div>
-            <img :src="HOST + currentStory.image_detail.original.src" />
+            <img
+              :src="
+                HOST +
+                renderLocaleImage(currentStory, 'image_detail', $i18n.locale)
+              "
+            />
             <div class="content">
               <div class="title">
                 <a
@@ -67,7 +72,11 @@ import {
   Mutation,
 } from "nuxt-property-decorator";
 import { NS_USER } from "../../utils/store/namespace.names";
-import { namespaced, renderLocaleField } from "../../utils/utils";
+import {
+  namespaced,
+  renderLocaleField,
+  renderLocaleImage,
+} from "../../utils/utils";
 
 @Component({
   name: "StoryModal",
@@ -83,6 +92,7 @@ export default class StoryModal extends Vue {
   intervalId = null;
 
   renderLocaleField = renderLocaleField;
+  renderLocaleImage = renderLocaleImage;
 
   move() {
     clearInterval(this.intervalId);

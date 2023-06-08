@@ -13,7 +13,10 @@
         >
           <div class="image">
             <img
-              :src="HOST + article.thumbnail.src"
+              :src="
+                HOST +
+                renderLocaleImage(article, 'thumbnail', $i18n.locale, true)
+              "
               :alt="article.thumbnail.alt"
             />
           </div>
@@ -34,6 +37,7 @@
 
 <script>
 import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
+import { renderLocaleImage } from "../../utils/utils";
 import SingleCompany from "../SingleCompany";
 
 @Component({
@@ -42,6 +46,8 @@ import SingleCompany from "../SingleCompany";
 })
 export default class ArticleBlock extends Vue {
   @Prop() data;
+
+  renderLocaleImage = renderLocaleImage;
 
   get HOST() {
     return this.$config.HOST;

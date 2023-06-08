@@ -49,3 +49,27 @@ export const renderLocaleField = (data, fieldName, currentLang) => {
     return d;
   }
 };
+
+export const renderLocaleImage = (
+  data,
+  fieldName,
+  currentLang,
+  flat = false
+) => {
+  var img = null;
+  if (currentLang == "en") {
+    img = data[fieldName + "_en"];
+  } else {
+    img = data[fieldName];
+  }
+
+  if (!img) {
+    img = data[fieldName];
+  }
+
+  if (flat == true) {
+    return img.src;
+  } else {
+    return img.original.src;
+  }
+};

@@ -18,7 +18,7 @@
 
 <script>
 import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
-import { renderLocaleField } from "../../utils/utils";
+import { renderLocaleField, renderLocaleImage } from "../../utils/utils";
 
 @Component({
   name: "BrokerSurveyBlock",
@@ -27,14 +27,16 @@ import { renderLocaleField } from "../../utils/utils";
 export default class BrokerSurveyBlock extends Vue {
   @Prop() data;
   renderLocaleField = renderLocaleField;
+  renderLocaleImage = renderLocaleImage;
 
   get HOST() {
     return this.$config.HOST;
   }
 
   get bgImage() {
+    var img = renderLocaleImage(this.data, "image", this.$i18n.locale);
     return {
-      backgroundImage: `url(${this.HOST + this.data.image.original.src})`,
+      backgroundImage: `url(${this.HOST + img})`,
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",

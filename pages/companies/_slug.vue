@@ -263,6 +263,7 @@ import {
   namespaced,
   convertBoolean,
   renderLocaleField,
+  renderLocaleImage,
 } from "../../utils/utils";
 import DescriptionBlock from "../../components/blocks/DescriptionBlock";
 import ImageBlock from "../../components/blocks/ImageBlock";
@@ -289,6 +290,7 @@ import VideoBlock from "../../components/blocks/VideoBlock";
 export default class CompanyDetailPage extends Vue {
   convertBoolean = convertBoolean;
   renderLocaleField = renderLocaleField;
+  renderLocaleImage = renderLocaleImage;
 
   async asyncData({ route, $axios, store, error }) {
     var getCurrentPage = {};

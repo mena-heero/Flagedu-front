@@ -8,7 +8,9 @@
           <section v-for="(item, idx) in stories" :key="'item_' + idx">
             <img
               @click="openModal(idx)"
-              :src="HOST + item.image_detail.original.src"
+              :src="
+                HOST + renderLocaleImage(item, 'image_detail', $i18n.locale)
+              "
               :alt="item.image_detail.original.alt"
             />
           </section>
@@ -31,6 +33,7 @@ import { Swiper, Navigation, Pagination, Autoplay } from "swiper";
 import StoryModal from "../modals/StoryModal";
 
 import VueHorizontal from "vue-horizontal";
+import { renderLocaleImage } from "../../utils/utils";
 
 @Component({
   name: "Story",
@@ -48,6 +51,7 @@ export default class Story extends Vue {
 
   storyModalOpen = false;
   storyIndex = 0;
+  renderLocaleImage = renderLocaleImage;
 
   get HOST() {
     return this.$config.HOST;

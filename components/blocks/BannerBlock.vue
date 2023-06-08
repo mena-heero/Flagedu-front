@@ -2,7 +2,7 @@
   <div>
     <a :href="data.link.link" target="_blank" class="image">
       <img
-        :src="HOST + data.image.original.src"
+        :src="HOST + renderLocaleImage(data, 'image', $i18n.locale)"
         :alt="data.image.original.alt"
       />
     </a>
@@ -11,6 +11,7 @@
 
 <script>
 import { Component, Vue, Prop } from "nuxt-property-decorator";
+import { renderLocaleImage } from "../../utils/utils";
 
 @Component({
   name: "BannerBlock",
@@ -18,6 +19,8 @@ import { Component, Vue, Prop } from "nuxt-property-decorator";
 })
 export default class BannerBlock extends Vue {
   @Prop() data;
+
+  renderLocaleImage = renderLocaleImage;
 
   get HOST() {
     return this.$config.HOST;
