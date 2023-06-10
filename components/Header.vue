@@ -307,6 +307,7 @@ export default class Header extends Vue {
         z-index: 999999999999999999;
         position: absolute;
         max-height: 500px;
+        top: 30px;
         width: 270px;
         overflow: hidden;
         background: $bg-primary;
