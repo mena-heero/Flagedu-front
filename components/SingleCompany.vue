@@ -184,6 +184,7 @@ export default class SingleCompany extends Vue {
         font-size: 12px;
         font-weight: 500;
         border-radius: 10px;
+        color: #000;
       }
     }
   }
@@ -216,6 +217,7 @@ export default class SingleCompany extends Vue {
       font-weight: 600;
       width: 100%;
       text-align: right;
+      color: #000;
       @media (max-width: 500px) {
         font-size: 14px;
       }

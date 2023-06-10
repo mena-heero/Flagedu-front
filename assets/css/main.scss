@@ -1,6 +1,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 
+:root {
+  --color: #0e2233;
+  --color-primary: #0e2233;
+  --color-secondary: #0e2233;
+  --bg: #fff;
+  --bg-secondary: #f1f1f1;
+  --border-color: #000;
+}
+
+.dark-mode {
+  --color: #ebf4f1;
+  --color-primary: #fff;
+  --color-secondary: #fff;
+  --bg: #000;
+  --bg-secondary: #000;
+  --border-color: #fff;
+}
+
+// body {
+//   background-color: var(--bg);
+//   color: var(--color);
+//   transition: background-color 0.3s;
+// }
+
+a {
+  color: var(--color-primary);
+}
+
+a:hover{
+  color: var(--color-primary);
+}
+
+.nav-container{
+  background-color: var(--bg);
+}
+
+.dark-mode .nav-container{
+  border-bottom: 1px solid var(--border-color)
+}
+
+.company-block-container {
+  background-color: var(--bg);
+}
+
+.main-container{
+  background-color: var(--bg-secondary);
+}
+
+.nav-item, .title{
+  color: var(--color);
+}
+
 
 * {
 	margin: 0;
@@ -20,9 +72,16 @@ html {
 body {
 	font-family: $inter-font, sans-serif;
 	background: $bg-primary;
+  background-color: var(--bg);
+  color: var(--color);
+  transition: background-color 0.3s;
 	font-size: $default-font-size;
 	font-weight: 400;
 }
+
+// .dark-mode body{
+//   background: black;
+// }
 
 a {
 	text-decoration: none;

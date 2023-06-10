@@ -41,7 +41,7 @@ export default class CompanyBlock extends Vue {
 
 <style scoped lang="scss">
 .company-block-container {
-  background-color: $bg-primary;
+  // background-color: $bg-primary;
   min-height: 500px;
   width: 100%;
   .company-container {
@@ -61,7 +61,7 @@ export default class CompanyBlock extends Vue {
         width: 100%;
         font-size: 36px;
         font-weight: 700;
-        color: $linked-font-color;
+        // color: $linked-font-color;
         @media (max-width: 1250px) {
           font-size: 30px;
         }

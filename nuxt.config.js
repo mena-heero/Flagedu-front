@@ -219,6 +219,7 @@ export default {
   buildModules: ["@nuxtjs/style-resources"],
 
   modules: [
+    "@nuxtjs/color-mode",
     "@nuxtjs/gtm",
     "@nuxtjs/axios",
     "@nuxtjs/dayjs",

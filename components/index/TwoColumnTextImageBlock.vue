@@ -53,7 +53,7 @@ export default class TwoColumnTextImageBlock extends Vue {
 
 <style scoped lang="scss">
 .company-block-container {
-  background-color: $bg-primary;
+  // background-color: $bg-primary;
   min-height: 500px;
   width: 100%;
   .company-container {

@@ -20,7 +20,18 @@
             </div>
           </div>
         </div>
-        <!-- <div class="theme"></div> -->
+        <div class="theme">
+          <i
+            @click="changeTheme"
+            v-if="$colorMode.value == 'light'"
+            class="bi bi-moon-fill"
+          ></i>
+          <i
+            @click="changeTheme"
+            v-if="$colorMode.value == 'dark'"
+            class="bi bi-brightness-high"
+          ></i>
+        </div>
       </div>
     </div>
     <Nuxt />
@@ -41,9 +52,17 @@ export default class AuthLayout extends Vue {
   }
 
   changeLanguage(lang) {
-    // this.$i18n.locale = lang;
     this.$i18n.setLocale(lang);
     this.openLanguageDropdown = false;
+  }
+
+  changeTheme() {
+    var currentTheme = this.$colorMode.value;
+    if (currentTheme == "light") {
+      this.$colorMode.value = "dark";
+    } else {
+      this.$colorMode.value = "light";
+    }
   }
 }
 </script>
@@ -68,7 +87,6 @@ export default class AuthLayout extends Vue {
 .language {
   width: 40px;
   height: 30px;
-  border: 1px solid grey;
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -98,6 +116,14 @@ export default class AuthLayout extends Vue {
 .theme {
   width: 40px;
   height: 30px;
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #dc5ced 0%, #25e1fb 100%);
+  border-radius: 8px;
+  i {
+    font-size: 20px;
+    cursor: pointer;
+  }
 }
 </style>

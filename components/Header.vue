@@ -57,19 +57,32 @@
             <nuxt-link
               :to="item.link_url"
               v-if="!item.is_external && item.link_url != null"
-              class="nav-item"
+              :class="{
+                'nav-item': true,
+                'highlight-nav': item.link_url == '/find-my-broker',
+              }"
               >{{
                 renderLocaleField(item, "link_title", $i18n.locale)
               }}</nuxt-link
             >
-            <a class="nav-item" v-else-if="item.link_url == null">
+            <a
+              :class="{
+                'nav-item': true,
+                'highlight-nav':
+                  item.link_url == '/find-my-broker' || item.link_url == null,
+              }"
+              v-else-if="item.link_url == null"
+            >
               <i class="bi bi-caret-down-fill arrow-down"></i>
               {{ renderLocaleField(item, "link_title", $i18n.locale) }}
             </a>
             <a
               :href="item.link_url"
               target="_blank"
-              class="nav-item"
+              :class="{
+                'nav-item': true,
+                'highlight-nav': item.link_url == '/find-my-broker',
+              }"
               v-else-if="item.is_external == true"
             >
               {{ renderLocaleField(item, "link_title", $i18n.locale) }}
@@ -241,8 +254,8 @@ export default class Header extends Vue {
   width: 100%;
   position: fixed;
   z-index: 999999999;
-  background-color: white;
 }
+
 .navbar {
   width: 80%;
   height: auto;
@@ -257,7 +270,6 @@ export default class Header extends Vue {
     width: 100%;
     display: flex;
     gap: 20px;
-    // justify-content: flex-end;
     align-items: center;
     .nav-item-container {
       position: relative;
@@ -274,7 +286,7 @@ export default class Header extends Vue {
       .nav-item {
         font-weight: 700;
         font-size: 16px;
-        color: $linked-font-color;
+        // color: $linked-font-color;
         cursor: pointer;
       }
       .profile-img {
@@ -414,5 +426,11 @@ export default class Header extends Vue {
 .icon-big {
   font-size: 30px;
   color: black;
+}
+
+.highlight-nav {
+  background: linear-gradient(90deg, #dc5ced 0%, #25e1fb 100%);
+  padding: 10px;
+  border-radius: 8px;
 }
 </style>

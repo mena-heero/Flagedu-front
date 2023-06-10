@@ -175,7 +175,7 @@ export default class NewsBlock extends Vue {
 
 <style scoped lang="scss">
 .company-block-container {
-  background-color: $bg-primary;
+  // background-color: $bg-primary;
   min-height: 500px;
   width: 100%;
   .company-container {
@@ -196,7 +196,7 @@ export default class NewsBlock extends Vue {
         width: 100%;
         font-size: 36px;
         font-weight: 700;
-        color: $linked-font-color;
+        // color: $linked-font-color;
         @media (max-width: 1250px) {
           font-size: 30px;
         }
@@ -232,7 +232,7 @@ export default class NewsBlock extends Vue {
       gap: 15px;
       margin-top: 20px;
       .title {
-        color: $linked-font-color;
+        // color: $linked-font-color;
         font-size: 24px;
         font-weight: 600;
         height: 60px;
@@ -278,7 +278,7 @@ export default class NewsBlock extends Vue {
         gap: 15px;
         margin-top: 20px;
         .title {
-          color: $linked-font-color;
+          // color: $linked-font-color;
           font-size: 18px;
           font-weight: 600;
           height: 54px;
