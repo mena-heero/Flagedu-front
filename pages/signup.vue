@@ -6,7 +6,7 @@
       <div class="card-wrapper">
         <div class="text-center mb-5">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">إنشاء حساب</h1>
+          <h1 class="text-white fw-semibold">{{ $t("signup_title") }}</h1>
         </div>
 
         <ValidationObserver
@@ -36,7 +36,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="الاسم الكامل"
+                :placeholder="$t('signup_full_name_placeholder')"
                 v-model="formData.full_name"
               />
             </div>
@@ -67,7 +67,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="بريدك الالكتروني"
+                :placeholder="$t('signup_email_placeholder')"
                 v-model="formData.email"
               />
             </div>
@@ -87,7 +87,7 @@
               class="form-select country-select"
               name="Country"
             >
-              <option value="">حدد الدولة</option>
+              <option value="">{{ $t("signup_select_country") }}</option>
               <option
                 v-for="(item, idx) in countries"
                 :key="'country_' + idx"
@@ -123,7 +123,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="رقم التليفون"
+                :placeholder="$t('signup_phone_placeholder')"
                 v-model="formData.phone"
               />
             </div>
@@ -135,9 +135,7 @@
           <ValidationProvider
             vid="password"
             ref="password"
-            :rules="{
-              required,
-            }"
+            :rules="{ required }"
             v-slot="{ errors }"
             tag="div"
             class="mb-3"
@@ -159,7 +157,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="كلمة المرور"
+                :placeholder="$t('signup_password_placeholder')"
                 v-model="formData.password"
               />
               <span @click="toggleShowOne">
@@ -210,7 +208,7 @@
                   redborder: errors[0],
                 }"
                 class="form-control"
-                placeholder="تأكيد كلمة المرور"
+                :placeholder="$t('signup_confirm_password_placeholder')"
                 v-model="formData.password2"
               />
               <span @click="toggleShowTwo">
@@ -234,8 +232,8 @@
             </div>
             <small v-if="errors.length" class="error">
               {{
-                errors.length && formData.password != formData.password2
-                  ? "Passwords do not match"
+                errors.length && formData.password !== formData.password2
+                  ? $t("signup_passwords_not_match")
                   : errors[0]
               }}
             </small>
@@ -243,57 +241,49 @@
 
           <div class="form-check d-flex">
             <label class="form-check-label text-white">
-              أتفق مع
+              {{ $t("signup_agree_terms") }}
               <a
                 href="/common/terms-and-conditions"
                 target="_blank"
                 class="text-active"
-                >شروط الخدمة</a
               >
-              و
+                {{ $t("signup_terms_of_service") }}
+              </a>
+              {{ $t("signup_and") }}
               <a
                 href="/common/privacy-policy"
                 target="_blank"
                 class="text-active"
-                >سياسة الخصوصية</a
               >
+                {{ $t("signup_privacy_policy") }}
+              </a>
             </label>
             <input
               type="checkbox"
               class="form-check-input me-2"
-              v-model="formData.is_agreed"
+              v-model="formData.agree_terms"
             />
           </div>
 
-          <div class="form-input text-center error my-2">
-            <p class="error" v-html="error_msg"></p>
+          <div class="d-grid">
+            <button
+              type="submit"
+              :disabled="invalid"
+              class="btn btn-primary btn-block py-2 fw-semibold"
+            >
+              {{ $t("signup_create_account") }}
+            </button>
           </div>
-
-          <button
-            type="submit"
-            class="btn btn-primary form-button"
-            :disabled="invalid"
-          >
-            {{ loading ? "انتظر من فضلك..." : "اشتراك" }}
-          </button>
-
-          <div class="social-auth">
-            <div class="div-or">Or</div>
-            <div class="social-icons">
-              <div class="google-icon" @click.prevent="loginWithGoogle">
-                <i class="bi bi-google"></i>
-              </div>
-              <div class="fb-icon" @click.prevent="loginWithFacebook">
-                <i class="bi bi-facebook"></i>
-              </div>
-            </div>
-          </div>
-
-          <p class="have-account text-center text-white">
-            هل لديك حساب؟
-            <NuxtLink to="/signin" class="text-active">تسجيل الدخول</NuxtLink>
-          </p>
         </ValidationObserver>
+
+        <div class="mt-4 text-center">
+          <p class="text-white">
+            {{ $t("signup_already_have_account") }}
+            <router-link to="/signin" class="text-active fw-semibold">
+              {{ $t("signup_sign_in") }}
+            </router-link>
+          </p>
+        </div>
       </div>
     </div>
   </div>

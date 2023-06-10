@@ -2,7 +2,7 @@
   <div>
     <div class="rating-container">
       <div class="form">
-        <div class="title">ما هو رأيك؟</div>
+        <div class="title">{{ $t("rateYourExperience") }}</div>
         <ValidationObserver v-slot="{ invalid }" ref="form">
           <form
             method="post"
@@ -24,7 +24,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="التصنيف 0-5"
+                  :placeholder="$t('ratingPlaceholder')"
                   step="1"
                   min="0"
                   max="5"
@@ -47,7 +47,7 @@
                     'form-control': true,
                     redborder: errors[0],
                   }"
-                  placeholder="تعليق"
+                  :placeholder="$t('commentPlaceholder')"
                   rows="3"
                   v-model="formData.comment"
                   name="Comment"
@@ -57,13 +57,11 @@
                 {{ errors[0] }}
               </small>
             </ValidationProvider>
-            <button :disabled="invalid" class="submit-button">أضف تعليق</button>
+            <button :disabled="invalid" class="submit-button">
+              {{ $t("addComment") }}
+            </button>
           </form>
         </ValidationObserver>
-        <!-- <div class="" v-if="!getProfile">
-          أنت بحاجه إلى <nuxt-link to="/signin">تسجيل الدخول</nuxt-link> لإضافة
-          التقييم والمراجعة!
-        </div> -->
       </div>
       <div class="comments">
         <div
@@ -81,12 +79,14 @@
           </div>
           <div class="content">
             <div class="name">
-              <span v-if="comment.user">{{
-                comment.user.full_name
-                  ? comment.user.full_name
-                  : comment.user.email
-              }}</span>
-              <span v-else>Anonymous</span>
+              <span v-if="comment.user">
+                {{
+                  comment.user.full_name
+                    ? comment.user.full_name
+                    : comment.user.email
+                }}
+              </span>
+              <span v-else>{{ $t("anonymousUser") }}</span>
             </div>
             <div class="info">
               <div class="rating">
@@ -118,6 +118,7 @@
         <div dir="ltr" class="pagination" v-if="paginationSteps.length > 1">
           <a v-if="page != 1" class="item" @click.prevent="handleDecrement">
             <i class="bi bi-caret-left-fill"></i>
+            {{ $t("previousPage") }}
           </a>
           <a
             :class="{ active: page == pag, item: true }"
@@ -132,6 +133,7 @@
             class="item"
             @click.prevent="handleIncreament"
           >
+            {{ $t("nextPage") }}
             <i class="bi bi-caret-right-fill"></i>
           </a>
         </div>

@@ -6,7 +6,6 @@
       <div class="card-wrapper">
         <div class="text-center mb-5">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <!-- <h1 class="text-white fw-semibold">تسجيل الدخول</h1> -->
           <h1 class="text-white fw-semibold">{{ $t("signin_title") }}</h1>
         </div>
         <ValidationObserver v-slot="{ invalid }" ref="form">
@@ -33,7 +32,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="بريد إلكتروني"
+                  :placeholder="$t('signin_email_placeholder')"
                   v-model="formData.username"
                 />
               </div>
@@ -65,7 +64,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="كلمة المرور"
+                  :placeholder="$t('signin_password_placeholder')"
                   v-model="formData.password"
                 />
                 <span @click="toggleShowOne">
@@ -94,9 +93,9 @@
 
             <div class="d-flex justify-content-between align-items-center">
               <div>
-                <NuxtLink class="form-forget-password" to="/forgot-password"
-                  >نسيت كلمة السر؟</NuxtLink
-                >
+                <NuxtLink class="form-forget-password" to="/forgot-password">
+                  {{ $t("signin_forget_password") }}
+                </NuxtLink>
               </div>
             </div>
             <div
@@ -110,11 +109,11 @@
               class="btn btn-primary form-button"
               :disabled="invalid"
             >
-              {{ loading ? "انتظر من فضلك..." : "تسجيل الدخول" }}
+              {{ loading ? $t("signin_loading") : $t("signin_button") }}
             </button>
 
             <div class="social-auth">
-              <div class="div-or">أو</div>
+              <div class="div-or">{{ $t("signin_or") }}</div>
               <div class="social-icons">
                 <div class="google-icon" @click.prevent="loginWithGoogle">
                   <i class="bi bi-google"></i>
@@ -126,8 +125,10 @@
             </div>
 
             <p class="have-account text-center text-white">
-              ليس لديك حساب؟
-              <NuxtLink to="/signup" class="text-active">اشتراك</NuxtLink>
+              {{ $t("signin_no_account") }}
+              <NuxtLink to="/signup" class="text-active">{{
+                $t("signin_signup")
+              }}</NuxtLink>
             </p>
           </form>
         </ValidationObserver>
@@ -193,7 +194,7 @@ export default class Signin extends Vue {
       reason: "verify",
     }).then((data) => {
       if (popup == true) {
-        var msg = `<div class='t-custom-class'><div>نجح إعادة إرسال رمز التحقق إلى بريدك الإلكتروني!</div></div>`;
+        var msg = `<div class='t-custom-class'><div>{{ $t('signin_verification_code_resent') }}</div></div>`;
         this.$toast.success(msg);
       }
     });
@@ -230,7 +231,7 @@ export default class Signin extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>{{ $t('signin_something_went_wrong') }}</div></div>`;
           this.$toast.error(msg);
         }
       });

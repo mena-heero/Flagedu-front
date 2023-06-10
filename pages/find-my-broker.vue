@@ -5,7 +5,7 @@
       <div class="white-back">
         <div class="company-wrapper">
           <div class="result-block">
-            <div class="title">قائمة الوسطاء المرشحة لك</div>
+            <div class="title">{{ $t("fyb.suggested_brokers") }}</div>
             <div class="companies">
               <div
                 class="items-wrapper"
@@ -15,7 +15,7 @@
                 <div class="item">
                   <div class="content">
                     <div class="rank">
-                      <div>قمة</div>
+                      <div>{{ $t("fyb.top") }}</div>
                       <div>{{ idx + 1 }}</div>
                     </div>
                     <div class="image">
@@ -48,12 +48,12 @@
                     </div>
                   </div>
                   <div class="btn">
-                    <nuxt-link class="hide-on-380" :to="item.html_url"
-                      >زياره</nuxt-link
-                    >
-                    <nuxt-link class="visible-on-380" :to="item.html_url"
-                      >زياره</nuxt-link
-                    >
+                    <nuxt-link class="hide-on-380" :to="item.html_url">{{
+                      $t("fyb.visit")
+                    }}</nuxt-link>
+                    <nuxt-link class="visible-on-380" :to="item.html_url">{{
+                      $t("fyb.visit")
+                    }}</nuxt-link>
                   </div>
                 </div>
                 <div
@@ -65,12 +65,15 @@
           </div>
           <div class="question-block">
             <div class="title" v-if="finish == false">
-              رقم السؤال {{ step }}
+              {{ $t("fyb.Question_number") }}{{ step }}
             </div>
-            <div class="title" v-if="finish == true">تهنئة</div>
+            <div class="title" v-if="finish == true">
+              {{ $t("fyb.congratz") }}
+            </div>
+
             <div class="item" v-if="step == 1">
               <div class="question-title">
-                ما مدى خبرتك في الاستثمار / التداول؟
+                {{ $t("fyb.Quest1") }}
               </div>
               <div class="form-check-custom">
                 <input
@@ -81,7 +84,9 @@
                   id="s1q1"
                   value="1"
                 />
-                <label for="s1q1" class="form-check-label">مبتدئ</label>
+                <label for="s1q1" class="form-check-label"
+                  >{{ $t("fyb.beginner") }}
+                </label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -92,7 +97,9 @@
                   id="s1q2"
                   value="2"
                 />
-                <label for="s1q2" class="form-check-label">متوسط</label>
+                <label for="s1q2" class="form-check-label">{{
+                  $t("fyb.intermediate")
+                }}</label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -103,13 +110,13 @@
                   id="s1q3"
                   value="3"
                 />
-                <label for="s1q3" class="form-check-label">متقدم</label>
+                <label for="s1q3" class="form-check-label"
+                  >{{ $t("fyb.Advanced") }}
+                </label>
               </div>
             </div>
             <div class="item" v-if="step == 2">
-              <div class="question-title">
-                ما نوع الأوراق المالية التي تخطط للتداول / الاستثمار فيها؟
-              </div>
+              <div class="question-title">{{ $t("fyb.Quest2") }}</div>
               <div class="form-check-custom">
                 <input
                   v-model="answers.q2"
@@ -119,7 +126,9 @@
                   id="s2q1"
                   value="1"
                 />
-                <label for="s2q1" class="form-check-label">الأسهم</label>
+                <label for="s2q1" class="form-check-label">{{
+                  $t("stocks")
+                }}</label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -130,9 +139,9 @@
                   id="s2q2"
                   value="2"
                 />
-                <label for="s2q2" class="form-check-label"
-                  >صناديق الاستثمار المتداولة</label
-                >
+                <label for="s2q2" class="form-check-label">{{
+                  $t("ETFs")
+                }}</label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -143,7 +152,9 @@
                   id="s2q3"
                   value="3"
                 />
-                <label for="s2q3" class="form-check-label">السلع </label>
+                <label for="s2q3" class="form-check-label"
+                  >{{ $t("Commodities") }}
+                </label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -154,11 +165,13 @@
                   id="s2q4"
                   value="4"
                 />
-                <label for="s2q4" class="form-check-label">الفوركس</label>
+                <label for="s2q4" class="form-check-label">{{
+                  $t("Forex")
+                }}</label>
               </div>
             </div>
             <div class="item" v-if="step == 3">
-              <div class="question-title">ما هي ميزانيتك الاستثمارية؟</div>
+              <div class="question-title">{{ $t("fyb.Quest3") }}</div>
               <div class="form-check-custom">
                 <input
                   v-model="answers.q3"
@@ -168,8 +181,8 @@
                   id="s3q1"
                   value="1"
                 />
-                <label for="s3q1" class="form-check-label"
-                  >أقل من 500 دولار</label
+                <label for="s3q1" class="form-check-label">
+                  {{ $t("fyb.less500") }}</label
                 >
               </div>
               <div class="form-check-custom">
@@ -181,9 +194,9 @@
                   id="s3q2"
                   value="2"
                 />
-                <label for="s3q2" class="form-check-label"
-                  >500 دولار - 5000 دولار</label
-                >
+                <label for="s3q2" class="form-check-label">{{
+                  $t("fyb.less5000")
+                }}</label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -194,9 +207,9 @@
                   id="s3q3"
                   value="3"
                 />
-                <label for="s3q3" class="form-check-label"
-                  >5000 دولار - 25000 دولار</label
-                >
+                <label for="s3q3" class="form-check-label">{{
+                  $t("fyb.less25000")
+                }}</label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -207,15 +220,13 @@
                   id="s3q4"
                   value="4"
                 />
-                <label for="s3q4" class="form-check-label"
-                  >25000 دولار - 500000 دولار</label
-                >
+                <label for="s3q4" class="form-check-label">{{
+                  $t("fyb.less50000")
+                }}</label>
               </div>
             </div>
             <div class="item" v-if="step == 4">
-              <div class="question-title">
-                ما هي أهمية واجهة المستخدم لمنصة التداول بالنسبة لك؟
-              </div>
+              <div class="question-title">{{ $t("fyb.Quest4") }}</div>
               <div class="form-check-custom">
                 <input
                   v-model="answers.q4"
@@ -225,7 +236,9 @@
                   id="s4q1"
                   value="1"
                 />
-                <label for="s4q1" class="form-check-label">غير مهم</label>
+                <label for="s4q1" class="form-check-label"
+                  >{{ $t("Not_Important") }}
+                </label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -235,8 +248,8 @@
                   name="q4"
                   id="s4q2"
                   value="2"
-                />
-                <label for="s4q2" class="form-check-label">مهم إلى حد ما</label>
+                />{{ $t("some_how_important") }}
+                <label for="s4q2" class="form-check-label"></label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -247,11 +260,13 @@
                   id="s4q3"
                   value="3"
                 />
-                <label for="s4q3" class="form-check-label">مهم جدا</label>
+                <label for="s4q3" class="form-check-label"
+                  >{{ $t("Very_Important") }}
+                </label>
               </div>
             </div>
             <div class="item" v-if="step == 5 && finish == false">
-              <div class="question-title">هل تفضل وسيط تداول بدون عمولة؟</div>
+              <div class="question-title">{{ $t("fyb.Quest5") }}</div>
               <div class="form-check-custom">
                 <input
                   v-model="answers.q5"
@@ -261,7 +276,9 @@
                   id="s5q1"
                   value="3"
                 />
-                <label for="s5q1" class="form-check-label">نعم</label>
+                <label for="s5q1" class="form-check-label"
+                  >{{ $t("Yes") }}
+                </label>
               </div>
               <div class="form-check-custom">
                 <input
@@ -272,37 +289,38 @@
                   id="s5q2"
                   value="1"
                 />
-                <label for="s5q2" class="form-check-label">لا</label>
+                <label for="s5q2" class="form-check-label">{{
+                  $t("No")
+                }}</label>
               </div>
             </div>
             <div class="finish-block" v-if="finish == true">
-              شكرا لك على إجابتك على السؤال. تم اقتراح قائمة الوسطاء بناءً على
-              إجابتك!
+              {{ $t("fyb.thnx_done") }}
             </div>
             <div class="btns">
               <button v-if="step != 5" @click="handleNext" class="next-btn">
-                التالي
+                {{ $t("Next") }}
               </button>
               <button
                 v-if="step == 5 && finish == false"
                 @click="handleFinish"
                 class="next-btn"
               >
-                ينهي
+                {{ $t("End") }}
               </button>
               <button
                 @click="handleBack"
                 v-if="step != 1 && finish == false"
                 class="back-btn"
               >
-                خلف
+                {{ $t("Back") }}
               </button>
               <button
                 v-if="finish == true"
                 @click="handleTryAgain"
                 class="next-btn"
               >
-                حاول ثانية
+                {{ $t("Try_Again") }}
               </button>
             </div>
           </div>
@@ -350,22 +368,22 @@ export default class FindMyBroker extends Vue {
   handleNext() {
     if (this.step == 1) {
       if (!this.answers.q1) {
-        this.$toast.error("الرجاء الإجابة على السؤال!");
+        this.$toast.error($t("fyb.please_answer"));
         return false;
       }
     } else if (this.step == 2) {
       if (!this.answers.q2) {
-        this.$toast.error("الرجاء الإجابة على السؤال!");
+        this.$toast.error("");
         return false;
       }
     } else if (this.step == 3) {
       if (!this.answers.q3) {
-        this.$toast.error("الرجاء الإجابة على السؤال!");
+        this.$toast.error($t("fyb.please_answer"));
         return false;
       }
     } else if (this.step == 4) {
       if (!this.answers.q4) {
-        this.$toast.error("الرجاء الإجابة على السؤال!");
+        this.$toast.error($t("fyb.please_answer"));
         return false;
       }
     }
@@ -409,7 +427,7 @@ export default class FindMyBroker extends Vue {
   handleFinish() {
     if (this.step == 5) {
       if (!this.answers.q5) {
-        this.$toast.error("الرجاء الإجابة على السؤال!");
+        this.$toast.error($t("fyb.please_answer"));
         return false;
       }
     }

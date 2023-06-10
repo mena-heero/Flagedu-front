@@ -16,9 +16,9 @@
           </div>
           <div class="menu-items">
             <div class="nav-item-container">
-              <nuxt-link v-if="!getProfile" to="/signin" class="nav-item"
-                >تسجيل الدخول</nuxt-link
-              >
+              <nuxt-link v-if="!getProfile" to="/signin" class="nav-item">{{
+                $t("signup_login_link_text")
+              }}</nuxt-link>
             </div>
             <div
               v-for="(item, idx) in getMainMenu"

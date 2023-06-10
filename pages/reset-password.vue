@@ -6,29 +6,31 @@
       <div class="card-wrapper">
         <div class="text-center mb-3">
           <img
-            v-if="step == 0"
+            v-if="step === 0"
             src="/images/logo.png"
             alt="logo"
             class="auth-logo mb-4"
           />
           <img
-            v-if="step == 1"
+            v-if="step === 1"
             src="/images/success.png"
             alt="logo"
             class="mb-4"
             height="80"
           />
 
-          <h1 v-if="step == 0 && stage == 1" class="text-white fw-semibold">
-            التحقق
+          <h1 v-if="step === 0 && stage === 1" class="text-white fw-semibold">
+            {{ $t("reset-password_verification") }}
           </h1>
-          <h1 v-if="step == 0 && stage == 2" class="text-white fw-semibold">
-            هل نسيت كلمة السر
+          <h1 v-if="step === 0 && stage === 2" class="text-white fw-semibold">
+            {{ $t("reset-password_forgot_password") }}
           </h1>
-          <h1 v-if="step == 1" class="text-white fw-semibold">Successful</h1>
+          <h1 v-if="step === 1" class="text-white fw-semibold">
+            {{ $t("reset-password_successful") }}
+          </h1>
         </div>
 
-        <ValidationObserver v-slot="{ invalid }" v-if="step == 0">
+        <ValidationObserver v-slot="{ invalid }" v-if="step === 0">
           <form
             method="post"
             name="myform"
@@ -36,18 +38,17 @@
             @submit.prevent="handleForgetPassword"
           >
             <p
-              v-if="stage == 1"
+              v-if="stage === 1"
               class="text-secondary text-center px-0 px-md-4"
             >
-              أدخل رمزك المكون من 6 أرقام الذي تلقيته على بريدك الإلكتروني.
+              {{ $t("reset-password_enter_code") }}
             </p>
-            <p v-else-if="stage == 2" class="text-secondary text-center">
-              قم بتعيين كلمة المرور الجديدة لحسابك حتى تتمكن من تسجيل الدخول
-              والوصول إلى جميع الميزات.
+            <p v-else-if="stage === 2" class="text-secondary text-center">
+              {{ $t("reset-password_set_new_password") }}
             </p>
 
             <div
-              v-if="stage == 1"
+              v-if="stage === 1"
               class="mt-4 mb-2 d-flex justify-content-center align-items-center otp-input-wrapper"
             >
               <v-otp-input
@@ -63,12 +64,10 @@
 
             <ValidationProvider
               vid="password"
-              :rules="{
-                required,
-              }"
+              :rules="{ required }"
               v-slot="{ errors }"
               tag="div"
-              v-if="stage == 2"
+              v-if="stage === 2"
               class="mb-4"
             >
               <div class="form-input mb-1">
@@ -88,7 +87,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="كلمة المرور الجديدة"
+                  :placeholder="$t('reset-password_new_password')"
                   v-model="formData.password"
                 />
                 <span @click="toggleShowOne">
@@ -120,7 +119,7 @@
               rules="required|confirmed:password"
               v-slot="{ errors }"
               tag="div"
-              v-if="stage == 2"
+              v-if="stage === 2"
               class="mb-3"
             >
               <div class="form-input mb-1">
@@ -140,7 +139,7 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="تأكيد كلمة المرور"
+                  :placeholder="$t('reset-password_confirm_password')"
                   v-model="formData.password2"
                 />
                 <span @click="toggleShowTwo">
@@ -164,8 +163,8 @@
               </div>
               <small v-if="errors.length" class="error">
                 {{
-                  errors.length && formData.password != formData.password2
-                    ? "كلمة المرور غير مطابقة"
+                  errors.length && formData.password !== formData.password2
+                    ? $t("reset-password_password_mismatch")
                     : errors[0]
                 }}
               </small>
@@ -178,7 +177,7 @@
 
               <div
                 class="mb-2 d-flex justify-content-center align-items-center text-active timer"
-                v-if="stage == 1"
+                v-if="stage === 1"
               >
                 <span class="minute">00</span>:<span class="second">{{
                   countDown > 9 ? countDown : "0" + countDown
@@ -186,45 +185,56 @@
               </div>
 
               <p
-                v-if="stage == 1"
+                v-if="stage === 1"
                 class="text-secondary text-center resend-code"
               >
-                إذا لم تتلق رمزًا!<a
+                {{ $t("reset-password_didnt_receive_code")
+                }}<a
                   href="#"
                   class="text-active"
                   @click.prevent="handleCodeResend"
                   :class="disableResend ? 'disable-link' : ''"
                 >
-                  إعادة إرسال</a
+                  {{ $t("reset-password_resend") }}</a
                 >
               </p>
             </div>
 
             <button
-              v-if="stage == 1"
+              v-if="stage === 1"
               @click="handleVerifyCodeForForgetPassword"
               class="btn btn-primary form-button mt-1"
               type="button"
             >
-              {{ loading ? "انتظر من فضلك..." : "يكمل" }}
+              {{
+                loading
+                  ? $t("reset-password_loading")
+                  : $t("reset-password_continue")
+              }}
             </button>
 
             <button
-              v-else-if="stage == 2"
+              v-else-if="stage === 2"
               type="submit"
               class="btn btn-primary form-button mt-4"
               :disabled="invalid"
             >
-              {{ loading ? "انتظر من فضلك..." : "تطوير كلمة السر" }}
+              {{
+                loading
+                  ? $t("reset-password_loading")
+                  : $t("reset-password_reset")
+              }}
             </button>
           </form>
         </ValidationObserver>
-        <p class="text-secondary text-center px-0 px-md-4" v-if="step == 1">
-          تم إعادة تعيين كلمة المرور الخاصة بك بنجاح
+        <p class="text-secondary text-center px-0 px-md-4" v-if="step === 1">
+          {{ $t("reset-password_password_reset_success") }}
         </p>
         <p class="have-account text-center text-white">
-          العودة لتسجيل الدخول؟
-          <NuxtLink to="/signin" class="text-active">تسجيل الدخول</NuxtLink>
+          {{ $t("reset-password_back_to_login") }}
+          <NuxtLink to="/signin" class="text-active">{{
+            $t("reset-password_sign_in")
+          }}</NuxtLink>
         </p>
       </div>
     </div>
