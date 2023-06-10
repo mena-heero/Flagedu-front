@@ -4,7 +4,7 @@
       <div class="setting-wrapper">
         <div class="language">
           <div @click="languageDropdownToggle" class="current-language">
-            {{ $i18n.locale.toUpperCase() }}
+            {{ $i18n.locale.toUpperCase() }} <i class="bi bi-translate"></i>
           </div>
           <div
             class="lang-dropdown-container"
@@ -96,7 +96,7 @@ export default class Default extends Vue {
   }
 }
 .language {
-  width: 40px;
+  width: 70px;
   height: 30px;
   border-radius: 8px;
   display: flex;
@@ -117,6 +117,7 @@ export default class Default extends Vue {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 70px;
     .items {
       font-weight: 600;
       letter-spacing: 2px;

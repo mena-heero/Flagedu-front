@@ -4,7 +4,7 @@
       <div class="setting-wrapper">
         <div class="language">
           <div @click="languageDropdownToggle" class="current-language">
-            {{ $i18n.locale.toUpperCase() }}
+            <i class="bi bi-translate"></i> {{ $i18n.locale.toUpperCase() }}
           </div>
           <div
             class="lang-dropdown-container"
