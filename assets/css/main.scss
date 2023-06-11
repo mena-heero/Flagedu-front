@@ -14,8 +14,8 @@
   --color: #ebf4f1;
   --color-primary: #fff;
   --color-secondary: #fff;
-  --bg: #000;
-  --bg-secondary: #000;
+  --bg: #082b47;
+  --bg-secondary: #092E4C;
   --border-color: #fff;
 }
 
@@ -37,9 +37,9 @@ a:hover{
   background-color: var(--bg);
 }
 
-.dark-mode .nav-container{
-  border-bottom: 1px solid var(--border-color)
-}
+// .dark-mode .nav-container{
+//   border-bottom: 1px solid var(--border-color)
+// }
 
 .company-block-container {
   background-color: var(--bg);

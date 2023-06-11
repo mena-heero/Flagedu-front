@@ -254,6 +254,7 @@ export default class Header extends Vue {
   width: 100%;
   position: fixed;
   z-index: 999999999;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 .navbar {
