@@ -85,7 +85,7 @@ export default class AuthLayout extends Vue {
   }
 }
 .language {
-  width: 40px;
+  width: 70px;
   height: 30px;
   border-radius: 8px;
   display: flex;
