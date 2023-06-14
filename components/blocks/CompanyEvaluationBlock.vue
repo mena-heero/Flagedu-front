@@ -1,14 +1,18 @@
 <template>
   <div>
     <div class="evaluation-block">
-      <div class="title">Company Evaluation</div>
+      <div class="title">{{ $t("company_evaluation.title") }}</div>
       <div class="subtitle">
-        Overall Evaluation: {{ pageData.overal_evaluation }} / 5
+        {{ $t("company_evaluation.overall_evaluation") }}:
+        {{ pageData.overal_evaluation }} / 5
       </div>
       <div class="items">
         <div class="item">
           <div class="title">
-            Regulation ({{ pageData.regulation_rating }} / 5)
+            {{ $t("company_evaluation.regulation") }} ({{
+              pageData.regulation_rating
+            }}
+            / 5)
           </div>
           <div class="progress-bar">
             <progress
@@ -20,7 +24,10 @@
         </div>
         <div class="item">
           <div class="title">
-            Deposit / Withdraw ({{ pageData.deposit_withdraw_rating }} / 5)
+            {{ $t("company_evaluation.deposit_withdraw") }} ({{
+              pageData.deposit_withdraw_rating
+            }}
+            / 5)
           </div>
           <div class="progress-bar">
             <progress
@@ -32,7 +39,10 @@
         </div>
         <div class="item">
           <div class="title">
-            Commission ({{ pageData.commissions_rating }} / 5)
+            {{ $t("company_evaluation.commission") }} ({{
+              pageData.commissions_rating
+            }}
+            / 5)
           </div>
           <div class="progress-bar">
             <progress
@@ -43,7 +53,12 @@
           </div>
         </div>
         <div class="item">
-          <div class="title">Assets ({{ pageData.assets_rating }} / 5)</div>
+          <div class="title">
+            {{ $t("company_evaluation.assets") }} ({{
+              pageData.assets_rating
+            }}
+            / 5)
+          </div>
           <div class="progress-bar">
             <progress
               id="file"
@@ -54,7 +69,10 @@
         </div>
         <div class="item">
           <div class="title">
-            Trading Platform ({{ pageData.trading_platform_rating }} / 5)
+            {{ $t("company_evaluation.trading_platform") }} ({{
+              pageData.trading_platform_rating
+            }}
+            / 5)
           </div>
           <div class="progress-bar">
             <progress
@@ -66,8 +84,10 @@
         </div>
         <div class="item">
           <div class="title">
-            Research & Development ({{ pageData.research_development_rating }} /
-            10)
+            {{ $t("company_evaluation.research_development") }} ({{
+              pageData.research_development_rating
+            }}
+            / 10)
           </div>
           <div class="progress-bar">
             <progress
@@ -79,7 +99,10 @@
         </div>
         <div class="item">
           <div class="title">
-            Customer Service ({{ pageData.customer_service_rating }} / 5)
+            {{ $t("company_evaluation.customer_service") }} ({{
+              pageData.customer_service_rating
+            }}
+            / 5)
           </div>
           <div class="progress-bar">
             <progress
@@ -91,7 +114,10 @@
         </div>
         <div class="item">
           <div class="title">
-            Mobile App Trading ({{ pageData.mobile_app_trading_rating }} / 5)
+            {{ $t("company_evaluation.mobile_app_trading") }} ({{
+              pageData.mobile_app_trading_rating
+            }}
+            / 5)
           </div>
           <div class="progress-bar">
             <progress
@@ -102,7 +128,12 @@
           </div>
         </div>
         <div class="item">
-          <div class="title">Learning ({{ pageData.learning_rating }} / 5)</div>
+          <div class="title">
+            {{ $t("company_evaluation.learning") }} ({{
+              pageData.learning_rating
+            }}
+            / 5)
+          </div>
           <div class="progress-bar">
             <progress
               id="file"
@@ -113,7 +144,9 @@
         </div>
         <div class="item">
           <div class="title">
-            Experience With Broker ({{ pageData.experience_with_broker_rating }}
+            {{ $t("company_evaluation.experience_with_broker") }} ({{
+              pageData.experience_with_broker_rating
+            }}
             / 10)
           </div>
           <div class="progress-bar">
@@ -126,7 +159,10 @@
         </div>
         <div class="item">
           <div class="title">
-            Trading Tools ({{ pageData.trading_tools_rating }} / 5)
+            {{ $t("company_evaluation.trading_tools") }} ({{
+              pageData.trading_tools_rating
+            }}
+            / 5)
           </div>
           <div class="progress-bar">
             <progress
@@ -137,7 +173,12 @@
           </div>
         </div>
         <div class="item">
-          <div class="title">Website ({{ pageData.website_rating }} / 5)</div>
+          <div class="title">
+            {{ $t("company_evaluation.website") }} ({{
+              pageData.website_rating
+            }}
+            / 5)
+          </div>
           <div class="progress-bar">
             <progress
               id="file"

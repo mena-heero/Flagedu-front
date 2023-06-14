@@ -12,9 +12,9 @@
             </nuxt-link>
           </div>
           <div class="nav-item-container">
-            <nuxt-link v-if="!getProfile" to="/signin" class="nav-item hide"
-              >تسجيل الدخول</nuxt-link
-            >
+            <nuxt-link v-if="!getProfile" to="/signin" class="nav-item hide">{{
+              $t("signup_login_link_text")
+            }}</nuxt-link>
             <a
               v-if="!getProfile"
               href="#"

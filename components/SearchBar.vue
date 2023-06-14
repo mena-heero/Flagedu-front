@@ -4,7 +4,7 @@
       <i class="bi bi-search search-icon"></i>
       <input
         type="text"
-        placeholder="ابحث عن الأخبار والمقالات والشركات"
+        :placeholder="$t('search_placeholder')"
         v-model.trim="searchText"
         v-debounce:400ms="debounceSearch"
       />
@@ -14,7 +14,7 @@
         v-on-clickaway="hideSearchResult"
       >
         <div class="company-result" v-if="companies.length > 0">
-          <div class="title">شركات</div>
+          <div class="title">{{ $t("search_companies_title") }}</div>
           <a
             class="item"
             v-for="(item, idx) in companies"
@@ -53,7 +53,7 @@
           </a>
         </div>
         <div class="article-result" v-if="articles.length > 0">
-          <div class="title">مقالات</div>
+          <div class="title">{{ $t("search_articles_title") }}</div>
           <a
             class="item"
             v-for="(item, aidx) in articles"
@@ -64,7 +64,7 @@
           </a>
         </div>
         <div class="article-result" v-if="newss.length > 0">
-          <div class="title">أخبار</div>
+          <div class="title">{{ $t("search_news_title") }}</div>
           <a
             class="item"
             v-for="(item, nidx) in newss"
@@ -78,7 +78,7 @@
           class="empty-result"
           v-if="companies.length < 1 && articles.length < 1 && newss.length < 1"
         >
-          <div class="empty-text">لم يتم العثور على شيء!</div>
+          <div class="empty-text">{{ $t("search_no_results") }}</div>
         </div>
       </div>
     </div>

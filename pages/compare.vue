@@ -1,7 +1,7 @@
 <template>
   <div class="company-index">
     <div class="wrapper">
-      <h1 class="title">مقارنة الوسطاء عبر الإنترنت</h1>
+      <h1 class="title">{{ $t("compare.page_title") }}</h1>
       <div class="white-back">
         <div class="company-wrapper">
           <div class="select-company-wrapper">
@@ -12,7 +12,9 @@
                   @click="handleOpenCompanySearch(1)"
                   v-if="!companyInput.company1"
                 >
-                  <div class="add-company-title">أضف شركة</div>
+                  <div class="add-company-title">
+                    {{ $t("compare.add_company") }}
+                  </div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-if="companyDetail.company1">
@@ -34,7 +36,7 @@
                     class="visit-broker-btn"
                     :to="companyDetail.company1.html_url"
                   >
-                    قم بزيارة وسيط
+                    {{ $t("compare.visit_broker") }}
                   </nuxt-link>
                 </div>
               </div>
@@ -44,7 +46,9 @@
                   @click="handleOpenCompanySearch(2)"
                   v-if="!companyInput.company2"
                 >
-                  <div class="add-company-title">أضف شركة</div>
+                  <div class="add-company-title">
+                    {{ $t("compare.add_company") }}
+                  </div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-if="companyDetail.company2">
@@ -66,7 +70,7 @@
                     class="visit-broker-btn"
                     :to="companyDetail.company2.html_url"
                   >
-                    قم بزيارة وسيط
+                    {{ $t("compare.visit_broker") }}
                   </nuxt-link>
                 </div>
               </div>
@@ -76,7 +80,9 @@
                   @click="handleOpenCompanySearch(3)"
                   v-if="!companyInput.company3"
                 >
-                  <div class="add-company-title">أضف شركة</div>
+                  <div class="add-company-title">
+                    {{ $t("compare.add_company") }}
+                  </div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-if="companyDetail.company3">
@@ -98,7 +104,7 @@
                     class="visit-broker-btn"
                     :to="companyDetail.company3.html_url"
                   >
-                    قم بزيارة وسيط
+                    {{ $t("compare.visit_broker") }}
                   </nuxt-link>
                 </div>
               </div>
@@ -108,7 +114,9 @@
                   @click="handleOpenCompanySearch(4)"
                   v-if="!companyInput.company4"
                 >
-                  <div class="add-company-title">أضف شركة</div>
+                  <div class="add-company-title">
+                    {{ $t("compare.add_company") }}
+                  </div>
                   <i class="bi bi-plus-lg icon-big"></i>
                 </div>
                 <div class="has-company" v-if="companyDetail.company4">
@@ -130,7 +138,7 @@
                     class="visit-broker-btn"
                     :to="companyDetail.company4.html_url"
                   >
-                    قم بزيارة وسيط
+                    {{ $t("compare.visit_broker") }}
                   </nuxt-link>
                 </div>
               </div>
@@ -139,7 +147,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>البيانات الأساسية للوسيط</div>
+              <div>{{ $t("compare.basic_data") }}</div>
             </div>
             <div class="company-content-wrapper">
               <BasicData :companyDetail="companyDetail" />
@@ -148,7 +156,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>حساب اسلامي</div>
+              <div>{{ $t("compare.islamic_account") }}</div>
             </div>
             <div class="company-content-wrapper">
               <IslamicAccount :companyDetail="companyDetail" />
@@ -157,7 +165,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>مصاريف</div>
+              <div>{{ $t("compare.fees") }}</div>
             </div>
             <div class="company-content-wrapper">
               <FeesBlock :companyDetail="companyDetail" />
@@ -166,7 +174,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>الإيداع والسحب</div>
+              <div>{{ $t("compare.deposit_withdrawal") }}</div>
             </div>
             <div class="company-content-wrapper">
               <DepositWithdraw :companyDetail="companyDetail" />
@@ -175,7 +183,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>منصات التداول</div>
+              <div>{{ $t("compare.trading_platforms") }}</div>
             </div>
             <div class="company-content-wrapper">
               <TradingPlatform :companyDetail="companyDetail" />
@@ -184,7 +192,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>السوق والمنتجات</div>
+              <div>{{ $t("compare.market_products") }}</div>
             </div>
             <div class="company-content-wrapper">
               <MarketsProducts :companyDetail="companyDetail" />
@@ -193,7 +201,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>حماية</div>
+              <div>{{ $t("compare.security") }}</div>
             </div>
             <div class="company-content-wrapper">
               <SecurityBlock :companyDetail="companyDetail" />
@@ -202,7 +210,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>خدمة الزبائن</div>
+              <div>{{ $t("compare.customer_service") }}</div>
             </div>
             <div class="company-content-wrapper">
               <CustomerServiceBlock :companyDetail="companyDetail" />
@@ -211,7 +219,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>البحث و التنمية</div>
+              <div>{{ $t("compare.research_development") }}</div>
             </div>
             <div class="company-content-wrapper">
               <ResearchDevelopmentBlock :companyDetail="companyDetail" />
@@ -220,7 +228,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>حساب تجريبي</div>
+              <div>{{ $t("compare.demo_account") }}</div>
             </div>
             <div class="company-content-wrapper">
               <DemoAccount :companyDetail="companyDetail" />
@@ -229,7 +237,7 @@
           <div class="detail-company-wrapper">
             <div class="block-title">
               <i class="bi bi-caret-up-fill"></i>
-              <div>الرافعه الماليه</div>
+              <div>{{ $t("compare.leverage") }}</div>
             </div>
             <div class="company-content-wrapper">
               <Leverage :companyDetail="companyDetail" />

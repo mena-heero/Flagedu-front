@@ -1,8 +1,8 @@
 <template>
   <div class="error">
-    <h1 v-if="error.statusCode === 404">الصفحة غير موجودة!</h1>
-    <h1 v-else>خطأ في الخادم!</h1>
-    <NuxtLink to="/">الصفحة الرئيسية</NuxtLink>
+    <h1 v-if="error.statusCode === 404">{{ $t("Page_Does_Not_Exist") }}</h1>
+    <h1 v-else>{{ $t("Server_Error") }}</h1>
+    <NuxtLink to="/"> {{ $t("Home_page") }}</NuxtLink>
   </div>
 </template>
 

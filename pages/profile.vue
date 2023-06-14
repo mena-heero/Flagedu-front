@@ -4,7 +4,7 @@
       <div class="profile-container">
         <div class="profile-menu">
           <a @click.prevent="showProfileUpdateModal = true" href="#">
-            Edit Profile
+            {{ $t("profile.edit_profile") }}
             <i class="bi bi-pencil-square bicon"></i>
           </a>
           <a
@@ -12,11 +12,11 @@
             @click.prevent="showPasswordChangeModal = true"
             href="#"
           >
-            Change Password
+            {{ $t("profile.change_password") }}
             <i class="bi bi-key-fill bicon"></i>
           </a>
           <a @click.prevent="handleSignOut" href="#" class="red-btn">
-            Sign out
+            {{ $t("profile.sign_out") }}
             <i class="bi bi-box-arrow-right bicon"></i>
           </a>
         </div>
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="white-back">
-      <div class="category-title">My Saved Articles</div>
+      <div class="category-title">{{ $t("profile.saved_articles") }}</div>
       <div class="news-wrapper">
         <nuxt-link
           :to="article.article_detail.html_url"

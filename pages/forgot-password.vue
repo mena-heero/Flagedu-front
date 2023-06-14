@@ -6,12 +6,13 @@
       <div class="card-wrapper">
         <div class="text-center mb-3">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">هل نسيت كلمة السر</h1>
+          <h1 class="text-white fw-semibold">
+            {{ $t("forget-password_title") }}
+          </h1>
         </div>
 
         <p class="text-secondary text-center">
-          أدخل بريدك الإلكتروني لعملية التحقق ، وسنرسل رمزًا مكونًا من 6 أرقام
-          إلى بريدك الإلكتروني.
+          {{ $t("forget-password_enter_email") }}
         </p>
 
         <ValidationObserver v-slot="{ invalid }">
@@ -38,13 +39,11 @@
                     redborder: errors[0],
                   }"
                   class="form-control"
-                  placeholder="بريدك الالكتروني"
+                  :placeholder="$t('forget-password_email_placeholder')"
                   v-model="formData.email"
                 />
               </div>
-              <small v-if="errors.length" class="error">
-                {{ errors[0] }}
-              </small>
+              <small v-if="errors.length" class="error">{{ errors[0] }}</small>
             </ValidationProvider>
 
             <div class="form-input text-center error my-2">
@@ -57,13 +56,20 @@
               class="btn btn-primary form-button mt-4"
               :disabled="invalid"
             >
-              {{ loading ? "انتظر من فضلك..." : "يكمل" }}
+              {{
+                loading
+                  ? $t("forget-password_loading_text")
+                  : $t("forget-password_button_text")
+              }}
             </button>
           </form>
         </ValidationObserver>
+
         <p class="have-account text-center text-white">
-          العودة لتسجيل الدخول؟
-          <NuxtLink to="/signin" class="text-active">تسجيل الدخول</NuxtLink>
+          {{ $t("forget-password_back_to_login_text") }}
+          <NuxtLink to="/signin" class="text-active">{{
+            $t("forget-password_login_link_text")
+          }}</NuxtLink>
         </p>
       </div>
     </div>

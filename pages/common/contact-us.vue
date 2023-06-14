@@ -9,7 +9,7 @@
           <div class="contact-container">
             <div
               class="left"
-              v-bind:style="{
+              :style="{
                 backgroundImage:
                   'url(' +
                   HOST +
@@ -46,11 +46,12 @@
                 ></div>
                 <br />
                 <p class="text">
-                  هاتف:
+                  {{ $t("contact_us_phone") }}:
                   <span dir="ltr">{{ getGlobalSettings.contact_number }}</span>
                 </p>
                 <p class="text">
-                  بريد إلكتروني: {{ getGlobalSettings.contact_email }}
+                  {{ $t("contact_us_email") }}:
+                  {{ getGlobalSettings.contact_email }}
                 </p>
               </div>
             </div>
@@ -62,7 +63,7 @@
                       <input
                         type="text"
                         name="Full name"
-                        placeholder="الاسم الكامل"
+                        :placeholder="$t('contact_us_full_name_placeholder')"
                         v-model="formData.full_name"
                       />
                       <span v-if="errors[0]">* {{ errors[0] }}</span>
@@ -76,7 +77,7 @@
                       <input
                         type="text"
                         name="Email"
-                        placeholder="عنوان بريدك  الإلكتروني"
+                        :placeholder="$t('contact_us_email_placeholder')"
                         v-model="formData.email"
                       />
                       <span v-if="errors[0]">* {{ errors[0] }}</span>
@@ -87,7 +88,7 @@
                       <input
                         type="text"
                         name="Phone"
-                        placeholder="رقم تليفونك"
+                        :placeholder="$t('contact_us_phone_placeholder')"
                         v-model="formData.phone"
                       />
                       <span v-if="errors[0]">* {{ errors[0] }}</span>
@@ -100,7 +101,7 @@
                           <textarea
                             name="Message"
                             v-model="formData.message"
-                            placeholder="اكتب رسالتك"
+                            :placeholder="$t('contact_us_message_placeholder')"
                             rows="4"
                             cols="30"
                           ></textarea>
@@ -115,12 +116,16 @@
                       type="submit"
                       class="sign-up-btn"
                     >
-                      {{ loading ? "انتظر من فضلك..." : "ارسال" }}
+                      {{
+                        loading
+                          ? $t("contact_us_submit_button_loading")
+                          : $t("contact_us_submit_button")
+                      }}
                     </button>
                   </div>
                 </form>
                 <div class="thank-you" v-if="formSubmit">
-                  We received your query! We get back to you asap!
+                  {{ $t("contact_us_thank_you_message") }}
                 </div>
               </ValidationObserver>
             </div>
