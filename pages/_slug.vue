@@ -473,7 +473,7 @@ export default class NewsArticleListPage extends Vue {
     }
   }
   .white-back {
-    background-color: white;
+    // background-color: white;
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -549,7 +549,7 @@ export default class NewsArticleListPage extends Vue {
           gap: 15px;
           margin-top: 20px;
           .title {
-            color: $linked-font-color;
+            // color: $linked-font-color;
             font-size: 16px;
             font-weight: 600;
             height: 54px;

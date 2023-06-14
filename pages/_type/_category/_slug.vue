@@ -373,7 +373,7 @@ export default class DetailPage extends Vue {
     }
   }
   .white-back {
-    background-color: white;
+    // background-color: white;
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -422,7 +422,7 @@ export default class DetailPage extends Vue {
   }
 
   .share-text {
-    color: black;
+    // color: black;
     font-size: 14px;
     font-weight: 600;
   }
@@ -432,7 +432,7 @@ export default class DetailPage extends Vue {
 
 .share-icon {
   font-size: 25px;
-  color: black;
+  // color: black;
 }
 
 .save-button {

@@ -445,7 +445,7 @@ export default class RatingReview extends Vue {
           .rating-value {
             font-size: 14px;
             font-weight: 700;
-            color: #000;
+            color: var(--color);
           }
         }
         .timesince {
@@ -464,7 +464,8 @@ export default class RatingReview extends Vue {
 }
 
 .form-control {
-  color: black;
+  color: var(--color);
+  // color: black;
   border-color: grey;
   border-radius: 8px;
   width: 80%;
@@ -474,7 +475,8 @@ export default class RatingReview extends Vue {
 }
 
 .form-control:focus {
-  color: black !important;
+  // color: black !important;
+  color: var(--color);
   background: transparent;
   border-color: black;
   box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 25%);

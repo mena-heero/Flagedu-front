@@ -538,7 +538,6 @@ export default class FindMyBroker extends Vue {
     }
   }
   .white-back {
-    background-color: white;
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -720,6 +719,7 @@ export default class FindMyBroker extends Vue {
           .title {
             font-weight: 600;
             font-size: 16px;
+            color: black;
             @media (max-width: 1292px) {
               font-size: 14px;
             }

@@ -527,7 +527,7 @@ export default class ComparePage extends Vue {
     }
   }
   .white-back {
-    background-color: white;
+    // background-color: white;
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -555,7 +555,7 @@ export default class ComparePage extends Vue {
 }
 
 .select-company-wrapper {
-  box-shadow: 0 4px 2px -1px gray;
+  // box-shadow: 0 4px 2px -1px gray;
   padding-bottom: 30px;
   padding-top: 10px;
   @media (max-width: 700px) {
@@ -601,7 +601,7 @@ export default class ComparePage extends Vue {
         .add-company-title {
           font-size: 22px;
           font-weight: 600;
-          color: grey;
+          // color: grey;
           @media (max-width: 950px) {
             font-size: 16px;
           }
@@ -698,7 +698,6 @@ export default class ComparePage extends Vue {
 .icon-big {
   font-size: 40px;
   font-weight: bold;
-  color: grey;
   @media (max-width: 1250px) {
   }
   @media (max-width: 950px) {
@@ -727,7 +726,6 @@ export default class ComparePage extends Vue {
   .rating-value {
     font-size: 18px;
     font-weight: 700;
-    color: #000;
     @media (max-width: 1050px) {
       font-size: 14px;
     }

@@ -476,7 +476,7 @@ export default class CompanyDetailPage extends Vue {
     }
   }
   .white-back {
-    background-color: white;
+    // background-color: white;
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -560,6 +560,7 @@ export default class CompanyDetailPage extends Vue {
       font-size: 16px;
       line-height: 25px;
       font-weight: 500;
+      color: black;
     }
     .account-open-btn {
       a {
@@ -596,7 +597,7 @@ export default class CompanyDetailPage extends Vue {
         justify-content: center;
         align-items: center;
         i {
-          color: black;
+          color: var(--color);
           font-size: 20px;
         }
         .title {
@@ -615,7 +616,7 @@ export default class CompanyDetailPage extends Vue {
           .rating-value {
             font-size: 18px;
             font-weight: 700;
-            color: #000;
+            // color: #000;
           }
         }
         .item-value {
@@ -651,7 +652,7 @@ export default class CompanyDetailPage extends Vue {
   }
 
   .share-text {
-    color: black;
+    // color: black;
     font-size: 14px;
     font-weight: 600;
   }
@@ -661,6 +662,6 @@ export default class CompanyDetailPage extends Vue {
 
 .share-icon {
   font-size: 25px;
-  color: black;
+  // color: black;
 }
 </style>

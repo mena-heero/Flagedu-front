@@ -23,12 +23,12 @@
         <div class="theme">
           <i
             @click="changeTheme"
-            v-if="$colorMode.value == 'light'"
+            v-if="$colorMode.preference == 'light'"
             class="bi bi-moon-fill"
           ></i>
           <i
             @click="changeTheme"
-            v-if="$colorMode.value == 'dark'"
+            v-if="$colorMode.preference == 'dark'"
             class="bi bi-brightness-high"
           ></i>
         </div>
@@ -63,11 +63,11 @@ export default class Default extends Vue {
   }
 
   changeTheme() {
-    var currentTheme = this.$colorMode.value;
+    var currentTheme = this.$colorMode.preference;
     if (currentTheme == "light") {
-      this.$colorMode.value = "dark";
+      this.$colorMode.preference = "dark";
     } else {
-      this.$colorMode.value = "light";
+      this.$colorMode.preference = "light";
     }
   }
 }
@@ -113,7 +113,7 @@ export default class Default extends Vue {
     position: absolute;
     top: 30px;
     padding: 10px;
-    background: white;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -122,6 +122,7 @@ export default class Default extends Vue {
       font-weight: 600;
       letter-spacing: 2px;
       cursor: pointer;
+      color: var(--color);
     }
   }
 }

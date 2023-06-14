@@ -258,7 +258,7 @@ export default class ContactUs extends Vue {
     }
   }
   .white-back {
-    background-color: white;
+    // background-color: white;
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -317,6 +317,7 @@ export default class ContactUs extends Vue {
         font-weight: 400;
         font-size: 18px;
         margin: 0 !important;
+        color: black;
       }
       .text {
         font-size: 18px;
@@ -414,14 +415,9 @@ export default class ContactUs extends Vue {
         border: none;
         font-size: 17px;
         font-weight: 550;
-        background: #012d3a;
-        color: #fff;
+        // background: #012d3a;
+        // color: #fff;
         cursor: pointer;
-      }
-      .existing-user-btn {
-        background-color: #f1f1f1;
-        color: #012d3a;
-        font-weight: 300;
       }
     }
   }
@@ -430,5 +426,14 @@ export default class ContactUs extends Vue {
   font-size: 30px;
   color: black;
   line-height: 40px;
+}
+
+.dark-mode .sign-up-btn {
+  background: white;
+  color: black;
+}
+.light-mode .sign-up-btn {
+  background: #012d3a;
+  color: white;
 }
 </style>

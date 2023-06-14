@@ -41,7 +41,7 @@ a:hover{
 //   border-bottom: 1px solid var(--border-color)
 // }
 
-.company-block-container {
+.company-block-container, .white-back {
   background-color: var(--bg);
 }
 
@@ -49,7 +49,7 @@ a:hover{
   background-color: var(--bg-secondary);
 }
 
-.nav-item, .title{
+.nav-item, .title, .add-company-title, .icon-big, .rating-value, .share-icon, .share-text, .form-control{
   color: var(--color);
 }
 
