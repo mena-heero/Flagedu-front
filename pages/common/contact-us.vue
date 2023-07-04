@@ -195,7 +195,7 @@ export default class ContactUs extends Vue {
           this.error_msg = err_msg;
           this.$toast.error(msg);
         } else {
-          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>{{$t("error")}}</div></div>`;
           this.$toast.error(msg);
         }
       });
