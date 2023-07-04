@@ -6,7 +6,7 @@
         {{ getYear }}
       </h1>
       <div class="sharing">
-        <div class="share-text">يشارك:</div>
+        <div class="share-text">{{$t("share")}}</div>
         <div class="item">
           <ShareNetwork
             network="facebook"
@@ -80,7 +80,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-trophy"></i>
-                  <div class="title">تقييم</div>
+                  <div class="title">{{$t("rate")}}</div>
                 </div>
                 <div class="right">
                   <div class="rating">
@@ -115,7 +115,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-hammer"></i>
-                  <div class="title">الهيئات التنظيمية</div>
+                  <div class="title">{{$t("Regulators")}}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -127,7 +127,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-moon-stars"></i>
-                  <div class="title">حساب اسلامي</div>
+                  <div class="title">{{$t("islamicAccount")}}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -139,7 +139,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-currency-dollar"></i>
-                  <div class="title">الحد الأدنى للإيداع</div>
+                  <div class="title">{{$t("minimum_deposit")}}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -151,7 +151,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-headset"></i>
-                  <div class="title">خدمة الزبائن</div>
+                  <div class="title">{{$t("compare.customer_service")}}<</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -163,7 +163,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-airplane-engines"></i>
-                  <div class="title">حساب تجريبي</div>
+                  <div class="title">{{$t("compare.demo_account")}}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -175,7 +175,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-building"></i>
-                  <div class="title">الفرع الرئيسي</div>
+                  <div class="title">{{$t("main_branch")}}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -191,7 +191,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-activity"></i>
-                  <div class="title">منصات التداول</div>
+                  <div class="title">{{$t("compare.trading_platforms")}}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -220,7 +220,7 @@
               ></div>
               <div class="account-open-btn">
                 <a target="_blank" :href="getCurrentPage.account_open_link"
-                  >فتح حساب</a
+                  >{{$t("openAccount")}}</a
                 >
               </div>
             </div>

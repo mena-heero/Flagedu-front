@@ -6,7 +6,7 @@
       <div class="card-wrapper">
         <div class="text-center mb-5">
           <img src="/images/logo.png" alt="logo" class="auth-logo mb-4" />
-          <h1 class="text-white fw-semibold">Create an Account</h1>
+          <h1 class="text-white fw-semibold">{{$t("openAccount")}}</h1>
         </div>
 
         <ValidationObserver
@@ -57,7 +57,7 @@
               class="form-select country-select"
               name="Country"
             >
-              <option value="">Select country</option>
+              <option value="">{{$t("signup_select_country")}}</option>
               <option
                 v-for="(item, idx) in countries"
                 :key="'country_' + idx"
@@ -190,7 +190,7 @@ export default class CompleteSignup extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>Something went wrong!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>{{$t("error")}}</div></div>`;
           this.$toast.error(msg);
         }
       });

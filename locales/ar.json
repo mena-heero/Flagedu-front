@@ -77,7 +77,6 @@
   "ratingPlaceholder": "التصنيف 0-5",
   "commentPlaceholder": "تعليق",
   "addComment": "أضف تعليق",
-  "loginPrompt": "أنت بحاجة إلى {{loginLink}} لإضافة التقييم والمراجعة!",
   "loginLinkText": "تسجيل الدخول",
   "anonymousUser": "مجهول",
   "previousPage": "الصفحة السابقة",
@@ -91,7 +90,7 @@
   "Next": "التالي",
   "End": "تم",
   "Back": "السابق",
-  "Try_Again": "حاول ثانية",
+  "Try_Again": "حاول مجددا",
   "Very_Important": " مهم جدا",
   "Not_Important": " غير مهم  ",
   "some_how_important": "  مهم إلى حد ما",
@@ -101,6 +100,20 @@
   "OTP_sent_success": " تم إرسال رمز التحقق بنجاح!",
   "error": "هناك خطأ ما!",
   "verified": "تم التحقق من حسابك!",
+  "error_agree":"أنت بحاجة إلى الموافقة على الشروط والأحكام الخاصة بنا!",
+  "share":"مشاركه",
+  "Save_this_article":"احفظ هذه المقاله",
+  "Remove_from_saved":"مسح من المقالات المحفوظه",
+  "rate":"تقييم",
+  "Regulators":"الهيئات التنظيمية",
+  "minimum_deposit":"الحد الأدنى للإيداع",
+  "main_branch":"الفرع الرئيسي",
+  "success_saved":"تم حفظ المقاله بنجاح",
+  "success_remove":"تم المسح من القائمه",
+  "and":"و",
+  "signup_create_account":"انشاء حساب",
+  
+
 
   "fyb": {
     "suggested_brokers": "قائمه الوسطاء المرشحه لك",
