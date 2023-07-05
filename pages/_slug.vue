@@ -61,6 +61,7 @@
           >
             <div class="image">
               <img
+                v-if="article.thumbnail && article.thumbnail.original"
                 :src="
                   HOST + renderLocaleImage(article, 'thumbnail', $i18n.locale)
                 "
