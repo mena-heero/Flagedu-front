@@ -131,12 +131,12 @@ export default {
       },
     ],
     script: [
-      {
-        type: "text/javascript",
-        src: "https://www.googletagmanager.com/gtag/js?id=G-4GZLLSJHQF",
-        async: true,
-      },
-      { type: "text/javascript", src: "js/ga.js" },
+      // {
+      //   type: "text/javascript",
+      //   src: "https://www.googletagmanager.com/gtag/js?id=G-4GZLLSJHQF",
+      //   async: true,
+      // },
+      // { type: "text/javascript", src: "js/ga.js" },
       { type: "text/javascript", src: "/js/bootstrap.min.js" },
     ],
   },
@@ -158,9 +158,9 @@ export default {
       "http://localhost:3000",
     SITE_URL: process.env.VUE_APP_SITE_URL || "http://localhost:3000",
     FB_APP_ID: process.env.VUE_APP_FB_APP_ID || "",
-    gtm: {
-      id: process.env.VUE_APP_GOOGLE_TAG_MANAGER_ID,
-    },
+    // gtm: {
+    //   id: process.env.VUE_APP_GOOGLE_TAG_MANAGER_ID,
+    // },
   },
 
   css: [
@@ -220,7 +220,7 @@ export default {
 
   modules: [
     "@nuxtjs/color-mode",
-    "@nuxtjs/gtm",
+    // "@nuxtjs/gtm",
     "@nuxtjs/axios",
     "@nuxtjs/dayjs",
     "cookie-universal-nuxt",
@@ -232,13 +232,13 @@ export default {
         },
       },
     ],
-    [
-      "@netsells/nuxt-hotjar",
-      {
-        id: 3471225,
-        sv: 6,
-      },
-    ],
+    // [
+    //   "@netsells/nuxt-hotjar",
+    //   {
+    //     id: 3471225,
+    //     sv: 6,
+    //   },
+    // ],
     "@nuxtjs/i18n",
   ],
 
@@ -276,29 +276,29 @@ export default {
     },
   },
 
-  gtm: {
-    id: "GTM-TWR54SB",
-    enabled: true,
-    debug: true,
+  // gtm: {
+  //   id: "GTM-TWR54SB",
+  //   enabled: true,
+  //   debug: true,
 
-    layer: "dataLayer",
-    variables: {},
+  //   layer: "dataLayer",
+  //   variables: {},
 
-    pageTracking: true,
-    pageViewEventName: "nuxtRoute",
+  //   pageTracking: true,
+  //   pageViewEventName: "nuxtRoute",
 
-    autoInit: true,
-    respectDoNotTrack: true,
+  //   autoInit: true,
+  //   respectDoNotTrack: true,
 
-    scriptId: "gtm-script",
-    scriptDefer: false,
-    scriptURL: "https://www.googletagmanager.com/gtm.js",
-    crossOrigin: false,
+  //   scriptId: "gtm-script",
+  //   scriptDefer: false,
+  //   scriptURL: "https://www.googletagmanager.com/gtm.js",
+  //   crossOrigin: false,
 
-    noscript: true,
-    noscriptId: "gtm-noscript",
-    noscriptURL: "https://www.googletagmanager.com/ns.html",
-  },
+  //   noscript: true,
+  //   noscriptId: "gtm-noscript",
+  //   noscriptURL: "https://www.googletagmanager.com/ns.html",
+  // },
 
   dayjs: {
     plugins: ["relativeTime"],
