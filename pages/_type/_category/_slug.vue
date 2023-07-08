@@ -5,7 +5,7 @@
         {{ renderLocaleField(getCurrentPage, "title", $i18n.locale) }}
       </h1>
       <div class="sharing">
-        <div class="share-text">يشارك:</div>
+        <div class="share-text">{{$t("share")}}</div>
         <div class="item">
           <ShareNetwork
             network="facebook"
@@ -92,12 +92,13 @@
           <button @click="handleAddSavedTopic" v-if="isExists == false">
             <span v-if="loading == false"
               ><i class="bi bi-heart-fill"></i>
-              Save this article
+              {{$t("Save_this_article")}}
             </span>
             <span v-else>Loading...</span>
           </button>
           <button @click="handleRemoveSavedTopic" v-if="isExists == true">
-            <span v-if="loading == false">Remove from save </span>
+              {{$t("Remove_from_saved")}}
+            <span v-if="loading == false"> </span>
             <span v-else>Loading...</span>
           </button>
         </div>
@@ -173,11 +174,11 @@ export default class DetailPage extends Vue {
         this.isExists = true;
         this.savedTopicId = data.id;
         this.loading = false;
-        this.$toast.success("Successfully saved this article!");
+        this.$toast.success($t("success_saved"));
       })
       .catch((e) => {
         this.loading = false;
-        this.$toast.error("Something went wrong!");
+        this.$toast.error($t("error"));
       });
   }
 
@@ -188,11 +189,11 @@ export default class DetailPage extends Vue {
         this.isExists = false;
         this.savedTopicId = null;
         this.loading = false;
-        this.$toast.success("Successfully delete from saved article!");
+        this.$toast.success($t("success_remove"));
       })
       .catch((e) => {
         this.loading = false;
-        this.$toast.error("Something went wrong!");
+        this.$toast.error($t("error"));
       });
   }
 

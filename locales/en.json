@@ -100,7 +100,20 @@
   "Server_Error": " Server Error",
   "OTP_sent_success": " OTP Sent Successfully",
   "error": "Error Happened",
+  "error_agree": "You Have To Agree To Our Terms Of Service ",
   "verified": "Account Verified",
+  "share":"Share",
+  "Save_this_article":"Save This Article",
+  "Remove_from_saved":"Remove from saved articles",
+  "rate":"Rate",
+  "Regulators":"Regulators",
+  "minimum_deposit":"Minimum Deposit",
+  "main_branch":"Main Branch",
+  "success_saved":"Successfully saved this article!",
+  "success_remove":"Successfully removed from saved article!",
+  "signup_create_account":"Create Account",
+  "and":"and",
+
 
   "company_evaluation": {
     "title": "Company Evaluation",

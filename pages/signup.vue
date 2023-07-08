@@ -249,7 +249,7 @@
               >
                 {{ $t("signup_terms_of_service") }}
               </a>
-              {{ $t("signup_and") }}
+              {{ $t("and") }}
               <a
                 href="/common/privacy-policy"
                 target="_blank"
@@ -278,9 +278,9 @@
 
         <div class="mt-4 text-center">
           <p class="text-white">
-            {{ $t("signup_already_have_account") }}
+            {{ $t("signup_have_account") }}
             <router-link to="/signin" class="text-active fw-semibold">
-              {{ $t("signup_sign_in") }}
+              {{ $t("signin_button_text") }}
             </router-link>
           </p>
         </div>
@@ -355,7 +355,7 @@ export default class Signup extends Vue {
     this.loading = true;
 
     if (this.formData.is_agreed == false) {
-      var msg = `<div class='t-custom-class'><div>أنت بحاجة إلى الموافقة على الشروط والأحكام الخاصة بنا!</div></div>`;
+      var msg = `<div class='t-custom-class'>{{ $t("error_agree") }}<div></div></div>`;
       this.$toast.error(msg);
       this.loading = false;
       return false;
@@ -384,7 +384,7 @@ export default class Signup extends Vue {
           }
           this.error_msg = err_msg;
         } else {
-          var msg = `<div class='t-custom-class'><div>هناك خطأ ما!</div></div>`;
+          var msg = `<div class='t-custom-class'><div>{{ $t("error") }}</div></div>`;
           this.$toast.error(msg);
         }
       });
