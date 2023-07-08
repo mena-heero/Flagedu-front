@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Story :stories="stories" />
+    <!-- <Story :stories="stories" /> -->
     <div v-for="(comp, idx) in getCurrentPage.body" :key="'component' + idx">
       <component
         :key="'pageBody' + idx"

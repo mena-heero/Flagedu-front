@@ -2,6 +2,18 @@
   <div>
     <div class="site-settings">
       <div class="setting-wrapper">
+        <div class="theme">
+          <i
+            @click="changeTheme"
+            v-if="$colorMode.preference == 'light'"
+            class="bi bi-moon-fill"
+          ></i>
+          <i
+            @click="changeTheme"
+            v-if="$colorMode.preference == 'dark'"
+            class="bi bi-brightness-high"
+          ></i>
+        </div>
         <div class="language">
           <div @click="languageDropdownToggle" class="current-language">
             {{ $i18n.locale.toUpperCase() }} <i class="bi bi-translate"></i>
@@ -19,18 +31,6 @@
               {{ lang.code.toUpperCase() }}
             </div>
           </div>
-        </div>
-        <div class="theme">
-          <i
-            @click="changeTheme"
-            v-if="$colorMode.preference == 'light'"
-            class="bi bi-moon-fill"
-          ></i>
-          <i
-            @click="changeTheme"
-            v-if="$colorMode.preference == 'dark'"
-            class="bi bi-brightness-high"
-          ></i>
         </div>
       </div>
     </div>
@@ -91,12 +91,13 @@ export default class Default extends Vue {
   z-index: 999999999;
   .setting-wrapper {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     justify-content: space-around;
   }
 }
 .language {
-  width: 70px;
+  width: 50px;
   height: 30px;
   border-radius: 8px;
   display: flex;
@@ -108,6 +109,7 @@ export default class Default extends Vue {
     cursor: pointer;
     font-weight: 600;
     letter-spacing: 2px;
+    font-size: 12px;
   }
   .lang-dropdown-container {
     position: absolute;
@@ -127,7 +129,7 @@ export default class Default extends Vue {
   }
 }
 .theme {
-  width: 40px;
+  width: 50px;
   height: 30px;
   display: flex;
   justify-content: center;

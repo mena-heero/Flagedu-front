@@ -15,7 +15,7 @@
           @submit.prevent="handleSignup"
         >
           <ValidationProvider
-            :rules="{ required, regex: /^[a-zA-Z0-9\.]*$/ }"
+            :rules="{ required: true, regex: /^[a-zA-Z0-9\.]*$/ }"
             v-slot="{ errors }"
             tag="div"
             class="mb-3"
@@ -135,7 +135,7 @@
           <ValidationProvider
             vid="password"
             ref="password"
-            :rules="{ required }"
+            rules="required"
             v-slot="{ errors }"
             tag="div"
             class="mb-3"
@@ -261,7 +261,7 @@
             <input
               type="checkbox"
               class="form-check-input me-2"
-              v-model="formData.agree_terms"
+              v-model="formData.is_agreed"
             />
           </div>
 

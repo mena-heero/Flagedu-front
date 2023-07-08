@@ -310,6 +310,7 @@ export default class NewsArticleListPage extends Vue {
 
     query["type"] = pageType;
     query["fields"] = "title,title_en,thumbnail,thumbnail_en,fetch_parent";
+    query["order"] = "-first_published_at";
 
     await this.fetchPages(query).then((data) => {
       this.newss = data.items;
@@ -370,6 +371,7 @@ export default class NewsArticleListPage extends Vue {
       offset: offset,
       type: pageType,
       fields: "title,title_en,thumbnail,thumbnail_en,fetch_parent",
+      order: "-first_published_at",
     };
 
     if (search) {

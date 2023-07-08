@@ -47,7 +47,7 @@ export default class BrokerSurveyBlock extends Vue {
 
 <style scoped lang="scss">
 .broker-survey-container {
-  margin-top: 50px;
+  // margin-top: 50px;
   height: 640px;
   width: 100%;
   display: flex;
