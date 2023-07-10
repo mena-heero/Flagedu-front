@@ -6,7 +6,7 @@
         {{ getYear }}
       </h1>
       <div class="sharing">
-        <div class="share-text">{{$t("share")}}</div>
+        <div class="share-text">{{ $t("share") }}</div>
         <div class="item">
           <ShareNetwork
             network="facebook"
@@ -80,7 +80,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-trophy"></i>
-                  <div class="title">{{$t("rate")}}</div>
+                  <div class="title">{{ $t("rate") }}</div>
                 </div>
                 <div class="right">
                   <div class="rating">
@@ -115,7 +115,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-hammer"></i>
-                  <div class="title">{{$t("Regulators")}}</div>
+                  <div class="title">{{ $t("Regulators") }}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -127,7 +127,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-moon-stars"></i>
-                  <div class="title">{{$t("islamicAccount")}}</div>
+                  <div class="title">{{ $t("islamicAccount") }}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -139,7 +139,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-currency-dollar"></i>
-                  <div class="title">{{$t("minimum_deposit")}}</div>
+                  <div class="title">{{ $t("minimum_deposit") }}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -151,7 +151,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-headset"></i>
-                  <div class="title">{{$t("compare.customer_service")}}<</div>
+                  <div class="title">{{ $t("compare.customer_service") }}<</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -163,7 +163,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-airplane-engines"></i>
-                  <div class="title">{{$t("compare.demo_account")}}</div>
+                  <div class="title">{{ $t("compare.demo_account") }}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -175,7 +175,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-building"></i>
-                  <div class="title">{{$t("main_branch")}}</div>
+                  <div class="title">{{ $t("main_branch") }}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -191,7 +191,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-activity"></i>
-                  <div class="title">{{$t("compare.trading_platforms")}}</div>
+                  <div class="title">{{ $t("compare.trading_platforms") }}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
@@ -219,9 +219,9 @@
                 "
               ></div>
               <div class="account-open-btn">
-                <a target="_blank" :href="getCurrentPage.account_open_link"
-                  >{{$t("openAccount")}}</a
-                >
+                <a target="_blank" :href="getCurrentPage.account_open_link">{{
+                  $t("openAccount")
+                }}</a>
               </div>
             </div>
           </div>
@@ -273,6 +273,7 @@ import RatingReview from "../../components/RatingReview";
 import TableBlock from "../../components/blocks/TableBlock";
 import CompanyEvaluationBlock from "../../components/blocks/CompanyEvaluationBlock";
 import VideoBlock from "../../components/blocks/VideoBlock";
+import CustomTableBlock from "../../components/blocks/CustomTableBlock";
 
 @Component({
   name: "CompanyDetailPage",
@@ -283,6 +284,7 @@ import VideoBlock from "../../components/blocks/VideoBlock";
     button_block: ButtonBlock,
     table_block: TableBlock,
     video_block: VideoBlock,
+    custom_table_block: CustomTableBlock,
     CompanyEvaluationBlock,
     RatingReview,
   },

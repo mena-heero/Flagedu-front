@@ -102,6 +102,7 @@ import BannerBlock from "../../components/blocks/BannerBlock";
 import ButtonBlock from "../../components/blocks/ButtonBlock";
 import TableBlock from "../../components/blocks/TableBlock";
 import VideoBlock from "../../components/blocks/VideoBlock";
+import CustomTableBlock from "../../components/blocks/CustomTableBlock";
 
 @Component({
   name: "PrivatePage",
@@ -112,6 +113,7 @@ import VideoBlock from "../../components/blocks/VideoBlock";
     button_block: ButtonBlock,
     table_block: TableBlock,
     video_block: VideoBlock,
+    custom_table_block: CustomTableBlock,
   },
 })
 export default class PrivatePage extends Vue {
