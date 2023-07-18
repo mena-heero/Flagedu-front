@@ -88,14 +88,14 @@ export default class ArticleBlock extends Vue {
 .news-wrapper {
   margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   @media (max-width: 1400px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   @media (max-width: 1250px) {
     margin-top: 30px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   @media (max-width: 950px) {
     margin-top: 30px;
@@ -112,12 +112,12 @@ export default class ArticleBlock extends Vue {
     grid-template-columns: 1fr;
   }
   .item {
-    height: 490px;
+    height: 420px;
     @media (max-width: 500px) {
       height: auto;
     }
     .image {
-      height: 372px;
+      height: 250px;
       @media (max-width: 500px) {
         height: 300px;
       }

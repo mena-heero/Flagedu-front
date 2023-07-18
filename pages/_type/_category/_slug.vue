@@ -5,7 +5,7 @@
         {{ renderLocaleField(getCurrentPage, "title", $i18n.locale) }}
       </h1>
       <div class="sharing">
-        <div class="share-text">{{$t("share")}}</div>
+        <div class="share-text">{{ $t("share") }}</div>
         <div class="item">
           <ShareNetwork
             network="facebook"
@@ -92,12 +92,12 @@
           <button @click="handleAddSavedTopic" v-if="isExists == false">
             <span v-if="loading == false"
               ><i class="bi bi-heart-fill"></i>
-              {{$t("Save_this_article")}}
+              {{ $t("Save_this_article") }}
             </span>
             <span v-else>Loading...</span>
           </button>
           <button @click="handleRemoveSavedTopic" v-if="isExists == true">
-              {{$t("Remove_from_saved")}}
+            {{ $t("Remove_from_saved") }}
             <span v-if="loading == false"> </span>
             <span v-else>Loading...</span>
           </button>
@@ -136,6 +136,7 @@ import BannerBlock from "../../../components/blocks/BannerBlock";
 import ButtonBlock from "../../../components/blocks/ButtonBlock";
 import RatingReview from "../../../components/RatingReview";
 import TableBlock from "../../../components/blocks/TableBlock";
+import CustomTableBlock from "../../../components/blocks/CustomTableBlock";
 import VideoBlock from "../../../components/blocks/VideoBlock";
 import { GET_PROFILE } from "../../../utils/store/getter.names";
 
@@ -148,6 +149,7 @@ import { GET_PROFILE } from "../../../utils/store/getter.names";
     button_block: ButtonBlock,
     table_block: TableBlock,
     video_block: VideoBlock,
+    custom_table_block: CustomTableBlock,
     RatingReview,
   },
 })

@@ -490,18 +490,18 @@ export default class NewsArticleListPage extends Vue {
     .news-wrapper {
       margin-top: 50px;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       width: 70%;
       margin: 0 auto;
       @media (max-width: 1400px) {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         width: 80%;
       }
       @media (max-width: 1250px) {
         margin-top: 30px;
         width: 80%;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
       @media (max-width: 950px) {
         margin-top: 30px;
@@ -518,9 +518,9 @@ export default class NewsArticleListPage extends Vue {
         grid-template-columns: 1fr;
       }
       .item {
-        height: 490px;
+        height: 420px;
         .image {
-          height: 372px;
+          height: 250px;
           position: relative;
           img {
             flex-shrink: 0;

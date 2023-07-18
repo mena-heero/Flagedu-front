@@ -4,11 +4,13 @@
       <div v-if="isLoading == true" class="please-wait">Please wait ...</div>
       <div v-if="err_text" class="err-text" v-html="err_text"></div>
     </div>
-    <loading
-      :active.sync="isLoading"
-      :can-cancel="true"
-      :is-full-page="fullPage"
-    ></loading>
+    <client-only>
+      <loading
+        :active.sync="isLoading"
+        :can-cancel="true"
+        :is-full-page="fullPage"
+      ></loading>
+    </client-only>
   </div>
 </template>
 

@@ -42,16 +42,22 @@
                 </p>
                 <div
                   class="text-address"
-                  v-html="getGlobalSettings.address"
+                  v-html="
+                    renderLocaleField(
+                      getGlobalSettings,
+                      'address',
+                      $i18n.locale
+                    )
+                  "
                 ></div>
                 <br />
                 <p class="text">
-                  {{ $t("contact_us_phone") }}:
+                  <b>{{ $t("contact_us_phone") }}:</b>
                   <span dir="ltr">{{ getGlobalSettings.contact_number }}</span>
                 </p>
                 <p class="text">
-                  {{ $t("contact_us_email") }}:
-                  {{ getGlobalSettings.contact_email }}
+                  <b>{{ $t("contact_us_email") }}:</b>
+                  <span dir="ltr">{{ getGlobalSettings.contact_email }}</span>
                 </p>
               </div>
             </div>
