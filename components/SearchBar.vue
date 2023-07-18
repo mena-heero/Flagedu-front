@@ -297,6 +297,7 @@ export default class SearchBar extends Vue {
     align-items: center;
     font-size: 15px;
     font-weight: 500;
+    color: black;
   }
 }
 </style>
