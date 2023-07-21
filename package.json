@@ -16,7 +16,6 @@
     "@nuxtjs/dayjs": "^1.4.1",
     "@nuxtjs/gtm": "^2.4.0",
     "@nuxtjs/i18n": "^7.3.1",
-    "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/style-resources": "^1.2.1",
     "cookie-universal-nuxt": "^2.2.2",
     "core-js": "^3.25.3",
