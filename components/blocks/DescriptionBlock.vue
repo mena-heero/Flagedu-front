@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="desc"
+      class="content-desc"
       :dir="$i18n.locale == 'ar' ? 'rtl' : 'ltr'"
       v-html="renderLocaleField(data, 'desc', $i18n.locale)"
     ></div>
@@ -25,7 +25,7 @@ export default class DescriptionBlock extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.desc {
+.content-desc {
   font-size: 18px;
 }
 </style>
