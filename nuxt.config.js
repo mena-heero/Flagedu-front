@@ -240,77 +240,7 @@ export default {
     //   },
     // ],
     "@nuxtjs/i18n",
-    "@nuxtjs/sitemap",
   ],
-
-  sitemap: {
-    hostname: "https://flagedu.com",
-    routes: [
-      {
-        path: "/companies",
-        changefreq: "daily",
-        priority: 0.8,
-      },
-      {
-        path: "/companies/:slug",
-        changefreq: "daily",
-        priority: 0.9,
-        dynamic: true,
-      },
-      {
-        path: "/articles/",
-        changefreq: "weekly",
-        priority: 0.7,
-      },
-      {
-        path: "/articles/trading/:slug",
-        changefreq: "weekly",
-        priority: 0.8,
-        dynamic: true,
-      },
-      {
-        path: "/articles/investing/:slug",
-        changefreq: "weekly",
-        priority: 0.8,
-        dynamic: true,
-      },
-      {
-        path: "/articles/forex/:slug",
-        changefreq: "weekly",
-        priority: 0.8,
-        dynamic: true,
-      },
-      {
-        path: "/news",
-        changefreq: "monthly",
-        priority: 0.4,
-      },
-      {
-        path: "/news/crypo/:slug",
-        changefreq: "monthly",
-        priority: 0.4,
-        dynamic: true,
-      },
-      {
-        path: "/news/stocks/:slug",
-        changefreq: "monthly",
-        priority: 0.4,
-        dynamic: true,
-      },
-      {
-        path: "/news/forex/:slug",
-        changefreq: "monthly",
-        priority: 0.4,
-        dynamic: true,
-      },
-      {
-        path: "/news/commodities/:slug",
-        changefreq: "monthly",
-        priority: 0.4,
-        dynamic: true,
-      },
-    ],
-  },
 
   colorMode: {
     preference: "light", // default value of $colorMode.preference
