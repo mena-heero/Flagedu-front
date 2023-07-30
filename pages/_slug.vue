@@ -430,6 +430,71 @@ export default class NewsArticleListPage extends Vue {
     };
   }
   mounted() {}
+
+  get getPageTitle() {
+    if (this.getCurrentPage.meta.seo_title) {
+      return this.getCurrentPage.meta.seo_title;
+    } else {
+      return this.getCurrentPage.title;
+    }
+  }
+
+  get getSearchDescription() {
+    if (this.getCurrentPage.meta.search_description) {
+      return this.getCurrentPage.meta.search_description;
+    } else {
+      return "";
+    }
+  }
+
+  get getKeywords() {
+    if (this.getCurrentPage.og_keywords) {
+      return this.getCurrentPage.og_keywords;
+    } else {
+      return "";
+    }
+  }
+
+  get fullPath() {
+    if (this.getCurrentPage.meta.html_url) {
+      return this.getCurrentPage.meta.html_url;
+    } else {
+      return null;
+    }
+  }
+
+  head() {
+    return {
+      title: this.getPageTitle,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.getSearchDescription,
+        },
+        {
+          hid: "Keywords",
+          name: "Keywords",
+          content: this.getKeywords,
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.getPageTitle,
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.getSearchDescription,
+        },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: this.fullPath,
+        },
+      ],
+    };
+  }
 }
 </script>
 
