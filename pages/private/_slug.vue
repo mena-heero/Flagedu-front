@@ -5,7 +5,7 @@
         {{ renderLocaleField(getCurrentPage, "title", $i18n.locale) }}
       </h1>
       <div class="sharing">
-        <div class="share-text">يشارك:</div>
+        <div class="share-text">{{ $t("share") }}</div>
         <div class="item">
           <ShareNetwork
             network="facebook"

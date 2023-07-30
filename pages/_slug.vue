@@ -67,7 +67,11 @@
                 "
                 :alt="article.thumbnail.original.alt"
               />
-              <div class="category">{{ article.fetch_parent.title }}</div>
+              <div class="category">
+                {{
+                  renderLocaleField(article.fetch_parent, "title", $i18n.locale)
+                }}
+              </div>
             </div>
             <div class="content">
               <div class="pub-date">
