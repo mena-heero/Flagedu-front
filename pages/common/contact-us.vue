@@ -22,7 +22,7 @@
               }"
             >
               <div class="content">
-                <h1>
+                <h2>
                   {{
                     renderLocaleField(
                       getCurrentPage,
@@ -30,7 +30,7 @@
                       $i18n.locale
                     )
                   }}
-                </h1>
+                </h2>
                 <p class="title">
                   {{
                     renderLocaleField(
