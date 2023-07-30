@@ -67,7 +67,9 @@
                 "
                 :alt="article.thumbnail.original.alt"
               />
-              <div class="category">{{ article.fetch_parent.title }}</div>
+              <div class="category">
+                {{ $t(article.fetch_parent.title) }}
+              </div>
             </div>
             <div class="content">
               <div class="pub-date">
