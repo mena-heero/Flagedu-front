@@ -8,22 +8,25 @@
             :alt="data.image.original.alt"
           />
         </div>
-        <div class="content">
+        <div class="content" :dir="$i18n.locale == 'ar' ? 'rtl' : 'ltr'">
           <div class="title">
-            {{ data.title }}
+            {{ renderLocaleField(data, "title", $i18n.locale) }}
           </div>
-          <div class="description" v-html="data.description" dir="rtl"></div>
+          <div
+            class="description"
+            :dir="$i18n.locale == 'ar' ? 'rtl' : 'ltr'"
+            v-html="renderLocaleField(data, 'description', $i18n.locale)"
+          ></div>
           <div class="button">
-            <a
-              v-if="data.link.link.type == 'link'"
-              :href="data.link.link.link"
-              >{{ data.link.label }}</a
-            >
+            <a v-if="data.link.link.type == 'link'" :href="data.link.link.link">
+              {{ renderLocaleField(data.link, "label", $i18n.locale) }}
+            </a>
             <nuxt-link
               v-if="data.link.link.type == 'page'"
               :to="data.link.link.link"
-              >{{ data.link.label }}</nuxt-link
             >
+              {{ renderLocaleField(data.link, "label", $i18n.locale) }}
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -33,7 +36,7 @@
 
 <script>
 import { Component, Vue, Getter, Action, Prop } from "nuxt-property-decorator";
-import { renderLocaleImage } from "../../utils/utils";
+import { renderLocaleField, renderLocaleImage } from "../../utils/utils";
 import SingleCompany from "../SingleCompany";
 
 @Component({
@@ -43,6 +46,7 @@ import SingleCompany from "../SingleCompany";
 export default class TwoColumnTextImageBlock extends Vue {
   @Prop() data;
 
+  renderLocaleField = renderLocaleField;
   renderLocaleImage = renderLocaleImage;
 
   get HOST() {
