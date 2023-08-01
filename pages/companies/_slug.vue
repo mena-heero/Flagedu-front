@@ -151,7 +151,7 @@
               <div class="item">
                 <div class="left">
                   <i class="bi bi-headset"></i>
-                  <div class="title">{{ $t("compare.customer_service") }}<</div>
+                  <div class="title">{{ $t("compare.customer_service") }}</div>
                 </div>
                 <div class="right">
                   <div class="item-value">
