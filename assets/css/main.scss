@@ -8,6 +8,7 @@
   --bg: #fff;
   --bg-secondary: #f1f1f1;
   --border-color: #000;
+  --desc-link-color: blue;
 }
 
 .dark-mode {
@@ -17,6 +18,7 @@
   --bg: #082b47;
   --bg-secondary: #092E4C;
   --border-color: #fff;
+  --desc-link-color: yellow;
 }
 
 // body {
@@ -543,4 +545,14 @@ ul {
   @media (max-width: 1250px) {
       display: flex !important;
     }
+}
+
+
+.content-desc {
+  a {
+    color: var(--desc-link-color) !important;
+    text-decoration: underline;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 }
