@@ -29,11 +29,13 @@
                 :to="item.link_url"
                 v-if="!item.is_external && item.link_url != null"
                 class="nav-item"
-                >{{ item.link_title }}</nuxt-link
+                >{{
+                  renderLocaleField(item, "link_title", $i18n.locale)
+                }}</nuxt-link
               >
               <a class="nav-item" v-else-if="item.link_url == null">
                 <i class="bi bi-caret-down-fill arrow-down"></i>
-                {{ item.link_title }}
+                {{ renderLocaleField(item, "link_title", $i18n.locale) }}
               </a>
               <a
                 :href="item.link_url"
@@ -41,7 +43,7 @@
                 class="nav-item"
                 v-else-if="item.is_external == true"
               >
-                {{ item.link_title }}
+                {{ renderLocaleField(item, "link_title", $i18n.locale) }}
               </a>
               <div
                 class="submenu"
@@ -59,7 +61,13 @@
                   >
                     <div class="data">
                       <div class="submenu-name">
-                        {{ submenuitem.link_title }}
+                        {{
+                          renderLocaleField(
+                            submenuitem,
+                            "link_title",
+                            $i18n.locale
+                          )
+                        }}
                       </div>
                       <div class="rating">
                         <i
@@ -108,7 +116,13 @@
                   >
                     <div class="data">
                       <div class="submenu-name">
-                        {{ submenuitem.link_title }}
+                        {{
+                          renderLocaleField(
+                            submenuitem,
+                            "link_title",
+                            $i18n.locale
+                          )
+                        }}
                       </div>
                     </div>
                   </a>
@@ -132,6 +146,7 @@ import {
   GET_GLOBAL_SETTINGS,
 } from "../utils/store/getter.names";
 import { NS_USER, NS_COMMON } from "../utils/store/namespace.names";
+import { renderLocaleField } from "../utils/utils";
 
 @Component({
   name: "MobileSideMenu",
@@ -143,7 +158,7 @@ export default class MobileSideMenu extends Vue {
 
   @Getter(namespaced(NS_USER, GET_PROFILE))
   getProfile;
-
+  renderLocaleField = renderLocaleField;
   get HOST() {
     return this.$config.HOST;
   }
