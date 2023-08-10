@@ -8179,6 +8179,11 @@
   "resolved" "https://registry.npmjs.org/vue-i18n/-/vue-i18n-8.28.2.tgz"
   "version" "8.28.2"
 
+"vue-lazyload@^3.0.0":
+  "integrity" "sha512-h2keL/Rj550dLgesgOtXJS9qOiSMmuJNeVlfNAYV1/IYwOQYaWk5mFJlwRxmZDK9YC5gECcFLYYj7z1lKSf9ug=="
+  "resolved" "https://registry.npmjs.org/vue-lazyload/-/vue-lazyload-3.0.0.tgz"
+  "version" "3.0.0"
+
 "vue-loader@^15.10.1":
   "integrity" "sha512-SaPHK1A01VrNthlix6h1hq4uJu7S/z0kdLUb6klubo738NeQoLbS6V9/d8Pv19tU0XdQKju3D1HSKuI8wJ5wMA=="
   "resolved" "https://registry.npmjs.org/vue-loader/-/vue-loader-15.10.1.tgz"
