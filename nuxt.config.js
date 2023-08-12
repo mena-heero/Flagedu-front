@@ -10,6 +10,12 @@ export default {
       lang: "ar",
       dir: "rtl",
     },
+    render: {
+      compressor: {
+        threshold: 0, // Compress all responses
+        level: 9, // Compression level (0 to 9)
+      },
+    },
     meta: [
       { charset: "utf-8" },
       {
@@ -185,6 +191,10 @@ export default {
     {
       src: "~/plugins/validate.js",
       ssr: false,
+    },
+    {
+      src: "~/plugins/vue-lazyload.js", // Path to your VueLazyload plugin file
+      mode: "client", // Load the plugin only on the client side
     },
     {
       src: "~/plugins/vue-toast-notification.js",

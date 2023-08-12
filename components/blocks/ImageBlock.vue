@@ -2,7 +2,7 @@
   <div>
     <div class="image">
       <img
-        :src="HOST + renderLocaleImage(data, 'image', $i18n.locale)"
+        v-lazy="HOST + renderLocaleImage(data, 'image', $i18n.locale)"
         :alt="data.image.original.alt"
       />
     </div>
