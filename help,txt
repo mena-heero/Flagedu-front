@@ -1,0 +1,2 @@
+cd /www/flagedu/ && docker-compose pull frontend && docker-compose stop frontend && docker-compose up -d frontend; rm -r frontend/_nuxt/ &> /dev/null; docker cp alltargeting_frontend:/app/.nuxt/dist/client/ frontend/_nuxt; sleep 5s;
+cd /www/flagedu/ && docker-compose pull frontend && docker-compose stop frontend && docker-compose up -d frontend; rm -r frontend/_nuxt/ &> /dev/null; docker cp alltargeting_frontend:/app/.nuxt/dist/client/ frontend/_nuxt; sleep 5s;
