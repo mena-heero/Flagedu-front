@@ -2,9 +2,10 @@
   <div>
     <div class="single-company" v-if="type == 1">
       <div class="image">
-        <img
+        <nuxt-img
           :src="HOST + renderLocaleImage(data, 'thumbnail_image', $i18n.locale)"
           :alt="data.thumbnail_image.original.alt"
+          :width="200"
         />
       </div>
       <div class="content">
@@ -50,12 +51,13 @@
     </div>
     <div class="single-company" v-if="type == 2">
       <div class="image">
-        <img
+        <nuxt-img
           :src="
             HOST +
             renderLocaleImage(data, 'thumbnail_image', $i18n.locale, true)
           "
           :alt="data.thumbnail_image.alt"
+          :width="200"
         />
       </div>
       <div class="content">
@@ -166,13 +168,13 @@ export default class SingleCompany extends Vue {
     }
     @media (max-width: 500px) {
       margin: 0 auto;
-      width: 100%;
+      // width: 100%;
     }
     img {
       flex-shrink: 0;
       -webkit-flex-shrink: 0;
-      width: 100%;
-      height: 100%;
+      // width: 100%;
+      // height: 100%;
       -o-object-fit: cover;
       object-fit: cover;
       border-radius: 8px;

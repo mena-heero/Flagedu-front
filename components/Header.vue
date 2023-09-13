@@ -5,14 +5,13 @@
         <div class="nav">
           <div class="logo">
             <nuxt-link to="/">
-              <img
+              <nuxt-img
                 :src="HOST + getGlobalSettings.company_logo.original.src"
                 :alt="getGlobalSettings.company_logo.original.alt"
+                :width="200"
               />
             </nuxt-link>
           </div>
-
-        
 
           <div class="nav-item-container">
             <nuxt-link v-if="!getProfile" to="/signin" class="nav-item hide">{{
@@ -49,17 +48,15 @@
               @click.prevent="mobileSideMenuOpen = true"
               v-if="getProfile"
               class="nav-item profile-img mobile-visible-flex small-font"
-                >
+            >
               <i class="bi bi-list icon-big"></i>
-              </a>
- 
-
+            </a>
           </div>
-          
-          <div 
+
+          <div
             v-for="(item, idx) in getMainMenu"
             :key="'menu_' + idx"
-            class="nav-item-container hide "
+            class="nav-item-container hide"
           >
             <nuxt-link
               :to="item.link_url"
@@ -95,7 +92,7 @@
               {{ renderLocaleField(item, "link_title", $i18n.locale) }}
             </a>
             <div
-              class="submenu "
+              class="submenu"
               v-if="item.submenus && item.submenus.length > 0"
             >
               <div
@@ -108,8 +105,7 @@
                   v-if="submenuitem.is_external == false"
                   class="submenu-item-a"
                 >
-                
-                  <div class="image row ">
+                  <div class="image row">
                     <img
                       :src="
                         HOST +
@@ -118,7 +114,7 @@
                       :alt="submenuitem.company_detail.logo_detail.original.alt"
                     />
                   </div>
-                  
+
                   <div class="data">
                     <div class="submenu-name">
                       {{
@@ -130,7 +126,7 @@
                       }}
                     </div>
 
-                    <div class="rating ">
+                    <div class="rating">
                       <i
                         v-for="(rate, ridx) in totalFullStar(
                           submenuitem.company_detail.rating
@@ -156,18 +152,16 @@
                         ({{ submenuitem.company_detail.rating }})
                       </div>
                     </div>
-                  
                   </div>
-                  
                 </nuxt-link>
                 <a
                   :href="submenuitem.get_link"
                   target="_blank"
                   v-else
                   class="submenu-item-a"
-                >  
-                  <div class="data ">
-                    <div class="submenu-name ">
+                >
+                  <div class="data">
+                    <div class="submenu-name">
                       {{
                         renderLocaleField(
                           submenuitem,
@@ -176,19 +170,15 @@
                         )
                       }}
                     </div>
-                 
                   </div>
-              
                 </a>
               </div>
-              
             </div>
           </div>
-          <div class="col-2 search-container ">
-                <div class=""><SearchBar /></div>
-              </div>
+          <div class="col-2 search-container">
+            <div class=""><SearchBar /></div>
+          </div>
         </div>
-      
       </div>
     </div>
     <MobileSideMenu
@@ -398,30 +388,30 @@ export default class Header extends Vue {
         flex-shrink: 0;
         -webkit-flex-shrink: 0;
         max-width: 100%;
-        height: 100%;
+        height: auto;
         -o-object-fit: cover;
         object-fit: cover;
       }
     }
   }
-  .search-container {   
+  .search-container {
     @media (max-width: 1240px) {
-        margin: 0px;
-        margin-top: 10px;
-        width: 60%;
-      }
+      margin: 0px;
+      margin-top: 10px;
+      width: 60%;
+    }
     @media (max-width: 600px) {
-        margin: 0px;
-        margin-top: 10px;
-        width: 50%;
-      }
-      @media (max-width: 450px) {
-        margin: 0px;
-        margin-top: 10px;
-        width:50%;
-      }
+      margin: 0px;
+      margin-top: 10px;
+      width: 50%;
+    }
+    @media (max-width: 450px) {
+      margin: 0px;
+      margin-top: 10px;
+      width: 50%;
     }
   }
+}
 
 .small-font {
   font-size: 14px !important;

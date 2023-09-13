@@ -6,13 +6,13 @@
       <div class="story-image-container" dir="ltr">
         <vue-horizontal snap="center">
           <section v-for="(item, idx) in stories" :key="'item_' + idx">
-            <img
+            <!-- <nuxt-img
               @click="openModal(idx)"
               :src="
                 HOST + renderLocaleImage(item, 'image_detail', $i18n.locale)
               "
               :alt="item.image_detail.original.alt"
-            />
+            /> -->
           </section>
         </vue-horizontal>
       </div>

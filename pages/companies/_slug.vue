@@ -425,11 +425,19 @@ export default class CompanyDetailPage extends Vue {
           property: "og:image",
           content: this.prepareOGImageUrl,
         },
-        {
-          hid: "og:url",
-          property: "og:url",
-          content: this.fullPath,
-        },
+        ...(this.fullPath
+          ? [
+              {
+                hid: "og:url",
+                property: "og:url",
+                content: this.fullPath,
+              },
+              {
+                rel: "canonical",
+                href: this.fullPath,
+              },
+            ]
+          : []),
         {
           hid: "fb:app_id",
           property: "fb:app_id",

@@ -556,11 +556,19 @@ export default class ComparePage extends Vue {
           property: "og:description",
           content: this.getSearchDescription,
         },
-        {
-          hid: "og:url",
-          property: "og:url",
-          content: this.fullPath,
-        },
+        ...(this.fullPath
+          ? [
+              {
+                hid: "og:url",
+                property: "og:url",
+                content: this.fullPath,
+              },
+              {
+                rel: "canonical",
+                href: this.fullPath,
+              },
+            ]
+          : []),
       ],
     };
   }

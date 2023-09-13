@@ -3,7 +3,7 @@
     <div class="company-container">
       <div class="news-wrapper">
         <div class="image">
-          <img
+          <nuxt-img
             :src="HOST + renderLocaleImage(data, 'image', $i18n.locale)"
             :alt="data.image.original.alt"
           />
@@ -176,7 +176,7 @@ export default class TwoColumnTextImageBlock extends Vue {
       flex-shrink: 0;
       -webkit-flex-shrink: 0;
       max-width: 100%;
-      height: 100%;
+      height: auto;
       -o-object-fit: cover;
       object-fit: cover;
       border-radius: 8px;

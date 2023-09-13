@@ -3,9 +3,10 @@
     <footer>
       <div class="company-item">
         <div class="image">
-          <img
+          <nuxt-img
             :src="HOST + getGlobalSettings.company_logo.original.src"
             :alt="getGlobalSettings.company_logo.original.alt"
+            :width="200"
           />
         </div>
         <div class="socials">
@@ -182,7 +183,7 @@ footer {
         flex-shrink: 0;
         -webkit-flex-shrink: 0;
         max-width: 100%;
-        height: 100%;
+        height: auto;
         -o-object-fit: cover;
         object-fit: cover;
       }

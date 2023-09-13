@@ -1,18 +1,163 @@
 <template>
-
-  
-  <div class="company-block-container ">
-    <div class="company-container ">
+  <div class="company-block-container">
+    <div class="company-container">
       <div class="title">
-
-       <nuxt-link to="/news"> <i class="bi bi-newspaper"></i> {{ data.title }}  </nuxt-link>
+        <nuxt-link to="/news">
+          <i class="bi bi-newspaper"></i> {{ data.title }}
+        </nuxt-link>
       </div>
       <div class="news-wrapper">
+        <div class="other-news">
+          <nuxt-link :to="data.news[0].html_url" class="item hide-on-desktop">
+            <div class="image">
+              <nuxt-image
+                :src="
+                  HOST +
+                  renderLocaleImage(
+                    data.news[0],
+                    'thumbnail',
+                    $i18n.locale,
+                    true
+                  )
+                "
+                :alt="data.news[0].thumbnail.alt"
+                width="300"
+              />
+            </div>
+            <div class="content">
+              <div class="pub-date">
+                <i class="bi bi-clock clock-icon"></i>
+                {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
+              </div>
+              <div class="title">{{ data.news[0].title }}</div>
+            </div>
+          </nuxt-link>
 
-        <div class="other-news ">
-          <nuxt-link :to="data.news[0].html_url" class="item hide-on-desktop ">
-            <div class="image ">
-              <img
+          <nuxt-link :to="data.news[1].html_url" class="item">
+            <div class="shadow p-2 mb-2 news-img">
+              <div class="image">
+                <nuxt-img
+                  :src="
+                    HOST +
+                    renderLocaleImage(
+                      data.news[1],
+                      'thumbnail',
+                      $i18n.locale,
+                      true
+                    )
+                  "
+                  :alt="data.news[1].thumbnail.alt"
+                  width="300"
+                />
+              </div>
+              <div class="content">
+                <div class="pub-date">
+                  <i class="bi bi-clock clock-icon"></i>
+                  {{
+                    $dayjs(data.news[1].publish_date).format("DD MMMM, YYYY")
+                  }}
+                </div>
+                <div class="title">
+                  {{ data.news[1].title }}
+                </div>
+              </div>
+            </div>
+          </nuxt-link>
+          <nuxt-link :to="data.news[2].html_url" class="item">
+            <div class="shadow p-2 mb-2 news-img">
+              <div class="image">
+                <nuxt-img
+                  :src="
+                    HOST +
+                    renderLocaleImage(
+                      data.news[2],
+                      'thumbnail',
+                      $i18n.locale,
+                      true
+                    )
+                  "
+                  :alt="data.news[2].thumbnail.alt"
+                  width="300"
+                />
+              </div>
+              <div class="content">
+                <div class="pub-date">
+                  <i class="bi bi-clock clock-icon"></i>
+                  {{
+                    $dayjs(data.news[2].publish_date).format("DD MMMM, YYYY")
+                  }}
+                </div>
+                <div class="title">
+                  {{ data.news[2].title }}
+                </div>
+              </div>
+            </div>
+          </nuxt-link>
+          <nuxt-link :to="data.news[3].html_url" class="item">
+            <div class="shadow p-2 mb-2 news-img">
+              <div class="image">
+                <nuxt-img
+                  :src="
+                    HOST +
+                    renderLocaleImage(
+                      data.news[3],
+                      'thumbnail',
+                      $i18n.locale,
+                      true
+                    )
+                  "
+                  :alt="data.news[3].thumbnail.alt"
+                  width="300"
+                />
+              </div>
+              <div class="content">
+                <div class="pub-date">
+                  <i class="bi bi-clock clock-icon"></i>
+                  {{
+                    $dayjs(data.news[3].publish_date).format("DD MMMM, YYYY")
+                  }}
+                </div>
+                <div class="title">
+                  {{ data.news[3].title }}
+                </div>
+              </div>
+            </div>
+          </nuxt-link>
+          <nuxt-link :to="data.news[4].html_url" class="item">
+            <div class="shadow p-2 mb-2 news-img">
+              <div class="image">
+                <nuxt-img
+                  :src="
+                    HOST +
+                    renderLocaleImage(
+                      data.news[4],
+                      'thumbnail',
+                      $i18n.locale,
+                      true
+                    )
+                  "
+                  :alt="data.news[4].thumbnail.alt"
+                  width="300"
+                />
+              </div>
+              <div class="content">
+                <div class="pub-date">
+                  <i class="bi bi-clock clock-icon"></i>
+                  {{
+                    $dayjs(data.news[4].publish_date).format("DD MMMM, YYYY")
+                  }}
+                </div>
+                <div class="title">
+                  {{ data.news[4].title }}
+                </div>
+              </div>
+            </div>
+          </nuxt-link>
+        </div>
+        <nuxt-link :to="data.news[0].html_url" class="highligted-news hide">
+          <div class="shadow-sm p-2 mb-2 news-img">
+            <div class="image">
+              <nuxt-img
                 :src="
                   HOST +
                   renderLocaleImage(
@@ -32,147 +177,10 @@
               </div>
               <div class="title">{{ data.news[0].title }}</div>
             </div>
-          </nuxt-link>
-
-      
-          <nuxt-link :to="data.news[1].html_url" class="item">
-           
-            
-            <div class="shadow p-2  mb-2 news-img">
-            <div class="image">
-              <img
-                :src="
-                  HOST +
-                  renderLocaleImage(
-                    data.news[1],
-                    'thumbnail',
-                    $i18n.locale,
-                    true
-                  )
-                "
-                :alt="data.news[1].thumbnail.alt"
-              />
-            </div>
-            <div class="content">
-              <div class="pub-date">
-                <i class="bi bi-clock clock-icon"></i>
-                {{ $dayjs(data.news[1].publish_date).format("DD MMMM, YYYY") }}
-              </div>
-              <div class="title">
-                {{ data.news[1].title }}
-              </div>
-            </div></div>
-
-
-          </nuxt-link>
-          <nuxt-link :to="data.news[2].html_url" class="item">
-            <div class=" shadow p-2  mb-2 news-img">
-            <div class="image">
-              <img
-                :src="
-                  HOST +
-                  renderLocaleImage(
-                    data.news[2],
-                    'thumbnail',
-                    $i18n.locale,
-                    true
-                  )
-                "
-                :alt="data.news[2].thumbnail.alt"
-              />
-            </div>
-            <div class="content">
-              <div class="pub-date">
-                <i class="bi bi-clock clock-icon"></i>
-                {{ $dayjs(data.news[2].publish_date).format("DD MMMM, YYYY") }}
-              </div>
-              <div class="title">
-                {{ data.news[2].title }}
-              </div>
-            </div>
-            </div>
-
-
-          </nuxt-link>
-          <nuxt-link :to="data.news[3].html_url" class="item">
-            <div class=" shadow p-2  mb-2 news-img">
-
-            <div class="image">
-              <img
-                :src="
-                  HOST +
-                  renderLocaleImage(
-                    data.news[3],
-                    'thumbnail',
-                    $i18n.locale,
-                    true
-                  )
-                "
-                :alt="data.news[3].thumbnail.alt"
-              />
-            </div>
-            <div class="content">
-              <div class="pub-date">
-                <i class="bi bi-clock clock-icon"></i>
-                {{ $dayjs(data.news[3].publish_date).format("DD MMMM, YYYY") }}
-              </div>
-              <div class="title">
-                {{ data.news[3].title }}
-              </div>
-            </div></div>
-          </nuxt-link>
-          <nuxt-link :to="data.news[4].html_url" class="item">
-
-            <div class="shadow p-2  mb-2 news-img">
-            <div class="image">
-              <img
-                :src="
-                  HOST +
-                  renderLocaleImage(
-                    data.news[4],
-                    'thumbnail',
-                    $i18n.locale,
-                    true
-                  )
-                "
-                :alt="data.news[4].thumbnail.alt"
-              />
-            </div>
-            <div class="content">
-              <div class="pub-date">
-                <i class="bi bi-clock clock-icon"></i>
-                {{ $dayjs(data.news[4].publish_date).format("DD MMMM, YYYY") }}
-              </div>
-              <div class="title">
-                {{ data.news[4].title }}
-              </div>
-            </div></div>
-          </nuxt-link>
-        </div>
-        <nuxt-link :to="data.news[0].html_url" class="highligted-news hide">
-
-        <div class="shadow-sm p-2  mb-2 news-img">
-          <div class="image">
-            <img
-              :src="
-                HOST +
-                renderLocaleImage(data.news[0], 'thumbnail', $i18n.locale, true)
-              "
-              :alt="data.news[0].thumbnail.alt"
-            />
           </div>
-          <div class="content">
-            <div class="pub-date">
-              <i class="bi bi-clock clock-icon"></i>
-              {{ $dayjs(data.news[0].publish_date).format("DD MMMM, YYYY") }}
-            </div>
-            <div class="title">{{ data.news[0].title }}</div>
-          </div></div>
         </nuxt-link>
       </div>
-      
     </div>
-   
   </div>
 </template>
 
@@ -238,12 +246,12 @@ export default class NewsBlock extends Vue {
   .highligted-news {
     height: 750px;
     .image {
-      height: 600px;
+      // height: 600px;
       img {
         // flex-shrink: 0;
         // -webkit-flex-shrink: 0;
         max-width: 100%;
-        height: 100%;
+        height: auto;
         // -o-object-fit: cover;
         // object-fit: cover;
         border-radius: 8px;
@@ -265,11 +273,11 @@ export default class NewsBlock extends Vue {
       }
     }
   }
-  .news-img{
-    margin:4px;
+  .news-img {
+    margin: 4px;
     border-radius: 8px;
   }
-  
+
   .other-news {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -289,12 +297,11 @@ export default class NewsBlock extends Vue {
     .item {
       height: 285px;
       .image {
-        
         img {
           // flex-shrink: 0;
           // -webkit-flex-shrink: 0;
-          width: 100%;
-          height: 100%;
+          // width: 100%;
+          height: auto;
           // -o-object-fit: cover;
           // object-fit: cover;
           border-radius: 8px;

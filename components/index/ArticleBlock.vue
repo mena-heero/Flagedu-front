@@ -2,7 +2,9 @@
   <div class="company-block-container">
     <div class="company-container">
       <div class="title">
-        <nuxt-link to="/articles"> <i class="bi bi-blockquote-left"></i> {{ data.title }}</nuxt-link>
+        <nuxt-link to="/articles">
+          <i class="bi bi-blockquote-left"></i> {{ data.title }}</nuxt-link
+        >
       </div>
       <div class="news-wrapper">
         <nuxt-link
@@ -11,28 +13,28 @@
           v-for="(article, idx) in data.articles"
           :key="'articles_' + idx"
         >
-        <div class="bg-light shadow-sm p-2  mb-2 image">
-          <div class="image ">
-            <img
-              :src="
-                HOST +
-                renderLocaleImage(article, 'thumbnail', $i18n.locale, true)
-              "
-              :alt="article.thumbnail.alt"
-            />
-          
-          <div class="content ">
-            <div class="">
-              <i class="bi bi-clock clock-icon"></i>
-              {{ $dayjs(article.publish_date).format("DD MMMM, YYYY") }}
-            </div>
-            </div>
-            <div class="title">
-              {{ article.title }}
+          <div class="bg-light shadow-sm p-2 mb-2 image">
+            <div class="image">
+              <nuxt-img
+                :src="
+                  HOST +
+                  renderLocaleImage(article, 'thumbnail', $i18n.locale, true)
+                "
+                :alt="article.thumbnail.alt"
+                :width="330"
+              />
+
+              <div class="content">
+                <div class="">
+                  <i class="bi bi-clock clock-icon"></i>
+                  {{ $dayjs(article.publish_date).format("DD MMMM, YYYY") }}
+                </div>
+              </div>
+              <div class="title">
+                {{ article.title }}
+              </div>
             </div>
           </div>
-        </div>
-
         </nuxt-link>
       </div>
     </div>
@@ -116,21 +118,19 @@ export default class ArticleBlock extends Vue {
     grid-template-columns: 1fr;
   }
   .item {
-    height: 270px;
+    height: fit-content;
     @media (max-width: 500px) {
       height: auto;
     }
     .image {
-      
       border-radius: 8px;
       img {
         // flex-shrink: 0;
         // -webkit-flex-shrink: 0;
         max-width: 100%;
-        height: 100%;
+        height: auto;
         // -o-object-fit: cover;
         // object-fit: cover;
-       
       }
     }
     .content {
@@ -138,7 +138,7 @@ export default class ArticleBlock extends Vue {
       flex-direction: column;
       gap: 15px;
       margin-top: 20px;
-    
+
       .title {
         // color: $linked-font-color;
         font-size: 18px;

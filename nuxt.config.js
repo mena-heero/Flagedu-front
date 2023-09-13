@@ -230,6 +230,7 @@ export default {
 
   modules: [
     "@nuxtjs/color-mode",
+    "@nuxt/image",
     // "@nuxtjs/gtm",
     "@nuxtjs/axios",
     "@nuxtjs/dayjs",
