@@ -268,7 +268,7 @@ export default class ContactUs extends Vue {
   }
 
   head() {
-    return {
+    const headData = {
       title: this.getPageTitle,
       meta: [
         {
@@ -291,21 +291,26 @@ export default class ContactUs extends Vue {
           property: "og:description",
           content: this.getSearchDescription,
         },
-        ...(this.fullPath
-          ? [
-              {
-                hid: "og:url",
-                property: "og:url",
-                content: this.fullPath,
-              },
-              {
-                rel: "canonical",
-                href: this.fullPath,
-              },
-            ]
-          : []),
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: this.fullPath,
+        },
       ],
     };
+
+    // Add canonical URL to headData only if this.fullPath is defined
+    if (this.fullPath) {
+      // Add canonical link tag to the HTML head section
+      headData.link = [
+        {
+          rel: "canonical",
+          href: this.fullPath,
+        },
+      ];
+    }
+
+    return headData;
   }
 }
 </script>

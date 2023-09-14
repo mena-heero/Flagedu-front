@@ -5,7 +5,6 @@
         <nuxt-img
           :src="HOST + renderLocaleImage(data, 'thumbnail_image', $i18n.locale)"
           :alt="data.thumbnail_image.original.alt"
-          :width="200"
         />
       </div>
       <div class="content">
@@ -57,7 +56,6 @@
             renderLocaleImage(data, 'thumbnail_image', $i18n.locale, true)
           "
           :alt="data.thumbnail_image.alt"
-          :width="200"
         />
       </div>
       <div class="content">
@@ -173,7 +171,7 @@ export default class SingleCompany extends Vue {
     img {
       flex-shrink: 0;
       -webkit-flex-shrink: 0;
-      // width: 100%;
+      width: 100%;
       // height: 100%;
       -o-object-fit: cover;
       object-fit: cover;

@@ -198,7 +198,7 @@ export default class PrivatePage extends Vue {
   }
 
   head() {
-    return {
+    const headData = {
       title: this.getPageTitle,
       meta: [
         {
@@ -226,26 +226,31 @@ export default class PrivatePage extends Vue {
           property: "og:image",
           content: this.prepareOGImageUrl,
         },
-        ...(this.fullPath
-          ? [
-              {
-                hid: "og:url",
-                property: "og:url",
-                content: this.fullPath,
-              },
-              {
-                rel: "canonical",
-                href: this.fullPath,
-              },
-            ]
-          : []),
         {
           hid: "fb:app_id",
           property: "fb:app_id",
           content: this.$config.FB_APP_ID,
         },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: this.fullPath,
+        },
       ],
     };
+
+    // Add canonical URL to headData only if this.fullPath is defined
+    if (this.fullPath) {
+      // Add canonical link tag to the HTML head section
+      headData.link = [
+        {
+          rel: "canonical",
+          href: this.fullPath,
+        },
+      ];
+    }
+
+    return headData;
   }
 }
 </script>

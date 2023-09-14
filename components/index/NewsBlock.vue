@@ -21,7 +21,6 @@
                   )
                 "
                 :alt="data.news[0].thumbnail.alt"
-                width="300"
               />
             </div>
             <div class="content">
@@ -47,7 +46,6 @@
                     )
                   "
                   :alt="data.news[1].thumbnail.alt"
-                  width="300"
                 />
               </div>
               <div class="content">
@@ -77,7 +75,6 @@
                     )
                   "
                   :alt="data.news[2].thumbnail.alt"
-                  width="300"
                 />
               </div>
               <div class="content">
@@ -107,7 +104,6 @@
                     )
                   "
                   :alt="data.news[3].thumbnail.alt"
-                  width="300"
                 />
               </div>
               <div class="content">
@@ -137,7 +133,6 @@
                     )
                   "
                   :alt="data.news[4].thumbnail.alt"
-                  width="300"
                 />
               </div>
               <div class="content">
@@ -300,7 +295,7 @@ export default class NewsBlock extends Vue {
         img {
           // flex-shrink: 0;
           // -webkit-flex-shrink: 0;
-          // width: 100%;
+          width: 100%;
           height: auto;
           // -o-object-fit: cover;
           // object-fit: cover;
